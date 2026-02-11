@@ -1,0 +1,1063 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Agents of Change | Social Work Test Prep & Continuing Education
+    </title>
+    <meta
+      name="description"
+      content="Pass your LMSW, LCSW, and ASWB exams with confidence. Expert-led social work test prep and continuing education for mental health professionals."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Global Visual Effects -->
+    <div class="noise-overlay"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#" class="nav-logo">
+          <svg class="logo-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 4 L4 24 L24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <span class="logo-text">Agents of Change</span>
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#features" class="nav-link">Why Us</a></li>
+          <li><a href="#courses" class="nav-link">Programs</a></li>
+          <li><a href="#testimonials" class="nav-link">Success Stories</a></li>
+          <li><a href="#instructor" class="nav-link">About</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <li>
+            <a href="#enroll" class="nav-link nav-cta">Start Free Trial</a>
+          </li>
+        </ul>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Toggle navigation"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <div class="hero-gradient"></div>
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-orb hero-orb-3"></div>
+        <div class="hero-particles" id="heroParticles"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-badge animate-fade-up">
+          <span class="badge-dot"></span>
+          Over 10,000+ Social Workers Licensed
+        </div>
+        <h1 class="hero-title animate-fade-up delay-1">
+          Pass Your<br />
+          <span class="gradient-text">Social Work Exam</span><br />
+          With Confidence
+        </h1>
+        <p class="hero-subtitle animate-fade-up delay-2">
+          Expert-led ASWB exam preparation and continuing education designed by
+          social workers, for social workers. Join thousands who've transformed
+          their careers.
+        </p>
+        <div class="hero-cta animate-fade-up delay-3">
+          <a href="#courses" class="btn btn-primary btn-lg">
+            <span>Explore Programs</span>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="#" class="btn btn-secondary btn-lg">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <polygon points="5 3 19 12 5 21 5 3" />
+            </svg>
+            <span>Watch Demo</span>
+          </a>
+        </div>
+        <div class="hero-trust animate-fade-up delay-4">
+          <div class="trust-avatars">
+            <div
+              class="avatar"
+              style="background: linear-gradient(135deg, #1e3a5f, #2d5a8a)"
+            >
+              S
+            </div>
+            <div
+              class="avatar"
+              style="background: linear-gradient(135deg, #f0d48a, #e6c170)"
+            >
+              M
+            </div>
+            <div
+              class="avatar"
+              style="background: linear-gradient(135deg, #3a5a7c, #1e3a5f)"
+            >
+              J
+            </div>
+            <div
+              class="avatar"
+              style="background: linear-gradient(135deg, #f0d48a, #e6c170)"
+            >
+              A
+            </div>
+            <div class="avatar avatar-more">+5k</div>
+          </div>
+          <div class="trust-text">
+            <div class="trust-stars">★★★★★</div>
+            <span>Rated 4.9/5 by social workers</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll">
+        <div class="scroll-indicator">
+          <span>Scroll to explore</span>
+          <div class="scroll-arrow"></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Stats Section -->
+    <section class="stats" id="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item scroll-reveal">
+            <div class="stat-number" data-target="10000">0</div>
+            <div class="stat-label">Licensed Social Workers</div>
+          </div>
+          <div class="stat-item scroll-reveal">
+            <div class="stat-number" data-target="95" data-suffix="%">0</div>
+            <div class="stat-label">First-Time Pass Rate</div>
+          </div>
+          <div class="stat-item scroll-reveal">
+            <div class="stat-number" data-target="150">0</div>
+            <div class="stat-label">CE Courses Available</div>
+          </div>
+          <div class="stat-item scroll-reveal">
+            <div class="stat-number" data-target="50" data-suffix="+">0</div>
+            <div class="stat-label">States Recognized</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="process" id="process">
+      <div class="container">
+        <div class="section-header scroll-reveal">
+          <span class="section-tag">How It Works</span>
+          <h2 class="section-title">Three Steps to Your License</h2>
+          <p class="section-subtitle">Our proven process makes exam prep simple and effective</p>
+        </div>
+        <div class="process-steps">
+          <div class="process-step scroll-reveal-left">
+            <div class="step-number">1</div>
+            <h3 class="step-title">Sign Up</h3>
+            <p class="step-desc">Choose your exam prep package and get instant access to all materials, practice tests, and study groups.</p>
+          </div>
+          <div class="process-step scroll-reveal-scale">
+            <div class="step-number">2</div>
+            <h3 class="step-title">Study Smart</h3>
+            <p class="step-desc">Follow our structured curriculum with audio lessons, practice questions, and personalized study plans.</p>
+          </div>
+          <div class="process-step scroll-reveal-right">
+            <div class="step-number">3</div>
+            <h3 class="step-title">Pass Your Exam</h3>
+            <p class="step-desc">Walk into your exam with confidence. Our 95% first-time pass rate speaks for itself.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-separator"></div>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="container">
+        <div class="section-header scroll-reveal">
+          <span class="section-tag">Why Choose Us</span>
+          <h2 class="section-title">
+            Everything You Need to <span class="gradient-text">Succeed</span>
+          </h2>
+          <p class="section-subtitle">
+            We've helped thousands of social workers achieve their licensing
+            goals with our proven, comprehensive approach.
+          </p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card scroll-reveal">
+            <div class="feature-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Structured Learning Path</h3>
+            <p class="feature-text">
+              Follow our expertly designed curriculum that aligns perfectly with
+              ASWB content outlines. No guesswork, just results.
+            </p>
+          </div>
+          <div class="feature-card scroll-reveal">
+            <div class="feature-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                <line x1="9" y1="9" x2="9.01" y2="9" />
+                <line x1="15" y1="9" x2="15.01" y2="9" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Real-World Practice</h3>
+            <p class="feature-text">
+              Hundreds of mock questions with detailed rationales that mirror
+              the actual exam. Build confidence before test day.
+            </p>
+          </div>
+          <div class="feature-card scroll-reveal">
+            <div class="feature-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Live Study Groups</h3>
+            <p class="feature-text">
+              Join monthly interactive sessions with instructors and peers.
+              Learn collaboratively and stay motivated together.
+            </p>
+          </div>
+          <div class="feature-card scroll-reveal">
+            <div class="feature-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Multi-Format Content</h3>
+            <p class="feature-text">
+              Video lectures, audio files, visual slides, and downloadable
+              materials. Study your way, on any device.
+            </p>
+          </div>
+          <div class="feature-card scroll-reveal">
+            <div class="feature-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <h3 class="feature-title">ASWB Approved</h3>
+            <p class="feature-text">
+              Official ACE provider (#1919) approved by the Association of
+              Social Work Boards. Your credits count.
+            </p>
+          </div>
+          <div class="feature-card scroll-reveal">
+            <div class="feature-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Lifetime Access</h3>
+            <p class="feature-text">
+              Keep access until you pass—no hidden fees, no expiration. We're
+              invested in your success.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+      <div class="container">
+        <div class="section-header scroll-reveal">
+          <span class="section-tag">Our Programs</span>
+          <h2 class="section-title">
+            Choose Your <span class="gradient-text">Path Forward</span>
+          </h2>
+          <p class="section-subtitle">
+            Whether you're preparing for licensure or maintaining your
+            credentials, we have you covered.
+          </p>
+        </div>
+        <div class="courses-grid courses-grid-two">
+          <!-- Exam Prep Only Card -->
+          <div class="course-card scroll-reveal">
+            <div class="course-icon">
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+            </div>
+            <h3 class="course-title">Exam Prep</h3>
+            <p class="course-subtitle">LMSW, LCSW, LSW Preparation</p>
+            <ul class="course-features">
+              <li class="feature-included">
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Complete video course library
+              </li>
+              <li class="feature-included">
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                500+ practice questions
+              </li>
+              <li class="feature-included">
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Monthly live study groups
+              </li>
+              <li class="feature-included">
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Downloadable audio files
+              </li>
+              <li class="feature-included">
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                iOS &amp; Android apps
+              </li>
+              <li class="feature-excluded">
+                <svg class="x-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+                150+ CE courses
+              </li>
+              <li class="feature-excluded">
+                <svg class="x-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+                12+ live CE events per year
+              </li>
+              <li class="feature-excluded">
+                <svg class="x-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+                Unlimited CEU credits
+              </li>
+            </ul>
+            <div class="course-pricing">
+              <span class="price-current">$179</span>
+              <span class="price-period">one-time</span>
+            </div>
+            <a href="#" class="btn btn-outline btn-block">Get Exam Prep</a>
+          </div>
+
+          <!-- Exam Prep + CE Bundle Card (Featured) -->
+          <div class="course-card course-card-featured scroll-reveal">
+            <div class="course-badge">Best Value</div>
+            <div class="course-icon">
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+              </svg>
+            </div>
+            <h3 class="course-title">Exam Prep + CE Bundle</h3>
+            <p class="course-subtitle">Complete Career Package</p>
+            <ul class="course-features">
+              <li class="feature-included">
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Complete video course library
+              </li>
+              <li class="feature-included">
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                500+ practice questions
+              </li>
+              <li class="feature-included">
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Monthly live study groups
+              </li>
+              <li class="feature-included">
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Downloadable audio files
+              </li>
+              <li class="feature-included">
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                iOS &amp; Android apps
+              </li>
+              <li class="feature-included feature-highlight">
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                150+ CE courses
+              </li>
+              <li class="feature-included feature-highlight">
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                12+ live CE events per year
+              </li>
+              <li class="feature-included feature-highlight">
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Unlimited CEU credits
+              </li>
+            </ul>
+            <div class="course-pricing">
+              <span class="price-original">$378</span>
+              <span class="price-current">$229</span>
+              <span class="price-period">one-time + 1yr CE</span>
+            </div>
+            <div class="savings-badge">Save $149</div>
+            <a href="#" class="btn btn-primary btn-block">Start Free Trial</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-header scroll-reveal">
+          <span class="section-tag">Success Stories</span>
+          <h2 class="section-title">
+            Hear From Our <span class="gradient-text">Community</span>
+          </h2>
+          <p class="section-subtitle">
+            Real stories from social workers who achieved their goals with
+            Agents of Change.
+          </p>
+        </div>
+        <div class="testimonials-carousel scroll-reveal">
+          <div class="testimonials-track" id="testimonialsTrack">
+            <div class="testimonial-card">
+              <span class="testimonial-quote">“</span>
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">
+                "I passed my LCSW exam on the first try! The practice questions
+                were spot-on, and the study groups kept me accountable. I
+                couldn't have done it without Agents of Change."
+              </p>
+              <div class="testimonial-author">
+                <div
+                  class="author-avatar"
+                  style="background: linear-gradient(135deg, #1e3a5f, #2d5a8a)"
+                >
+                  S
+                </div>
+                <div class="author-info">
+                  <div class="author-name">Sarah M.</div>
+                  <div class="author-title">LCSW, California</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <span class="testimonial-quote">“</span>
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">
+                "After struggling with other prep courses, I found Agents of
+                Change. The content is organized so well, and the audio files
+                let me study during my commute. Passed in 3 months!"
+              </p>
+              <div class="testimonial-author">
+                <div
+                  class="author-avatar"
+                  style="background: linear-gradient(135deg, #f0d48a, #e6c170)"
+                >
+                  M
+                </div>
+                <div class="author-info">
+                  <div class="author-name">Michael T.</div>
+                  <div class="author-title">LMSW, Texas</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <span class="testimonial-quote">“</span>
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">
+                "The continuing education courses are fantastic. I've completed
+                over 40 hours of CE credits and learned so much about
+                trauma-informed care. Highly recommend!"
+              </p>
+              <div class="testimonial-author">
+                <div
+                  class="author-avatar"
+                  style="background: linear-gradient(135deg, #3a5a7c, #1e3a5f)"
+                >
+                  J
+                </div>
+                <div class="author-info">
+                  <div class="author-name">Jennifer L.</div>
+                  <div class="author-title">LCSW, New York</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <span class="testimonial-quote">“</span>
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">
+                "As someone who failed the exam twice before, I was nervous. But
+                the detailed rationales helped me understand WHY answers were
+                correct. Passed with flying colors!"
+              </p>
+              <div class="testimonial-author">
+                <div
+                  class="author-avatar"
+                  style="background: linear-gradient(135deg, #f0d48a, #e6c170)"
+                >
+                  A
+                </div>
+                <div class="author-info">
+                  <div class="author-name">Amanda R.</div>
+                  <div class="author-title">LSW, Ohio</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonials-nav">
+            <button
+              class="testimonial-nav-btn"
+              id="prevTestimonial"
+              aria-label="Previous testimonial"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <div class="testimonials-dots" id="testimonialsDots"></div>
+            <button
+              class="testimonial-nav-btn"
+              id="nextTestimonial"
+              aria-label="Next testimonial"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instructor Section -->
+    <section class="instructor" id="instructor">
+      <div class="container">
+        <div class="instructor-content scroll-reveal">
+          <div class="instructor-image">
+            <div class="instructor-image-wrapper">
+              <img src="meagen-mitchell.png" alt="Dr. Meagen Mitchell">
+            </div>
+
+          </div>
+          <div class="instructor-info">
+            <span class="section-tag">Meet Your Instructor</span>
+            <h2 class="section-title">
+              Dr. Meagen <span class="gradient-text">Mitchell</span>
+            </h2>
+            <p class="instructor-bio">
+              Dr. Meagen Mitchell is a Licensed Clinical Social Worker who brings years of real-world social work
+              experience combined with a passion for education. Having helped
+              thousands of aspiring social workers pass their licensing exams,
+              she understands exactly what it takes to succeed.
+            </p>
+            <p class="instructor-bio">
+              With a focus on practical, exam-relevant content and clear
+              explanations, our teaching approach makes complex concepts
+              accessible and memorable. Join our community and benefit from
+              proven strategies that work.
+            </p>
+            <div class="instructor-credentials">
+              <div class="credential">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Licensed Clinical Social Worker</span>
+              </div>
+              <div class="credential">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>10+ Years Teaching Experience</span>
+              </div>
+              <div class="credential">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>ACE Provider #1919</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="section-header scroll-reveal">
+          <span class="section-tag">Got Questions?</span>
+          <h2 class="section-title">
+            Frequently Asked <span class="gradient-text">Questions</span>
+          </h2>
+          <p class="section-subtitle">
+            Find answers to common questions about our programs and how we can
+            help you succeed.
+          </p>
+        </div>
+        <div class="faq-list scroll-reveal">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How long do I have access to the exam prep course?</span>
+              <svg
+                class="faq-icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>
+                You have access until you pass! There are no hidden fees or time
+                limits. We're committed to your success and will support you
+                throughout your journey.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Which exams does the prep course cover?</span>
+              <svg
+                class="faq-icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Our comprehensive course covers all ASWB exams including the
+                Bachelors (LSW), Masters (LMSW), and Clinical (LCSW) level
+                exams. The content is organized to help you focus on your
+                specific exam level.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can I study on my phone or tablet?</span>
+              <svg
+                class="faq-icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Absolutely! Our content is fully accessible via our iOS and
+                Android mobile apps. You can also download audio files for
+                offline listening during your commute or workout.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span
+                >Are the continuing education credits accepted in my
+                state?</span
+              >
+              <svg
+                class="faq-icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes! We're an approved ACE provider (#1919) recognized by ASWB.
+                Our CE credits are accepted in all 50 states. Check our state
+                requirements page for specific details about your state's
+                requirements.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Do you offer a free trial?</span>
+              <svg
+                class="faq-icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes! We offer a free preview so you can explore our teaching
+                style and content before committing. Click the "Free Preview"
+                button to get started with no credit card required.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What if I've already failed the exam?</span>
+              <svg
+                class="faq-icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Many of our most successful students came to us after previous
+                failed attempts. Our detailed rationales help you understand not
+                just what the correct answer is, but why—filling in the gaps
+                that may have caused difficulty before.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="enroll">
+      <div class="container">
+        <div class="cta-content scroll-reveal">
+          <h2 class="cta-title">
+            Ready to <span class="gradient-text">Transform</span> Your Career?
+          </h2>
+          <p class="cta-subtitle">
+            Join thousands of social workers who've achieved their licensing
+            goals with Agents of Change. Start your free trial today—no credit
+            card required.
+          </p>
+          <div class="cta-buttons">
+            <a href="#" class="btn btn-primary btn-lg">
+              <span>Start Free Trial</span>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a href="#" class="btn btn-ghost btn-lg">Contact Us</a>
+          </div>
+          <div class="cta-guarantee">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            <span>30-day money-back guarantee • Access until you pass</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#" class="nav-logo">
+              <svg class="logo-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 4 L4 24 L24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+              <span class="logo-text">Agents of Change</span>
+            </a>
+            <p class="footer-tagline">
+              Empowering social workers to achieve their licensing and
+              continuing education goals since 2015.
+            </p>
+            <div class="footer-social">
+              <a href="#" class="social-link" aria-label="Facebook">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  />
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="Instagram">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="YouTube">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"
+                  />
+                  <polygon
+                    points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"
+                    fill="#fff"
+                  />
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="LinkedIn">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                  />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="footer-links">
+            <h4 class="footer-heading">Programs</h4>
+            <ul>
+              <li><a href="#">LMSW Exam Prep</a></li>
+              <li><a href="#">LCSW Exam Prep</a></li>
+              <li><a href="#">LSW Exam Prep</a></li>
+              <li><a href="#">Continuing Education</a></li>
+              <li><a href="#">Group Licensing</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4 class="footer-heading">Resources</h4>
+            <ul>
+              <li><a href="#">Free Practice Questions</a></li>
+              <li><a href="#">Study Guides</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Podcast</a></li>
+              <li><a href="#">State Requirements</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4 class="footer-heading">Company</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Agents of Change LLC. All rights reserved.</p>
+          <p>Approved by ASWB ACE Provider #1919</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
