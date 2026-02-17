@@ -1,0 +1,65 @@
+---
+const rows = [
+  {
+    dimension: "Study structure",
+    selfStudy: "Unstructured sessions and inconsistent focus",
+    withAoc: "Weekly milestones with priority domains and progress checks",
+  },
+  {
+    dimension: "Question strategy",
+    selfStudy: "Memorization-heavy with weak stem analysis",
+    withAoc: "Rationale-first framework for best-next-action decisions",
+  },
+  {
+    dimension: "Confidence curve",
+    selfStudy: "Confidence spikes and crashes near exam day",
+    withAoc: "Progressive confidence calibration through simulation cycles",
+  },
+  {
+    dimension: "Accountability",
+    selfStudy: "No external checkpoints",
+    withAoc: "Guided sequence with support touchpoints and review markers",
+  },
+];
+---
+
+<section class="section" aria-labelledby="comparison-title" data-module="comparison-matrix" data-motion-tier="section">
+  <div class="container">
+    <header class="section-heading centered">
+      <p class="eyebrow">Comparison</p>
+      <h2 id="comparison-title">What changes when your prep is structured</h2>
+      <p>A practical view of how study outcomes shift with a designed learning system.</p>
+    </header>
+
+    <div class="comparison-wrap reveal">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th scope="col">Dimension</th>
+            <th scope="col">Studying Alone</th>
+            <th scope="col">With Agents of Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr>
+              <th scope="row">{row.dimension}</th>
+              <td>
+                <div class="comparison-cell comparison-negative">
+                  <span class="comparison-status-icon" aria-hidden="true"></span>
+                  <span>{row.selfStudy}</span>
+                </div>
+              </td>
+              <td>
+                <div class="comparison-cell comparison-positive">
+                  <span class="comparison-status-icon" aria-hidden="true"></span>
+                  <span>{row.withAoc}</span>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

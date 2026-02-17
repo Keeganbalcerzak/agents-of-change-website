@@ -1,0 +1,149 @@
+---
+import type { ProgramOffer } from "@/lib/types";
+
+interface Props {
+  offers: ProgramOffer[];
+  showHeading?: boolean;
+}
+
+const { offers, showHeading = true } = Astro.props;
+const headingId = "program-offers-title";
+
+const examPrepOffer = offers.find((offer) => offer.slug === "exam-prep");
+const bundleOffer = offers.find((offer) => offer.slug === "exam-prep-ce-bundle");
+const remainingOffers = offers.filter((offer) => offer.slug !== "exam-prep" && offer.slug !== "exam-prep-ce-bundle");
+const orderedOffers = [examPrepOffer, bundleOffer, ...remainingOffers].filter(Boolean) as ProgramOffer[];
+
+const coreOffer = examPrepOffer ?? orderedOffers[0];
+const coreFeatures = new Set(coreOffer?.featuresIncluded ?? []);
+
+const featureRows = orderedOffers.reduce<string[]>((rows, offer) => {
+  offer.featuresIncluded.forEach((feature) => {
+    if (/^everything in exam prep$/i.test(feature)) {
+      return;
+    }
+
+    if (!rows.includes(feature)) {
+      rows.push(feature);
+    }
+  });
+  return rows;
+}, []);
+
+function includesFeature(offer: ProgramOffer, feature: string) {
+  if (offer.featuresIncluded.includes(feature)) {
+    return true;
+  }
+
+  const includesExamPrepBundle = offer.featuresIncluded.some((item) => /^everything in exam prep$/i.test(item));
+  return includesExamPrepBundle && coreFeatures.has(feature);
+}
+---
+
+<section
+  id="offers"
+  class="section section-muted"
+  data-module="program-offers"
+  data-motion-tier="section"
+  aria-labelledby={showHeading ? headingId : undefined}
+  aria-label={showHeading ? undefined : "Program offers"}
+>
+  <div class="container">
+    {showHeading && (
+      <header class="section-heading centered">
+        <p class="eyebrow">Programs</p>
+        <h2 id={headingId}>Choose your prep path</h2>
+        <p>Both plans are built for first-time test takers and include structured milestones.</p>
+      </header>
+    )}
+
+    <div class="offer-grid">
+      {orderedOffers.map((offer) => (
+        <article class:list={{ "offer-card": true, featured: Boolean(offer.featured) }}>
+          {offer.badge && <p class="offer-badge">{offer.badge}</p>}
+          <h3>{offer.title}</h3>
+          <p class="offer-subtitle">{offer.subtitle}</p>
+
+          <p class="offer-price">
+            {offer.priceOriginal && <span class="price-original">${offer.priceOriginal}</span>}
+            <span class="price-current">${offer.priceCurrent}</span>
+          </p>
+
+          <ul class="offer-feature-list">
+            {offer.featuresIncluded.map((feature) => (
+              <li class="offer-feature-item">{feature}</li>
+            ))}
+          </ul>
+
+          <a
+            href={offer.ctaTarget}
+            class="button primary block"
+            data-cta="offer-start-trial"
+            data-cta-location={offer.slug}
+          >
+            {offer.ctaLabel}
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <div class="offer-comparison reveal">
+      <header class="section-heading">
+        <p class="eyebrow">Plan comparison</p>
+        <h3>Exam Prep vs Exam Prep + CE Bundle</h3>
+        <p>Check means included. X means not included.</p>
+      </header>
+
+      <header class="plan-legend-row" aria-label="Comparison legend">
+        <p class="plan-legend-item">
+          <span class="plan-mark check" aria-hidden="true"></span>
+          <span>Included</span>
+        </p>
+        <p class="plan-legend-item">
+          <span class="plan-mark x" aria-hidden="true"></span>
+          <span>Not included</span>
+        </p>
+      </header>
+
+      <div class="comparison-wrap">
+        <table class="comparison-table plan-comparison-table">
+          <thead>
+            <tr>
+              <th scope="col">Feature</th>
+              {orderedOffers.map((offer) => (
+                <th scope="col">{offer.title}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="plan-price-row">
+              <th scope="row">Price</th>
+              {orderedOffers.map((offer) => (
+                <td>
+                  <span class="plan-price-cell">
+                    {offer.priceOriginal && <span class="price-original">${offer.priceOriginal}</span>}
+                    <span class="price-current">${offer.priceCurrent}</span>
+                  </span>
+                </td>
+              ))}
+            </tr>
+            {featureRows.map((feature) => (
+              <tr>
+                <th scope="row">{feature}</th>
+                {orderedOffers.map((offer) => {
+                  const included = includesFeature(offer, feature);
+                  return (
+                    <td class="plan-cell">
+                      <span class:list={["plan-mark", included ? "check" : "x"]} aria-hidden="true"></span>
+                      <span class="sr-only">{included ? "Included" : "Not included"}</span>
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

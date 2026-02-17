@@ -1,0 +1,22 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page Not Found | Agents of Change"
+  description="The page you requested could not be found."
+  path="/404"
+  noindex={true}
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">404</p>
+      <h1>Page not found</h1>
+      <p>The link may be outdated. Return to the home page or start your trial.</p>
+      <p style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <a href="/" class="button secondary">Go home</a>
+        <a href="/start-trial" class="button primary" data-cta="404-start-trial" data-cta-location="404">Start Free Trial</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

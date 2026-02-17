@@ -1,0 +1,29 @@
+---
+import type { StoryPairing } from "@/lib/types";
+
+interface Props {
+  pairings: StoryPairing[];
+}
+
+const { pairings } = Astro.props;
+---
+
+<section class="section" aria-labelledby="pairings-title" data-module="quote-proof-pairings" data-motion-tier="section">
+  <div class="container">
+    <header class="section-heading centered">
+      <p class="eyebrow">Before and after</p>
+      <h2 id="pairings-title">How confidence changes with structure</h2>
+      <p>Real shift patterns reported by students after adopting the full prep sequence.</p>
+    </header>
+
+    <div class="pairing-grid">
+      {pairings.map((pairing) => (
+        <article class="pairing-card reveal">
+          <h3>{pairing.context}</h3>
+          <p><strong>Before:</strong> {pairing.before}</p>
+          <p><strong>After:</strong> {pairing.after}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

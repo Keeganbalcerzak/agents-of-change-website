@@ -1,0 +1,31 @@
+---
+import type { AudiencePathway } from "@/lib/types";
+
+interface Props {
+  pathways: AudiencePathway[];
+}
+
+const { pathways } = Astro.props;
+---
+
+<section class="section section-muted" aria-labelledby="audience-pathways-title" data-module="audience-pathways" data-motion-tier="section">
+  <div class="container">
+    <header class="section-heading centered">
+      <p class="eyebrow">Choose your pathway</p>
+      <h2 id="audience-pathways-title">Start from your real context</h2>
+      <p>Pick the pathway that matches your current stage and goals.</p>
+    </header>
+
+    <div class="pathway-grid">
+      {pathways.map((pathway) => (
+        <article class="pathway-card reveal" data-variant={pathway.id}>
+          <h3>{pathway.title}</h3>
+          <p>{pathway.summary}</p>
+          <a href={pathway.ctaHref} class="button secondary" data-cta="pathway-cta" data-cta-location={pathway.id}>
+            {pathway.ctaLabel}
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

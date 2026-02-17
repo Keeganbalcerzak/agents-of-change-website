@@ -1,0 +1,67 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CTASection from "@/components/CTASection.astro";
+import InstructorSpotlight from "@/components/InstructorSpotlight.astro";
+import StudyJourneyTimeline from "@/components/StudyJourneyTimeline.astro";
+import { getInstructorProfile, getSeoMetadata, getStudyPhases } from "@/lib/content";
+import { findSeoByKey } from "@/lib/seo";
+
+const [instructor, phases, seoEntries] = await Promise.all([
+  getInstructorProfile(),
+  Promise.resolve(getStudyPhases()),
+  getSeoMetadata(),
+]);
+const seo = findSeoByKey(seoEntries, "about");
+---
+
+<BaseLayout
+  title={seo?.title ?? "About Agents of Change"}
+  description={seo?.description ?? "Meet the team and teaching framework behind Agents of Change."}
+  path="/about"
+  themeIntent="editorial"
+>
+  <section class="page-hero page-hero-rich" data-module="about-hero" data-motion-tier="hero">
+    <div class="container">
+      <p class="eyebrow">About us</p>
+      <h1>A teaching system built by social workers for social workers</h1>
+      <p>
+        Agents of Change exists to turn exam uncertainty into strategic confidence
+        through structured learning design and practical decision frameworks.
+      </p>
+    </div>
+  </section>
+
+  <InstructorSpotlight profile={instructor} />
+
+  <section class="section section-muted" aria-labelledby="methodology-title" data-module="methodology-framework" data-motion-tier="section">
+    <div class="container">
+      <header class="section-heading centered">
+        <p class="eyebrow">Methodology</p>
+        <h2 id="methodology-title">Our teaching framework</h2>
+        <p>Three principles guide every module, assessment, and coaching recommendation.</p>
+      </header>
+
+      <div class="framework-grid">
+        <article class="framework-card reveal">
+          <h3>Clarity first</h3>
+          <p>Break complex exam logic into actionable decision patterns students can reuse.</p>
+        </article>
+        <article class="framework-card reveal">
+          <h3>Application over memorization</h3>
+          <p>Prioritize rationale and scenario interpretation to improve transfer under pressure.</p>
+        </article>
+        <article class="framework-card reveal">
+          <h3>Confidence through sequencing</h3>
+          <p>Use milestone architecture so students always know their next highest-impact action.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <StudyJourneyTimeline phases={phases} />
+
+  <CTASection
+    title="See how this framework applies to your exam"
+    description="Start your trial and get a personalized first-week sequence based on your exam track and timeline."
+  />
+</BaseLayout>

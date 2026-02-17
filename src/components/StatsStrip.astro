@@ -1,0 +1,20 @@
+---
+import type { StatItem } from "@/lib/types";
+
+interface Props {
+  stats: StatItem[];
+}
+
+const { stats } = Astro.props;
+---
+
+<section class="stats-strip" aria-label="Key outcomes">
+  <div class="container stats-grid">
+    {stats.map((stat) => (
+      <article class="stat-card">
+        <p class="stat-value">{stat.value}</p>
+        <p class="stat-label">{stat.label}</p>
+      </article>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,44 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const nextSteps = [
+  "Check your inbox for your study plan email.",
+  "Reserve your first 90-minute study block on your calendar.",
+  "Review your exam-track roadmap and complete day-one module.",
+];
+---
+
+<BaseLayout
+  title="Trial Request Received | Agents of Change"
+  description="Your trial request has been received."
+  path="/trial/thanks"
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">You are in</p>
+      <h1>Your trial request was received</h1>
+      <p>
+        Watch for your onboarding email. It includes your first-week game plan and direct access instructions.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container">
+      <article class="info-card" style="max-width: 46rem; margin-inline: auto;">
+        <h2>Next action: get your 7-day study plan</h2>
+        <p>
+          If you do not see the email within 10 minutes, contact support and we will send it manually.
+        </p>
+        <p style="margin-top: 1rem;">
+          <a href="mailto:support@agentsofchangeprep.com?subject=Send%20my%207-day%20study%20plan" class="button primary" data-cta="thanks-get-study-plan" data-cta-location="thanks">
+            Get your 7-day study plan
+          </a>
+        </p>
+        <ul style="margin-top: 1rem; display: grid; gap: 0.5rem;">
+          {nextSteps.map((step) => <li>{step}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

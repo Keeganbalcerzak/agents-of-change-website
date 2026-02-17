@@ -1,0 +1,27 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const {
+  title,
+  description,
+  ctaLabel = "Start Free Trial",
+  ctaHref = "/start-trial",
+} = Astro.props;
+---
+
+<section class="section cta-panel" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta-card">
+      <h2 id="cta-title">{title}</h2>
+      <p>{description}</p>
+      <a href={ctaHref} class="button primary" data-cta="section-start-trial" data-cta-location="cta-panel">
+        {ctaLabel}
+      </a>
+    </div>
+  </div>
+</section>

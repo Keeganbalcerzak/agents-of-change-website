@@ -1,0 +1,188 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import StatsStrip from "@/components/StatsStrip.astro";
+import ProgramOffers from "@/components/ProgramOffers.astro";
+import InstructorSpotlight from "@/components/InstructorSpotlight.astro";
+import FAQSection from "@/components/FAQSection.astro";
+import CTASection from "@/components/CTASection.astro";
+import TestimonialsCarousel from "@/components/islands/TestimonialsCarousel";
+import AudiencePathways from "@/components/AudiencePathways.astro";
+import ComparisonMatrix from "@/components/ComparisonMatrix.astro";
+import ObjectionGrid from "@/components/ObjectionGrid.astro";
+import QuoteProofPairings from "@/components/QuoteProofPairings.astro";
+import TrustMarquee from "@/components/TrustMarquee.astro";
+import {
+  getAudiencePathways,
+  getDefaultStats,
+  getFaqItems,
+  getInstructorProfile,
+  getProgramOffers,
+  getSeoMetadata,
+  getSiteSettings,
+  getStoryPairings,
+  getTestimonials,
+} from "@/lib/content";
+import { findSeoByKey, toFaqJsonLd } from "@/lib/seo";
+
+const [
+  seoEntries,
+  stats,
+  offers,
+  testimonials,
+  faqItems,
+  instructor,
+  settings,
+  pathways,
+  pairings,
+] = await Promise.all([
+  getSeoMetadata(),
+  Promise.resolve(getDefaultStats()),
+  getProgramOffers(),
+  getTestimonials(),
+  getFaqItems(),
+  getInstructorProfile(),
+  getSiteSettings(),
+  Promise.resolve(getAudiencePathways()),
+  Promise.resolve(getStoryPairings()),
+]);
+
+const seo = findSeoByKey(seoEntries, "home");
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: settings.siteName,
+    url: "https://www.agentsofchangeprep.com",
+    email: settings.supportEmail,
+    telephone: settings.supportPhone,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: "Social Work Exam Prep",
+    provider: {
+      "@type": "Organization",
+      name: settings.siteName,
+    },
+    description: "Structured social work exam preparation for LSW, LMSW, and LCSW candidates.",
+  },
+  toFaqJsonLd(faqItems.slice(0, 5)),
+];
+
+const trustItems = [
+  "ASWB ACE Provider #1919",
+  "95% First-Time Pass Rate",
+  "10,000+ Licensed Social Workers Supported",
+  "Structured Weekly Learning Plans",
+  "Scenario-Based Rationale Training",
+  "Multi-State Licensing Guidance",
+];
+---
+
+<BaseLayout
+  title={seo?.title ?? "Agents of Change | Social Work Exam Prep and Continuing Education"}
+  description={seo?.description ?? "Pass your social work exam with confidence."}
+  path="/"
+  jsonLd={jsonLd}
+  themeIntent="editorial"
+>
+  <section class="hero hero-editorial" aria-labelledby="hero-title" data-module="home-hero" data-motion-tier="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Built for first-time test takers</p>
+        <h1 id="hero-title">
+          A premium study system for social workers who need to pass with confidence
+        </h1>
+        <p>
+          Agents of Change combines exam strategy, rationale-based practice, and accountability
+          architecture so your study time drives measurable score movement.
+        </p>
+        <div class="hero-actions hero-actions-multi">
+          <a href="/start-trial" class="button primary" data-cta="hero-start-trial" data-cta-location="hero-main">
+            Start Free Trial
+          </a>
+          <a href="/exam-prep" class="button secondary" data-cta="hero-view-programs" data-cta-location="hero-main">
+            Compare Programs
+          </a>
+          <a href="/success-stories" class="button ghost" data-cta="hero-proof" data-cta-location="hero-main">
+            See Student Outcomes
+          </a>
+        </div>
+        <p class="hero-proof">
+          <strong>95% first-time pass rate</strong>
+          <span aria-hidden="true"> | </span>
+          <span>10,000+ licensed social workers supported</span>
+          <span aria-hidden="true"> | </span>
+          <span>ASWB ACE Provider #1919</span>
+        </p>
+      </div>
+
+      <aside class="hero-panel hero-panel-editorial reveal" aria-label="Trial outcomes">
+        <h2>What you unlock in your first week</h2>
+        <p>Every trial starts with a high-clarity plan, not generic content browsing.</p>
+        <ul>
+          <li>Personalized 7-day study blueprint aligned to your exam window</li>
+          <li>High-yield domain prioritization based on first-pass diagnostic logic</li>
+          <li>Rationale-driven practice workflow to improve answer confidence</li>
+          <li>Confidence calibration checkpoints before full simulation cycles</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <TrustMarquee items={trustItems} />
+  <StatsStrip stats={stats} />
+
+  <AudiencePathways pathways={pathways} />
+
+  <section class="section" aria-labelledby="why-title" data-module="value-proposition" data-motion-tier="section">
+    <div class="container">
+      <header class="section-heading centered">
+        <p class="eyebrow">Why this works</p>
+        <h2 id="why-title">A system designed for clarity, pace, and exam precision</h2>
+        <p>Replace scattered prep with a structured sequence that compounds confidence weekly.</p>
+      </header>
+
+      <div class="card-grid">
+        <article class="metric-card reveal">
+          <h3>Structured weekly roadmap</h3>
+          <p>Know exactly what to learn, what to practice, and when to shift strategy each week.</p>
+        </article>
+        <article class="metric-card reveal">
+          <h3>Rationale-first mastery</h3>
+          <p>Build reusable decision logic for unfamiliar scenarios instead of memorizing isolated facts.</p>
+        </article>
+        <article class="metric-card reveal">
+          <h3>Confidence under constraints</h3>
+          <p>Use pacing frameworks and simulation loops that hold up under timed exam pressure.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <ComparisonMatrix />
+  <ProgramOffers offers={offers} />
+
+  <section class="section" aria-labelledby="stories-title" data-module="story-carousel" data-motion-tier="section">
+    <div class="container">
+      <header class="section-heading centered">
+        <p class="eyebrow">Success stories</p>
+        <h2 id="stories-title">Proof from social workers who passed</h2>
+        <p>Outcomes from candidates who followed the full sequencing model end to end.</p>
+      </header>
+
+      <TestimonialsCarousel client:load testimonials={testimonials} />
+    </div>
+  </section>
+
+  <QuoteProofPairings pairings={pairings} />
+  <ObjectionGrid />
+  <InstructorSpotlight profile={instructor} />
+  <FAQSection items={faqItems} />
+
+  <CTASection
+    title="Ready to transform your exam trajectory?"
+    description="Start your free trial and get a strategic plan that turns study effort into measurable score confidence."
+  />
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+import type { ContactPathway } from "@/lib/types";
+
+interface Props {
+  pathways: ContactPathway[];
+}
+
+const { pathways } = Astro.props;
+---
+
+<section class="section section-muted" aria-labelledby="support-pathways-title" data-module="support-pathways" data-motion-tier="section">
+  <div class="container">
+    <header class="section-heading centered">
+      <p class="eyebrow">Support pathways</p>
+      <h2 id="support-pathways-title">Get routed to the right team fast</h2>
+      <p>Choose the support lane that matches your immediate need.</p>
+    </header>
+
+    <div class="support-grid">
+      {pathways.map((pathway) => (
+        <article class="support-card reveal">
+          <h3>{pathway.title}</h3>
+          <p>{pathway.description}</p>
+          <p class="support-sla">{pathway.responseTime}</p>
+          <a href={pathway.actionHref} class="button secondary" data-cta="support-pathway" data-cta-location={pathway.id}>
+            {pathway.actionLabel}
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

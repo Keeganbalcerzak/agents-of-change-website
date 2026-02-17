@@ -1,0 +1,108 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CTASection from "@/components/CTASection.astro";
+import { getStateRequirements } from "@/lib/content";
+import type { StateRequirement } from "@/lib/types";
+import { stateCodeToName } from "@/lib/states";
+
+export async function getStaticPaths() {
+  const states = await getStateRequirements();
+  return states.map((state) => ({
+    params: {
+      state: state.stateCode.toLowerCase(),
+    },
+    props: {
+      state,
+    },
+  }));
+}
+
+const { state } = Astro.props as { state: StateRequirement };
+const pageTitle = `${state.stateName} Social Work Requirements | Agents of Change`;
+const pageDescription =
+  state.metaDescription || `Licensing and exam prep guidance for ${state.stateName} social workers.`;
+const reviewedDate = state.updatedAt ? new Date(state.updatedAt) : null;
+const reviewedLabel =
+  reviewedDate && !Number.isNaN(reviewedDate.valueOf())
+    ? reviewedDate.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+    : "Recently";
+
+const neighboringStates = ["CA", "TX", "NY", "FL", "WA"].filter((code) => code !== state.stateCode).slice(0, 3);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: `${state.stateName} social work requirements`,
+  description: pageDescription,
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  path={`/state-requirements/${state.stateCode.toLowerCase()}`}
+  jsonLd={jsonLd}
+  themeIntent="trust"
+>
+  <section class="page-hero page-hero-rich" data-module="state-hero" data-motion-tier="hero">
+    <div class="container">
+      <p class="eyebrow">State requirement guide</p>
+      <h1>{state.stateName} licensing and exam prep pathway</h1>
+      <p>
+        Use this page as a practical planning baseline, then verify final compliance directly with your state board.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-muted" data-module="state-requirements-blocks" data-motion-tier="section">
+    <div class="container">
+      <header class="section-heading centered">
+        <p class="eyebrow">Standardized checkpoints</p>
+        <h2>{state.stateName} compliance checklist</h2>
+        <p>Scannable requirements designed for quick planning and progress tracking.</p>
+      </header>
+
+      <div class="state-requirements-grid">
+        {state.requirements.map((requirement, index) => (
+          <article class="state-requirement-card reveal">
+            <p class="state-requirement-index">Checkpoint {index + 1}</p>
+            <p>{requirement}</p>
+          </article>
+        ))}
+      </div>
+
+      <article class="state-trust-callout reveal">
+        <h3>Local trust callout</h3>
+        <p>
+          Students in {state.stateName} commonly use the exam-track roadmap first,
+          then pair it with board confirmation to avoid registration and renewal surprises.
+        </p>
+        <p>
+          Official board resource: <a href={state.boardUrl} target="_blank" rel="noopener noreferrer">Visit board links</a>
+        </p>
+        <p>Last reviewed: {reviewedLabel}</p>
+      </article>
+
+      <article class="cross-link-panel reveal">
+        <h3>Cross-links to relevant planning routes</h3>
+        <ul>
+          <li><a href="/exam-prep">Review exam prep architecture</a></li>
+          <li><a href="/start-trial">Generate your personalized 7-day study plan</a></li>
+          <li><a href="/continuing-education">Browse continuing education catalog</a></li>
+        </ul>
+        <p>
+          You may also compare neighboring pathways: {neighboringStates.map((code, index) => (
+            <>
+              <a href={`/state-requirements/${code.toLowerCase()}`}>{stateCodeToName(code)}</a>{index < neighboringStates.length - 1 ? " | " : ""}
+            </>
+          ))}
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <CTASection
+    title={`Build your ${state.stateName} exam plan`}
+    description="Start your trial and get a personalized sequence aligned to your timeline and licensing context."
+  />
+</BaseLayout>

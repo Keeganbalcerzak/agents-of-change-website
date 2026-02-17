@@ -1,0 +1,46 @@
+---
+import { footerLinkGroups } from "@/lib/defaultContent";
+import type { SiteSettings } from "@/lib/types";
+
+interface Props {
+  siteSettings: SiteSettings;
+}
+
+const { siteSettings } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a href="/" class="brand footer-brand" aria-label={`${siteSettings.siteName} home`}>
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <span class="brand-text">{siteSettings.siteName}</span>
+      </a>
+      <p class="footer-tagline">{siteSettings.tagline}</p>
+      <p class="footer-contact">
+        <a href={`mailto:${siteSettings.supportEmail}`}>{siteSettings.supportEmail}</a>
+        <span aria-hidden="true"> | </span>
+        <a href={`tel:${siteSettings.supportPhone.replace(/[^0-9+]/g, "")}`}>{siteSettings.supportPhone}</a>
+      </p>
+    </div>
+
+    {footerLinkGroups.map((group) => (
+      <section aria-label={group.heading}>
+        <h2 class="footer-heading">{group.heading}</h2>
+        <ul class="footer-links">
+          {group.links.map((link) => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+
+  <div class="container footer-bottom">
+    <p>(c) {year} {siteSettings.siteName}. All rights reserved.</p>
+    <p>ASWB ACE Provider {siteSettings.aceProviderNumber}</p>
+  </div>
+</footer>

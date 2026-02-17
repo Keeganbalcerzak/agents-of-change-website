@@ -1,0 +1,51 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CTASection from "@/components/CTASection.astro";
+import TestimonialsFilter from "@/components/islands/TestimonialsFilter";
+import QuoteProofPairings from "@/components/QuoteProofPairings.astro";
+import { getSeoMetadata, getStoryPairings, getTestimonials } from "@/lib/content";
+import { findSeoByKey } from "@/lib/seo";
+
+const [testimonials, seoEntries, pairings] = await Promise.all([
+  getTestimonials(),
+  getSeoMetadata(),
+  Promise.resolve(getStoryPairings()),
+]);
+const seo = findSeoByKey(seoEntries, "success-stories");
+---
+
+<BaseLayout
+  title={seo?.title ?? "Success Stories | Agents of Change"}
+  description={seo?.description ?? "Read outcomes from social workers."}
+  path="/success-stories"
+  themeIntent="trust"
+>
+  <section class="page-hero page-hero-rich" data-module="stories-hero" data-motion-tier="hero">
+    <div class="container">
+      <p class="eyebrow">Student outcomes</p>
+      <h1>Confidence transformations from social workers across the US</h1>
+      <p>
+        Explore narratives by exam track and state to see how candidates with similar constraints
+        restructured their prep and improved outcomes.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-muted" data-module="story-filter" data-motion-tier="section">
+    <div class="container">
+      <header class="section-heading centered">
+        <p class="eyebrow">Narrative library</p>
+        <h2>Filter stories by track and state</h2>
+        <p>Use filtered stories to benchmark your own path and expectations.</p>
+      </header>
+      <TestimonialsFilter client:load testimonials={testimonials} />
+    </div>
+  </section>
+
+  <QuoteProofPairings pairings={pairings} />
+
+  <CTASection
+    title="Build your own passing trajectory"
+    description="Start your free trial and receive a weekly study plan designed around your current context."
+  />
+</BaseLayout>

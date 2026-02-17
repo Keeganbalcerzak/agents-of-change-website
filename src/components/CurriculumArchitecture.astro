@@ -1,0 +1,40 @@
+---
+const pillars = [
+  {
+    title: "Diagnostic Baseline",
+    details: "Identify score risks by domain before committing study time.",
+  },
+  {
+    title: "High-Yield Learning",
+    details: "Prioritize exam-relevant content blocks with explicit decision frameworks.",
+  },
+  {
+    title: "Application Practice",
+    details: "Translate concepts into scenario responses using rationale feedback loops.",
+  },
+  {
+    title: "Simulation and Readiness",
+    details: "Run timed sessions and confidence checks to lock in pacing.",
+  },
+];
+---
+
+<section class="section" aria-labelledby="architecture-title" data-module="curriculum-architecture" data-motion-tier="section">
+  <div class="container">
+    <header class="section-heading centered">
+      <p class="eyebrow">Curriculum architecture</p>
+      <h2 id="architecture-title">A four-layer learning system</h2>
+      <p>Every module is mapped to outcome progression, not random topic consumption.</p>
+    </header>
+
+    <div class="architecture-grid">
+      {pillars.map((pillar, index) => (
+        <article class="architecture-card reveal" style={`--architecture-index:${index + 1};`}>
+          <p class="architecture-step">Layer {index + 1}</p>
+          <h3>{pillar.title}</h3>
+          <p>{pillar.details}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

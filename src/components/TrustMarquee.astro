@@ -1,0 +1,18 @@
+---
+interface Props {
+  items: string[];
+}
+
+const { items } = Astro.props;
+const loopItems = [...items, ...items];
+---
+
+<section class="trust-marquee" data-module="trust-marquee" data-motion-tier="micro">
+  <div class="container">
+    <div class="trust-track" aria-label="Trust indicators">
+      {loopItems.map((item) => (
+        <p class="trust-chip">{item}</p>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,89 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProgramOffers from "@/components/ProgramOffers.astro";
+import CTASection from "@/components/CTASection.astro";
+import CurriculumArchitecture from "@/components/CurriculumArchitecture.astro";
+import StudyJourneyTimeline from "@/components/StudyJourneyTimeline.astro";
+import CompetencyGrid from "@/components/CompetencyGrid.astro";
+import {
+  getCompetencyDomains,
+  getProgramOffers,
+  getSeoMetadata,
+  getStudyPhases,
+} from "@/lib/content";
+import { findSeoByKey } from "@/lib/seo";
+
+const [offers, seoEntries, domains, phases] = await Promise.all([
+  getProgramOffers(),
+  getSeoMetadata(),
+  Promise.resolve(getCompetencyDomains()),
+  Promise.resolve(getStudyPhases()),
+]);
+const seo = findSeoByKey(seoEntries, "exam-prep");
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: "Social Work Exam Prep Program",
+  description:
+    "Comprehensive LSW, LMSW, and LCSW exam prep with structured modules, rationales, and weekly milestones.",
+  provider: {
+    "@type": "Organization",
+    name: "Agents of Change",
+  },
+};
+---
+
+<BaseLayout
+  title={seo?.title ?? "Exam Prep Programs | Agents of Change"}
+  description={seo?.description ?? "Compare social work exam prep options."}
+  path="/exam-prep"
+  jsonLd={jsonLd}
+  themeIntent="conversion"
+>
+  <section class="page-hero page-hero-rich" data-module="exam-prep-hero" data-motion-tier="hero">
+    <div class="container">
+      <p class="eyebrow">Program detail</p>
+      <h1>Exam prep architecture designed for first-time pass outcomes</h1>
+      <p>
+        This program is built as an intentional sequence: diagnostic baseline,
+        high-yield domain training, simulation loops, and confidence calibration.
+      </p>
+    </div>
+  </section>
+
+  <CurriculumArchitecture />
+  <StudyJourneyTimeline phases={phases} />
+  <CompetencyGrid domains={domains} />
+
+  <section class="section" data-module="exam-prep-outcomes" data-motion-tier="section" aria-labelledby="outcomes-title">
+    <div class="container">
+      <header class="section-heading centered">
+        <p class="eyebrow">Outcomes framework</p>
+        <h2 id="outcomes-title">The performance model behind the curriculum</h2>
+      </header>
+
+      <div class="outcomes-grid">
+        <article class="info-card reveal">
+          <h3>Outcome 1: Stronger answer confidence</h3>
+          <p>Students report faster elimination decisions and less second-guessing under timed conditions.</p>
+        </article>
+        <article class="info-card reveal">
+          <h3>Outcome 2: Better pacing control</h3>
+          <p>Simulation cycles improve rhythm and reduce time pressure in the final third of the exam.</p>
+        </article>
+        <article class="info-card reveal">
+          <h3>Outcome 3: Predictable study momentum</h3>
+          <p>Milestone-based sequencing prevents content drift and keeps weekly progress measurable.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <ProgramOffers offers={offers} showHeading={false} />
+
+  <CTASection
+    title="Start with a personalized exam roadmap"
+    description="Complete your trial intake and receive a guided 7-day sequence aligned to your exam track and timeline."
+  />
+</BaseLayout>

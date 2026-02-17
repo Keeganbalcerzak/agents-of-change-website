@@ -1,0 +1,60 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CTASection from "@/components/CTASection.astro";
+import SupportPathways from "@/components/SupportPathways.astro";
+import { getContactPathways, getSeoMetadata } from "@/lib/content";
+import { findSeoByKey } from "@/lib/seo";
+
+const pathways = getContactPathways();
+const seoEntries = await getSeoMetadata();
+const seo = findSeoByKey(seoEntries, "contact");
+---
+
+<BaseLayout
+  title={seo?.title ?? "Contact Agents of Change"}
+  description={seo?.description ?? "Get support for exam prep, licensing, and CE needs."}
+  path="/contact"
+  themeIntent="trust"
+>
+  <section class="page-hero page-hero-rich" data-module="contact-hero" data-motion-tier="hero">
+    <div class="container">
+      <p class="eyebrow">Contact</p>
+      <h1>Get support routed to the right team</h1>
+      <p>
+        We route requests by intent so you get accurate guidance faster,
+        whether you need enrollment help, licensing context, or CE support.
+      </p>
+    </div>
+  </section>
+
+  <SupportPathways pathways={pathways} />
+
+  <section class="section" aria-labelledby="sla-title" data-module="contact-sla" data-motion-tier="section">
+    <div class="container">
+      <header class="section-heading centered">
+        <p class="eyebrow">Response standards</p>
+        <h2 id="sla-title">Service-level expectations</h2>
+      </header>
+
+      <div class="sla-grid">
+        <article class="info-card reveal">
+          <h3>Enrollment support</h3>
+          <p>Reply target: within 1 business day.</p>
+        </article>
+        <article class="info-card reveal">
+          <h3>Licensing guidance</h3>
+          <p>Reply target: within 1-2 business days.</p>
+        </article>
+        <article class="info-card reveal">
+          <h3>CE support</h3>
+          <p>Reply target: within 1 business day.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Want a faster path than email threads?"
+    description="Start your free trial and get an immediate 7-day action plan while support handles your follow-up questions."
+  />
+</BaseLayout>

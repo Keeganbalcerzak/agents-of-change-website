@@ -1,0 +1,35 @@
+{
+  "name": "agents-of-change-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.10.0 <23"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && npm run check:no-empty-links && astro build",
+    "preview": "astro preview",
+    "check": "astro check && npm run check:no-empty-links",
+    "check:no-empty-links": "node scripts/check-no-empty-links.mjs",
+    "sanity": "sanity"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.2.0",
+    "@astrojs/sitemap": "^3.3.1",
+    "@astrojs/vercel": "^8.2.0",
+    "@sanity/client": "^7.11.0",
+    "astro": "^5.2.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@types/node": "^22.12.0",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "sanity": "^3.72.0",
+    "typescript": "^5.7.3"
+  }
+}

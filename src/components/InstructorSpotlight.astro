@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets";
+import instructorImage from "@/assets/images/instructor-meagen.png";
+import type { InstructorProfile } from "@/lib/types";
+
+interface Props {
+  profile: InstructorProfile;
+}
+
+const { profile } = Astro.props;
+---
+
+<section class="section instructor" aria-labelledby="instructor-title">
+  <div class="container instructor-grid">
+    <div class="instructor-image-wrap">
+      <Image
+        src={instructorImage}
+        alt={profile.imageAlt}
+        width={520}
+        height={520}
+        format="webp"
+        loading="lazy"
+        class="instructor-image"
+      />
+    </div>
+
+    <div>
+      <p class="eyebrow">Meet your instructor</p>
+      <h2 id="instructor-title">{profile.name}</h2>
+      <p class="instructor-title">{profile.title}</p>
+      {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
+      <ul class="credential-list">
+        {profile.credentials.map((credential) => <li>{credential}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>

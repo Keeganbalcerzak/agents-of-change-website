@@ -1,0 +1,39 @@
+---
+const objections = [
+  {
+    objection: "I am worried I do not have enough time.",
+    response: "Your plan is sequenced by available study windows and high-yield priority blocks.",
+  },
+  {
+    objection: "I already failed once and do not want to repeat mistakes.",
+    response: "Diagnostic-first sequencing pinpoints weak domains before full review begins.",
+  },
+  {
+    objection: "I need confidence with scenario-based questions.",
+    response: "Rationale-centered practice teaches repeatable decision logic, not rote memorization.",
+  },
+  {
+    objection: "I also need CE planning after licensure.",
+    response: "Exam prep and CE pathways are connected so career growth continues after the test.",
+  },
+];
+---
+
+<section class="section section-muted" aria-labelledby="objections-title" data-module="objection-grid" data-motion-tier="section">
+  <div class="container">
+    <header class="section-heading centered">
+      <p class="eyebrow">Common objections</p>
+      <h2 id="objections-title">Questions we solve before exam day</h2>
+      <p>Designed responses to the concerns that usually stall prep momentum.</p>
+    </header>
+
+    <div class="objection-grid">
+      {objections.map((item) => (
+        <article class="objection-card reveal">
+          <h3>{item.objection}</h3>
+          <p>{item.response}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

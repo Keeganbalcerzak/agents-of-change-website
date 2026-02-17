@@ -1,0 +1,42 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CTASection from "@/components/CTASection.astro";
+import { getStateRequirements } from "@/lib/content";
+
+const states = await getStateRequirements();
+---
+
+<BaseLayout
+  title="State Requirements | Agents of Change"
+  description="Browse social work exam and licensing guidance by state."
+  path="/state-requirements"
+  themeIntent="trust"
+>
+  <section class="page-hero page-hero-rich" data-module="state-index-hero" data-motion-tier="hero">
+    <div class="container">
+      <p class="eyebrow">State lookup</p>
+      <h1>Find social work licensing pathways by state</h1>
+      <p>
+        Browse state-by-state requirement pages and connect each requirement checklist
+        to your exam prep sequence.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-muted" data-module="state-index-grid" data-motion-tier="section">
+    <div class="container state-grid">
+      {states.map((state) => (
+        <article class="state-card reveal">
+          <h2>{state.stateName}</h2>
+          <p>{state.requirements[0]}</p>
+          <a href={`/state-requirements/${state.stateCode.toLowerCase()}`}>View {state.stateCode} details</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <CTASection
+    title="Convert requirements into a weekly plan"
+    description="Start your trial to generate a study path aligned to your state and target exam window."
+  />
+</BaseLayout>

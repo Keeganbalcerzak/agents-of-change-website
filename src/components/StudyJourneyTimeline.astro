@@ -1,0 +1,29 @@
+---
+import type { StudyPhase } from "@/lib/types";
+
+interface Props {
+  phases: StudyPhase[];
+}
+
+const { phases } = Astro.props;
+---
+
+<section class="section section-muted" aria-labelledby="timeline-title" data-module="study-timeline" data-motion-tier="section">
+  <div class="container">
+    <header class="section-heading centered">
+      <p class="eyebrow">Study timeline</p>
+      <h2 id="timeline-title">What your journey looks like</h2>
+      <p>A staged progression from diagnostic setup to exam-day readiness.</p>
+    </header>
+
+    <ol class="timeline-list">
+      {phases.map((phase) => (
+        <li class="timeline-item reveal">
+          <p class="timeline-phase">{phase.phase}</p>
+          <p class="timeline-window">{phase.timeline}</p>
+          <p class="timeline-objective">{phase.objective}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

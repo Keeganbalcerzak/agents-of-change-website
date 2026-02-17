@@ -1,0 +1,73 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CTASection from "@/components/CTASection.astro";
+import ResourceCards from "@/components/ResourceCards.astro";
+import { getResourceArticles, getSeoMetadata } from "@/lib/content";
+import { findSeoByKey } from "@/lib/seo";
+
+const resources = getResourceArticles();
+const seoEntries = await getSeoMetadata();
+const seo = findSeoByKey(seoEntries, "resources");
+
+const featuredTracks = [
+  {
+    title: "Exam strategy track",
+    description: "Question interpretation, rationale reading, and decision pacing methods.",
+  },
+  {
+    title: "Licensing track",
+    description: "State readiness checklists and planning guidance before scheduling milestones.",
+  },
+  {
+    title: "Recovery track",
+    description: "What to adjust after failed attempts to rebuild confidence and performance.",
+  },
+];
+---
+
+<BaseLayout
+  title={seo?.title ?? "Social Work Exam Resources | Agents of Change"}
+  description={seo?.description ?? "Study guides, strategy notes, and social work exam resources."}
+  path="/resources"
+  themeIntent="editorial"
+>
+  <section class="page-hero page-hero-rich" data-module="resources-hero" data-motion-tier="hero">
+    <div class="container">
+      <p class="eyebrow">Resources hub</p>
+      <h1>Study strategy resources for social work exam candidates</h1>
+      <p>
+        Explore actionable guidance designed to improve study quality,
+        confidence, and exam readiness across your full prep timeline.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-muted" data-module="resource-tracks" data-motion-tier="section" aria-labelledby="track-title">
+    <div class="container">
+      <header class="section-heading centered">
+        <p class="eyebrow">Featured tracks</p>
+        <h2 id="track-title">Choose a learning track by immediate need</h2>
+      </header>
+
+      <div class="track-grid">
+        {featuredTracks.map((track) => (
+          <article class="track-card reveal">
+            <h3>{track.title}</h3>
+            <p>{track.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ResourceCards
+    title="Articles you can apply this week"
+    description="Focused reads that translate directly into higher-quality prep sessions."
+    resources={resources}
+  />
+
+  <CTASection
+    title="Turn these resources into a guided plan"
+    description="Start your free trial and get a sequenced path that applies the right strategy at the right time."
+  />
+</BaseLayout>

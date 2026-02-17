@@ -1,0 +1,29 @@
+---
+import type { CompetencyDomain } from "@/lib/types";
+
+interface Props {
+  domains: CompetencyDomain[];
+}
+
+const { domains } = Astro.props;
+---
+
+<section class="section" aria-labelledby="competency-title" data-module="competency-grid" data-motion-tier="section">
+  <div class="container">
+    <header class="section-heading centered">
+      <p class="eyebrow">Domain outcomes</p>
+      <h2 id="competency-title">Score lift by high-yield competency</h2>
+      <p>Focus learning where score movement is most likely to happen.</p>
+    </header>
+
+    <div class="competency-grid">
+      {domains.map((domain) => (
+        <article class="competency-card reveal">
+          <p class="competency-lift">{domain.scoreLift}</p>
+          <h3>{domain.title}</h3>
+          <p>{domain.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

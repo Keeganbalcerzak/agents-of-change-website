@@ -1,0 +1,46 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CTASection from "@/components/CTASection.astro";
+import CeCatalogFilter from "@/components/islands/CeCatalogFilter";
+import { getCeCatalog, getSeoMetadata } from "@/lib/content";
+import { findSeoByKey } from "@/lib/seo";
+
+const courses = getCeCatalog();
+const seoEntries = await getSeoMetadata();
+const seo = findSeoByKey(seoEntries, "continuing-education");
+---
+
+<BaseLayout
+  title={seo?.title ?? "Continuing Education Catalog | Agents of Change"}
+  description={seo?.description ?? "Browse social work continuing education courses by format and category."}
+  path="/continuing-education"
+  themeIntent="conversion"
+>
+  <section class="page-hero page-hero-rich" data-module="ce-hero" data-motion-tier="hero">
+    <div class="container">
+      <p class="eyebrow">Continuing education</p>
+      <h1>Continuing education catalog for social work professionals</h1>
+      <p>
+        Filter by category, format, and audience track to map CE learning into your broader
+        licensing and career progression plan.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-muted" data-module="ce-catalog-shell" data-motion-tier="section">
+    <div class="container">
+      <header class="section-heading centered">
+        <p class="eyebrow">Catalog</p>
+        <h2>Find the right CE path by practical criteria</h2>
+        <p>Use filtering to target high-value CE outcomes rather than browsing course-by-course blindly.</p>
+      </header>
+
+      <CeCatalogFilter client:load courses={courses} />
+    </div>
+  </section>
+
+  <CTASection
+    title="Pair exam prep with CE growth"
+    description="Start a trial to map both your exam and CE priorities into one structured progression path."
+  />
+</BaseLayout>

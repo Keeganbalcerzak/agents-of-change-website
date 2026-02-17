@@ -1,0 +1,22 @@
+---
+import FAQAccordion from "@/components/islands/FAQAccordion";
+import type { FaqItem } from "@/lib/types";
+
+interface Props {
+  items: FaqItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<section id="faq" class="section section-muted" aria-labelledby="faq-title">
+  <div class="container">
+    <header class="section-heading centered">
+      <p class="eyebrow">FAQ</p>
+      <h2 id="faq-title">Answers before you start</h2>
+      <p>Everything first-time test takers ask before starting their trial.</p>
+    </header>
+
+    <FAQAccordion client:load items={items} />
+  </div>
+</section>
