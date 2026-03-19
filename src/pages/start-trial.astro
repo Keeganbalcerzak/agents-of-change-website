@@ -1,6 +1,9 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import TrialStepper from "@/components/islands/TrialStepper";
+import ShineBorder from "@/components/vendor/magic/ShineBorder.astro";
+import MagicCard from "@/components/vendor/magic/MagicCard.astro";
+import ScrollProgress from "@/components/vendor/magic/ScrollProgress.astro";
 import { getSeoMetadata } from "@/lib/content";
 import { findSeoByKey } from "@/lib/seo";
 
@@ -25,11 +28,20 @@ const reassuranceItems = [
   description={seo?.description ?? "Start your free trial."}
   path="/start-trial"
   themeIntent="conversion"
+  enableMotionEngine={true}
 >
-  <section class="page-hero page-hero-rich" data-module="trial-hero" data-motion-tier="hero">
+  <ScrollProgress className="trial-scroll-progress" />
+
+  <section
+    class="page-hero page-hero-rich"
+    data-module="trial-hero"
+    data-motion-tier="hero"
+    data-motion-variant="reveal-stagger"
+    data-motion-density="compact"
+  >
     <div class="container">
       <p class="eyebrow">Trial funnel</p>
-      <h1>Start your free trial with a confidence-first setup</h1>
+      <h1 data-split-heading>Start your free trial with a confidence-first setup</h1>
       <p>
         Complete three short steps and we will generate a targeted 7-day prep sequence
         for your exam track, timeline, and state context.
@@ -40,27 +52,42 @@ const reassuranceItems = [
     </div>
   </section>
 
-  <section class="section section-muted" data-module="trial-funnel-layout" data-motion-tier="section">
-    <div class="container trial-layout">
-      <aside class="trial-aside reveal" aria-label="What happens next">
-        <h2>Confidence-building outcomes</h2>
-        <ul>
-          {reassuranceItems.map((item) => <li>{item}</li>)}
-        </ul>
+  <section
+    class="section section-muted"
+    data-module="trial-funnel-layout"
+    data-motion-tier="section"
+    data-motion-variant="story-stack"
+    data-motion-density="compact"
+    data-conversion-safe="true"
+  >
+    <div class="container trial-layout trial-layout-hybrid">
+      <ShineBorder className="trial-shine-wrap reveal">
+        <MagicCard className="trial-card-shell">
+          <aside class="trial-aside" aria-label="What happens next">
+            <h2>Confidence-building outcomes</h2>
+            <ul>
+              {reassuranceItems.map((item) => <li>{item}</li>)}
+            </ul>
 
-        <div class="confidence-rail">
-          <article>
-            <h3>Before</h3>
-            <p>Unclear priorities and inconsistent study pacing.</p>
-          </article>
-          <article>
-            <h3>After</h3>
-            <p>A sequenced weekly plan with measurable progress checkpoints.</p>
-          </article>
-        </div>
-      </aside>
+            <div class="confidence-rail">
+              <article>
+                <h3>Before</h3>
+                <p>Unclear priorities and inconsistent study pacing.</p>
+              </article>
+              <article>
+                <h3>After</h3>
+                <p>A sequenced weekly plan with measurable progress checkpoints.</p>
+              </article>
+            </div>
+          </aside>
+        </MagicCard>
+      </ShineBorder>
 
-      <TrialStepper client:load />
+      <ShineBorder className="trial-shine-wrap">
+        <MagicCard className="trial-card-shell">
+          <TrialStepper client:load />
+        </MagicCard>
+      </ShineBorder>
     </div>
   </section>
 </BaseLayout>

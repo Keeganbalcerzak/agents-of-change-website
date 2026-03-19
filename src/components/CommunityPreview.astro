@@ -1,0 +1,68 @@
+---
+const cityGroups = [
+  { city: "Chicago, IL", focus: "LCSW Prep and Networking", members: "420+" },
+  { city: "New York, NY", focus: "LMSW Study Group", members: "850+" },
+  { city: "Los Angeles, CA", focus: "Clinical Peer Support", members: "630+" },
+  { city: "Atlanta, GA", focus: "Exam Strategy Accountability", members: "340+" },
+];
+
+const specialtyGroups = [
+  "Child and adolescent practice",
+  "Couples and family counseling",
+  "Substance use treatment",
+  "School social work",
+  "Medical and hospital social work",
+  "Private practice growth",
+];
+---
+
+<section class="section section-muted community-preview" aria-labelledby="community-preview-title" data-module="community-preview">
+  <div class="container">
+    <header class="section-heading centered">
+      <p class="eyebrow">Community</p>
+      <h2 id="community-preview-title">Meet social workers studying near you</h2>
+      <p>
+        Community pathways connect social workers by geography and specialty so learning continues beyond individual coursework.
+      </p>
+    </header>
+
+    <div class="community-preview-grid">
+      <article class="community-preview-card reveal">
+        <h3>City-based cohorts</h3>
+        <p>Groups are organized around major metro areas where members can prepare and network together.</p>
+        <ul>
+          {cityGroups.map((group) => (
+            <li>
+              <strong>{group.city}</strong> - {group.focus} ({group.members} members)
+            </li>
+          ))}
+        </ul>
+        <a href="/community" class="button secondary" data-cta="community-local-groups" data-cta-location="home-community">
+          Explore local groups
+        </a>
+      </article>
+
+      <article class="community-preview-card reveal">
+        <h3>Specialty forums</h3>
+        <p>Find peers with shared clinical interests and collaborate on exam prep, CE planning, and case-based discussions.</p>
+        <ul>
+          {specialtyGroups.map((topic) => (
+            <li>{topic}</li>
+          ))}
+        </ul>
+        <a href="/community" class="button secondary" data-cta="community-specialty-forums" data-cta-location="home-community">
+          View specialty spaces
+        </a>
+      </article>
+    </div>
+
+    <article class="community-roadmap-card reveal" aria-label="Job board roadmap teaser">
+      <p class="eyebrow">Roadmap</p>
+      <h3>Job board (longer-term)</h3>
+      <p>
+        The job board remains a planned extension of the community model. Current focus is exam prep, CE completion,
+        and peer networking foundations first.
+      </p>
+    </article>
+  </div>
+</section>

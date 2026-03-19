@@ -6,14 +6,18 @@ import type {
   FaqItem,
   InstructorProfile,
   NavItem,
+  OriginTimelineStep,
   ProgramOffer,
+  PricingSection,
   ResourceArticle,
+  SallyJourneyStep,
   SeoMetadata,
   SiteSettings,
   StoryPairing,
   StateRequirement,
   StatItem,
   StudyPhase,
+  CareerPhase,
   Testimonial,
 } from "@/lib/types";
 import { US_STATES } from "@/lib/states";
@@ -29,55 +33,412 @@ export const defaultSiteSettings: SiteSettings = {
 };
 
 export const defaultNavItems: NavItem[] = [
-  { label: "Programs", href: "/exam-prep" },
+  { label: "Why It Works", href: "/#how-it-works" },
+  { label: "Exam Prep", href: "/exam-prep" },
   { label: "Continuing Education", href: "/continuing-education" },
   { label: "Success Stories", href: "/success-stories" },
   { label: "Resources", href: "/resources" },
-  { label: "State Requirements", href: "/state-requirements/ca" },
+  { label: "State Requirements", href: "/state-requirements" },
   { label: "About", href: "/about" },
   { label: "Start Free Trial", href: "/start-trial", primary: true },
 ];
 
 export const defaultStats: StatItem[] = [
-  { value: "10,000+", label: "Licensed Social Workers" },
-  { value: "95%", label: "First-Time Pass Rate" },
-  { value: "150+", label: "CE Courses Available" },
-  { value: "50", label: "States Recognized" },
+  { value: "100,000+", label: "Social workers served" },
+  { value: "50,000+", label: "Email subscribers" },
+  { value: "26,000+", label: "Facebook community members" },
+  { value: "181+", label: "Podcast episodes published" },
 ];
 
 export const defaultProgramOffers: ProgramOffer[] = [
   {
-    slug: "exam-prep",
-    title: "Exam Prep",
-    subtitle: "LSW, LMSW, and LCSW preparation",
-    priceCurrent: 179,
+    slug: "basics",
+    title: "Basics",
+    subtitle: "One-time purchase · LMSW or LCSW",
+    priceCurrent: 125,
+    paymentPlan: "access until you pass",
     featuresIncluded: [
-      "Complete video lesson library",
-      "500+ practice questions with rationales",
-      "Monthly live study groups",
-      "Downloadable audio files",
-      "Access until you pass",
+      "30+ hours of structured exam prep lessons",
+      "2 live study groups each month",
+      "75-question mini exam",
+      "Upgrade mini exam to 170 questions for $15",
     ],
-    ctaLabel: "Start Free Trial",
-    ctaTarget: "/start-trial?plan=exam-prep",
+    ctaLabel: "Start with Basics",
+    ctaTarget: "/start-trial",
   },
   {
-    slug: "exam-prep-ce-bundle",
-    title: "Exam Prep + CE Bundle",
-    subtitle: "Best value for exam and career growth",
-    priceCurrent: 229,
-    priceOriginal: 378,
+    slug: "premium",
+    title: "Premium + Power Pack",
+    subtitle: "Most chosen · LMSW or LCSW",
+    priceCurrent: 175,
+    priceOriginal: 225,
+    paymentPlan: "access until you pass",
     featuresIncluded: [
-      "Everything in Exam Prep",
-      "150+ CE courses",
-      "12+ live CE events annually",
-      "Unlimited CEU credits for 1 year",
-      "Priority Q&A support",
+      "Everything in exam prep",
+      "170-question practice exam included",
+      "Case vignettes with video rationales",
+      "25+ recorded study groups",
+      "Downloadable audio lessons",
+      "Priority support",
     ],
-    ctaLabel: "Start Free Trial",
-    ctaTarget: "/start-trial?plan=bundle",
-    badge: "Best Value",
+    ctaLabel: "Choose Premium",
+    ctaTarget: "/start-trial",
+    badge: "80% of buyers choose this",
     featured: true,
+  },
+  {
+    slug: "bsw",
+    title: "BSW Exam Prep",
+    subtitle: "One-time purchase · BSW track",
+    priceCurrent: 125,
+    paymentPlan: "access until you pass",
+    featuresIncluded: [
+      "Built specifically for the BSW exam",
+      "Structured lessons with rationale review",
+      "Free preview before purchase",
+      "Designed for first-time confidence building",
+    ],
+    ctaLabel: "Explore BSW Prep",
+    ctaTarget: "/start-trial",
+  },
+];
+
+export const defaultLandingPricingSections: PricingSection[] = [
+  {
+    id: "free-resources",
+    title: "Free entry into the ecosystem",
+    description: "A wide top-of-funnel built for trust, not just lead capture.",
+    plans: [
+      {
+        id: "free-prep-suite",
+        title: "Free preview + podcast funnel",
+        subtitle: "BSW, LMSW, and LCSW support",
+        cadence: "free",
+        features: [
+          "Free course trial / preview for all three exam levels",
+          "10 free practice questions per level with rationales",
+          "ASWB flashcards, AI tutor, and personalized study plan generator",
+          "Weekly podcast, YouTube walkthroughs, and free CE starter content",
+        ],
+        ctaLabel: "Start with free resources",
+        ctaHref: "/resources",
+        tags: ["free"],
+      },
+    ],
+  },
+  {
+    id: "exam-prep-courses",
+    title: "One-time exam prep courses",
+    description: "Value-leader pricing with access until you pass, well below the premium benchmark in the category.",
+    plans: [
+      {
+        id: "bsw-course",
+        title: "BSW exam prep",
+        subtitle: "Single package",
+        price: 125,
+        cadence: "one-time",
+        features: [
+          "Structured BSW exam prep lessons",
+          "Designed for first-time confidence building",
+          "Free preview before purchase",
+          "Access until you pass",
+        ],
+        ctaLabel: "Explore BSW prep",
+        ctaHref: "/exam-prep",
+      },
+      {
+        id: "lmsw-basics",
+        title: "LMSW Basics",
+        subtitle: "One-time purchase",
+        price: 125,
+        cadence: "one-time",
+        features: [
+          "30+ hours of content",
+          "2 live study groups each month",
+          "75-question mini exam",
+          "Access until you pass",
+        ],
+        ctaLabel: "Start LMSW Basics",
+        ctaHref: "/start-trial",
+      },
+      {
+        id: "lmsw-premium",
+        title: "LMSW Premium + Power Pack",
+        subtitle: "Most chosen",
+        price: 175,
+        regularPrice: 225,
+        cadence: "one-time",
+        badge: "80% of buyers choose this",
+        questionCount: 170,
+        features: [
+          "Everything in Basics",
+          "Case vignettes with video rationales",
+          "25+ recorded study groups",
+          "Downloadable audio lessons",
+          "Priority support",
+        ],
+        ctaLabel: "Choose LMSW Premium",
+        ctaHref: "/start-trial",
+        tags: ["popular"],
+      },
+      {
+        id: "lcsw-basics",
+        title: "LCSW Basics",
+        subtitle: "One-time purchase",
+        price: 125,
+        cadence: "one-time",
+        features: [
+          "30+ hours of content",
+          "2 live study groups each month",
+          "75-question mini exam",
+          "Access until you pass",
+        ],
+        ctaLabel: "Start LCSW Basics",
+        ctaHref: "/start-trial",
+      },
+      {
+        id: "lcsw-premium",
+        title: "LCSW Premium + Power Pack",
+        subtitle: "Advanced simulation bundle",
+        price: 175,
+        regularPrice: 225,
+        cadence: "one-time",
+        questionCount: 170,
+        features: [
+          "Everything in Basics",
+          "Case vignettes with video rationales",
+          "25+ recorded study groups",
+          "Downloadable audio lessons",
+          "Priority support",
+        ],
+        ctaLabel: "Choose LCSW Premium",
+        ctaHref: "/start-trial",
+      },
+    ],
+  },
+  {
+    id: "practice-exams",
+    title: "Standalone practice exams",
+    description: "Supplemental simulation products for people who want more full-length reps.",
+    plans: [
+      {
+        id: "single-practice-exam",
+        title: "Practice Exam #1, #2, or #3",
+        subtitle: "170 questions each",
+        price: 35,
+        cadence: "one-time",
+        questionCount: 170,
+        features: [
+          "Available at LMSW and LCSW levels",
+          "1-year access",
+          "Strong supplement to a full course",
+        ],
+        ctaLabel: "Browse practice exams",
+        ctaHref: "/exam-prep",
+      },
+      {
+        id: "practice-exam-bundle",
+        title: "All 3 practice exams bundle",
+        subtitle: "Best supplement value",
+        price: 90,
+        regularPrice: 105,
+        cadence: "one-time",
+        questionCount: 510,
+        badge: "Bundle",
+        features: [
+          "Three 170-question practice exams",
+          "Volume discount over individual purchase",
+          "Ideal for people who want more full-length simulation",
+        ],
+        ctaLabel: "Get the bundle",
+        ctaHref: "/exam-prep",
+        tags: ["bundle"],
+      },
+    ],
+  },
+  {
+    id: "continuing-education",
+    title: "Continuing education",
+    description: "A low-friction retention engine for licensed social workers after the exam.",
+    plans: [
+      {
+        id: "ce-annual",
+        title: "Unlimited CE + Live Events",
+        subtitle: "150+ courses · 15+ live webinars/year",
+        price: 49,
+        regularPrice: 199,
+        cadence: "annual",
+        badge: "Best live CE value",
+        features: [
+          "ASWB ACE provider #1919",
+          "Recorded CE plus live webinars",
+          "Priced to undercut most unlimited CE competitors",
+        ],
+        ctaLabel: "Browse continuing education",
+        ctaHref: "/continuing-education",
+        tags: ["roadmap"],
+      },
+      {
+        id: "ce-monthly-recorded",
+        title: "Recorded CE Only",
+        subtitle: "Monthly access",
+        price: 49,
+        cadence: "monthly",
+        features: [
+          "Recorded CE library access",
+          "No live webinar layer",
+          "Option for lower-commitment monthly consumption",
+        ],
+        ctaLabel: "View CE options",
+        ctaHref: "/continuing-education",
+      },
+    ],
+  },
+];
+
+export const defaultOriginTimelineSteps: OriginTimelineStep[] = [
+  {
+    id: "high-school-year-1",
+    era: "High School · Year 1",
+    title: "Overwhelmed and falling behind",
+    struggle:
+      "Sally is balancing school pressure, family obligations, and late-night work with no consistent study structure.",
+    shift:
+      "She starts with small repeatable prep actions instead of all-or-nothing sessions: flashcards, focused questions, and a weekly checkpoint.",
+    outcome: "Stability returns first; confidence follows.",
+  },
+  {
+    id: "high-school-year-2",
+    era: "High School · Year 2",
+    title: "A mentor reframes the path",
+    struggle:
+      "Comparison fatigue and self-doubt keep pulling her back into reactive, last-minute studying.",
+    shift:
+      "Mentorship introduces planning filters: what matters now, what can wait, and what to eliminate.",
+    outcome: "She moves from panic cycles to intentional momentum.",
+  },
+  {
+    id: "high-school-year-3",
+    era: "High School · Year 3",
+    title: "Purpose discovery through service",
+    struggle:
+      "She questions whether college and long-term professional growth are realistic for her.",
+    shift:
+      "Volunteer work with youth support programs exposes social work as a meaningful, structured career path.",
+    outcome: "Purpose becomes the engine for discipline.",
+  },
+  {
+    id: "undergrad-foundation",
+    era: "Undergrad",
+    title: "Systems foundation in college",
+    struggle:
+      "Course load and practicum expectations create higher-stakes versions of earlier pressure points.",
+    shift:
+      "She builds reliable systems: timed study sprints, peer accountability, and reflective review loops.",
+    outcome: "She strengthens process discipline, not just grades.",
+  },
+  {
+    id: "post-grad-exam-prep",
+    era: "Post-Grad",
+    title: "Transition to exam-prep strategy",
+    struggle:
+      "ASWB preparation feels massive: broad content, limited time, and unclear prioritization.",
+    shift:
+      "She uses diagnostics and full-length practice exams with rationale review to target high-impact domains.",
+    outcome: "Study time becomes measurable, focused, and strategic.",
+  },
+  {
+    id: "licensure-and-ce",
+    era: "Licensed Practice",
+    title: "Licensure secured, CE maintained",
+    struggle:
+      "After passing, she worries about missing state-specific CE and renewal requirements.",
+    shift:
+      "She follows state-aware CE planning, check-ins, and reminders to avoid deadline spikes.",
+    outcome: "Compliance becomes routine instead of stressful.",
+  },
+  {
+    id: "doctorate-trajectory",
+    era: "Doctorate Trajectory",
+    title: "Doctorate-level growth planning",
+    struggle:
+      "She wants to move beyond compliance into leadership, research, and long-horizon impact.",
+    shift:
+      "She re-engages with advanced learning pathways, peer communities, and long-term development mapping.",
+    outcome: "Her career trajectory shifts from maintenance to influence.",
+  },
+];
+
+export const defaultSallyJourneySteps: SallyJourneyStep[] = [
+  {
+    id: "sally-start",
+    chapter: "Chapter 1",
+    title: "Sally starts with free prep tools",
+    summary: "She uses flashcards, free questions, and the crash course to identify weak domains.",
+    milestone: "Readiness baseline established",
+    details: [
+      "Reviews free flashcards for key concepts",
+      "Completes 10 free practice questions per exam track",
+      "Uses the crash course to map a realistic study cadence",
+    ],
+    ctaLabel: "Explore free resources",
+    ctaHref: "/resources",
+  },
+  {
+    id: "sally-practice",
+    chapter: "Chapter 2",
+    title: "She adds focused practice exams",
+    summary: "Sally purchases the practice exam bundle to train with full-length 170-question sets.",
+    milestone: "Exam-day strategy confidence grows",
+    details: [
+      "Completes practice exam sequences and reviews rationales",
+      "Tracks wrong-answer patterns by KSA topic",
+      "Uses data to prioritize high-impact study sessions",
+    ],
+    ctaLabel: "Compare exam options",
+    ctaHref: "/exam-prep",
+  },
+  {
+    id: "sally-license",
+    chapter: "Chapter 3",
+    title: "Sally passes and gets licensed",
+    summary: "She sits for her ASWB exam with a clear pacing strategy and passes.",
+    milestone: "Licensure secured",
+    details: [
+      "Confirms board paperwork after pass result",
+      "Transitions from test prep into professional practice goals",
+      "Prepares next milestones for license maintenance",
+    ],
+    ctaLabel: "See success stories",
+    ctaHref: "/success-stories",
+  },
+  {
+    id: "sally-ce",
+    chapter: "Chapter 4",
+    title: "She stays engaged through CE",
+    summary: "Sally uses state-specific renewal guidance and ongoing CE coursework.",
+    milestone: "Renewal compliance maintained",
+    details: [
+      "Checks required CE cadence for her practice state",
+      "Uses Unlimited CE access for ongoing education",
+      "Schedules renewal checkpoints before deadlines",
+    ],
+    ctaLabel: "View CE requirements by state",
+    ctaHref: "/state-requirements",
+  },
+  {
+    id: "sally-doctorate",
+    chapter: "Chapter 5",
+    title: "She prepares for doctorate-level growth",
+    summary: "With licensure stable, Sally builds advanced learning momentum for doctoral goals.",
+    milestone: "Long-term professional trajectory activated",
+    details: [
+      "Selects advanced CE topics aligned to research and leadership",
+      "Stays active in peer communities for accountability",
+      "Builds an ongoing academic and practice development plan",
+    ],
+    ctaLabel: "Browse continuing education",
+    ctaHref: "/continuing-education",
   },
 ];
 
@@ -249,18 +610,38 @@ export const defaultSeoMetadata: SeoMetadata[] = [
   },
 ];
 
-export const defaultStateRequirements: StateRequirement[] = US_STATES.map((state) => ({
-  stateCode: state.code,
-  stateName: state.name,
-  requirements: [
-    "Verify degree and supervised practice requirements with your state board.",
-    "Confirm ASWB exam level and registration process for your license track.",
-    "Check renewal cadence, CE hours, and ethics-specific credit requirements.",
-  ],
-  boardUrl: "https://www.aswb.org/licensing/",
-  updatedAt: "2026-02-17",
-  metaDescription: `Social work licensing requirements and exam preparation guidance for ${state.name}.`,
-}));
+const ceDefaultsByState: Record<string, { ceHoursRequired: number; renewalCycleYears: number; ceNotes?: string }> = {
+  CA: { ceHoursRequired: 36, renewalCycleYears: 2, ceNotes: "Includes law and ethics focus in many renewal cycles." },
+  FL: { ceHoursRequired: 30, renewalCycleYears: 2, ceNotes: "Check board topics such as ethics and telehealth updates." },
+  IL: { ceHoursRequired: 30, renewalCycleYears: 2, ceNotes: "Track cultural competence and ethics topic requirements." },
+  NY: { ceHoursRequired: 36, renewalCycleYears: 3, ceNotes: "Review state-specific credits and periodic mandates." },
+  TX: { ceHoursRequired: 30, renewalCycleYears: 2, ceNotes: "Confirm any jurisprudence and ethics requirements." },
+  WA: { ceHoursRequired: 36, renewalCycleYears: 2, ceNotes: "Verify supervision and ethics-related CE obligations." },
+};
+
+export const defaultStateRequirements: StateRequirement[] = US_STATES.map((state) => {
+  const ceDefaults = ceDefaultsByState[state.code] ?? {
+    ceHoursRequired: 30,
+    renewalCycleYears: 2,
+    ceNotes: "Confirm exact CE categories and board rules before renewal.",
+  };
+
+  return {
+    stateCode: state.code,
+    stateName: state.name,
+    requirements: [
+      "Verify degree and supervised practice requirements with your state board.",
+      "Confirm ASWB exam level and registration process for your license track.",
+      "Check renewal cadence, CE hours, and ethics-specific credit requirements.",
+    ],
+    boardUrl: "https://www.aswb.org/licensing/",
+    updatedAt: "2026-02-17",
+    metaDescription: `Social work licensing requirements and exam preparation guidance for ${state.name}.`,
+    ceHoursRequired: ceDefaults.ceHoursRequired,
+    renewalCycleYears: ceDefaults.renewalCycleYears,
+    ceNotes: ceDefaults.ceNotes,
+  };
+});
 
 export const footerLinkGroups = [
   {
@@ -269,7 +650,7 @@ export const footerLinkGroups = [
       { label: "Exam Prep", href: "/exam-prep" },
       { label: "Continuing Education", href: "/continuing-education" },
       { label: "Bundle", href: "/exam-prep#offers" },
-      { label: "State Requirements", href: "/state-requirements/ca" },
+      { label: "State Requirements", href: "/state-requirements" },
     ],
   },
   {
@@ -356,6 +737,29 @@ export const defaultStudyPhases: StudyPhase[] = [
     phase: "Phase 3",
     timeline: "Weeks 5-8",
     objective: "Timed simulation exams, confidence calibration, and final weak-area remediation.",
+  },
+];
+
+export const defaultCareerPhases: CareerPhase[] = [
+  {
+    step: "Step 1",
+    title: "Sign up for Licensing Exam",
+    description: "Submit your application to the ASWB and your state board, then schedule your exam date.",
+  },
+  {
+    step: "Step 2",
+    title: "Exam Preparation",
+    description: "Follow a structured, milestone-driven study plan to build rationale and scenario confidence.",
+  },
+  {
+    step: "Step 3",
+    title: "Pass Your Exam",
+    description: "Walk into the test center with a calm, strategic mindset and achieve a passing score.",
+  },
+  {
+    step: "Step 4",
+    title: "Maintain Licensure",
+    description: "Obtain necessary continuing education (CE) credits every 2-3 years to renew your license.",
   },
 ];
 

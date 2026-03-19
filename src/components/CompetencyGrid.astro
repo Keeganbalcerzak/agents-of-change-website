@@ -1,14 +1,23 @@
 ---
-import type { CompetencyDomain } from "@/lib/types";
+import type { CompetencyDomain, SectionMotionDensity, SectionMotionVariant } from "@/lib/types";
 
 interface Props {
   domains: CompetencyDomain[];
+  motionVariant?: SectionMotionVariant;
+  motionDensity?: SectionMotionDensity;
 }
 
-const { domains } = Astro.props;
+const { domains, motionVariant = "reveal-stagger", motionDensity = "compact" } = Astro.props;
 ---
 
-<section class="section" aria-labelledby="competency-title" data-module="competency-grid" data-motion-tier="section">
+<section
+  class="section"
+  aria-labelledby="competency-title"
+  data-module="competency-grid"
+  data-motion-tier="section"
+  data-motion-variant={motionVariant}
+  data-motion-density={motionDensity}
+>
   <div class="container">
     <header class="section-heading centered">
       <p class="eyebrow">Domain outcomes</p>
@@ -16,14 +25,25 @@ const { domains } = Astro.props;
       <p>Focus learning where score movement is most likely to happen.</p>
     </header>
 
-    <div class="competency-grid">
-      {domains.map((domain) => (
-        <article class="competency-card reveal">
-          <p class="competency-lift">{domain.scoreLift}</p>
-          <h3>{domain.title}</h3>
-          <p>{domain.description}</p>
-        </article>
-      ))}
+    <div class="competency-grid" data-stagger="up">
+      {domains.map((domain) => {
+        const numMatch = domain.scoreLift.match(/\d+/);
+        const scoreNum = numMatch ? parseInt(numMatch[0]) : null;
+        return (
+          <article class="competency-card reveal" data-stagger-item data-tilt>
+            <p class="competency-lift">
+              {scoreNum ? (
+                <>
+                  <span data-countup={scoreNum} data-prefix="+" data-suffix="">+{scoreNum}</span>
+                  <span class="competency-lift-label">avg pts</span>
+                </>
+              ) : domain.scoreLift}
+            </p>
+            <h3>{domain.title}</h3>
+            <p>{domain.description}</p>
+          </article>
+        );
+      })}
     </div>
   </div>
 </section>

@@ -1,0 +1,17 @@
+---
+interface Props {
+  value: number;
+  label: string;
+}
+
+const { value, label } = Astro.props;
+const safeValue = Number.isFinite(value) ? Math.min(100, Math.max(0, Math.round(value))) : 0;
+---
+
+<div class="vendor-animata-gauge" style={`--gauge-value:${safeValue};`}>
+  <div class="vendor-animata-gauge-ring" aria-hidden="true"></div>
+  <div class="vendor-animata-gauge-meta">
+    <p class="vendor-animata-gauge-value">{safeValue}%</p>
+    <p class="vendor-animata-gauge-label">{label}</p>
+  </div>
+</div>

@@ -1,0 +1,925 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Agents of Change home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img [ref=e6]
+        - generic [ref=e7]: Agents of Change
+      - navigation "Primary" [ref=e8]:
+        - list [ref=e9]:
+          - listitem [ref=e10]:
+            - link "Why It Works" [ref=e11] [cursor=pointer]:
+              - /url: /#how-it-works
+          - listitem [ref=e12]:
+            - link "Exam Prep" [ref=e13] [cursor=pointer]:
+              - /url: /exam-prep
+          - listitem [ref=e14]:
+            - link "Continuing Education" [ref=e15] [cursor=pointer]:
+              - /url: /continuing-education
+          - listitem [ref=e16]:
+            - link "Success Stories" [ref=e17] [cursor=pointer]:
+              - /url: /success-stories
+          - listitem [ref=e18]:
+            - link "Resources" [ref=e19] [cursor=pointer]:
+              - /url: /resources
+          - listitem [ref=e20]:
+            - link "State Requirements" [ref=e21] [cursor=pointer]:
+              - /url: /state-requirements
+          - listitem [ref=e22]:
+            - link "About" [ref=e23] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e24]:
+            - link "Start Free Trial" [ref=e25] [cursor=pointer]:
+              - /url: /start-trial
+  - main [ref=e26]:
+    - region "From overwhelmed to licensed. From licensed to unstoppable." [ref=e28]:
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e32]:
+            - paragraph [ref=e33]: Social Work Exam Prep
+            - heading "From overwhelmed to licensed. From licensed to unstoppable." [level=1] [ref=e34]
+            - generic [ref=e35]:
+              - generic [ref=e36]:
+                - generic [ref=e37]: Overwhelmed
+                - paragraph [ref=e38]: Too much life. Too much pressure. Not enough structure. The exam feels bigger than your current system can hold.
+              - generic [ref=e39]:
+                - generic [ref=e40]: Clear
+                - paragraph [ref=e41]: We teach how social work questions actually work so effort stops scattering and starts compounding.
+              - generic [ref=e42]:
+                - generic [ref=e43]: Confident
+                - paragraph [ref=e44]: Practice exams, rationale-driven review, and live study groups turn anxiety into visible readiness.
+              - generic [ref=e45]:
+                - generic [ref=e46]: Unstoppable
+                - paragraph [ref=e47]: Passing becomes the beginning. CE, community, and long-term growth keep reinforcing who you are becoming.
+          - generic "Key outcomes" [ref=e48]:
+            - generic [ref=e49]:
+              - strong [ref=e50]: 0K+
+              - generic [ref=e51]: social workers reached
+            - generic [ref=e52]:
+              - strong [ref=e53]: 0K+
+              - generic [ref=e54]: email subscribers
+            - generic [ref=e55]:
+              - strong [ref=e56]: 0+
+              - generic [ref=e57]: podcast episodes
+          - generic [ref=e58]:
+            - link "Start free trial" [ref=e59] [cursor=pointer]:
+              - /url: /start-trial
+            - link "Explore exam prep" [ref=e60] [cursor=pointer]:
+              - /url: /exam-prep
+        - complementary "Agents of Change system highlights" [ref=e61]:
+          - generic [ref=e62]:
+            - paragraph [ref=e63]: Built for real schedules
+            - paragraph [ref=e64]: Premium prep for people balancing work, placements, family, and exam anxiety.
+          - list [ref=e65]:
+            - listitem [ref=e66]: Commute-friendly podcast and audio review
+            - listitem [ref=e67]: One-time prep access until you pass
+            - listitem [ref=e68]: Live study groups plus CE after licensure
+          - generic [ref=e69]:
+            - generic [ref=e70]:
+              - strong [ref=e71]: 100K+
+              - generic [ref=e72]: social workers reached
+            - generic [ref=e73]:
+              - strong [ref=e74]: $175
+              - generic [ref=e75]: premium prep value leader
+            - generic [ref=e76]:
+              - strong [ref=e77]: $49/yr
+              - generic [ref=e78]: live CE included
+          - generic [ref=e79]:
+            - generic [ref=e80]: Free preview
+            - generic [ref=e81]: Access until you pass
+            - generic [ref=e82]: Podcast + community flywheel
+            - generic [ref=e83]: Built for social workers
+    - generic [ref=e86]:
+      - region "T h i s i s w h e r e o v e r w h e l m e d t e s t t a k e r s b e c o m e l i c e n s e d s o c i a l w o r k e r s ." [ref=e87]:
+        - generic [ref=e88]:
+          - generic [ref=e89]:
+            - generic [ref=e90]:
+              - paragraph [ref=e91]: Why Agents of Change
+              - heading "T h i s i s w h e r e o v e r w h e l m e d t e s t t a k e r s b e c o m e l i c e n s e d s o c i a l w o r k e r s ." [level=2] [ref=e92]:
+                - generic [ref=e93]:
+                  - generic [ref=e94]: T
+                  - generic [ref=e95]: h
+                  - generic [ref=e96]: i
+                  - generic [ref=e97]: s
+                - generic [ref=e98]:
+                  - generic [ref=e99]: i
+                  - generic [ref=e100]: s
+                - generic [ref=e101]:
+                  - generic [ref=e102]: w
+                  - generic [ref=e103]: h
+                  - generic [ref=e104]: e
+                  - generic [ref=e105]: r
+                  - generic [ref=e106]: e
+                - generic [ref=e107]:
+                  - generic [ref=e108]: o
+                  - generic [ref=e109]: v
+                  - generic [ref=e110]: e
+                  - generic [ref=e111]: r
+                  - generic [ref=e112]: w
+                  - generic [ref=e113]: h
+                  - generic [ref=e114]: e
+                  - generic [ref=e115]: l
+                  - generic [ref=e116]: m
+                  - generic [ref=e117]: e
+                  - generic [ref=e118]: d
+                - generic [ref=e119]:
+                  - generic [ref=e120]: t
+                  - generic [ref=e121]: e
+                  - generic [ref=e122]: s
+                  - generic [ref=e123]: t
+                - generic [ref=e124]:
+                  - generic [ref=e125]: t
+                  - generic [ref=e126]: a
+                  - generic [ref=e127]: k
+                  - generic [ref=e128]: e
+                  - generic [ref=e129]: r
+                  - generic [ref=e130]: s
+                - generic [ref=e131]:
+                  - generic [ref=e132]: b
+                  - generic [ref=e133]: e
+                  - generic [ref=e134]: c
+                  - generic [ref=e135]: o
+                  - generic [ref=e136]: m
+                  - generic [ref=e137]: e
+                - generic [ref=e138]:
+                  - generic [ref=e139]: l
+                  - generic [ref=e140]: i
+                  - generic [ref=e141]: c
+                  - generic [ref=e142]: e
+                  - generic [ref=e143]: "n"
+                  - generic [ref=e144]: s
+                  - generic [ref=e145]: e
+                  - generic [ref=e146]: d
+                - generic [ref=e147]:
+                  - generic [ref=e148]: s
+                  - generic [ref=e149]: o
+                  - generic [ref=e150]: c
+                  - generic [ref=e151]: i
+                  - generic [ref=e152]: a
+                  - generic [ref=e153]: l
+                - generic [ref=e154]:
+                  - generic [ref=e155]: w
+                  - generic [ref=e156]: o
+                  - generic [ref=e157]: r
+                  - generic [ref=e158]: k
+                  - generic [ref=e159]: e
+                  - generic [ref=e160]: r
+                  - generic [ref=e161]: s
+                  - generic [ref=e162]: .
+              - paragraph [ref=e163]: Most prep brands sell content. Agents of Change sells clarity, confidence, and a stronger professional identity built specifically for social workers who want to pass and keep growing.
+            - complementary [ref=e164]:
+              - paragraph [ref=e165]: Market position
+              - heading "Premium outcome. Smarter buy." [level=3] [ref=e166]
+              - paragraph [ref=e167]: AoC should feel like the premium choice for people who want structure, belonging, and social-work-specific teaching without paying premium-market markup.
+              - list [ref=e168]:
+                - listitem [ref=e169]:
+                  - strong [ref=e170]: $175
+                  - text: premium prep vs. a
+                  - strong [ref=e171]: $295
+                  - text: premium benchmark
+                - listitem [ref=e172]:
+                  - strong [ref=e173]: One-time purchase
+                  - text: with access until you pass
+                - listitem [ref=e174]:
+                  - strong [ref=e175]: $49/year
+                  - text: CE with live events included
+              - generic [ref=e176]:
+                - link "Start free preview" [ref=e177] [cursor=pointer]:
+                  - /url: /start-trial
+                - link "View pricing" [ref=e178] [cursor=pointer]:
+                  - /url: "#pricing"
+          - generic [ref=e179]:
+            - article [ref=e180]:
+              - paragraph [ref=e181]: Overwhelmed
+              - heading "Too much life. Not enough structure." [level=3] [ref=e182]
+              - paragraph [ref=e183]: Social workers are not failing because they are incapable. They are overloaded, anxious, and being sold generic prep that ignores how their lives actually work.
+              - list [ref=e184]:
+                - listitem [ref=e185]: Real-study rhythm for work, practicum, family, and commute time
+                - listitem [ref=e186]: Social-work-specific teaching instead of generic memorization dumps
+                - listitem [ref=e187]: Fast clarity through free tools, podcast content, and guided next steps
+            - article [ref=e188]:
+              - paragraph [ref=e189]: Confident
+              - heading "A clear plan replaces panic." [level=3] [ref=e190]
+              - paragraph [ref=e191]: Agents of Change turns vague effort into visible readiness with rationale-driven teaching, live support, and one-time course access that stays with you until you pass.
+              - list [ref=e192]:
+                - listitem [ref=e193]: One-time purchase instead of subscription anxiety
+                - listitem [ref=e194]: Premium practice exams and case-based rationale training
+                - listitem [ref=e195]: Live study groups that make progress feel shared, not isolated
+            - article [ref=e196]:
+              - paragraph [ref=e197]: Unstoppable
+              - heading "Passing becomes the beginning, not the finish." [level=3] [ref=e198]
+              - paragraph [ref=e199]: "The brand keeps its promise after exam day too: CE, licensure maintenance, and professional momentum that reinforces identity instead of ending at checkout."
+              - list [ref=e200]:
+                - listitem [ref=e201]: State-aware CE support and renewal momentum
+                - listitem [ref=e202]: Community and content that deepen professional identity
+                - listitem [ref=e203]: A system built to stay relevant as careers grow
+          - generic [ref=e204]:
+            - article [ref=e205]:
+              - strong [ref=e206]: 100K+
+              - generic [ref=e207]: social workers served
+            - article [ref=e208]:
+              - strong [ref=e209]: 50K+
+              - generic [ref=e210]: email subscribers
+            - article [ref=e211]:
+              - strong [ref=e212]: 26K+
+              - generic [ref=e213]: Facebook community members
+            - article [ref=e214]:
+              - strong [ref=e215]: 181+
+              - generic [ref=e216]: podcast episodes
+      - region "The strategy that turns panic into passing decisions" [ref=e218]:
+        - generic [ref=e219]:
+          - generic [ref=e220]:
+            - paragraph [ref=e221]: How the system works
+            - heading "The strategy that turns panic into passing decisions" [level=2] [ref=e222]
+            - paragraph [ref=e223]: This is not random content delivery. Each phase is designed to move someone from anxious, scattered prep into calm exam-day execution.
+          - generic [ref=e224]:
+            - list "Pass strategy phases" [ref=e225]:
+              - listitem [ref=e226]:
+                - paragraph [ref=e227]: Phase 01
+                - heading "Filter the noise" [level=3] [ref=e228]
+                - paragraph [ref=e229]: In progress
+                - paragraph [ref=e232]: 0% loaded
+                - paragraph [ref=e233]: Find the highest-impact domains first so overwhelmed study time turns into a clear attack plan.
+                - paragraph [ref=e234]: "Output: priority map + realistic pacing baseline"
+              - listitem [ref=e235]:
+                - paragraph [ref=e236]: Phase 02
+                - heading "Train the reasoning" [level=3] [ref=e237]
+                - paragraph [ref=e238]: In progress
+                - paragraph [ref=e241]: 0% loaded
+                - paragraph [ref=e242]: Use rationales, simulations, and pattern review to strengthen how you think through social work questions.
+                - paragraph [ref=e243]: "Output: stronger logic + confidence shifts"
+              - listitem [ref=e244]:
+                - paragraph [ref=e245]: Phase 03
+                - heading "Walk in ready" [level=3] [ref=e246]
+                - paragraph [ref=e247]: In progress
+                - paragraph [ref=e250]: 0% loaded
+                - paragraph [ref=e251]: Pressure-test exam-day pacing and decision-making until readiness feels earned instead of hoped for.
+                - paragraph [ref=e252]: "Output: final calibration + go-test confidence"
+            - complementary "Strategy progress indicator" [ref=e253]:
+              - paragraph [ref=e254]: System progress
+              - paragraph [ref=e257]: "Phase 01 active: Filter the noise"
+              - list "Live strategy counters" [ref=e258]:
+                - listitem [ref=e259]:
+                  - generic [ref=e260]: Readiness index
+                  - strong [ref=e261]: 38%
+                - listitem [ref=e262]:
+                  - generic [ref=e263]: Answered questions
+                  - strong [ref=e264]: "24"
+                - listitem [ref=e265]:
+                  - generic [ref=e266]: Pattern confidence
+                  - strong [ref=e267]: 18%
+      - region "B u i l t f o r s o c i a l w o r k e r s . N o t j u s t e x a m d a y ." [ref=e268]:
+        - generic [ref=e269]:
+          - generic [ref=e270]:
+            - paragraph [ref=e271]: About us
+            - heading "B u i l t f o r s o c i a l w o r k e r s . N o t j u s t e x a m d a y ." [level=2] [ref=e272]:
+              - generic [ref=e273]:
+                - generic [ref=e274]: B
+                - generic [ref=e275]: u
+                - generic [ref=e276]: i
+                - generic [ref=e277]: l
+                - generic [ref=e278]: t
+              - generic [ref=e279]:
+                - generic [ref=e280]: f
+                - generic [ref=e281]: o
+                - generic [ref=e282]: r
+              - generic [ref=e283]:
+                - generic [ref=e284]: s
+                - generic [ref=e285]: o
+                - generic [ref=e286]: c
+                - generic [ref=e287]: i
+                - generic [ref=e288]: a
+                - generic [ref=e289]: l
+              - generic [ref=e290]:
+                - generic [ref=e291]: w
+                - generic [ref=e292]: o
+                - generic [ref=e293]: r
+                - generic [ref=e294]: k
+                - generic [ref=e295]: e
+                - generic [ref=e296]: r
+                - generic [ref=e297]: s
+                - generic [ref=e298]: .
+              - generic [ref=e299]:
+                - generic [ref=e300]: "N"
+                - generic [ref=e301]: o
+                - generic [ref=e302]: t
+              - generic [ref=e303]:
+                - generic [ref=e304]: j
+                - generic [ref=e305]: u
+                - generic [ref=e306]: s
+                - generic [ref=e307]: t
+              - generic [ref=e308]:
+                - generic [ref=e309]: e
+                - generic [ref=e310]: x
+                - generic [ref=e311]: a
+                - generic [ref=e312]: m
+              - generic [ref=e313]:
+                - generic [ref=e314]: d
+                - generic [ref=e315]: a
+                - generic [ref=e316]: "y"
+                - generic [ref=e317]: .
+            - paragraph [ref=e318]: "Agents of Change supports the full professional arc: test prep, passing, licensure maintenance, and advanced career development."
+          - generic [ref=e319]:
+            - generic [ref=e320]: Social work educators focused on exam clarity, not generic memorization
+            - generic [ref=e321]: ASWB-focused prep plus continuing education lifecycle support
+            - generic [ref=e322]: Learning architecture designed for BSW, LMSW, LCSW, counselors, and therapists
+      - region "Key outcomes" [ref=e323]:
+        - generic [ref=e324]:
+          - article [ref=e325]:
+            - paragraph [ref=e326]:
+              - generic [ref=e327]: 0+
+            - paragraph [ref=e328]: Social workers served
+          - article [ref=e329]:
+            - paragraph [ref=e330]:
+              - generic [ref=e331]: 0+
+            - paragraph [ref=e332]: Email subscribers
+          - article [ref=e333]:
+            - paragraph [ref=e334]:
+              - generic [ref=e335]: 0+
+            - paragraph [ref=e336]: Facebook community members
+          - article [ref=e337]:
+            - paragraph [ref=e338]:
+              - generic [ref=e339]: 0+
+            - paragraph [ref=e340]: Podcast episodes published
+      - region "The Social Worker Timeline" [ref=e341]:
+        - generic [ref=e342]:
+          - generic [ref=e343]:
+            - paragraph [ref=e344]: Your Career Path
+            - heading "The Social Worker Timeline" [level=2] [ref=e345]
+            - paragraph [ref=e346]: From signing up for your exam to renewing your license year after year, we support your entire journey.
+          - list [ref=e347]:
+            - listitem [ref=e348]:
+              - paragraph [ref=e349]: Step 1
+              - paragraph [ref=e350]: Sign up for Licensing Exam
+              - paragraph [ref=e351]: Submit your application to the ASWB and your state board, then schedule your exam date.
+            - listitem [ref=e352]:
+              - paragraph [ref=e353]: Step 2
+              - paragraph [ref=e354]: Exam Preparation
+              - paragraph [ref=e355]: Follow a structured, milestone-driven study plan to build rationale and scenario confidence.
+            - listitem [ref=e356]:
+              - paragraph [ref=e357]: Step 3
+              - paragraph [ref=e358]: Pass Your Exam
+              - paragraph [ref=e359]: Walk into the test center with a calm, strategic mindset and achieve a passing score.
+            - listitem [ref=e360]:
+              - paragraph [ref=e361]: Step 4
+              - paragraph [ref=e362]: Maintain Licensure
+              - paragraph [ref=e363]: Obtain necessary continuing education (CE) credits every 2-3 years to renew your license.
+    - generic [ref=e364]:
+      - region "Pricing built to win on value, not look cheap" [ref=e365]:
+        - generic [ref=e366]:
+          - generic [ref=e367]:
+            - paragraph [ref=e368]: Programs and pricing
+            - heading "Pricing built to win on value, not look cheap" [level=2] [ref=e369]
+            - paragraph [ref=e370]: Transparent pricing across free entry, one-time exam prep, practice exams, and CE designed to keep people in the ecosystem after they pass.
+          - generic [ref=e371]:
+            - paragraph [ref=e372]: Category read
+            - paragraph [ref=e373]: "Agents of Change sits in the value-leader position: premium prep is priced far below the $295 benchmark while CE undercuts most unlimited providers without dropping the live-event layer."
+          - generic [ref=e374]:
+            - region "Free entry into the ecosystem" [ref=e375]:
+              - generic [ref=e376]:
+                - heading "Free entry into the ecosystem" [level=3] [ref=e377]
+                - paragraph [ref=e378]: A wide top-of-funnel built for trust, not just lead capture.
+              - article [ref=e380]:
+                - generic [ref=e381]:
+                  - paragraph [ref=e382]: Free preview + podcast funnel
+                  - paragraph [ref=e383]: BSW, LMSW, and LCSW support
+                  - generic "Free preview + podcast funnel available tracks" [ref=e384]:
+                    - generic [ref=e385]: BSW
+                    - generic [ref=e386]: LMSW
+                    - generic [ref=e387]: LCSW
+                - paragraph [ref=e388]:
+                  - text: Free
+                  - generic [ref=e389]: Free
+                - generic "Free preview + podcast funnel key comparison points" [ref=e390]:
+                  - generic [ref=e391]: Free entry •
+                  - generic [ref=e392]: All three tracks •
+                  - generic [ref=e393]: Lead with content
+                - list [ref=e394]:
+                  - listitem [ref=e395]: Free course trial / preview for all three exam levels
+                  - listitem [ref=e396]: 10 free practice questions per level with rationales
+                  - listitem [ref=e397]: ASWB flashcards, AI tutor, and personalized study plan generator
+                  - listitem [ref=e398]: Weekly podcast, YouTube walkthroughs, and free CE starter content
+                - link "Start with free resources" [ref=e399] [cursor=pointer]:
+                  - /url: /resources
+            - region "One-time exam prep courses" [ref=e400]:
+              - generic [ref=e401]:
+                - heading "One-time exam prep courses" [level=3] [ref=e402]
+                - paragraph [ref=e403]: Value-leader pricing with access until you pass, well below the premium benchmark in the category.
+              - generic [ref=e404]:
+                - article [ref=e405]:
+                  - generic [ref=e406]:
+                    - paragraph [ref=e407]: BSW exam prep
+                    - paragraph [ref=e408]: Single package
+                    - generic "BSW exam prep available tracks" [ref=e409]:
+                      - generic [ref=e410]: BSW
+                    - paragraph [ref=e411]: Best for first-time BSW confidence building
+                  - paragraph [ref=e412]:
+                    - text: $125
+                    - generic [ref=e413]: One-time
+                  - generic "BSW exam prep key comparison points" [ref=e414]:
+                    - generic [ref=e415]: Until you pass •
+                    - generic [ref=e416]: Structured course •
+                    - generic [ref=e417]: Self-paced
+                  - list [ref=e418]:
+                    - listitem [ref=e419]: Structured BSW exam prep lessons
+                    - listitem [ref=e420]: Designed for first-time confidence building
+                    - listitem [ref=e421]: Free preview before purchase
+                    - listitem [ref=e422]: Access until you pass
+                  - link "Explore BSW prep" [ref=e423] [cursor=pointer]:
+                    - /url: /exam-prep
+                - article [ref=e424]:
+                  - generic [ref=e425]:
+                    - paragraph [ref=e426]: Basics
+                    - paragraph [ref=e427]: Choose LMSW or LCSW
+                    - generic "Basics available tracks" [ref=e428]:
+                      - generic [ref=e429]: LMSW
+                      - generic [ref=e430]: LCSW
+                    - paragraph [ref=e431]: Best for lower-cost guided prep
+                  - paragraph [ref=e432]:
+                    - text: $125
+                    - generic [ref=e433]: One-time
+                  - generic "Basics key comparison points" [ref=e434]:
+                    - generic [ref=e435]: Until you pass •
+                    - generic [ref=e436]: 75-question mini exam •
+                    - generic [ref=e437]: Live study groups
+                  - list [ref=e438]:
+                    - listitem [ref=e439]: 30+ hours of content
+                    - listitem [ref=e440]: 2 live study groups each month
+                    - listitem [ref=e441]: Clear lower-cost path for LMSW or LCSW prep
+                  - link "Choose Basics" [ref=e442] [cursor=pointer]:
+                    - /url: /start-trial
+                - article [ref=e443]:
+                  - generic [ref=e444]:
+                    - paragraph [ref=e445]: Premium + Power Pack
+                    - paragraph [ref=e446]: Choose LMSW or LCSW
+                    - paragraph [ref=e447]: 80% of buyers choose this
+                    - generic "Premium + Power Pack available tracks" [ref=e448]:
+                      - generic [ref=e449]: LMSW
+                      - generic [ref=e450]: LCSW
+                    - paragraph [ref=e451]: Best for full-course buyers who want stronger support
+                  - paragraph [ref=e452]:
+                    - generic [ref=e453]: $225
+                    - text: $175
+                    - generic [ref=e454]: One-time
+                  - paragraph [ref=e455]: 170 total questions
+                  - generic "Premium + Power Pack key comparison points" [ref=e456]:
+                    - generic [ref=e457]: Until you pass •
+                    - generic [ref=e458]: 170-question exam •
+                    - generic [ref=e459]: Priority support
+                  - list [ref=e460]:
+                    - listitem [ref=e461]: Everything in Basics
+                    - listitem [ref=e462]: Case vignettes with video rationales
+                    - listitem [ref=e463]: 25+ recorded study groups
+                    - listitem [ref=e464]: Downloadable audio lessons
+                  - link "Choose Premium" [ref=e465] [cursor=pointer]:
+                    - /url: /start-trial
+            - region "Standalone practice exams" [ref=e466]:
+              - generic [ref=e467]:
+                - heading "Standalone practice exams" [level=3] [ref=e468]
+                - paragraph [ref=e469]: Supplemental simulation products for people who want more full-length reps.
+                - paragraph [ref=e470]: "Includes 3 individual options (Exam #1, #2, #3) plus the all-exams bundle."
+              - generic [ref=e471]:
+                - article [ref=e472]:
+                  - generic [ref=e473]:
+                    - paragraph [ref=e474]: "Practice Exam #1, #2, or #3"
+                    - paragraph [ref=e475]: 170 questions each
+                    - 'generic "Practice Exam #1, #2, or #3 available tracks" [ref=e476]':
+                      - generic [ref=e477]: LMSW
+                      - generic [ref=e478]: LCSW
+                  - paragraph [ref=e479]:
+                    - text: $35
+                    - generic [ref=e480]: One-time
+                  - paragraph [ref=e481]: 170 total questions
+                  - 'generic "Practice Exam #1, #2, or #3 key comparison points" [ref=e482]':
+                    - generic [ref=e483]: 1-year access •
+                    - generic [ref=e484]: 170 questions •
+                    - generic [ref=e485]: Supplemental
+                  - list [ref=e486]:
+                    - listitem [ref=e487]: Available at LMSW and LCSW levels
+                    - listitem [ref=e488]: 1-year access
+                    - listitem [ref=e489]: Strong supplement to a full course
+                  - link "Browse practice exams" [ref=e490] [cursor=pointer]:
+                    - /url: /exam-prep
+                - article [ref=e491]:
+                  - generic [ref=e492]:
+                    - paragraph [ref=e493]: All 3 practice exams bundle
+                    - paragraph [ref=e494]: Best supplement value
+                    - paragraph [ref=e495]: Bundle
+                    - generic "All 3 practice exams bundle available tracks" [ref=e496]:
+                      - generic [ref=e497]: LMSW
+                      - generic [ref=e498]: LCSW
+                  - paragraph [ref=e499]:
+                    - generic [ref=e500]: $105
+                    - text: $90
+                    - generic [ref=e501]: One-time
+                  - paragraph [ref=e502]: 510 total questions
+                  - generic "All 3 practice exams bundle key comparison points" [ref=e503]:
+                    - generic [ref=e504]: 510 total questions •
+                    - generic [ref=e505]: Best volume value •
+                    - generic [ref=e506]: 1-year access
+                  - list [ref=e507]:
+                    - listitem [ref=e508]: Three 170-question practice exams
+                    - listitem [ref=e509]: Volume discount over individual purchase
+                    - listitem [ref=e510]: Ideal for people who want more full-length simulation
+                  - link "Get the bundle" [ref=e511] [cursor=pointer]:
+                    - /url: /exam-prep
+            - region "Continuing education" [ref=e512]:
+              - generic [ref=e513]:
+                - heading "Continuing education" [level=3] [ref=e514]
+                - paragraph [ref=e515]: A low-friction retention engine for licensed social workers after the exam.
+              - generic [ref=e516]:
+                - article [ref=e517]:
+                  - generic [ref=e518]:
+                    - paragraph [ref=e519]: Unlimited CE + Live Events
+                    - paragraph [ref=e520]: 150+ courses · 15+ live webinars/year
+                    - paragraph [ref=e521]: Best live CE value
+                  - paragraph [ref=e522]:
+                    - generic [ref=e523]: $199
+                    - text: $49
+                    - generic [ref=e524]: Annual
+                  - generic "Unlimited CE + Live Events key comparison points" [ref=e525]:
+                    - generic [ref=e526]: 150+ courses •
+                    - generic [ref=e527]: 15+ live webinars •
+                    - generic [ref=e528]: ASWB ACE
+                  - list [ref=e529]:
+                    - listitem [ref=e530]: "ASWB ACE provider #1919"
+                    - listitem [ref=e531]: Recorded CE plus live webinars
+                    - listitem [ref=e532]: Priced to undercut most unlimited CE competitors
+                  - link "Browse continuing education" [ref=e533] [cursor=pointer]:
+                    - /url: /continuing-education
+                - article [ref=e534]:
+                  - generic [ref=e535]:
+                    - paragraph [ref=e536]: Recorded CE Only
+                    - paragraph [ref=e537]: Monthly access
+                  - paragraph [ref=e538]:
+                    - text: $49
+                    - generic [ref=e539]: Monthly
+                  - generic "Recorded CE Only key comparison points" [ref=e540]:
+                    - generic [ref=e541]: Recorded library •
+                    - generic [ref=e542]: Monthly access •
+                    - generic [ref=e543]: No live events
+                  - list [ref=e544]:
+                    - listitem [ref=e545]: Recorded CE library access
+                    - listitem [ref=e546]: No live webinar layer
+                    - listitem [ref=e547]: Option for lower-commitment monthly consumption
+                  - link "View CE options" [ref=e548] [cursor=pointer]:
+                    - /url: /continuing-education
+      - region "F i n d C E r e q u i r e m e n t s f o r y o u r s t a t e" [ref=e549]:
+        - generic [ref=e550]:
+          - generic [ref=e551]:
+            - paragraph [ref=e552]: CE by state
+            - heading "F i n d C E r e q u i r e m e n t s f o r y o u r s t a t e" [level=2] [ref=e553]:
+              - generic [ref=e554]:
+                - generic [ref=e555]: F
+                - generic [ref=e556]: i
+                - generic [ref=e557]: "n"
+                - generic [ref=e558]: d
+              - generic [ref=e559]:
+                - generic [ref=e560]: C
+                - generic [ref=e561]: E
+              - generic [ref=e562]:
+                - generic [ref=e563]: r
+                - generic [ref=e564]: e
+                - generic [ref=e565]: q
+                - generic [ref=e566]: u
+                - generic [ref=e567]: i
+                - generic [ref=e568]: r
+                - generic [ref=e569]: e
+                - generic [ref=e570]: m
+                - generic [ref=e571]: e
+                - generic [ref=e572]: "n"
+                - generic [ref=e573]: t
+                - generic [ref=e574]: s
+              - generic [ref=e575]:
+                - generic [ref=e576]: f
+                - generic [ref=e577]: o
+                - generic [ref=e578]: r
+              - generic [ref=e579]:
+                - generic [ref=e580]: "y"
+                - generic [ref=e581]: o
+                - generic [ref=e582]: u
+                - generic [ref=e583]: r
+              - generic [ref=e584]:
+                - generic [ref=e585]: s
+                - generic [ref=e586]: t
+                - generic [ref=e587]: a
+                - generic [ref=e588]: t
+                - generic [ref=e589]: e
+            - paragraph [ref=e590]: Use state requirement pages to confirm CE hours and renewal cadence before deadlines get close.
+          - link "Browse state requirement pages" [ref=e592] [cursor=pointer]:
+            - /url: /state-requirements
+      - region "P r e v i e w y o u r e x a m - t o - r e n e w a l w o r k f l o w" [ref=e593]:
+        - generic [ref=e594]:
+          - generic [ref=e595]:
+            - paragraph [ref=e596]: AI tracker
+            - heading "P r e v i e w y o u r e x a m - t o - r e n e w a l w o r k f l o w" [level=2] [ref=e597]:
+              - generic [ref=e598]:
+                - generic [ref=e599]: P
+                - generic [ref=e600]: r
+                - generic [ref=e601]: e
+                - generic [ref=e602]: v
+                - generic [ref=e603]: i
+                - generic [ref=e604]: e
+                - generic [ref=e605]: w
+              - generic [ref=e606]:
+                - generic [ref=e607]: "y"
+                - generic [ref=e608]: o
+                - generic [ref=e609]: u
+                - generic [ref=e610]: r
+              - generic [ref=e611]:
+                - generic [ref=e612]: e
+                - generic [ref=e613]: x
+                - generic [ref=e614]: a
+                - generic [ref=e615]: m
+                - generic [ref=e616]: "-"
+                - generic [ref=e617]: t
+                - generic [ref=e618]: o
+                - generic [ref=e619]: "-"
+                - generic [ref=e620]: r
+                - generic [ref=e621]: e
+                - generic [ref=e622]: "n"
+                - generic [ref=e623]: e
+                - generic [ref=e624]: w
+                - generic [ref=e625]: a
+                - generic [ref=e626]: l
+              - generic [ref=e627]:
+                - generic [ref=e628]: w
+                - generic [ref=e629]: o
+                - generic [ref=e630]: r
+                - generic [ref=e631]: k
+                - generic [ref=e632]: f
+                - generic [ref=e633]: l
+                - generic [ref=e634]: o
+                - generic [ref=e635]: w
+            - paragraph [ref=e636]: Enter your state and target exam date to see deterministic checkpoints for check-ins, pass transitions, and CE reminder timing.
+          - generic [ref=e639]:
+            - generic [ref=e640]:
+              - generic [ref=e641]: Where do you plan to practice?
+              - combobox "Where do you plan to practice?" [ref=e642]:
+                - option "Select a state" [selected]
+                - option "Alabama"
+                - option "Alaska"
+                - option "Arizona"
+                - option "Arkansas"
+                - option "California"
+                - option "Colorado"
+                - option "Connecticut"
+                - option "Delaware"
+                - option "Florida"
+                - option "Georgia"
+                - option "Hawaii"
+                - option "Idaho"
+                - option "Illinois"
+                - option "Indiana"
+                - option "Iowa"
+                - option "Kansas"
+                - option "Kentucky"
+                - option "Louisiana"
+                - option "Maine"
+                - option "Maryland"
+                - option "Massachusetts"
+                - option "Michigan"
+                - option "Minnesota"
+                - option "Mississippi"
+                - option "Missouri"
+                - option "Montana"
+                - option "Nebraska"
+                - option "Nevada"
+                - option "New Hampshire"
+                - option "New Jersey"
+                - option "New Mexico"
+                - option "New York"
+                - option "North Carolina"
+                - option "North Dakota"
+                - option "Ohio"
+                - option "Oklahoma"
+                - option "Oregon"
+                - option "Pennsylvania"
+                - option "Rhode Island"
+                - option "South Carolina"
+                - option "South Dakota"
+                - option "Tennessee"
+                - option "Texas"
+                - option "Utah"
+                - option "Vermont"
+                - option "Virginia"
+                - option "Washington"
+                - option "West Virginia"
+                - option "Wisconsin"
+                - option "Wyoming"
+            - generic [ref=e643]:
+              - generic [ref=e644]: Planned exam date
+              - textbox "Planned exam date" [ref=e645]
+            - button "Build AI Tracker timeline" [ref=e646]
+      - region "S o c i a l w o r k e r s w h o t r u s t e d t h e s y s t e m ." [ref=e647]:
+        - generic [ref=e648]:
+          - generic [ref=e649]:
+            - paragraph [ref=e650]: Success stories
+            - heading "S o c i a l w o r k e r s w h o t r u s t e d t h e s y s t e m ." [level=2] [ref=e651]:
+              - generic [ref=e652]:
+                - generic [ref=e653]: S
+                - generic [ref=e654]: o
+                - generic [ref=e655]: c
+                - generic [ref=e656]: i
+                - generic [ref=e657]: a
+                - generic [ref=e658]: l
+              - generic [ref=e659]:
+                - generic [ref=e660]: w
+                - generic [ref=e661]: o
+                - generic [ref=e662]: r
+                - generic [ref=e663]: k
+                - generic [ref=e664]: e
+                - generic [ref=e665]: r
+                - generic [ref=e666]: s
+              - generic [ref=e667]:
+                - generic [ref=e668]: w
+                - generic [ref=e669]: h
+                - generic [ref=e670]: o
+              - generic [ref=e671]:
+                - generic [ref=e672]: t
+                - generic [ref=e673]: r
+                - generic [ref=e674]: u
+                - generic [ref=e675]: s
+                - generic [ref=e676]: t
+                - generic [ref=e677]: e
+                - generic [ref=e678]: d
+              - generic [ref=e679]:
+                - generic [ref=e680]: t
+                - generic [ref=e681]: h
+                - generic [ref=e682]: e
+              - generic [ref=e683]:
+                - generic [ref=e684]: s
+                - generic [ref=e685]: "y"
+                - generic [ref=e686]: s
+                - generic [ref=e687]: t
+                - generic [ref=e688]: e
+                - generic [ref=e689]: m
+                - generic [ref=e690]: .
+            - paragraph [ref=e691]: Review stories from test takers who moved from uncertainty to licensure momentum.
+          - region "Featured student outcomes" [ref=e693]:
+            - article [ref=e695]:
+              - paragraph [ref=e696]: "\""
+              - paragraph [ref=e697]: I passed my LCSW exam on the first try. The rationales made difficult concepts finally click.
+              - paragraph [ref=e698]: Sarah M. - LCSW - CA
+              - paragraph [ref=e699]: Passed in 12 weeks
+            - generic [ref=e700]:
+              - button "Previous testimonial" [ref=e701]: <
+              - tablist "Testimonials" [ref=e702]:
+                - tab "Show testimonial 1" [selected] [ref=e703]
+                - tab "Show testimonial 2" [ref=e704]
+                - tab "Show testimonial 3" [ref=e705]
+                - tab "Show testimonial 4" [ref=e706]
+              - button "Next testimonial" [ref=e707]: ">"
+      - region "Meet social workers studying near you" [ref=e708]:
+        - generic [ref=e709]:
+          - generic [ref=e710]:
+            - paragraph [ref=e711]: Community
+            - heading "Meet social workers studying near you" [level=2] [ref=e712]
+            - paragraph [ref=e713]: Community pathways connect social workers by geography and specialty so learning continues beyond individual coursework.
+          - generic [ref=e714]:
+            - article [ref=e715]:
+              - heading "City-based cohorts" [level=3] [ref=e716]
+              - paragraph [ref=e717]: Groups are organized around major metro areas where members can prepare and network together.
+              - list [ref=e718]:
+                - listitem [ref=e719]:
+                  - strong [ref=e720]: Chicago, IL
+                  - text: "- LCSW Prep and Networking (420+ members)"
+                - listitem [ref=e721]:
+                  - strong [ref=e722]: New York, NY
+                  - text: "- LMSW Study Group (850+ members)"
+                - listitem [ref=e723]:
+                  - strong [ref=e724]: Los Angeles, CA
+                  - text: "- Clinical Peer Support (630+ members)"
+                - listitem [ref=e725]:
+                  - strong [ref=e726]: Atlanta, GA
+                  - text: "- Exam Strategy Accountability (340+ members)"
+              - link "Explore local groups" [ref=e727] [cursor=pointer]:
+                - /url: /community
+            - article [ref=e728]:
+              - heading "Specialty forums" [level=3] [ref=e729]
+              - paragraph [ref=e730]: Find peers with shared clinical interests and collaborate on exam prep, CE planning, and case-based discussions.
+              - list [ref=e731]:
+                - listitem [ref=e732]: Child and adolescent practice
+                - listitem [ref=e733]: Couples and family counseling
+                - listitem [ref=e734]: Substance use treatment
+                - listitem [ref=e735]: School social work
+                - listitem [ref=e736]: Medical and hospital social work
+                - listitem [ref=e737]: Private practice growth
+              - link "View specialty spaces" [ref=e738] [cursor=pointer]:
+                - /url: /community
+          - article "Job board roadmap teaser" [ref=e739]:
+            - paragraph [ref=e740]: Roadmap
+            - heading "Job board (longer-term)" [level=3] [ref=e741]
+            - paragraph [ref=e742]: The job board remains a planned extension of the community model. Current focus is exam prep, CE completion, and peer networking foundations first.
+      - region "Answers before you start" [ref=e743]:
+        - generic [ref=e744]:
+          - generic [ref=e745]:
+            - paragraph [ref=e746]: FAQ
+            - heading "Answers before you start" [level=2] [ref=e747]
+            - paragraph [ref=e748]: Everything first-time test takers ask before starting their trial.
+          - list [ref=e750]:
+            - listitem [ref=e751]:
+              - heading "How long do I have access to the exam prep program?" [level=3] [ref=e752]:
+                - button "How long do I have access to the exam prep program?" [expanded] [ref=e753]:
+                  - generic [ref=e754]: How long do I have access to the exam prep program?
+                  - generic [ref=e755]: "-"
+              - region "How long do I have access to the exam prep program?" [ref=e756]:
+                - paragraph [ref=e757]: You keep access until you pass. There are no forced renewals for the exam prep access period.
+            - listitem [ref=e758]:
+              - heading "Which exams are covered?" [level=3] [ref=e759]:
+                - button "Which exams are covered?" [ref=e760]:
+                  - generic [ref=e761]: Which exams are covered?
+                  - generic [ref=e762]: +
+            - listitem [ref=e763]:
+              - heading "Can I study on mobile?" [level=3] [ref=e764]:
+                - button "Can I study on mobile?" [ref=e765]:
+                  - generic [ref=e766]: Can I study on mobile?
+                  - generic [ref=e767]: +
+            - listitem [ref=e768]:
+              - heading "Are CE credits accepted in all states?" [level=3] [ref=e769]:
+                - button "Are CE credits accepted in all states?" [ref=e770]:
+                  - generic [ref=e771]: Are CE credits accepted in all states?
+                  - generic [ref=e772]: +
+            - listitem [ref=e773]:
+              - heading "Is there a free trial?" [level=3] [ref=e774]:
+                - button "Is there a free trial?" [ref=e775]:
+                  - generic [ref=e776]: Is there a free trial?
+                  - generic [ref=e777]: +
+            - listitem [ref=e778]:
+              - heading "What if I already failed the exam?" [level=3] [ref=e779]:
+                - button "What if I already failed the exam?" [ref=e780]:
+                  - generic [ref=e781]: What if I already failed the exam?
+                  - generic [ref=e782]: +
+    - region "Start your own lifecycle plan" [ref=e786]:
+      - generic [ref=e788]:
+        - heading "Start your own lifecycle plan" [level=2] [ref=e789]
+        - paragraph [ref=e790]: Build your path from exam prep to CE and long-term career growth in one system.
+        - link "Start Free Trial" [ref=e791] [cursor=pointer]:
+          - /url: /start-trial
+  - contentinfo [ref=e792]:
+    - generic [ref=e793]:
+      - generic [ref=e794]:
+        - link "Agents of Change home" [ref=e795] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e796]: A
+          - generic [ref=e797]: Agents of Change
+        - paragraph [ref=e798]: Social Work Exam Prep and Continuing Education
+        - paragraph [ref=e799]:
+          - link "support@agentsofchangeprep.com" [ref=e800] [cursor=pointer]:
+            - /url: mailto:support@agentsofchangeprep.com
+          - text: "|"
+          - link "(555) 232-1944" [ref=e801] [cursor=pointer]:
+            - /url: tel:5552321944
+      - region "Programs" [ref=e802]:
+        - heading "Programs" [level=2] [ref=e803]
+        - list [ref=e804]:
+          - listitem [ref=e805]:
+            - link "Exam Prep" [ref=e806] [cursor=pointer]:
+              - /url: /exam-prep
+          - listitem [ref=e807]:
+            - link "Continuing Education" [ref=e808] [cursor=pointer]:
+              - /url: /continuing-education
+          - listitem [ref=e809]:
+            - link "Bundle" [ref=e810] [cursor=pointer]:
+              - /url: /exam-prep#offers
+          - listitem [ref=e811]:
+            - link "State Requirements" [ref=e812] [cursor=pointer]:
+              - /url: /state-requirements
+      - region "Resources" [ref=e813]:
+        - heading "Resources" [level=2] [ref=e814]
+        - list [ref=e815]:
+          - listitem [ref=e816]:
+            - link "Success Stories" [ref=e817] [cursor=pointer]:
+              - /url: /success-stories
+          - listitem [ref=e818]:
+            - link "Resources Hub" [ref=e819] [cursor=pointer]:
+              - /url: /resources
+          - listitem [ref=e820]:
+            - link "About" [ref=e821] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e822]:
+            - link "Start Free Trial" [ref=e823] [cursor=pointer]:
+              - /url: /start-trial
+          - listitem [ref=e824]:
+            - link "Contact Support" [ref=e825] [cursor=pointer]:
+              - /url: mailto:support@agentsofchangeprep.com
+      - region "Company" [ref=e826]:
+        - heading "Company" [level=2] [ref=e827]
+        - list [ref=e828]:
+          - listitem [ref=e829]:
+            - link "Contact" [ref=e830] [cursor=pointer]:
+              - /url: /contact
+          - listitem [ref=e831]:
+            - link "Privacy" [ref=e832] [cursor=pointer]:
+              - /url: /privacy
+          - listitem [ref=e833]:
+            - link "Terms" [ref=e834] [cursor=pointer]:
+              - /url: /terms
+          - listitem [ref=e835]:
+            - link "Email" [ref=e836] [cursor=pointer]:
+              - /url: mailto:support@agentsofchangeprep.com
+    - generic [ref=e837]:
+      - paragraph [ref=e838]: (c) 2026 Agents of Change. All rights reserved.
+      - paragraph [ref=e839]: "ASWB ACE Provider #1919"

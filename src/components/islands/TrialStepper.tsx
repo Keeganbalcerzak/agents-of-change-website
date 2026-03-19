@@ -124,6 +124,9 @@ export default function TrialStepper() {
       return;
     }
 
+    const sourcePage =
+      typeof window !== "undefined" ? `${window.location.pathname}${window.location.search}` : "/start-trial";
+
     const payload: TrialLeadInput = {
       firstName,
       lastName,
@@ -133,7 +136,7 @@ export default function TrialStepper() {
       targetExamWindow,
       studyTimeline,
       consentToEmail,
-      sourcePage: typeof window !== "undefined" ? window.location.pathname + window.location.search : "/start-trial",
+      sourcePage: sourcePage.slice(0, 2048),
       utm: collectUtm(),
     };
 

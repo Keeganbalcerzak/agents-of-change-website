@@ -1,0 +1,166 @@
+---
+import HighSchoolTimelineProgress from "@/components/islands/HighSchoolTimelineProgress";
+
+const timelineSteps = [
+  {
+    id: "overwhelmed-teen",
+    era: "High School · Year 1",
+    title: "Sally is overwhelmed and falling behind",
+    struggle:
+      "She is balancing classes, family responsibilities, and late-night shifts. Her grades dip, and she starts believing she is not built for academic success.",
+    shift:
+      "A counselor helps her map stress triggers and build tiny, repeatable study routines instead of all-or-nothing goals.",
+    outcome: "Consistency returns before confidence does.",
+  },
+  {
+    id: "mentor-spark",
+    era: "High School · Year 2",
+    title: "A mentor reframes her story",
+    struggle:
+      "Sally still feels behind and compares herself constantly to classmates who seem naturally organized and calm.",
+    shift:
+      "She joins a support circle and learns a practical planning framework: what matters now, what can wait, and what to drop.",
+    outcome: "She moves from reactive survival to intentional momentum.",
+  },
+  {
+    id: "service-purpose",
+    era: "High School · Year 3",
+    title: "Service work gives her direction",
+    struggle:
+      "She questions whether college is realistic and worries she will end up in work that does not feel meaningful.",
+    shift:
+      "Volunteering with youth support programs introduces her to social work and the impact of structured care.",
+    outcome: "Purpose becomes the engine for discipline.",
+  },
+  {
+    id: "college-foundation",
+    era: "Undergrad",
+    title: "She builds academic discipline in college",
+    struggle:
+      "Course load and practicum expectations feel like a new version of the same pressure, just with higher stakes.",
+    shift:
+      "She adopts measured study sprints, peer accountability, and reflection loops to improve retention and focus.",
+    outcome: "She graduates with stronger systems, not just stronger grades.",
+  },
+  {
+    id: "exam-prep-transition",
+    era: "Post-Grad",
+    title: "Licensing prep becomes the next mountain",
+    struggle:
+      "ASWB prep feels overwhelming: broad content, high pressure, and uncertainty about where to focus.",
+    shift:
+      "She starts a guided program with diagnostics, targeted practice exams, and rationale-driven review.",
+    outcome: "Her study time becomes focused, measurable, and strategic.",
+  },
+  {
+    id: "licensed-and-compliant",
+    era: "Licensed Practice",
+    title: "She passes, gets licensed, and stays compliant",
+    struggle:
+      "After passing, she fears slipping on CE deadlines and state-specific renewal requirements.",
+    shift:
+      "She uses state-based CE planning with recurring checkpoints and reminders.",
+    outcome: "Renewal pressure is replaced by a stable professional rhythm.",
+  },
+  {
+    id: "doctorate-trajectory",
+    era: "Advanced Growth",
+    title: "She prepares for doctoral-level growth",
+    struggle:
+      "She wants to evolve beyond compliance into leadership, research, and long-horizon impact.",
+    shift:
+      "She re-engages with advanced learning pathways and community accountability.",
+    outcome: "Her career path shifts from survival to long-term influence.",
+  },
+];
+---
+
+<section
+  id="sally-story"
+  class="section cinematic-origin"
+  aria-labelledby="origin-title"
+  data-module="cinematic-origin"
+  data-motion-tier="hero"
+  data-motion-variant="story-stack"
+  data-motion-density="cinematic"
+  data-origin-timeline-root
+>
+  <div class="container origin-hero-grid">
+    <div class="origin-copy reveal">
+      <p class="eyebrow origin-eyebrow">Cinematic origin story</p>
+      <h1 id="origin-title">A girl under pressure, then a life rebuilt through structure</h1>
+      <p class="origin-subcopy">
+        The site now opens at Sally&apos;s hardest chapter: a high school student drowning in obligations,
+        unsure whether she belongs in serious academic work. Every chapter after that shows the climb.
+      </p>
+      <p class="origin-subcopy">
+        Scroll the timeline to watch how she moves from struggle, to licensure, to CE mastery,
+        and finally toward a doctorate trajectory.
+      </p>
+      <div class="origin-actions">
+        <a href="#origin-timeline" class="button primary" data-cta="origin-scroll-story" data-cta-location="origin-hero">
+          Enter the timeline
+        </a>
+        <a href="/exam-prep" class="button ghost" data-cta="origin-view-programs" data-cta-location="origin-hero">
+          View prep programs
+        </a>
+      </div>
+      <div class="origin-proof" aria-label="Story anchors">
+        <span>High school struggle</span>
+        <span>ASWB licensure pathway</span>
+        <span>159 CE courses</span>
+        <span>Doctorate preparation arc</span>
+      </div>
+    </div>
+
+    <aside class="origin-scene reveal" aria-label="Visual scene of Sally studying late at night">
+      <p class="origin-scene-time">11:42 PM · junior year</p>
+      <p class="origin-scene-caption">She&apos;s exhausted, behind, and still trying.</p>
+      <ul class="origin-scene-notes">
+        <li>Three assignments due tomorrow</li>
+        <li>Family care responsibilities tonight</li>
+        <li>No clear study system yet</li>
+      </ul>
+      <div class="origin-illustration" aria-hidden="true">
+        <span class="origin-lamp-glow"></span>
+        <span class="origin-desk"></span>
+        <span class="origin-girl-head"></span>
+        <span class="origin-girl-body"></span>
+        <span class="origin-girl-arm"></span>
+        <span class="origin-notebook"></span>
+      </div>
+    </aside>
+  </div>
+
+  <div class="container origin-timeline-shell" id="origin-timeline">
+    <aside class="origin-timeline-rail" aria-label="Timeline chapter navigation">
+      <p class="eyebrow">Timeline</p>
+      <h2>From survival mode to professional momentum</h2>
+      <ol class="origin-nav">
+        {timelineSteps.map((step) => (
+          <li data-origin-nav-item={step.id}>
+            <p class="origin-nav-era">{step.era}</p>
+            <p class="origin-nav-title">{step.title}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="origin-progress-track" aria-hidden="true">
+        <span class="origin-progress-fill"></span>
+      </div>
+    </aside>
+
+    <div class="origin-timeline-cards" aria-label="Timeline detail cards">
+      {timelineSteps.map((step) => (
+        <article class="origin-step-card reveal" data-origin-step={step.id}>
+          <p class="origin-step-era">{step.era}</p>
+          <h3>{step.title}</h3>
+          <p><strong>Challenge:</strong> {step.struggle}</p>
+          <p><strong>Turning point:</strong> {step.shift}</p>
+          <p class="origin-step-outcome"><strong>Outcome:</strong> {step.outcome}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <HighSchoolTimelineProgress client:visible steps={timelineSteps.map((step) => ({ id: step.id }))} />
+</section>

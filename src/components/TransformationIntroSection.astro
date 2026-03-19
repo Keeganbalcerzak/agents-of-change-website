@@ -1,0 +1,117 @@
+---
+const stages = [
+  {
+    label: "Overwhelmed",
+    title: "Too much life. Not enough structure.",
+    copy:
+      "Social workers are not failing because they are incapable. They are overloaded, anxious, and being sold generic prep that ignores how their lives actually work.",
+    bullets: [
+      "Real-study rhythm for work, practicum, family, and commute time",
+      "Social-work-specific teaching instead of generic memorization dumps",
+      "Fast clarity through free tools, podcast content, and guided next steps",
+    ],
+  },
+  {
+    label: "Confident",
+    title: "A clear plan replaces panic.",
+    copy:
+      "Agents of Change turns vague effort into visible readiness with rationale-driven teaching, live support, and one-time course access that stays with you until you pass.",
+    bullets: [
+      "One-time purchase instead of subscription anxiety",
+      "Premium practice exams and case-based rationale training",
+      "Live study groups that make progress feel shared, not isolated",
+    ],
+  },
+  {
+    label: "Unstoppable",
+    title: "Passing becomes the beginning, not the finish.",
+    copy:
+      "The brand keeps its promise after exam day too: CE, licensure maintenance, and professional momentum that reinforces identity instead of ending at checkout.",
+    bullets: [
+      "State-aware CE support and renewal momentum",
+      "Community and content that deepen professional identity",
+      "A system built to stay relevant as careers grow",
+    ],
+  },
+];
+
+const proofPoints = [
+  { value: "100K+", label: "social workers served" },
+  { value: "50K+", label: "email subscribers" },
+  { value: "26K+", label: "Facebook community members" },
+  { value: "181+", label: "podcast episodes" },
+];
+---
+
+<section
+  id="how-it-works"
+  class="section transformation-intro"
+  aria-labelledby="transformation-intro-title"
+  data-module="home-transformation-intro"
+  data-motion-tier="section"
+  data-motion-variant="reveal-stagger"
+  data-motion-density="compact"
+>
+  <div class="container">
+    <div class="transformation-intro-shell">
+      <header class="section-heading transformation-intro-heading">
+        <p class="eyebrow">Why Agents of Change</p>
+        <h2 id="transformation-intro-title" data-split-heading>
+          This is where overwhelmed test takers become licensed social workers.
+        </h2>
+        <p>
+          Most prep brands sell content. Agents of Change sells clarity, confidence, and a stronger professional
+          identity built specifically for social workers who want to pass and keep growing.
+        </p>
+      </header>
+
+      <aside class="transformation-position-card reveal">
+        <p class="transformation-position-kicker">Market position</p>
+        <h3>Premium outcome. Smarter buy.</h3>
+        <p>
+          AoC should feel like the premium choice for people who want structure, belonging, and social-work-specific
+          teaching without paying premium-market markup.
+        </p>
+
+        <ul class="transformation-position-list">
+          <li><strong>$175</strong> premium prep vs. a <strong>$295</strong> premium benchmark</li>
+          <li><strong>One-time purchase</strong> with access until you pass</li>
+          <li><strong>$49/year</strong> CE with live events included</li>
+        </ul>
+
+        <div class="transformation-position-actions">
+          <a href="/start-trial" class="button primary btn-magnetic" data-magnetic>
+            Start free preview
+          </a>
+          <a href="#pricing" class="button secondary">
+            View pricing
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <div class="transformation-stage-grid" data-stagger="up">
+      {stages.map((stage) => (
+        <article class="transformation-stage-card" data-stagger-item data-tilt>
+          <p class="transformation-stage-label">{stage.label}</p>
+          <h3>{stage.title}</h3>
+          <p>{stage.copy}</p>
+          <ul>
+            {stage.bullets.map((bullet) => (
+              <li>{bullet}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+
+    <div class="transformation-proof-grid" data-stagger="up">
+      {proofPoints.map((point) => (
+        <article class="transformation-proof-card" data-stagger-item>
+          <strong>{point.value}</strong>
+          <span>{point.label}</span>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

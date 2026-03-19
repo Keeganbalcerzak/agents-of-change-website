@@ -1,27 +1,53 @@
 ---
-import type { StoryPairing } from "@/lib/types";
+import type { SectionMotionVariant, SectionVisualVariant, StoryPairing } from "@/lib/types";
+import ScrollReveal from "@/components/vendor/reactbits/ScrollReveal.astro";
 
 interface Props {
   pairings: StoryPairing[];
+  visualVariant?: SectionVisualVariant;
+  motionVariant?: SectionMotionVariant;
 }
 
-const { pairings } = Astro.props;
+const { pairings, visualVariant = "default", motionVariant = "reveal-stagger" } = Astro.props;
+const isEditorialPurple = visualVariant === "editorial-contrast-purple";
 ---
 
-<section class="section" aria-labelledby="pairings-title" data-module="quote-proof-pairings" data-motion-tier="section">
+<section
+  class:list={["section", isEditorialPurple && "pairings-section-editorial-purple"]}
+  aria-labelledby="pairings-title"
+  data-module="quote-proof-pairings"
+  data-motion-tier="section"
+  data-motion-variant={motionVariant}
+  data-motion-density="cinematic"
+>
   <div class="container">
-    <header class="section-heading centered">
+    <ScrollReveal as="header" className="section-heading centered" variant="lift" delayIndex={0}>
       <p class="eyebrow">Before and after</p>
       <h2 id="pairings-title">How confidence changes with structure</h2>
-      <p>Real shift patterns reported by students after adopting the full prep sequence.</p>
-    </header>
+      <p>The same candidates, with the same constraints, but a more disciplined study operating system.</p>
+    </ScrollReveal>
 
-    <div class="pairing-grid">
+    <div class="pairing-grid" data-stagger="up">
       {pairings.map((pairing) => (
-        <article class="pairing-card reveal">
+        <article class:list={["pairing-card", "reveal", isEditorialPurple && "pairing-card-editorial-purple"]} data-stagger-item>
           <h3>{pairing.context}</h3>
-          <p><strong>Before:</strong> {pairing.before}</p>
-          <p><strong>After:</strong> {pairing.after}</p>
+          {isEditorialPurple ? (
+            <div class="pairing-shift pairing-shift-editorial-purple">
+              <p class="pairing-before">
+                <span class="pairing-label pairing-label-before">Before</span>
+                <span>{pairing.before}</span>
+              </p>
+              <p class="pairing-after">
+                <span class="pairing-label pairing-label-after">After</span>
+                <span>{pairing.after}</span>
+              </p>
+            </div>
+          ) : (
+            <>
+              <p><strong>Before:</strong> {pairing.before}</p>
+              <p><strong>After:</strong> {pairing.after}</p>
+            </>
+          )}
         </article>
       ))}
     </div>

@@ -1,0 +1,19 @@
+---
+interface Props {
+  className?: string;
+  variant?: "lift" | "slide" | "tilt";
+  as?: keyof HTMLElementTagNameMap;
+  delayIndex?: number;
+}
+
+const { className, variant = "lift", as = "div", delayIndex = 0 } = Astro.props as Props;
+const Tag = as;
+---
+
+<Tag
+  class:list={["reveal", "vendor-reactbits-scroll-reveal", className]}
+  data-reveal-variant={variant}
+  style={`--reveal-index:${Math.max(0, delayIndex)};`}
+>
+  <slot />
+</Tag>

@@ -1,0 +1,123 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CTASection from "@/components/CTASection.astro";
+
+const localGroups = [
+  { city: "Chicago, IL", members: 420, label: "LCSW Prep & Networking" },
+  { city: "New York, NY", members: 850, label: "LMSW Study Group" },
+  { city: "Los Angeles, CA", members: 630, label: "Clinical Networking" },
+  { city: "Austin, TX", members: 215, label: "LSW Peer Support" },
+  { city: "Atlanta, GA", members: 340, label: "Exam Strategy Group" },
+  { city: "Seattle, WA", members: 190, label: "CE Credit Accountability" },
+];
+
+const interestForums = [
+  { topic: "Child Psychology", threads: 142, icon: "🧸" },
+  { topic: "Couples Counseling", threads: 98, icon: "🤝" },
+  { topic: "Substance Abuse", threads: 215, icon: "🫂" },
+  { topic: "School Social Work", threads: 175, icon: "🏫" },
+  { topic: "Medical / Hospital", threads: 110, icon: "🏥" },
+  { topic: "Private Practice Setup", threads: 340, icon: "🏢" },
+];
+
+const jobs = [
+  { title: "Clinical Social Worker (LCSW)", company: "Sunrise Health System", location: "Chicago, IL (Hybrid)", type: "Full-Time" },
+  { title: "School Social Worker", company: "Lincoln Public Schools", location: "Seattle, WA", type: "Full-Time" },
+  { title: "Substance Abuse Counselor", company: "Pathways Recovery", location: "Austin, TX", type: "Part-Time" },
+  { title: "Telehealth Therapist", company: "Mindful Care", location: "Remote (NY Licensure)", type: "Contract" },
+];
+---
+
+<BaseLayout
+  title="Social Worker Community | Agents of Change"
+  description="Connect with local study groups, join specialty forums, and find job opportunities."
+  path="/community"
+  themeIntent="editorial"
+  enableMotionEngine={true}
+>
+  <section class="page-hero page-hero-rich" data-module="community-hero" data-motion-tier="hero">
+    <div class="container">
+      <p class="eyebrow">Community Hub</p>
+      <h1 data-split-heading>Meet social workers near you</h1>
+      <p>
+        Agents of Change isn't just an exam prep platform. It's a growing network of thousands of clinical and macro social workers supporting each other from licensure to private practice.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-muted" data-module="local-groups" data-motion-variant="reveal-stagger" data-motion-density="compact">
+    <div class="container">
+      <header class="section-heading centered">
+        <h2>Local Study Groups</h2>
+        <p>Join a local cohort to stay accountable and network with peers in your city.</p>
+      </header>
+
+      <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;" data-stagger="up">
+        {localGroups.map(group => (
+          <article style="background: var(--surface); padding: 1.5rem; border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);" data-stagger-item>
+            <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">{group.city}</h3>
+            <p style="color: var(--primary); font-weight: 600; font-size: 0.9rem; margin-bottom: 1rem;">{group.label}</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: var(--ink-soft); font-size: 0.85rem;"><span data-countup={group.members}>{group.members}</span> active members</span>
+              <button class="button secondary" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Join Group</button>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-module="interest-forums">
+    <div class="container">
+      <header class="section-heading centered">
+        <h2>Specialty Forums</h2>
+        <p>Connect with therapists who share your clinical interests and career goals.</p>
+      </header>
+
+      <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+        {interestForums.map(forum => (
+          <article style="background: var(--surface-muted); padding: 1.25rem; border-radius: var(--radius-md); display: flex; align-items: center; gap: 1rem;">
+            <div style="font-size: 2rem; background: var(--surface); width: 3rem; height: 3rem; display: flex; justify-content: center; align-items: center; border-radius: 50%; box-shadow: var(--shadow-sm);">{forum.icon}</div>
+            <div>
+              <h3 style="font-size: 1.1rem; margin-bottom: 0.25rem;">{forum.topic}</h3>
+              <p style="color: var(--ink-soft); font-size: 0.85rem; margin: 0;">{forum.threads} active threads</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-muted" data-module="job-board">
+    <div class="container">
+      <header class="section-heading">
+        <h2>Job Board <span style="font-size: 0.9rem; background: var(--gold); color: var(--ink); padding: 0.2rem 0.5rem; border-radius: 4px; margin-left: 0.5rem; vertical-align: middle;">Beta</span></h2>
+        <p>Explore recent openings shared by our partner organizations.</p>
+      </header>
+
+      <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
+        {jobs.map(job => (
+          <article style="background: var(--surface); padding: 1.5rem; border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">{job.title}</h3>
+              <p style="color: var(--ink-soft); margin: 0;">{job.company} • {job.location}</p>
+            </div>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+              <span style="background: var(--surface-muted); padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: 500;">{job.type}</span>
+              <button class="button primary" style="padding: 0.4rem 1rem;">Apply</button>
+            </div>
+          </article>
+        ))}
+      </div>
+      
+      <div style="text-align: center; margin-top: 2rem;">
+        <button class="button secondary">View All 150+ Jobs</button>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Grow your network today"
+    description="Sign up for an Agents of Change account to join study groups and access the full job board."
+  />
+</BaseLayout>

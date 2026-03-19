@@ -5,15 +5,19 @@ import {
   defaultContactPathways,
   defaultFaqItems,
   defaultInstructor,
+  defaultLandingPricingSections,
   defaultNavItems,
+  defaultOriginTimelineSteps,
   defaultProgramOffers,
   defaultResourceArticles,
   defaultSeoMetadata,
+  defaultSallyJourneySteps,
   defaultSiteSettings,
   defaultStoryPairings,
   defaultStateRequirements,
   defaultStats,
   defaultStudyPhases,
+  defaultCareerPhases,
   defaultTestimonials,
 } from "@/lib/defaultContent";
 import { sanityClient, sanityEnabled } from "@/lib/sanity/client";
@@ -32,7 +36,9 @@ import type {
   InstructorProfile,
   NavItem,
   ProgramOffer,
+  PricingSection,
   ResourceArticle,
+  SallyJourneyStep,
   SeoMetadata,
   SiteSettings,
   StoryPairing,
@@ -44,6 +50,8 @@ import type {
   CompetencyDomain,
   ContactPathway,
   CECourse,
+  CareerPhase,
+  OriginTimelineStep,
 } from "@/lib/types";
 
 async function fetchSafe<T>(query: string, fallback: T): Promise<T> {
@@ -73,7 +81,17 @@ export async function getSiteSettings(): Promise<SiteSettings> {
 }
 
 export async function getNavItems(): Promise<NavItem[]> {
-  return fetchSafe<NavItem[]>(navItemsQuery, defaultNavItems);
+  const navItems = await fetchSafe<NavItem[]>(navItemsQuery, defaultNavItems);
+  return navItems.map((item) => {
+    const normalizedLabel = item.label.trim().toLowerCase();
+    const pointsToStateRoute = item.href.startsWith("/state-requirements");
+
+    if (normalizedLabel === "state requirements" || pointsToStateRoute) {
+      return { ...item, href: "/state-requirements" };
+    }
+
+    return item;
+  });
 }
 
 export async function getProgramOffers(): Promise<ProgramOffer[]> {
@@ -116,6 +134,10 @@ export function getStudyPhases(): StudyPhase[] {
   return defaultStudyPhases;
 }
 
+export function getCareerPhases(): CareerPhase[] {
+  return defaultCareerPhases;
+}
+
 export function getStoryPairings(): StoryPairing[] {
   return defaultStoryPairings;
 }
@@ -130,4 +152,16 @@ export function getCeCatalog(): CECourse[] {
 
 export function getResourceArticles(): ResourceArticle[] {
   return defaultResourceArticles;
+}
+
+export function getLandingPricingSections(): PricingSection[] {
+  return defaultLandingPricingSections;
+}
+
+export function getOriginTimelineSteps(): OriginTimelineStep[] {
+  return defaultOriginTimelineSteps;
+}
+
+export function getSallyJourneySteps(): SallyJourneyStep[] {
+  return defaultSallyJourneySteps;
 }

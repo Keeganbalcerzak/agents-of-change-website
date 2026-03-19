@@ -1,0 +1,39 @@
+---
+/**
+ * AmbientField — living ambient background for Zone Deep sections.
+ * Renders three drifting radial gradient blobs that respond to scroll.
+ *
+ * Props:
+ *   intensity: 'default' | 'peak'   — 'peak' for final CTA section
+ */
+interface Props {
+  intensity?: 'default' | 'peak';
+}
+
+const { intensity = 'default' } = Astro.props;
+---
+
+<div class="ambient-field" aria-hidden="true" data-ambient-intensity={intensity}>
+  <div class="ambient-blob ambient-blob-1"></div>
+  <div class="ambient-blob ambient-blob-2"></div>
+  <div class="ambient-blob ambient-blob-3"></div>
+</div>
+
+<style>
+  /* Peak intensity — blobs start larger and brighter */
+  .ambient-field[data-ambient-intensity="peak"] .ambient-blob-1 {
+    width: 60vw;
+    height: 60vw;
+    background: rgba(109, 59, 209, 0.55);
+  }
+  .ambient-field[data-ambient-intensity="peak"] .ambient-blob-2 {
+    width: 50vw;
+    height: 50vw;
+    background: rgba(167, 139, 250, 0.45);
+  }
+  .ambient-field[data-ambient-intensity="peak"] .ambient-blob-3 {
+    width: 40vw;
+    height: 40vw;
+    background: rgba(203, 180, 255, 0.35);
+  }
+</style>

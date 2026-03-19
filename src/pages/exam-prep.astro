@@ -5,6 +5,7 @@ import CTASection from "@/components/CTASection.astro";
 import CurriculumArchitecture from "@/components/CurriculumArchitecture.astro";
 import StudyJourneyTimeline from "@/components/StudyJourneyTimeline.astro";
 import CompetencyGrid from "@/components/CompetencyGrid.astro";
+import GaugeMini from "@/components/vendor/animata/GaugeMini.astro";
 import {
   getCompetencyDomains,
   getProgramOffers,
@@ -40,11 +41,12 @@ const jsonLd = {
   path="/exam-prep"
   jsonLd={jsonLd}
   themeIntent="conversion"
+  enableMotionEngine={true}
 >
-  <section class="page-hero page-hero-rich" data-module="exam-prep-hero" data-motion-tier="hero">
+  <section class="page-hero page-hero-rich" data-module="exam-prep-hero" data-motion-tier="hero" data-motion-variant="story-stack" data-motion-density="cinematic">
     <div class="container">
       <p class="eyebrow">Program detail</p>
-      <h1>Exam prep architecture designed for first-time pass outcomes</h1>
+      <h1 data-split-heading>Exam prep architecture designed for first-time pass outcomes</h1>
       <p>
         This program is built as an intentional sequence: diagnostic baseline,
         high-yield domain training, simulation loops, and confidence calibration.
@@ -52,27 +54,43 @@ const jsonLd = {
     </div>
   </section>
 
-  <CurriculumArchitecture />
-  <StudyJourneyTimeline phases={phases} />
-  <CompetencyGrid domains={domains} />
+  <CurriculumArchitecture motionVariant="legendary-scrub" motionDensity="cinematic" />
+  <StudyJourneyTimeline phases={phases} motionVariant="story-stack" motionDensity="cinematic" />
+  <CompetencyGrid domains={domains} motionVariant="reveal-stagger" motionDensity="compact" />
 
-  <section class="section" data-module="exam-prep-outcomes" data-motion-tier="section" aria-labelledby="outcomes-title">
+  <section
+    class="section exam-prep-outcomes-hybrid"
+    data-module="exam-prep-outcomes"
+    data-motion-tier="section"
+    data-motion-variant="story-stack"
+    data-motion-density="cinematic"
+    aria-labelledby="outcomes-title"
+  >
     <div class="container">
       <header class="section-heading centered">
         <p class="eyebrow">Outcomes framework</p>
         <h2 id="outcomes-title">The performance model behind the curriculum</h2>
       </header>
 
-      <div class="outcomes-grid">
-        <article class="info-card reveal">
+      <div class="outcomes-grid" data-stagger="up">
+        <article class="info-card reveal" data-stagger-item data-tilt>
+          <div class="outcome-gauge-row">
+            <GaugeMini value={84} label="Readiness lift" />
+          </div>
           <h3>Outcome 1: Stronger answer confidence</h3>
           <p>Students report faster elimination decisions and less second-guessing under timed conditions.</p>
         </article>
-        <article class="info-card reveal">
+        <article class="info-card reveal" data-stagger-item data-tilt>
+          <div class="outcome-gauge-row">
+            <GaugeMini value={78} label="Pacing control" />
+          </div>
           <h3>Outcome 2: Better pacing control</h3>
           <p>Simulation cycles improve rhythm and reduce time pressure in the final third of the exam.</p>
         </article>
-        <article class="info-card reveal">
+        <article class="info-card reveal" data-stagger-item data-tilt>
+          <div class="outcome-gauge-row">
+            <GaugeMini value={88} label="Momentum consistency" />
+          </div>
           <h3>Outcome 3: Predictable study momentum</h3>
           <p>Milestone-based sequencing prevents content drift and keeps weekly progress measurable.</p>
         </article>
@@ -80,7 +98,20 @@ const jsonLd = {
     </div>
   </section>
 
-  <ProgramOffers offers={offers} showHeading={false} />
+  <ProgramOffers offers={offers} showHeading={false} visualVariant="premium-hybrid" />
+
+  <section class="section" aria-labelledby="ce-state-title" data-module="ce-state-lookup" data-motion-tier="section">
+    <div class="container">
+      <header class="section-heading centered">
+        <p class="eyebrow">Post-Exam Roadmap</p>
+        <h2 id="ce-state-title">Find CE Credits Required in your State</h2>
+        <p>Your journey doesn't end with passing. Discover exactly how many Continuing Education (CE) hours you'll need to maintain your license across different states.</p>
+      </header>
+      <div style="display: flex; justify-content: center; margin-top: 2rem;">
+        <a href="/state-requirements" class="button secondary btn-magnetic" data-magnetic>View State Requirements</a>
+      </div>
+    </div>
+  </section>
 
   <CTASection
     title="Start with a personalized exam roadmap"

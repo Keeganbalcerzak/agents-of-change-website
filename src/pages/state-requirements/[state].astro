@@ -43,18 +43,34 @@ const jsonLd = {
   path={`/state-requirements/${state.stateCode.toLowerCase()}`}
   jsonLd={jsonLd}
   themeIntent="trust"
+  enableMotionEngine={true}
 >
-  <section class="page-hero page-hero-rich" data-module="state-hero" data-motion-tier="hero">
+  <section
+    class="page-hero page-hero-rich"
+    data-module="state-hero"
+    data-motion-tier="hero"
+    data-motion-variant="story-stack"
+    data-motion-density="compact"
+  >
     <div class="container">
       <p class="eyebrow">State requirement guide</p>
-      <h1>{state.stateName} licensing and exam prep pathway</h1>
+      <h1 data-split-heading>{state.stateName} licensing and exam prep pathway</h1>
       <p>
         Use this page as a practical planning baseline, then verify final compliance directly with your state board.
+      </p>
+      <p class="state-hub-link">
+        Looking for another state? <a href="/state-requirements">Browse all state requirement pages</a>.
       </p>
     </div>
   </section>
 
-  <section class="section section-muted" data-module="state-requirements-blocks" data-motion-tier="section">
+  <section
+    class="section section-muted"
+    data-module="state-requirements-blocks"
+    data-motion-tier="section"
+    data-motion-variant="story-stack"
+    data-motion-density="cinematic"
+  >
     <div class="container">
       <header class="section-heading centered">
         <p class="eyebrow">Standardized checkpoints</p>

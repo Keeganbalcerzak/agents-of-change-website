@@ -1,5 +1,7 @@
 ---
 import type { AudiencePathway } from "@/lib/types";
+import SpotlightCard from "@/components/vendor/reactbits/SpotlightCard.astro";
+import ScrollReveal from "@/components/vendor/reactbits/ScrollReveal.astro";
 
 interface Props {
   pathways: AudiencePathway[];
@@ -8,23 +10,36 @@ interface Props {
 const { pathways } = Astro.props;
 ---
 
-<section class="section section-muted" aria-labelledby="audience-pathways-title" data-module="audience-pathways" data-motion-tier="section">
+<section
+  class="section section-muted"
+  aria-labelledby="audience-pathways-title"
+  data-module="audience-pathways"
+  data-motion-tier="section"
+  data-motion-variant="story-stack"
+  data-motion-density="compact"
+>
   <div class="container">
-    <header class="section-heading centered">
+    <ScrollReveal as="header" className="section-heading centered" variant="lift" delayIndex={0}>
       <p class="eyebrow">Choose your pathway</p>
       <h2 id="audience-pathways-title">Start from your real context</h2>
       <p>Pick the pathway that matches your current stage and goals.</p>
-    </header>
+    </ScrollReveal>
 
     <div class="pathway-grid">
       {pathways.map((pathway) => (
-        <article class="pathway-card reveal" data-variant={pathway.id}>
+        <SpotlightCard
+          as="article"
+          className="pathway-card reveal"
+          data-variant={pathway.id}
+          radius={260}
+          falloff={0.68}
+        >
           <h3>{pathway.title}</h3>
           <p>{pathway.summary}</p>
           <a href={pathway.ctaHref} class="button secondary" data-cta="pathway-cta" data-cta-location={pathway.id}>
             {pathway.ctaLabel}
           </a>
-        </article>
+        </SpotlightCard>
       ))}
     </div>
   </div>

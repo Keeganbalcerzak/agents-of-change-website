@@ -1,0 +1,6 @@
+[     456ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://agentsofchangeprep.com/images/bg-newletter-new.png:0
+[     486ms] ReferenceError: wp is not defined
+    at wp-i18n-js-after:3:1
+[    1522ms] [WARNING] [TikTok Pixel] - Missing 'content_id' paramter
+Issue: The 'content_id' parameter isn't being received. This is required for Video Shopping Ads (VSA).
+Suggestion: Include the 'content_id' parameter in your source code. This is required for Video Shopping Ads (VSA). See https://ads.tiktok.com/help/article/standard-events-parameters?redirected=2 for more information. @ https://analytics.tiktok.com/i18n/pixel/static/main.MTEwMjY2ZTExMQ.js:0

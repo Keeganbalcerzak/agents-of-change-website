@@ -1,0 +1,153 @@
+[
+  {
+    "page": "home",
+    "url": "http://127.0.0.1:4325/",
+    "audit": {
+      "title": "Agents of Change | Social Work Exam Prep and Continuing Education",
+      "themeIntent": "editorial",
+      "h1s": [
+        "From overwhelmed to licensed. From licensed to unstoppable."
+      ],
+      "duplicateIds": [],
+      "headerBg": "rgba(18, 6, 38, 0.72) none repeat scroll 0% 0% / auto padding-box border-box",
+      "headerColor": "rgb(248, 242, 255)",
+      "bodyBg": "rgb(26, 10, 53) none repeat scroll 0% 0% / auto padding-box border-box",
+      "imgWithoutSrcCount": 0,
+      "sallyTextPresent": false
+    },
+    "consoleMessages": [],
+    "pageErrors": [],
+    "failedRequests": [
+      {
+        "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-XXXXXXXXXX&gtm=45je63h0za200&_p=1773937824867&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=1212913591.1773937827&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=19.0.0&uaw=0&are=1&frm=0&pscdl=noapi&_s=1&tag_exp=103116026~103200004~115938465~115938469~116024733~117170491~117484252&sid=1773937827&sct=1&seg=0&dl=http%3A%2F%2F127.0.0.1%2F&dt=Agents%20of%20Change%20%7C%20Social%20Work%20Exam%20Prep%20and%20Continuing%20Education&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&ep.anonymize_ip=true&tfd=16925",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "badResponses": []
+  },
+  {
+    "page": "exam-prep",
+    "url": "http://127.0.0.1:4325/exam-prep",
+    "audit": {
+      "title": "Exam Prep Programs | Agents of Change",
+      "themeIntent": "conversion",
+      "h1s": [
+        "Exam prep architecture designed for first-time pass outcomes"
+      ],
+      "duplicateIds": [],
+      "headerBg": "rgba(255, 255, 255, 0.88) none repeat scroll 0% 0% / auto padding-box border-box",
+      "headerColor": "rgb(42, 24, 68)",
+      "bodyBg": "rgba(0, 0, 0, 0) radial-gradient(circle at 20% 0px, rgb(246, 233, 255) 0%, rgb(240, 232, 255) 45%) repeat scroll 0% 0% / auto padding-box border-box",
+      "imgWithoutSrcCount": 0,
+      "sallyTextPresent": false
+    },
+    "consoleMessages": [],
+    "pageErrors": [],
+    "failedRequests": [
+      {
+        "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-XXXXXXXXXX&gtm=45je63h0za200&_p=1773937906017&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=1189174575.1773937910&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=19.0.0&uaw=0&are=1&frm=0&pscdl=noapi&_s=1&tag_exp=103116026~103200004~115938466~115938469~116024733~117484252~118104772&sid=1773937909&sct=1&seg=0&dl=http%3A%2F%2F127.0.0.1%2Fexam-prep&dt=Exam%20Prep%20Programs%20%7C%20Agents%20of%20Change&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&ep.anonymize_ip=true&tfd=4519",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "badResponses": []
+  },
+  {
+    "page": "about",
+    "url": "http://127.0.0.1:4325/about",
+    "audit": {
+      "title": "About Agents of Change | Social Work Exam Prep Experts",
+      "themeIntent": "editorial",
+      "h1s": [
+        "A teaching system built by social workers for social workers"
+      ],
+      "duplicateIds": [],
+      "headerBg": "rgba(18, 6, 38, 0.72) none repeat scroll 0% 0% / auto padding-box border-box",
+      "headerColor": "rgb(248, 242, 255)",
+      "bodyBg": "rgb(26, 10, 53) none repeat scroll 0% 0% / auto padding-box border-box",
+      "imgWithoutSrcCount": 0,
+      "sallyTextPresent": false
+    },
+    "consoleMessages": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "badResponses": []
+  },
+  {
+    "page": "start-trial",
+    "url": "http://127.0.0.1:4325/start-trial",
+    "audit": {
+      "title": "Start Free Trial | Agents of Change",
+      "themeIntent": "conversion",
+      "h1s": [
+        "Start your free trial with a confidence-first setup"
+      ],
+      "duplicateIds": [],
+      "headerBg": "rgba(255, 255, 255, 0.88) none repeat scroll 0% 0% / auto padding-box border-box",
+      "headerColor": "rgb(42, 24, 68)",
+      "bodyBg": "rgba(0, 0, 0, 0) radial-gradient(circle at 20% 0px, rgb(246, 233, 255) 0%, rgb(240, 232, 255) 45%) repeat scroll 0% 0% / auto padding-box border-box",
+      "imgWithoutSrcCount": 0,
+      "sallyTextPresent": false
+    },
+    "consoleMessages": [],
+    "pageErrors": [],
+    "failedRequests": [
+      {
+        "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-XXXXXXXXXX&gtm=45je63h0za200&_p=1773937977466&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=909616635.1773937978&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=19.0.0&uaw=0&are=1&frm=0&pscdl=noapi&_s=1&tag_exp=103116026~103200004~115938465~115938468~116024733~117384405~117484252&sid=1773937978&sct=1&seg=0&dl=http%3A%2F%2F127.0.0.1%2Fstart-trial&dt=Start%20Free%20Trial%20%7C%20Agents%20of%20Change&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&ep.anonymize_ip=true&tfd=3009",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "badResponses": []
+  },
+  {
+    "page": "success-stories",
+    "url": "http://127.0.0.1:4325/success-stories",
+    "audit": {
+      "title": "Success Stories | Agents of Change",
+      "themeIntent": "trust",
+      "h1s": [
+        "Confidence transformations from social workers across the US"
+      ],
+      "duplicateIds": [],
+      "headerBg": "rgba(255, 255, 255, 0.88) none repeat scroll 0% 0% / auto padding-box border-box",
+      "headerColor": "rgb(42, 24, 68)",
+      "bodyBg": "rgba(0, 0, 0, 0) radial-gradient(circle at 20% 0px, rgb(246, 233, 255) 0%, rgb(240, 232, 255) 45%) repeat scroll 0% 0% / auto padding-box border-box",
+      "imgWithoutSrcCount": 0,
+      "sallyTextPresent": false
+    },
+    "consoleMessages": [],
+    "pageErrors": [],
+    "failedRequests": [
+      {
+        "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-XXXXXXXXXX&gtm=45je63h0za200&_p=1773937991233&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=761444759.1773937995&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=19.0.0&uaw=0&are=1&frm=0&pscdl=noapi&_s=1&tag_exp=103116026~103200004~115938465~115938469~116024733~117170490~117484252&sid=1773937995&sct=1&seg=0&dl=http%3A%2F%2F127.0.0.1%2Fsuccess-stories&dt=Success%20Stories%20%7C%20Agents%20of%20Change&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&ep.anonymize_ip=true&tfd=7458",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "badResponses": []
+  },
+  {
+    "page": "faq",
+    "url": "http://127.0.0.1:4325/faq",
+    "audit": {
+      "title": "Frequently Asked Questions | Agents of Change",
+      "themeIntent": "default",
+      "h1s": [
+        "Frequently Asked Questions"
+      ],
+      "duplicateIds": [],
+      "headerBg": "rgba(255, 255, 255, 0.88) none repeat scroll 0% 0% / auto padding-box border-box",
+      "headerColor": "rgb(42, 24, 68)",
+      "bodyBg": "rgba(0, 0, 0, 0) radial-gradient(circle at 20% 0px, rgb(246, 233, 255) 0%, rgb(240, 232, 255) 45%) repeat scroll 0% 0% / auto padding-box border-box",
+      "imgWithoutSrcCount": 0,
+      "sallyTextPresent": false
+    },
+    "consoleMessages": [],
+    "pageErrors": [],
+    "failedRequests": [
+      {
+        "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-XXXXXXXXXX&gtm=45je63h0za200&_p=1773938007832&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=1862060005.1773938009&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=19.0.0&uaw=0&are=1&frm=0&pscdl=noapi&_s=1&tag_exp=103116026~103200004~115938466~115938469~116024733~117266400~117484252~118104773&sid=1773938008&sct=1&seg=0&dl=http%3A%2F%2F127.0.0.1%2Ffaq&dt=Frequently%20Asked%20Questions%20%7C%20Agents%20of%20Change&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&ep.anonymize_ip=true&tfd=2872",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "badResponses": []
+  }
+]

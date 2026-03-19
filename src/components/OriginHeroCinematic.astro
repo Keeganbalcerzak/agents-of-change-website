@@ -1,0 +1,90 @@
+---
+import OriginHeroMicroMotion from "@/components/islands/OriginHeroMicroMotion";
+---
+
+<section
+  id="hero-transform"
+  class="section cinematic-origin origin-cinematic-hero"
+  aria-labelledby="origin-cinematic-title"
+  data-module="origin-hero-cinematic"
+  data-motion-tier="hero"
+  data-motion-variant="story-stack"
+  data-motion-density="cinematic"
+  data-origin-hero-root
+>
+  <div class="container origin-hero-grid">
+    <div class="origin-left-col">
+      <OriginHeroMicroMotion client:load rootSelector="[data-origin-hero-root]" />
+
+      <div class="origin-proof-row" aria-label="Key outcomes">
+        <div class="origin-proof-pill">
+          <strong><span data-countup="100" data-suffix="K+" data-prefix="">100K+</span></strong>
+          <span>social workers reached</span>
+        </div>
+        <div class="origin-proof-pill">
+          <strong><span data-countup="50" data-suffix="K+" data-prefix="">50K+</span></strong>
+          <span>email subscribers</span>
+        </div>
+        <div class="origin-proof-pill">
+          <strong><span data-countup="181" data-suffix="+" data-prefix="">181+</span></strong>
+          <span>podcast episodes</span>
+        </div>
+      </div>
+
+      <div class="origin-actions">
+        <a
+          href="/start-trial"
+          class="button primary btn-magnetic"
+          data-magnetic
+          data-cta="hero-start-trial"
+          data-cta-location="hero"
+        >
+          Start free trial
+        </a>
+        <a
+          href="/exam-prep"
+          class="button secondary"
+          data-cta="hero-explore-prep"
+          data-cta-location="hero"
+        >
+          Explore exam prep
+        </a>
+      </div>
+    </div>
+
+    <aside class="origin-scene reveal" data-parallax="fore" aria-label="Agents of Change system highlights">
+      <div class="origin-scene-head">
+        <p class="origin-scene-time">Built for real schedules</p>
+        <p class="origin-scene-caption">Premium prep for people balancing work, placements, family, and exam anxiety.</p>
+      </div>
+
+      <ul class="origin-scene-notes">
+        <li>Commute-friendly podcast and audio review</li>
+        <li>One-time prep access until you pass</li>
+        <li>Live study groups plus CE after licensure</li>
+      </ul>
+
+      <div class="origin-scene-metrics">
+        <div class="origin-scene-metric">
+          <strong>100K+</strong>
+          <span>social workers reached</span>
+        </div>
+        <div class="origin-scene-metric">
+          <strong>$175</strong>
+          <span>premium prep value leader</span>
+        </div>
+        <div class="origin-scene-metric">
+          <strong>$49/yr</strong>
+          <span>live CE included</span>
+        </div>
+      </div>
+
+      <div class="origin-scene-tags">
+        <span>Free preview</span>
+        <span>Access until you pass</span>
+        <span>Podcast + community flywheel</span>
+        <span>Built for social workers</span>
+      </div>
+    </aside>
+  </div>
+</section>

@@ -2,7 +2,9 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import CTASection from "@/components/CTASection.astro";
 import TestimonialsFilter from "@/components/islands/TestimonialsFilter";
+import TestimonialsCarousel from "@/components/islands/TestimonialsCarousel";
 import QuoteProofPairings from "@/components/QuoteProofPairings.astro";
+import "@/styles/global.css";
 import { getSeoMetadata, getStoryPairings, getTestimonials } from "@/lib/content";
 import { findSeoByKey } from "@/lib/seo";
 
@@ -19,11 +21,12 @@ const seo = findSeoByKey(seoEntries, "success-stories");
   description={seo?.description ?? "Read outcomes from social workers."}
   path="/success-stories"
   themeIntent="trust"
+  enableMotionEngine={true}
 >
   <section class="page-hero page-hero-rich" data-module="stories-hero" data-motion-tier="hero">
     <div class="container">
       <p class="eyebrow">Student outcomes</p>
-      <h1>Confidence transformations from social workers across the US</h1>
+      <h1 data-split-heading>Confidence transformations from social workers across the US</h1>
       <p>
         Explore narratives by exam track and state to see how candidates with similar constraints
         restructured their prep and improved outcomes.
@@ -31,7 +34,14 @@ const seo = findSeoByKey(seoEntries, "success-stories");
     </div>
   </section>
 
-  <section class="section section-muted" data-module="story-filter" data-motion-tier="section">
+  <section
+    class="section section-muted"
+    data-module="story-filter"
+    data-motion-tier="section"
+    data-motion-variant="reveal-stagger"
+    data-motion-density="compact"
+    data-conversion-safe="true"
+  >
     <div class="container">
       <header class="section-heading centered">
         <p class="eyebrow">Narrative library</p>
@@ -42,7 +52,23 @@ const seo = findSeoByKey(seoEntries, "success-stories");
     </div>
   </section>
 
-  <QuoteProofPairings pairings={pairings} />
+  <QuoteProofPairings pairings={pairings} motionVariant="story-stack" />
+  <section
+    class="section section-muted"
+    data-module="story-scroll-stack"
+    data-motion-tier="section"
+    data-motion-variant="story-stack"
+    data-motion-density="cinematic"
+  >
+    <div class="container">
+      <header class="section-heading centered">
+        <p class="eyebrow">Depth view</p>
+        <h2>Continuous proof stream</h2>
+        <p>Scan a flowing stack of outcomes to benchmark your own trajectory.</p>
+      </header>
+      <TestimonialsCarousel client:load testimonials={testimonials} mode="scroll-stack" motionVariant="story-stack" />
+    </div>
+  </section>
 
   <CTASection
     title="Build your own passing trajectory"

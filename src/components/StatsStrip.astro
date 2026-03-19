@@ -1,18 +1,54 @@
 ---
 import type { StatItem } from "@/lib/types";
+import NumberTicker from "@/components/vendor/magic/NumberTicker";
 
 interface Props {
   stats: StatItem[];
+  animated?: boolean;
+  visualVariant?: "default" | "premium";
 }
 
-const { stats } = Astro.props;
+const { stats, animated = true, visualVariant = "premium" } = Astro.props;
+
+function parseStatValue(value: string) {
+  const trimmed = String(value).trim();
+  const match = trimmed.match(/^([^0-9]*)([0-9,.]+)([^0-9]*)$/);
+  if (!match) {
+    return null;
+  }
+
+  const prefix = match[1] || "";
+  const numeric = Number(match[2].replace(/,/g, ""));
+  const suffix = match[3] || "";
+  if (!Number.isFinite(numeric)) {
+    return null;
+  }
+
+  return { prefix, numeric, suffix };
+}
 ---
 
-<section class="stats-strip" aria-label="Key outcomes">
+<section class:list={["stats-strip", `stats-strip-${visualVariant}`]} aria-label="Key outcomes">
   <div class="container stats-grid">
     {stats.map((stat) => (
       <article class="stat-card">
-        <p class="stat-value">{stat.value}</p>
+        {(() => {
+          const parsed = parseStatValue(stat.value);
+          if (!animated || !parsed) {
+            return <p class="stat-value">{stat.value}</p>;
+          }
+
+          return (
+            <p class="stat-value stat-value-animated">
+              <span
+                class="stat-value-number"
+                data-countup={parsed.numeric}
+                data-suffix={parsed.suffix || ''}
+                data-prefix={parsed.prefix || ''}
+              >{parsed.prefix}{parsed.numeric}{parsed.suffix}</span>
+            </p>
+          );
+        })()}
         <p class="stat-label">{stat.label}</p>
       </article>
     ))}

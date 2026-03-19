@@ -1,0 +1,41 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import AiTrackerForm from "@/components/islands/AiTrackerForm";
+import CTASection from "@/components/CTASection.astro";
+import { getStateRequirements } from "@/lib/content";
+
+const stateRequirements = await getStateRequirements();
+---
+
+<BaseLayout
+  title="AI Tracker Workflow | Agents of Change"
+  description="Automate your exam check-ins and state-specific CE credit notifications."
+  path="/ai-tracker"
+  themeIntent="conversion"
+>
+  <section class="page-hero page-hero-rich" data-module="ai-tracker-hero" data-motion-tier="hero">
+    <div class="container">
+      <p class="eyebrow">Smart Workflow</p>
+      <h1>Never miss a CE deadline again</h1>
+      <p>
+        Tell us your practice state and intended exam date. Our AI Tracker will automatically check in on your results and manage your future Continuing Education requirements.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-muted" data-module="ai-tracker-demo" data-motion-tier="section">
+    <div class="container">
+      <header class="section-heading centered">
+        <h2>Try the Tracker Demo</h2>
+        <p>Enter a mock exam date to see the automated email flow in action.</p>
+      </header>
+
+      <AiTrackerForm client:load stateRequirements={stateRequirements} />
+    </div>
+  </section>
+
+  <CTASection
+    title="Ready for the real thing?"
+    description="Sign up for an Agents of Change trial to start tracking your timeline."
+  />
+</BaseLayout>

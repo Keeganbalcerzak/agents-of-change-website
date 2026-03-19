@@ -7,8 +7,12 @@ export type AnalyticsEventName =
   | "trial_submit_error"
   | "module_view"
   | "section_engagement"
+  | "data_phase_complete"
   | "filter_interaction"
-  | "form_validation_error";
+  | "form_validation_error"
+  | "story_chapter_view"
+  | "pricing_plan_select"
+  | "tracker_workflow_preview";
 
 export function trackEvent(eventName: AnalyticsEventName, params: Record<string, string | number | boolean | undefined> = {}): void {
   if (typeof window === "undefined") {

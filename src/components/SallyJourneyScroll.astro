@@ -1,0 +1,66 @@
+---
+import SallyJourneyProgress from "@/components/islands/SallyJourneyProgress";
+import type { SallyJourneyStep } from "@/lib/types";
+
+interface Props {
+  steps: SallyJourneyStep[];
+}
+
+const { steps } = Astro.props;
+---
+
+<section
+  id="sally-story"
+  class="section sally-story"
+  aria-labelledby="sally-story-title"
+  data-module="sally-story"
+  data-motion-tier="hero"
+  data-motion-variant="story-stack"
+  data-motion-density="cinematic"
+  data-sally-story-root
+>
+  <div class="container sally-story-grid">
+    <aside class="sally-story-rail" aria-label="Sally journey chapters">
+      <p class="eyebrow">Sally&apos;s journey</p>
+      <h1 id="sally-story-title">Sally&apos;s story: from exam prep to doctorate momentum</h1>
+      <p>
+        Scroll through Sally&apos;s story to see how Agents of Change supports a full social work lifecycle,
+        from first exam prep through long-term professional development.
+      </p>
+      <p class="sally-story-intro"><strong>Meet Sally:</strong> She starts with free prep, passes, maintains CE, and re-engages for doctorate-level growth.</p>
+
+      <ol class="sally-story-nav" aria-label="Journey progress">
+        {steps.map((step) => (
+          <li data-sally-nav-item={step.id}>
+            <p class="sally-chapter">{step.chapter}</p>
+            <p class="sally-nav-title">{step.title}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="sally-progress-track" aria-hidden="true">
+        <span class="sally-progress-fill"></span>
+      </div>
+    </aside>
+
+    <div class="sally-story-steps" aria-label="Sally chapter content">
+      {steps.map((step) => (
+        <article class="sally-step-card reveal" data-sally-step={step.id} id={`sally-${step.id}`}>
+          <p class="sally-step-label">{step.chapter}</p>
+          <h2>{step.title}</h2>
+          <p>{step.summary}</p>
+          <p class="sally-milestone"><strong>Milestone:</strong> {step.milestone}</p>
+          <ul>
+            {step.details.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+          <a href={step.ctaHref} class="button secondary" data-cta="sally-step-cta" data-cta-location={step.id}>
+            {step.ctaLabel}
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <SallyJourneyProgress client:visible steps={steps.map((step) => ({ id: step.id }))} />
+</section>

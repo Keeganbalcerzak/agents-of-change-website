@@ -1,18 +1,21 @@
 ---
+import Marquee from "@/components/ui/magic/marquee";
+
 interface Props {
   items: string[];
+  speed?: number;
+  density?: "default" | "dense";
 }
 
-const { items } = Astro.props;
-const loopItems = [...items, ...items];
+const { items, speed = 36, density = "default" } = Astro.props;
 ---
 
-<section class="trust-marquee" data-module="trust-marquee" data-motion-tier="micro">
+<section class:list={["trust-marquee", `trust-marquee-${density}`]} data-module="trust-marquee" data-motion-tier="micro">
   <div class="container">
-    <div class="trust-track" aria-label="Trust indicators">
-      {loopItems.map((item) => (
+    <Marquee className="trust-marquee-shell" speed={speed} pauseOnHover={true}>
+      {items.map((item) => (
         <p class="trust-chip">{item}</p>
       ))}
-    </div>
+    </Marquee>
   </div>
 </section>

@@ -1,0 +1,36 @@
+---
+import type { CareerPhase } from "@/lib/types";
+
+interface Props {
+  phases: CareerPhase[];
+}
+
+const { phases } = Astro.props;
+---
+
+<section
+  class="section section-muted"
+  aria-labelledby="career-timeline-title"
+  data-module="career-timeline"
+  data-motion-tier="section"
+  data-motion-variant="story-stack"
+  data-motion-density="compact"
+>
+  <div class="container">
+    <header class="section-heading centered">
+      <p class="eyebrow">Your Career Path</p>
+      <h2 id="career-timeline-title">The Social Worker Timeline</h2>
+      <p>From signing up for your exam to renewing your license year after year, we support your entire journey.</p>
+    </header>
+
+    <ol class="timeline-list">
+      {phases.map((phase) => (
+        <li class="timeline-item reveal">
+          <p class="timeline-phase">{phase.step}</p>
+          <p class="timeline-window">{phase.title}</p>
+          <p class="timeline-objective">{phase.description}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

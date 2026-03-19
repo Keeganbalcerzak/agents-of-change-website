@@ -2,6 +2,7 @@
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import { getNavItems, getSiteSettings } from "@/lib/content";
+import type { MotionCapability, MotionProfile } from "@/lib/types";
 import "@/styles/global.css";
 
 interface Props {
@@ -12,6 +13,9 @@ interface Props {
   jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
   noindex?: boolean;
   themeIntent?: "default" | "editorial" | "conversion" | "trust";
+  motionProfile?: MotionProfile;
+  motionCapability?: MotionCapability;
+  enableMotionEngine?: boolean;
 }
 
 const {
@@ -22,6 +26,9 @@ const {
   jsonLd,
   noindex = false,
   themeIntent = "default",
+  motionProfile = "lite",
+  motionCapability = "auto",
+  enableMotionEngine = false,
 } = Astro.props;
 
 const siteUrl = Astro.site?.toString() || import.meta.env.PUBLIC_SITE_URL || "https://www.agentsofchangeprep.com";
@@ -41,7 +48,7 @@ const jsonLdCollection = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0d2542" />
+    <meta name="theme-color" content="#4a247f" />
     <meta name="color-scheme" content="light only" />
 
     <title>{title}</title>
@@ -83,7 +90,11 @@ const jsonLdCollection = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []
       <script is:inline type="application/ld+json" set:html={JSON.stringify(entry)}></script>
     ))}
   </head>
-  <body data-theme-intent={themeIntent}>
+  <body
+    data-theme-intent={themeIntent}
+    data-motion-profile={motionProfile}
+    data-motion-capability={motionCapability}
+  >
     <a class="skip-link" href="#main-content">Skip to content</a>
     <Header navItems={navItems} siteSettings={siteSettings} />
     <main id="main-content">
@@ -122,108 +133,54 @@ const jsonLdCollection = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []
       const moduleNodes = Array.from(document.querySelectorAll("[data-module]"));
       const viewedModules = new Set();
       const engagedModules = new Set();
-      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-      if (moduleNodes.length > 0) {
-        moduleNodes.forEach((node) => {
-          const revealNodes = Array.from(node.querySelectorAll(".reveal"));
-          const settleDelay = Math.min(1200, 420 + revealNodes.length * 72);
-          node.setAttribute("data-settle-delay", String(settleDelay));
-
-          revealNodes.forEach((revealNode, index) => {
-            if (!(revealNode instanceof HTMLElement)) {
-              return;
-            }
-
-            revealNode.style.setProperty("--reveal-index", String(index));
-
-            if (!revealNode.hasAttribute("data-reveal-variant")) {
-              const variant = index % 3 === 0 ? "lift" : index % 3 === 1 ? "slide" : "tilt";
-              revealNode.setAttribute("data-reveal-variant", variant);
-            }
-          });
-        });
-      }
-
-      if (!prefersReducedMotion && moduleNodes.length > 0) {
-        const moduleStates = moduleNodes.map((node) => ({
-          node,
-          motionTier: node.getAttribute("data-motion-tier") || "section",
-        }));
-        const driftState = new WeakMap();
-
-        let frameId = 0;
-
-        function updateModuleMotion() {
-          frameId = 0;
-          const viewportHeight = window.innerHeight || 1;
-
-          moduleStates.forEach(({ node, motionTier }) => {
-            const rect = node.getBoundingClientRect();
-            const progress = Math.min(1, Math.max(0, (viewportHeight - rect.top) / (viewportHeight + rect.height)));
-            const centerOffset = (rect.top + rect.height * 0.5 - viewportHeight * 0.5) / viewportHeight;
-            const clampedOffset = Math.max(-1, Math.min(1, centerOffset));
-            const inRange = rect.bottom > -viewportHeight * 0.35 && rect.top < viewportHeight * 1.35;
-            const driftStrength = motionTier === "hero" ? 28 : motionTier === "section" ? 15 : 8;
-            const targetDrift = inRange ? clampedOffset * -driftStrength : 0;
-            const previousDrift = driftState.get(node) ?? targetDrift;
-            const drift = previousDrift + (targetDrift - previousDrift) * 0.18;
-
-            driftState.set(node, drift);
-
-            node.style.setProperty("--module-progress", progress.toFixed(3));
-            node.style.setProperty("--module-drift", drift.toFixed(2) + "px");
-          });
-        }
-
-        function queueMotionUpdate() {
-          if (frameId !== 0) {
-            return;
-          }
-
-          frameId = window.requestAnimationFrame(updateModuleMotion);
-        }
-
-        queueMotionUpdate();
-        window.addEventListener("scroll", queueMotionUpdate, { passive: true });
-        window.addEventListener("resize", queueMotionUpdate);
-      }
+      const gsapRevealVariants = new Set(["reveal-stagger", "story-stack", "legendary-scrub"]);
 
       if (moduleNodes.length > 0 && "IntersectionObserver" in window) {
-        const moduleObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              const moduleId = entry.target.getAttribute("data-module") || "unknown";
-              const motionTier = entry.target.getAttribute("data-motion-tier") || "section";
+        /* ── Reveal observer: adds .in-view so the CSS .reveal system unblurs ── */
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              /* After reveal transitions finish, mark settled for cheaper repaints */
+              setTimeout(() => entry.target.classList.add("motion-settled"), 900);
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
 
-              if (entry.isIntersecting && !viewedModules.has(moduleId)) {
-                viewedModules.add(moduleId);
-                emitTrackedEvent("module_view", { module_id: moduleId, motion_tier: motionTier });
-              }
+        moduleNodes.forEach((node) => {
+          const variant = node.getAttribute("data-motion-variant") || "none";
+          if (!gsapRevealVariants.has(variant)) {
+            revealObserver.observe(node);
+          }
+        });
 
-              if (entry.intersectionRatio >= 0.7 && !engagedModules.has(moduleId)) {
-                engagedModules.add(moduleId);
-                emitTrackedEvent("section_engagement", { module_id: moduleId, engagement: "deep-view" });
-              }
+        /* ── Analytics observer: tracks module views & deep engagement ── */
+        const moduleObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const moduleId = entry.target.getAttribute("data-module") || "unknown";
+            const motionTier = entry.target.getAttribute("data-motion-tier") || "section";
+            
+            if (entry.isIntersecting && !viewedModules.has(moduleId)) {
+              viewedModules.add(moduleId);
+              emitTrackedEvent("module_view", { module_id: moduleId, motion_tier: motionTier });
+            }
 
-              if (entry.isIntersecting) {
-                entry.target.classList.add("in-view");
-
-                if (!entry.target.hasAttribute("data-motion-armed")) {
-                  entry.target.setAttribute("data-motion-armed", "true");
-                  const settleDelay = Number(entry.target.getAttribute("data-settle-delay") || "760");
-                  window.setTimeout(() => {
-                    entry.target.classList.add("motion-settled");
-                  }, settleDelay);
-                }
-              }
-            });
-          },
-          { threshold: [0.35, 0.7] },
-        );
+            if (entry.intersectionRatio >= 0.7 && !engagedModules.has(moduleId)) {
+              engagedModules.add(moduleId);
+              emitTrackedEvent("section_engagement", { module_id: moduleId, engagement: "deep-view" });
+            }
+          });
+        }, { threshold: [0.35, 0.7] });
 
         moduleNodes.forEach((node) => moduleObserver.observe(node));
       }
     </script>
+
+    {enableMotionEngine && (
+      <script>
+        import '/src/lib/animations/index.ts';
+      </script>
+    )}
   </body>
 </html>

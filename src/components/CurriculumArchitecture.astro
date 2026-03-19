@@ -1,4 +1,6 @@
 ---
+import type { SectionMotionDensity, SectionMotionVariant } from "@/lib/types";
+
 const pillars = [
   {
     title: "Diagnostic Baseline",
@@ -17,9 +19,23 @@ const pillars = [
     details: "Run timed sessions and confidence checks to lock in pacing.",
   },
 ];
+
+interface Props {
+  motionVariant?: SectionMotionVariant;
+  motionDensity?: SectionMotionDensity;
+}
+
+const { motionVariant = "reveal-stagger", motionDensity = "compact" } = Astro.props;
 ---
 
-<section class="section" aria-labelledby="architecture-title" data-module="curriculum-architecture" data-motion-tier="section">
+<section
+  class="section"
+  aria-labelledby="architecture-title"
+  data-module="curriculum-architecture"
+  data-motion-tier="section"
+  data-motion-variant={motionVariant}
+  data-motion-density={motionDensity}
+>
   <div class="container">
     <header class="section-heading centered">
       <p class="eyebrow">Curriculum architecture</p>

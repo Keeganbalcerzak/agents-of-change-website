@@ -1,0 +1,460 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link [ref=e9] [cursor=pointer]:
+          - /url: https://agentsofchangeprep.com
+        - generic [ref=e13]:
+          - navigation "Menu" [ref=e14]:
+            - list [ref=e15]:
+              - listitem [ref=e16]:
+                - link "Exam Prep" [ref=e17] [cursor=pointer]:
+                  - /url: https://agentsofchangeprep.com/
+                  - text: Exam Prep
+                  - generic [ref=e18]:
+                    - generic: 
+              - listitem [ref=e19]:
+                - link "Testimonials" [ref=e20] [cursor=pointer]:
+                  - /url: https://agentsofchangeprep.com/testimonials/
+              - listitem [ref=e21]:
+                - link "Free Tests" [ref=e22] [cursor=pointer]:
+                  - /url: https://agentsofchangeprep.com/free-practice-tests/
+              - listitem [ref=e23]:
+                - link "Continuing Education" [ref=e24] [cursor=pointer]:
+                  - /url: https://agentsofchangeprep.com/continuing-education/
+              - listitem [ref=e25]:
+                - link "About" [ref=e26] [cursor=pointer]:
+                  - /url: https://agentsofchangeprep.com/about-agents-of-change/
+                  - text: About
+                  - generic [ref=e27]:
+                    - generic: 
+          - text:    
+        - link "Enroll Now" [ref=e33] [cursor=pointer]:
+          - /url: https://agentsofchangeprep.com/course-selection/
+          - generic [ref=e35]: Enroll Now
+        - link "SIGN IN" [ref=e41] [cursor=pointer]:
+          - /url: https://agentsofchange.thinkific.com/users/sign_in
+          - generic [ref=e43]: SIGN IN
+    - text:      
+  - generic [ref=e44]:
+    - generic [ref=e46]:
+      - generic [ref=e48]:
+        - generic [ref=e56]: "#1 Audio/Visual ASWB Test Prep"
+        - heading "Build Confidence & Get Licensed!" [level=2] [ref=e61]
+        - heading "Agents of Change" [level=2] [ref=e64]
+        - paragraph [ref=e67]: Social Work Test Prep For Bachelors, Masters, and Clinical ASWB Exams
+        - generic [ref=e69]:
+          - link "Enroll Now" [ref=e75] [cursor=pointer]:
+            - /url: https://agentsofchangeprep.com/course-selection/
+            - generic [ref=e77]: Enroll Now
+          - link "Free Preview" [ref=e83] [cursor=pointer]:
+            - /url: https://agentsofchangeprep.com/course-selection-free-trial/
+            - generic [ref=e85]: Free Preview
+      - img "Website Image 1 (1)" [ref=e90]
+    - generic [ref=e98]:
+      - heading "Social Work Test Prep" [level=1] [ref=e101]
+      - heading "About Our Courses" [level=4] [ref=e104]
+      - generic [ref=e106]:
+        - paragraph [ref=e107]:
+          - text: Our courses are designed for
+          - strong [ref=e108]: social workers
+          - text: who are preparing for the ASWB Bachelors (BSW), Masters (LMSW) and Clinical (LCSW) licensing exams. All of our courses provide you access until you PASS!
+        - paragraph [ref=e109]:
+          - text: Agents of Change will help you prepare to
+          - strong [ref=e110]: PASS
+          - text: your licensing exam and level up your career. With over 30 hours of visual and audio content, mock practice questions, test-taking tips, and strategies to break down and synthesize exam content, you will be prepared and confident to tackle your exam on test day!
+        - paragraph [ref=e111]: Our content is also available on our iOS (Apple) and Android (Google) mobile apps to make studying easier than ever before.
+        - paragraph [ref=e112]:
+          - text: More than 100,000 Social Workers just like you have used these materials to PASS their licensing exams.
+          - strong [ref=e113]: Are you ready to be next?
+    - generic [ref=e115]:
+      - generic [ref=e117]:
+        - heading "Meet Your Instructor" [level=2] [ref=e120]: Meet Your Instructor
+        - heading "Dr. Meagan Mitchell, LICSW" [level=4] [ref=e123]
+        - paragraph [ref=e126]:
+          - text: DSW, MSW, MEd, RPT
+          - superscript [ref=e127]: ™
+      - generic [ref=e131]:
+        - generic [ref=e136]: 
+        - generic [ref=e138]:
+          - paragraph [ref=e139]: Welcome! I am a Licensed Clinical Social Worker and know from first-hand experience how overwhelming the process of preparing for the licensing exam can be. Agents of Change is here to help!
+          - paragraph [ref=e140]: Education and teaching are deep-seated passions in my life. In addition to my DSW and MSW, I also hold a Master’s in Education (MEd). I have a deep understanding of the science behind learning and strive to find ways to connect and engage with a variety of learning styles.
+          - paragraph [ref=e141]: I have created engaging audio and visual lessons to help you prepare for the ASWB exams and feel confident on test day! I look forward to partnering with you on your journey towards licensure.
+    - generic [ref=e145]:
+      - heading "Agents of Change Course Curriculum" [level=2] [ref=e148]
+      - generic [ref=e150]:
+        - generic [ref=e157]:
+          - generic [ref=e159]: "01"
+          - generic [ref=e160]:
+            - 'heading "Getting Started: Studying for Success" [level=3] [ref=e162]'
+            - generic [ref=e165]: Organization is key! Do you feel overwhelmed and unsure of how to stay motivated in your studying? This session will help participants get organized.
+        - generic [ref=e172]:
+          - generic [ref=e174]: "02"
+          - generic [ref=e175]:
+            - 'heading "Strategy: Approaching and Examining Practice Questions" [level=3] [ref=e177]'
+            - generic [ref=e180]: In this section, we cover the basics on how to build critical thinking and breaking down question strategies.
+        - generic [ref=e187]:
+          - generic [ref=e189]: "03"
+          - generic [ref=e190]:
+            - 'heading "Unit 1: Human Development, Diversity and Behavior" [level=3] [ref=e192]'
+            - generic [ref=e195]: "This section will go over the major developmental theories. This includes: Erikson, Piaget and Kohlberg."
+      - button "View More" [ref=e202] [cursor=pointer]
+    - generic [ref=e207]:
+      - heading "Build Confidence & Get Licensed" [level=4] [ref=e210]
+      - heading "Pass Your Social Work Exam" [level=2] [ref=e213]
+      - link "Enroll Now" [ref=e217] [cursor=pointer]:
+        - /url: https://agentsofchangeprep.com/course-selection/
+        - generic [ref=e219]: Enroll Now
+    - generic [ref=e221]:
+      - generic [ref=e223]:
+        - heading "Level Up Your Studying" [level=3] [ref=e226]
+        - heading "Why Agents of Change?" [level=2] [ref=e229]
+      - list [ref=e234]:
+        - listitem [ref=e235]:
+          - generic [ref=e237]: 
+          - generic [ref=e238]:
+            - text: Realistic Practice
+            - text: Avoid surprises and go in prepared! Agents of Change focuses on concise and real-life explanations of key topics. Mock practice questions and rationales are provided and explained in detail throughout.
+        - listitem [ref=e239]:
+          - generic [ref=e241]: 
+          - generic [ref=e242]:
+            - text: Quality Resources
+            - generic [ref=e243]: High-quality content without the high price tag! The licensing process can be costly. Agents of Change is committed to providing high-quality content at a reasonable price. With Agents of Change, you also have access to our materials until you pass, no hidden fees!
+        - listitem [ref=e244]:
+          - generic [ref=e246]: 
+          - generic [ref=e247]:
+            - text: Organized Studying
+            - text: Take the guesswork out of studying! Agents of Change has an easy-to-follow study plan that aligns with the ASWB licensing content outline and KSA targets. Study materials are available for download which makes studying on the go seamless. Our content is also available on our brand new iOS (Apple) and Android (Google) mobile apps to make studying easier than ever before.
+    - generic [ref=e251]:
+      - heading "Premium Package Includes" [level=2] [ref=e254]
+      - generic [ref=e256]:
+        - generic [ref=e261]:
+          - generic [ref=e264]: 
+          - generic [ref=e265]:
+            - heading "Audio + Visual Content" [level=3] [ref=e266]
+            - paragraph [ref=e267]:
+              - text: We designed agents of Change to support all learning styles. Each topic includes
+              - strong [ref=e268]: engaging videos and visual slides
+              - text: . With your purchase, you also get access to on-the-go audio resources and our iOS (Apple) and Android (Google) mobile apps.
+        - generic [ref=e273]:
+          - generic [ref=e276]: 
+          - generic [ref=e277]:
+            - heading "100's of Mock Practice Questions" [level=3] [ref=e278]
+            - paragraph [ref=e279]:
+              - text: Build your test-day confidence with
+              - strong [ref=e280]: 100's of mock practice questions,
+              - text: video walkthroughs, and comprehensive rationales. Agents of Change will help you get comfortable with the language of the exam.
+        - generic [ref=e285]:
+          - generic [ref=e288]: 
+          - generic [ref=e289]:
+            - heading "Monthly Study Groups" [level=3] [ref=e290]
+            - paragraph [ref=e291]:
+              - text: Each month, you'll be invited to
+              - strong [ref=e292]: 2 LIVE and interactive study groups
+              - text: on key ASWB topics. This is an added bonus and offers a way to connect with a community of learners. You'll also get access to more than 30 past recorded study groups when you join
+    - generic [ref=e302]:
+      - heading "Interested in Agents of Change for Your Agency or Group?" [level=3] [ref=e305]
+      - heading "Let's Get Your Group Licensed!" [level=2] [ref=e308]
+      - paragraph [ref=e311]: Agents of Change is a great resource for your agency or group! Our program is used by dozens of schools, agencies, and other organizations for licensure preparation.
+      - paragraph [ref=e314]: Please contact us to learn more about special group discounts and benefits.
+      - link "Contact Us" [ref=e318] [cursor=pointer]:
+        - /url: https://agentsofchangeprep.com/contact/
+        - generic [ref=e320]: Contact Us
+    - generic [ref=e329]:
+      - heading "Are You Ready to Get Started?" [level=4] [ref=e332]
+      - heading "Let's Get You Licensed!" [level=2] [ref=e335]
+      - link "I'm Ready to Enroll" [ref=e339] [cursor=pointer]:
+        - /url: https://agentsofchangeprep.com/course-selection/
+        - generic [ref=e341]: I'm Ready to Enroll
+    - generic [ref=e347]:
+      - heading "Our Latest Posts" [level=3] [ref=e348]
+      - generic [ref=e349]: Follow Us for Test Prep Tips
+      - generic [ref=e350]:
+        - generic [ref=e351]:
+          - generic [ref=e352]:
+            - generic [ref=e353]: March 11, 2026
+            - link [ref=e355] [cursor=pointer]:
+              - /url: https://agentsofchangeprep.com/blog/the-10-minute-break-strategy-how-to-use-the-scheduled-break-without-losing-momentum/
+            - text: 
+          - generic [ref=e356]:
+            - 'heading "The 10-Minute Break Strategy: How to Use the Scheduled Break Without Losing Momentum" [level=5] [ref=e357]':
+              - 'link "The 10-Minute Break Strategy: How to Use the Scheduled Break Without Losing Momentum" [ref=e358] [cursor=pointer]':
+                - /url: https://agentsofchangeprep.com/blog/the-10-minute-break-strategy-how-to-use-the-scheduled-break-without-losing-momentum/
+            - text:  
+        - generic [ref=e359]:
+          - generic [ref=e360]:
+            - generic [ref=e361]: March 10, 2026
+            - link [ref=e363] [cursor=pointer]:
+              - /url: https://agentsofchangeprep.com/blog/pearson-vue-test-day-checklist-for-the-aswb-exam/
+            - text: 
+          - generic [ref=e364]:
+            - heading "Pearson VUE Test Day Checklist for the ASWB Exam" [level=5] [ref=e365]:
+              - link "Pearson VUE Test Day Checklist for the ASWB Exam" [ref=e366] [cursor=pointer]:
+                - /url: https://agentsofchangeprep.com/blog/pearson-vue-test-day-checklist-for-the-aswb-exam/
+            - text:  
+      - link "View Blog" [ref=e368] [cursor=pointer]:
+        - /url: https://agentsofchangeprep.com/blog/
+    - generic [ref=e375]:
+      - heading "Claim your free questions today!" [level=5] [ref=e378]
+      - heading "SIGN UP FOR 10 FREE QUESTIONS AND RATIONALES" [level=4] [ref=e381]
+      - link "Claim Now" [ref=e385] [cursor=pointer]:
+        - /url: https://agentsofchangeprep.com/course-selection-free-trial/
+        - generic [ref=e387]: Claim Now
+    - generic [ref=e394]:
+      - generic [ref=e396]:
+        - generic [ref=e399]:
+          - generic [ref=e400]: Breaking down the questions was the foundational skill I needed and which I used throughout the actual exam. Then organizing the content in Agents of Change was helpful as it allowed me to go through 2 1/2 years of coursework and organize my thinking through your modules. I loved the practice questions and although the actual exam questions were different, I was able to apply practical knowledge from my studies from class and your modules to pass.
+          - generic [ref=e401]:
+            - img "IMG_3015 – Alicia Gramins" [ref=e403]
+            - heading "Mastered Question Strategy, Passed with Confidence" [level=3] [ref=e405]
+        - generic [ref=e408]:
+          - generic [ref=e409]: Agents of Change played a huge role in helping me pass my LMSW exam. The live sessions made the material feel manageable and engaging, and the practice questions were key to my success. I didn’t just memorize information, I learned how to think through questions the way the exam requires. The detailed explanations helped me understand my reasoning and improve with every section. By the time I took the test, I felt confident and prepared, and I credit this program for that!
+          - generic [ref=e410]:
+            - img "Grijalva__Maria – Maria Grijalva" [ref=e412]
+            - heading "Built Confidence and Passed the LMSW Exam!" [level=3] [ref=e414]
+        - generic [ref=e417]:
+          - generic [ref=e418]: I really loved all of Agents of Change. The Agents of Change program was incredibly helpful for me because it gave me a structured and realistic way to prepare for the ASWB exam. What stood out the most was how the material broke down complex concepts into clear explanations that actually made sense. Instead of just memorizing information, I felt like I was learning how to think through the questions, which made a big difference in my confidence. The practice questions and mock exams were especially valuable. They were very similar to the style of the real exam, which helped me understand how questions are worded and what the exam is really asking. After each practice session, reviewing the rationales helped me see why the correct answer was right and why the others were not. Another thing that helped me was the way the program organized the study material. It made studying feel manageable instead of overwhelming.
+          - generic [ref=e419]:
+            - img "IMG_0987 – Rebecca Trujillo (1)" [ref=e421]
+            - heading "Structured, Clear Prep Built My Confidence and ASWB Exam Skills" [level=3] [ref=e423]
+        - generic [ref=e426]:
+          - generic [ref=e427]: The audio files from Agents of Change and the breakdown of how to approach the questions/vignettes were especially helpful, as I’m an audio learner. The live study groups on Sunday helped build my confidence with engaging in the comment sections and able to provide rationale as to why I chose my answer. Dr. Meagan’s breakdown of questions with the highlighting key points, and also reading the questions twice before answering also helped me feel confident for test day!
+          - generic [ref=e428]:
+            - img "IMG_9456 – Shameeka Butler (1)" [ref=e430]
+            - heading "Audio Learning and Question Breakdown Boosted My Confidence" [level=3] [ref=e432]
+        - generic [ref=e435]:
+          - generic [ref=e436]: The PowerPoints and the teaching style of the videos from Agents of Change were especially helpful in getting my PASS!
+          - generic [ref=e437]:
+            - img "IMG_2299 – Heather Walsh" [ref=e439]
+            - heading "Visual Slides and Teaching Style Helped Me PASS" [level=3] [ref=e441]
+        - generic [ref=e444]:
+          - generic [ref=e445]: The Helping Process (Eat Pie Today), the 5 W’s, and reviewing the recorded study group videos from Agents of Change was especially helpful! Also, completing all the mock exams and reviewing my answers.
+          - generic [ref=e446]:
+            - img "IMG_1432 – Jessica Ortega" [ref=e448]
+            - heading "5 W’s, Study Groups, and Mock Exams Made Difference" [level=3] [ref=e450]
+        - generic [ref=e453]:
+          - generic [ref=e454]: Agents of Change was organized and easy to follow. The visual and audio modules helped me retain information more effectively. The live and recorded group sessions, along with the practice questions and rationales, were especially helpful in strengthening my critical thinking skills for this exam. Using the 5 W’s strategy allowed me to focus on the most pertinent information in each question and better understand what was being asked. It also helped me to avoid overthinking the questions. I also really appreciated the breathing, grounding, and mindfulness module, which some programs may not offer. I kept these techniques in mind when I began to feel anxious during the exam, allowing me to pause, and refocus.
+          - generic [ref=e455]:
+            - img "IMG_1374 – Fredrina Foxe" [ref=e457]
+            - heading "Organized, Effective Learning with Strong Critical Thinking Support" [level=3] [ref=e459]
+        - generic [ref=e462]:
+          - generic [ref=e463]: What was most helpful was the tests in each section of Agents of Change and how things were broken down if you missed a question!
+          - generic [ref=e464]:
+            - img "IMG_0027 – Doug Teasdale" [ref=e466]
+            - heading "Clear Explanations and Section Tests Boosted My Learning" [level=3] [ref=e468]
+        - generic [ref=e471]:
+          - generic [ref=e472]: I loved the variety of having slides and audios that matched the material to follow along. Agents of Change helped me realize that this is the best method of learning for me. Agents of Change helped me learn ways to breakdown questions and truly make a connection between FIRST, NEXT, MOST, BEST questions. I appreciated the clinical package and the online questions, which times you and mocks the actual exam. Agents of Change guided my studying plan and how to tell which areas I needed to focus on more.
+          - generic [ref=e473]:
+            - img "Screenshot" [ref=e475]
+            - heading "Agents of Change Made Learning Click for Me" [level=3] [ref=e477]
+        - generic [ref=e480]:
+          - generic [ref=e481]: The most helpful part for me of Agents of Change was how Meagan explained howto break down the questions and how she simplified the content!
+          - generic [ref=e482]:
+            - img "IMG_7970 – Krista Standish" [ref=e484]
+            - heading "Simplified Content and Clear Question Breakdown" [level=3] [ref=e486]
+        - generic [ref=e489]:
+          - generic [ref=e490]: Breaking down the questions was the foundational skill I needed and which I used throughout the actual exam. Then organizing the content in Agents of Change was helpful as it allowed me to go through 2 1/2 years of coursework and organize my thinking through your modules. I loved the practice questions and although the actual exam questions were different, I was able to apply practical knowledge from my studies from class and your modules to pass.
+          - generic [ref=e491]:
+            - img "IMG_3015 – Alicia Gramins" [ref=e493]
+            - heading "Mastered Question Strategy, Passed with Confidence" [level=3] [ref=e495]
+        - generic [ref=e498]:
+          - generic [ref=e499]: Agents of Change played a huge role in helping me pass my LMSW exam. The live sessions made the material feel manageable and engaging, and the practice questions were key to my success. I didn’t just memorize information, I learned how to think through questions the way the exam requires. The detailed explanations helped me understand my reasoning and improve with every section. By the time I took the test, I felt confident and prepared, and I credit this program for that!
+          - generic [ref=e500]:
+            - img "Grijalva__Maria – Maria Grijalva" [ref=e502]
+            - heading "Built Confidence and Passed the LMSW Exam!" [level=3] [ref=e504]
+        - generic [ref=e507]:
+          - generic [ref=e508]: I really loved all of Agents of Change. The Agents of Change program was incredibly helpful for me because it gave me a structured and realistic way to prepare for the ASWB exam. What stood out the most was how the material broke down complex concepts into clear explanations that actually made sense. Instead of just memorizing information, I felt like I was learning how to think through the questions, which made a big difference in my confidence. The practice questions and mock exams were especially valuable. They were very similar to the style of the real exam, which helped me understand how questions are worded and what the exam is really asking. After each practice session, reviewing the rationales helped me see why the correct answer was right and why the others were not. Another thing that helped me was the way the program organized the study material. It made studying feel manageable instead of overwhelming.
+          - generic [ref=e509]:
+            - img "IMG_0987 – Rebecca Trujillo (1)" [ref=e511]
+            - heading "Structured, Clear Prep Built My Confidence and ASWB Exam Skills" [level=3] [ref=e513]
+        - generic [ref=e516]:
+          - generic [ref=e517]: The audio files from Agents of Change and the breakdown of how to approach the questions/vignettes were especially helpful, as I’m an audio learner. The live study groups on Sunday helped build my confidence with engaging in the comment sections and able to provide rationale as to why I chose my answer. Dr. Meagan’s breakdown of questions with the highlighting key points, and also reading the questions twice before answering also helped me feel confident for test day!
+          - generic [ref=e518]:
+            - img "IMG_9456 – Shameeka Butler (1)" [ref=e520]
+            - heading "Audio Learning and Question Breakdown Boosted My Confidence" [level=3] [ref=e522]
+      - generic:
+        - text:  
+        - generic [ref=e523]:
+          - button [ref=e524] [cursor=pointer]
+          - button [ref=e525] [cursor=pointer]
+          - button [ref=e526] [cursor=pointer]
+          - button [ref=e527] [cursor=pointer]
+          - button [ref=e528] [cursor=pointer]
+          - button [ref=e529] [cursor=pointer]
+          - button [ref=e530] [cursor=pointer]
+          - button [ref=e531] [cursor=pointer]
+          - button [ref=e532] [cursor=pointer]
+          - button [ref=e533] [cursor=pointer]
+    - generic [ref=e540]:
+      - heading "Agents of Change Frequently Asked Questions" [level=3] [ref=e541]
+      - tablist [ref=e542]:
+        - tab "How much time should I expect to spend on the program? " [ref=e544]:
+          - heading "How much time should I expect to spend on the program? " [level=4] [ref=e545]:
+            - button "How much time should I expect to spend on the program? " [ref=e546] [cursor=pointer]
+        - tab "Will I have access to the material after the course is over? " [ref=e548]:
+          - heading "Will I have access to the material after the course is over? " [level=4] [ref=e549]:
+            - button "Will I have access to the material after the course is over? " [ref=e550] [cursor=pointer]
+        - tab "Will this guarantee I pass the ASWB exam? " [ref=e552]:
+          - heading "Will this guarantee I pass the ASWB exam? " [level=4] [ref=e553]:
+            - button "Will this guarantee I pass the ASWB exam? " [ref=e554] [cursor=pointer]
+        - tab "How can I contact Agents of Change with a question? " [ref=e556]:
+          - heading "How can I contact Agents of Change with a question? " [level=4] [ref=e557]:
+            - button "How can I contact Agents of Change with a question? " [ref=e558] [cursor=pointer]
+        - tab "Do you offer individual tutoring? " [ref=e560]:
+          - heading "Do you offer individual tutoring? " [level=4] [ref=e561]:
+            - button "Do you offer individual tutoring? " [ref=e562] [cursor=pointer]
+        - tab "Does Agents of Change have a Mobile App? " [ref=e564]:
+          - heading "Does Agents of Change have a Mobile App? " [level=4] [ref=e565]:
+            - button "Does Agents of Change have a Mobile App? " [ref=e566] [cursor=pointer]
+    - generic [ref=e570]:
+      - generic [ref=e575]: 
+      - generic [ref=e579]:
+        - text: Subscribe now and receive a weekly email with free
+        - text: practice questions, answers, and rationales!
+      - generic [ref=e584]:
+        - generic [ref=e585]:
+          - textbox "Email Address" [ref=e587]
+          - button "Subscribe" [ref=e588] [cursor=pointer]:
+            - generic [ref=e589]: Subscribe
+        - link "Built with Kit" [ref=e591] [cursor=pointer]:
+          - /url: https://kit.com/features/forms?utm_campaign=poweredby&utm_content=form&utm_medium=referral&utm_source=dynamic
+    - iframe [ref=e604]:
+      - link "Trustpilot reviews. See our 132 reviews on Trustpilot. Click to view Trustpilot profile." [ref=f1e3] [cursor=pointer]:
+        - /url: https://www.trustpilot.com/review/agentsofchangeprep.com?utm_medium=trustbox&utm_source=MicroReviewCount
+        - generic [ref=f1e6]:
+          - text: See our
+          - generic [ref=f1e7]:
+            - strong [ref=f1e8]: "132"
+            - text: reviews
+          - text: "on"
+        - img "Trustpilot" [ref=f1e12]
+  - contentinfo [ref=e605]:
+    - generic [ref=e607]:
+      - generic [ref=e609]:
+        - heading "Pass Your Social Work Exam" [level=2] [ref=e612]
+        - paragraph [ref=e615]:
+          - strong [ref=e616]: Try it for free
+      - link "Enroll Now" [ref=e622] [cursor=pointer]:
+        - /url: https://agentsofchangeprep.com/course-selection/
+        - generic [ref=e624]: Enroll Now
+      - link "Free Preview" [ref=e630] [cursor=pointer]:
+        - /url: https://agentsofchangeprep.com/course-selection-free-trial/
+        - generic [ref=e632]: Free Preview
+    - generic [ref=e634]:
+      - generic [ref=e636]:
+        - heading "Agents of Change" [level=4] [ref=e639]
+        - paragraph [ref=e642]:
+          - text: Agents of Change will help you prepare to
+          - strong [ref=e643]: PASS
+          - text: your licensing exam and level up your career.
+        - list [ref=e646]:
+          - listitem [ref=e647]:
+            - link "Facebook-f" [ref=e648] [cursor=pointer]:
+              - /url: https://www.facebook.com/groups/aswbtestprep
+              - generic [ref=e649]: Facebook-f
+              - generic [ref=e650]: 
+          - listitem [ref=e651]:
+            - link "Youtube" [ref=e652] [cursor=pointer]:
+              - /url: https://www.youtube.com/c/AgentsofChangeTestPrepbyMeaganMitchell
+              - generic [ref=e653]: Youtube
+              - generic [ref=e654]: 
+          - listitem [ref=e655]:
+            - link "Instagram" [ref=e656] [cursor=pointer]:
+              - /url: https://www.instagram.com/agentsofchangeprep/
+              - generic [ref=e657]: Instagram
+              - generic [ref=e658]: 
+          - listitem [ref=e659]:
+            - link "Podcast" [ref=e660] [cursor=pointer]:
+              - /url: https://anchor.fm/agents-of-change-sw
+              - generic [ref=e661]: Podcast
+              - generic [ref=e662]: 
+      - generic [ref=e664]:
+        - heading "Explore" [level=2] [ref=e667]
+        - navigation "Menu" [ref=e670]:
+          - list [ref=e671]:
+            - listitem [ref=e672]:
+              - link "About" [ref=e673] [cursor=pointer]:
+                - /url: https://agentsofchangeprep.com/about-agents-of-change/
+            - listitem [ref=e674]:
+              - link "Free Resources" [ref=e675] [cursor=pointer]:
+                - /url: https://agentsofchangeprep.com/free-resources/
+            - listitem [ref=e676]:
+              - link "Free ASWB Flashcards" [ref=e677] [cursor=pointer]:
+                - /url: https://agentsofchangeprep.com/free-aswb-flashcards/
+            - listitem [ref=e678]:
+              - link "Practice Exams" [ref=e679] [cursor=pointer]:
+                - /url: https://agentsofchangeprep.com/aswb-practice-exam-lmsw-lcsw/
+            - listitem [ref=e680]:
+              - link "ASWB Chatbot Tutor" [ref=e681] [cursor=pointer]:
+                - /url: https://agentsofchangeprep.com/aswb-tutor-chatbot-powered-by-ai/
+            - listitem [ref=e682]:
+              - link "Personalized Study Plan" [ref=e683] [cursor=pointer]:
+                - /url: https://agentsofchangeprep.com/personalized-aswb-exam-study-plan/
+            - listitem [ref=e684]:
+              - link "Blog" [ref=e685] [cursor=pointer]:
+                - /url: https://agentsofchangeprep.com/blog/
+            - listitem [ref=e686]:
+              - link "Contact" [ref=e687] [cursor=pointer]:
+                - /url: https://agentsofchangeprep.com/contact/
+      - generic [ref=e689]:
+        - heading "Quick Links" [level=2] [ref=e692]
+        - navigation "Menu" [ref=e695]:
+          - list [ref=e696]:
+            - listitem [ref=e697]:
+              - link "Testimonials" [ref=e698] [cursor=pointer]:
+                - /url: https://agentsofchangeprep.com/testimonials/
+            - listitem [ref=e699]:
+              - link "FAQs" [ref=e700] [cursor=pointer]:
+                - /url: https://agentsofchangeprep.com/faqs/
+            - listitem [ref=e701]:
+              - link "Alumni" [ref=e702] [cursor=pointer]:
+                - /url: https://agentsofchangeprep.com/alumni-colleges-universities-aswb-test/
+            - listitem [ref=e703]:
+              - link "Continuing Education" [ref=e704] [cursor=pointer]:
+                - /url: https://agentsofchangeprep.com/continuing-education/
+            - listitem [ref=e705]:
+              - link "Affiliate" [ref=e706] [cursor=pointer]:
+                - /url: https://agentsofchangeprep.com/affiliate/
+            - listitem [ref=e707]:
+              - link "University Partnerships" [ref=e708] [cursor=pointer]:
+                - /url: https://agentsofchangeprep.com/university-partnerships/
+            - listitem [ref=e709]:
+              - link "Agency Partnerships" [ref=e710] [cursor=pointer]:
+                - /url: https://agentsofchangeprep.com/agency-partnerships/
+      - generic [ref=e712]:
+        - heading "Contact us" [level=2] [ref=e715]
+        - paragraph [ref=e718]: If you have any questions not covered by our FAQs, please get in touch using the email below
+        - paragraph [ref=e721]:
+          - text: "Email:"
+          - link "contact@agentsofchangeprep.com" [ref=e722] [cursor=pointer]:
+            - /url: mailto:contact@agentsofchangeprep.com
+    - contentinfo [ref=e723]:
+      - generic [ref=e724]:
+        - heading "© 2026 Agents of Change LLC Privacy Policy | Terms of Use" [level=3] [ref=e729]:
+          - text: © 2026 Agents of Change LLC
+          - link "Privacy Policy" [ref=e730] [cursor=pointer]:
+            - /url: https://agentsofchangeprep.com/privacy-policy/
+          - text: "|"
+          - link "Terms of Use" [ref=e731] [cursor=pointer]:
+            - /url: https://agentsofchangeprep.com/term-of-services/
+        - 'heading "Refund Policy: All sales are final. There are no refunds for any portion of your purchase." [level=3] [ref=e736]'
+    - contentinfo [ref=e737]:
+      - 'heading "Disclaimer: This content has been made available for informational and educational purposes only. This content is not intended to be a substitute for professional medical or clinical advice, diagnosis, or treatment. This licensure preparation program and materials associated with it were not included in the Association of Social Work Boards Approved Continuing Education review and are neither approved by ASWB for continuing education nor endorsed by ASWB in any manner." [level=3] [ref=e743]'
+  - iframe [ref=e746]:
+    - generic [ref=f2e2]:
+      - generic [ref=f2e5]:
+        - link "Privacy" [ref=f2e6] [cursor=pointer]:
+          - /url: https://www.google.com/intl/en/policies/privacy/
+        - text: "-"
+        - link "Terms" [ref=f2e7] [cursor=pointer]:
+          - /url: https://www.google.com/intl/en/policies/terms/
+      - generic [ref=f2e8]:
+        - generic [ref=f2e9]:
+          - text: protected by
+          - strong [ref=f2e10]: reCAPTCHA
+        - generic [ref=f2e12]:
+          - text: reCAPTCHA is changing its terms of service.
+          - link "Take action." [ref=f2e13] [cursor=pointer]:
+            - /url: https://google.com/recaptcha/admin/migrate
+        - generic [ref=f2e14]: "-"
+  - generic [ref=e747]: desktop

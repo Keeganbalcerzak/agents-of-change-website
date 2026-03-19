@@ -3,12 +3,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import CTASection from "@/components/CTASection.astro";
 import InstructorSpotlight from "@/components/InstructorSpotlight.astro";
 import StudyJourneyTimeline from "@/components/StudyJourneyTimeline.astro";
-import { getInstructorProfile, getSeoMetadata, getStudyPhases } from "@/lib/content";
+import CareerTimeline from "@/components/CareerTimeline.astro";
+import { getInstructorProfile, getSeoMetadata, getStudyPhases, getCareerPhases } from "@/lib/content";
 import { findSeoByKey } from "@/lib/seo";
 
-const [instructor, phases, seoEntries] = await Promise.all([
+const [instructor, phases, careerPhases, seoEntries] = await Promise.all([
   getInstructorProfile(),
   Promise.resolve(getStudyPhases()),
+  Promise.resolve(getCareerPhases()),
   getSeoMetadata(),
 ]);
 const seo = findSeoByKey(seoEntries, "about");
@@ -19,11 +21,12 @@ const seo = findSeoByKey(seoEntries, "about");
   description={seo?.description ?? "Meet the team and teaching framework behind Agents of Change."}
   path="/about"
   themeIntent="editorial"
+  enableMotionEngine={true}
 >
-  <section class="page-hero page-hero-rich" data-module="about-hero" data-motion-tier="hero">
+  <section class="page-hero page-hero-rich" data-module="about-hero" data-motion-tier="hero" data-motion-variant="story-stack" data-motion-density="cinematic">
     <div class="container">
       <p class="eyebrow">About us</p>
-      <h1>A teaching system built by social workers for social workers</h1>
+      <h1 data-split-heading>A teaching system built by social workers for social workers</h1>
       <p>
         Agents of Change exists to turn exam uncertainty into strategic confidence
         through structured learning design and practical decision frameworks.
@@ -41,16 +44,16 @@ const seo = findSeoByKey(seoEntries, "about");
         <p>Three principles guide every module, assessment, and coaching recommendation.</p>
       </header>
 
-      <div class="framework-grid">
-        <article class="framework-card reveal">
+      <div class="framework-grid" data-stagger="up">
+        <article class="framework-card reveal" data-stagger-item data-tilt>
           <h3>Clarity first</h3>
           <p>Break complex exam logic into actionable decision patterns students can reuse.</p>
         </article>
-        <article class="framework-card reveal">
+        <article class="framework-card reveal" data-stagger-item data-tilt>
           <h3>Application over memorization</h3>
           <p>Prioritize rationale and scenario interpretation to improve transfer under pressure.</p>
         </article>
-        <article class="framework-card reveal">
+        <article class="framework-card reveal" data-stagger-item data-tilt>
           <h3>Confidence through sequencing</h3>
           <p>Use milestone architecture so students always know their next highest-impact action.</p>
         </article>
@@ -58,6 +61,7 @@ const seo = findSeoByKey(seoEntries, "about");
     </div>
   </section>
 
+  <CareerTimeline phases={careerPhases} />
   <StudyJourneyTimeline phases={phases} />
 
   <CTASection

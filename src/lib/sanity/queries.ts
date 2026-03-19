@@ -56,7 +56,10 @@ export const stateRequirementsQuery = `*[_type == "stateRequirement"] | order(st
   requirements,
   boardUrl,
   "updatedAt": coalesce(updatedAt, _updatedAt),
-  metaDescription
+  metaDescription,
+  ceHoursRequired,
+  renewalCycleYears,
+  ceNotes
 }`;
 
 export const seoMetadataQuery = `*[_type == "seoMetadata"]{

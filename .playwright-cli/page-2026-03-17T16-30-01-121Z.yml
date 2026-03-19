@@ -1,0 +1,404 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Agents of Change home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: A
+        - generic [ref=e7]: Agents of Change
+      - navigation "Primary" [ref=e8]:
+        - list [ref=e9]:
+          - listitem [ref=e10]:
+            - link "Sally's Story" [ref=e11] [cursor=pointer]:
+              - /url: /#sally-story
+          - listitem [ref=e12]:
+            - link "Programs" [ref=e13] [cursor=pointer]:
+              - /url: /exam-prep
+          - listitem [ref=e14]:
+            - link "Continuing Education" [ref=e15] [cursor=pointer]:
+              - /url: /continuing-education
+          - listitem [ref=e16]:
+            - link "Success Stories" [ref=e17] [cursor=pointer]:
+              - /url: /success-stories
+          - listitem [ref=e18]:
+            - link "Resources" [ref=e19] [cursor=pointer]:
+              - /url: /resources
+          - listitem [ref=e20]:
+            - link "State Requirements" [ref=e21] [cursor=pointer]:
+              - /url: /state-requirements
+          - listitem [ref=e22]:
+            - link "About" [ref=e23] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e24]:
+            - link "Start Free Trial" [ref=e25] [cursor=pointer]:
+              - /url: /start-trial
+  - main [ref=e26]:
+    - generic [ref=e28]:
+      - paragraph [ref=e29]: Program detail
+      - heading "Exam prep architecture designed for first-time pass outcomes" [level=1] [ref=e30]
+      - paragraph [ref=e31]: "This program is built as an intentional sequence: diagnostic baseline, high-yield domain training, simulation loops, and confidence calibration."
+    - region "A four-layer learning system" [ref=e32]:
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - paragraph [ref=e35]: Curriculum architecture
+          - heading "A four-layer learning system" [level=2] [ref=e36]
+          - paragraph [ref=e37]: Every module is mapped to outcome progression, not random topic consumption.
+        - generic [ref=e38]:
+          - article [ref=e39]:
+            - paragraph [ref=e40]: Layer 1
+            - heading "Diagnostic Baseline" [level=3] [ref=e41]
+            - paragraph [ref=e42]: Identify score risks by domain before committing study time.
+          - article [ref=e43]:
+            - paragraph [ref=e44]: Layer 2
+            - heading "High-Yield Learning" [level=3] [ref=e45]
+            - paragraph [ref=e46]: Prioritize exam-relevant content blocks with explicit decision frameworks.
+          - article [ref=e47]:
+            - paragraph [ref=e48]: Layer 3
+            - heading "Application Practice" [level=3] [ref=e49]
+            - paragraph [ref=e50]: Translate concepts into scenario responses using rationale feedback loops.
+          - article [ref=e51]:
+            - paragraph [ref=e52]: Layer 4
+            - heading "Simulation and Readiness" [level=3] [ref=e53]
+            - paragraph [ref=e54]: Run timed sessions and confidence checks to lock in pacing.
+    - region "What your journey looks like" [ref=e55]:
+      - generic [ref=e56]:
+        - generic [ref=e57]:
+          - paragraph [ref=e58]: Study timeline
+          - heading "What your journey looks like" [level=2] [ref=e59]
+          - paragraph [ref=e60]: A staged progression from diagnostic setup to exam-day readiness.
+        - list [ref=e61]:
+          - listitem [ref=e62]:
+            - paragraph [ref=e63]: Phase 1
+            - paragraph [ref=e64]: Week 1
+            - paragraph [ref=e65]: Baseline diagnostic and personalized 7-day action plan.
+          - listitem [ref=e66]:
+            - paragraph [ref=e67]: Phase 2
+            - paragraph [ref=e68]: Weeks 2-4
+            - paragraph [ref=e69]: Domain-focused learning blocks with rationale-driven question drills.
+          - listitem [ref=e70]:
+            - paragraph [ref=e71]: Phase 3
+            - paragraph [ref=e72]: Weeks 5-8
+            - paragraph [ref=e73]: Timed simulation exams, confidence calibration, and final weak-area remediation.
+    - region "Score lift by high-yield competency" [ref=e74]:
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - paragraph [ref=e77]: Domain outcomes
+          - heading "Score lift by high-yield competency" [level=2] [ref=e78]
+          - paragraph [ref=e79]: Focus learning where score movement is most likely to happen.
+        - generic [ref=e80]:
+          - article [ref=e81]:
+            - paragraph [ref=e82]: +18 avg score lift
+            - heading "Ethics and Professional Values" [level=3] [ref=e83]
+            - paragraph [ref=e84]: Learn decision frameworks for boundary scenarios, confidentiality issues, and best-next-action logic.
+          - article [ref=e85]:
+            - paragraph [ref=e86]: +14 avg score lift
+            - heading "Assessment and Intervention" [level=3] [ref=e87]
+            - paragraph [ref=e88]: Use structured assessment pathways and intervention sequencing to answer scenario stems faster.
+          - article [ref=e89]:
+            - paragraph [ref=e90]: +11 avg score lift
+            - heading "Practice Management" [level=3] [ref=e91]
+            - paragraph [ref=e92]: Master supervision, documentation, and service coordination patterns that appear in exam sets.
+    - region "The performance model behind the curriculum" [ref=e93]:
+      - generic [ref=e94]:
+        - generic [ref=e95]:
+          - paragraph [ref=e96]: Outcomes framework
+          - heading "The performance model behind the curriculum" [level=2] [ref=e97]
+        - generic [ref=e98]:
+          - article [ref=e99]:
+            - generic [ref=e103]:
+              - paragraph [ref=e104]: 84%
+              - paragraph [ref=e105]: Readiness lift
+            - 'heading "Outcome 1: Stronger answer confidence" [level=3] [ref=e106]'
+            - paragraph [ref=e107]: Students report faster elimination decisions and less second-guessing under timed conditions.
+          - article [ref=e108]:
+            - generic [ref=e112]:
+              - paragraph [ref=e113]: 78%
+              - paragraph [ref=e114]: Pacing control
+            - 'heading "Outcome 2: Better pacing control" [level=3] [ref=e115]'
+            - paragraph [ref=e116]: Simulation cycles improve rhythm and reduce time pressure in the final third of the exam.
+          - article [ref=e117]:
+            - generic [ref=e121]:
+              - paragraph [ref=e122]: 88%
+              - paragraph [ref=e123]: Momentum consistency
+            - 'heading "Outcome 3: Predictable study momentum" [level=3] [ref=e124]'
+            - paragraph [ref=e125]: Milestone-based sequencing prevents content drift and keeps weekly progress measurable.
+    - region "Program offers" [ref=e126]:
+      - generic [ref=e127]:
+        - generic [ref=e129]:
+          - article [ref=e130]:
+            - heading "Foundational" [level=3] [ref=e132]
+            - paragraph [ref=e133]: "Career Stage: Beginner (Student – Exam Pass)"
+            - generic [ref=e134]:
+              - paragraph [ref=e135]:
+                - generic [ref=e136]: $25
+              - paragraph [ref=e137]: per month
+            - list [ref=e138]:
+              - listitem [ref=e139]: Full recorded test prep program
+              - listitem [ref=e140]: Practice exams
+              - listitem [ref=e141]: Study planner / AI tools
+              - listitem [ref=e142]: Limited community access
+            - link "Start Foundational Plan" [ref=e143] [cursor=pointer]:
+              - /url: /start-trial
+          - article [ref=e144]:
+            - heading "Growth" [level=3] [ref=e146]
+            - paragraph [ref=e147]: "Career Stage: Intermediate (CE Credit Renewal)"
+            - generic [ref=e148]:
+              - paragraph [ref=e149]:
+                - generic [ref=e150]: $25
+              - paragraph [ref=e151]: per month
+            - list [ref=e152]:
+              - listitem [ref=e153]: Unlimited CE credits
+              - listitem [ref=e154]: Live CE webinars
+              - listitem [ref=e155]: CE renewal tracker
+            - link "Start Growth Plan" [ref=e156] [cursor=pointer]:
+              - /url: /start-trial
+          - article [ref=e157]:
+            - paragraph [ref=e158]: Best Value
+            - heading "Lifetime" [level=3] [ref=e159]
+            - paragraph [ref=e160]: "Career Stage: Experienced (Long-Term Professional Identity)"
+            - generic [ref=e161]:
+              - paragraph [ref=e162]:
+                - generic [ref=e163]: $250
+              - paragraph [ref=e164]: per year
+            - list [ref=e165]:
+              - listitem [ref=e166]: Full recorded test prep program
+              - listitem [ref=e167]: Lifetime CE access
+              - listitem [ref=e168]: All live events
+              - listitem [ref=e169]: Future courses
+              - listitem [ref=e170]: AI tools
+              - listitem [ref=e171]: Industry innovations
+              - listitem [ref=e172]: Community access
+              - listitem [ref=e173]: New methodologies
+            - link "Get Lifetime Access" [ref=e174] [cursor=pointer]:
+              - /url: /start-trial
+        - generic [ref=e175]:
+          - generic [ref=e176]:
+            - paragraph [ref=e177]: Plan comparison
+            - heading "Subscription plan comparison" [level=3] [ref=e178]
+            - paragraph [ref=e179]: Check means included. X means not included.
+          - generic "Comparison legend" [ref=e180]:
+            - paragraph [ref=e181]:
+              - generic [ref=e183]: Included
+            - paragraph [ref=e184]:
+              - generic [ref=e186]: Not included
+          - table [ref=e188]:
+            - rowgroup [ref=e189]:
+              - row "Feature Foundational Growth Lifetime" [ref=e190]:
+                - columnheader "Feature" [ref=e191]
+                - columnheader "Foundational" [ref=e192]
+                - columnheader "Growth" [ref=e193]
+                - columnheader "Lifetime" [ref=e194]
+            - rowgroup [ref=e195]:
+              - row "Price $25 $25 $250" [ref=e196]:
+                - rowheader "Price" [ref=e197]
+                - cell "$25" [ref=e198]:
+                  - generic [ref=e200]: $25
+                - cell "$25" [ref=e201]:
+                  - generic [ref=e203]: $25
+                - cell "$250" [ref=e204]:
+                  - generic [ref=e206]: $250
+              - row "Full recorded test prep program Included Not included Included" [ref=e207]:
+                - rowheader "Full recorded test prep program" [ref=e208]
+                - cell "Included" [ref=e209]:
+                  - generic [ref=e211]: Included
+                - cell "Not included" [ref=e212]:
+                  - generic [ref=e214]: Not included
+                - cell "Included" [ref=e215]:
+                  - generic [ref=e217]: Included
+              - row "Practice exams Included Not included Not included" [ref=e218]:
+                - rowheader "Practice exams" [ref=e219]
+                - cell "Included" [ref=e220]:
+                  - generic [ref=e222]: Included
+                - cell "Not included" [ref=e223]:
+                  - generic [ref=e225]: Not included
+                - cell "Not included" [ref=e226]:
+                  - generic [ref=e228]: Not included
+              - row "Study planner / AI tools Included Not included Not included" [ref=e229]:
+                - rowheader "Study planner / AI tools" [ref=e230]
+                - cell "Included" [ref=e231]:
+                  - generic [ref=e233]: Included
+                - cell "Not included" [ref=e234]:
+                  - generic [ref=e236]: Not included
+                - cell "Not included" [ref=e237]:
+                  - generic [ref=e239]: Not included
+              - row "Limited community access Included Not included Not included" [ref=e240]:
+                - rowheader "Limited community access" [ref=e241]
+                - cell "Included" [ref=e242]:
+                  - generic [ref=e244]: Included
+                - cell "Not included" [ref=e245]:
+                  - generic [ref=e247]: Not included
+                - cell "Not included" [ref=e248]:
+                  - generic [ref=e250]: Not included
+              - row "Unlimited CE credits Not included Included Not included" [ref=e251]:
+                - rowheader "Unlimited CE credits" [ref=e252]
+                - cell "Not included" [ref=e253]:
+                  - generic [ref=e255]: Not included
+                - cell "Included" [ref=e256]:
+                  - generic [ref=e258]: Included
+                - cell "Not included" [ref=e259]:
+                  - generic [ref=e261]: Not included
+              - row "Live CE webinars Not included Included Not included" [ref=e262]:
+                - rowheader "Live CE webinars" [ref=e263]
+                - cell "Not included" [ref=e264]:
+                  - generic [ref=e266]: Not included
+                - cell "Included" [ref=e267]:
+                  - generic [ref=e269]: Included
+                - cell "Not included" [ref=e270]:
+                  - generic [ref=e272]: Not included
+              - row "CE renewal tracker Not included Included Not included" [ref=e273]:
+                - rowheader "CE renewal tracker" [ref=e274]
+                - cell "Not included" [ref=e275]:
+                  - generic [ref=e277]: Not included
+                - cell "Included" [ref=e278]:
+                  - generic [ref=e280]: Included
+                - cell "Not included" [ref=e281]:
+                  - generic [ref=e283]: Not included
+              - row "Lifetime CE access Not included Not included Included" [ref=e284]:
+                - rowheader "Lifetime CE access" [ref=e285]
+                - cell "Not included" [ref=e286]:
+                  - generic [ref=e288]: Not included
+                - cell "Not included" [ref=e289]:
+                  - generic [ref=e291]: Not included
+                - cell "Included" [ref=e292]:
+                  - generic [ref=e294]: Included
+              - row "All live events Not included Not included Included" [ref=e295]:
+                - rowheader "All live events" [ref=e296]
+                - cell "Not included" [ref=e297]:
+                  - generic [ref=e299]: Not included
+                - cell "Not included" [ref=e300]:
+                  - generic [ref=e302]: Not included
+                - cell "Included" [ref=e303]:
+                  - generic [ref=e305]: Included
+              - row "Future courses Not included Not included Included" [ref=e306]:
+                - rowheader "Future courses" [ref=e307]
+                - cell "Not included" [ref=e308]:
+                  - generic [ref=e310]: Not included
+                - cell "Not included" [ref=e311]:
+                  - generic [ref=e313]: Not included
+                - cell "Included" [ref=e314]:
+                  - generic [ref=e316]: Included
+              - row "AI tools Not included Not included Included" [ref=e317]:
+                - rowheader "AI tools" [ref=e318]
+                - cell "Not included" [ref=e319]:
+                  - generic [ref=e321]: Not included
+                - cell "Not included" [ref=e322]:
+                  - generic [ref=e324]: Not included
+                - cell "Included" [ref=e325]:
+                  - generic [ref=e327]: Included
+              - row "Industry innovations Not included Not included Included" [ref=e328]:
+                - rowheader "Industry innovations" [ref=e329]
+                - cell "Not included" [ref=e330]:
+                  - generic [ref=e332]: Not included
+                - cell "Not included" [ref=e333]:
+                  - generic [ref=e335]: Not included
+                - cell "Included" [ref=e336]:
+                  - generic [ref=e338]: Included
+              - row "Community access Not included Not included Included" [ref=e339]:
+                - rowheader "Community access" [ref=e340]
+                - cell "Not included" [ref=e341]:
+                  - generic [ref=e343]: Not included
+                - cell "Not included" [ref=e344]:
+                  - generic [ref=e346]: Not included
+                - cell "Included" [ref=e347]:
+                  - generic [ref=e349]: Included
+              - row "New methodologies Not included Not included Included" [ref=e350]:
+                - rowheader "New methodologies" [ref=e351]
+                - cell "Not included" [ref=e352]:
+                  - generic [ref=e354]: Not included
+                - cell "Not included" [ref=e355]:
+                  - generic [ref=e357]: Not included
+                - cell "Included" [ref=e358]:
+                  - generic [ref=e360]: Included
+    - region "Find CE Credits Required in your State" [ref=e361]:
+      - generic [ref=e362]:
+        - generic [ref=e363]:
+          - paragraph [ref=e364]: Post-Exam Roadmap
+          - heading "Find CE Credits Required in your State" [level=2] [ref=e365]
+          - paragraph [ref=e366]: Your journey doesn't end with passing. Discover exactly how many Continuing Education (CE) hours you'll need to maintain your license across different states.
+        - link "View State Requirements" [ref=e368] [cursor=pointer]:
+          - /url: /state-requirements
+    - region "Start with a personalized exam roadmap" [ref=e369]:
+      - generic [ref=e371]:
+        - heading "Start with a personalized exam roadmap" [level=2] [ref=e372]
+        - paragraph [ref=e373]: Complete your trial intake and receive a guided 7-day sequence aligned to your exam track and timeline.
+        - link "Start Free Trial" [ref=e374] [cursor=pointer]:
+          - /url: /start-trial
+  - contentinfo [ref=e375]:
+    - generic [ref=e376]:
+      - generic [ref=e377]:
+        - link "Agents of Change home" [ref=e378] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e379]: A
+          - generic [ref=e380]: Agents of Change
+        - paragraph [ref=e381]: Social Work Exam Prep and Continuing Education
+        - paragraph [ref=e382]:
+          - link "support@agentsofchangeprep.com" [ref=e383] [cursor=pointer]:
+            - /url: mailto:support@agentsofchangeprep.com
+          - text: "|"
+          - link "(555) 232-1944" [ref=e384] [cursor=pointer]:
+            - /url: tel:5552321944
+      - region "Programs" [ref=e385]:
+        - heading "Programs" [level=2] [ref=e386]
+        - list [ref=e387]:
+          - listitem [ref=e388]:
+            - link "Exam Prep" [ref=e389] [cursor=pointer]:
+              - /url: /exam-prep
+          - listitem [ref=e390]:
+            - link "Continuing Education" [ref=e391] [cursor=pointer]:
+              - /url: /continuing-education
+          - listitem [ref=e392]:
+            - link "Bundle" [ref=e393] [cursor=pointer]:
+              - /url: /exam-prep#offers
+          - listitem [ref=e394]:
+            - link "State Requirements" [ref=e395] [cursor=pointer]:
+              - /url: /state-requirements
+      - region "Resources" [ref=e396]:
+        - heading "Resources" [level=2] [ref=e397]
+        - list [ref=e398]:
+          - listitem [ref=e399]:
+            - link "Success Stories" [ref=e400] [cursor=pointer]:
+              - /url: /success-stories
+          - listitem [ref=e401]:
+            - link "Resources Hub" [ref=e402] [cursor=pointer]:
+              - /url: /resources
+          - listitem [ref=e403]:
+            - link "About" [ref=e404] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e405]:
+            - link "Start Free Trial" [ref=e406] [cursor=pointer]:
+              - /url: /start-trial
+          - listitem [ref=e407]:
+            - link "Contact Support" [ref=e408] [cursor=pointer]:
+              - /url: mailto:support@agentsofchangeprep.com
+      - region "Company" [ref=e409]:
+        - heading "Company" [level=2] [ref=e410]
+        - list [ref=e411]:
+          - listitem [ref=e412]:
+            - link "Contact" [ref=e413] [cursor=pointer]:
+              - /url: /contact
+          - listitem [ref=e414]:
+            - link "Privacy" [ref=e415] [cursor=pointer]:
+              - /url: /privacy
+          - listitem [ref=e416]:
+            - link "Terms" [ref=e417] [cursor=pointer]:
+              - /url: /terms
+          - listitem [ref=e418]:
+            - link "Email" [ref=e419] [cursor=pointer]:
+              - /url: mailto:support@agentsofchangeprep.com
+    - generic [ref=e420]:
+      - paragraph [ref=e421]: (c) 2026 Agents of Change. All rights reserved.
+      - paragraph [ref=e422]: "ASWB ACE Provider #1919"
+  - generic [ref=e425]:
+    - button "Menu" [ref=e426]:
+      - img [ref=e428]
+      - generic: Menu
+    - button "Inspect" [ref=e432]:
+      - img [ref=e434]
+      - generic: Inspect
+    - button "Audit" [ref=e436]:
+      - img [ref=e438]
+      - generic: Audit
+    - button "Settings" [ref=e441]:
+      - img [ref=e443]
+      - generic: Settings

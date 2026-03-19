@@ -1,4 +1,7 @@
 ---
+import type { SectionMotionDensity, SectionMotionVariant, SectionVisualVariant } from "@/lib/types";
+import ScrollReveal from "@/components/vendor/reactbits/ScrollReveal.astro";
+
 const rows = [
   {
     dimension: "Study structure",
@@ -21,18 +24,38 @@ const rows = [
     withAoc: "Guided sequence with support touchpoints and review markers",
   },
 ];
+
+interface Props {
+  visualVariant?: SectionVisualVariant;
+  motionVariant?: SectionMotionVariant;
+  motionDensity?: SectionMotionDensity;
+}
+
+const {
+  visualVariant = "default",
+  motionVariant = "reveal-stagger",
+  motionDensity = "compact",
+} = Astro.props;
+const isEditorialPurple = visualVariant === "editorial-contrast-purple";
 ---
 
-<section class="section" aria-labelledby="comparison-title" data-module="comparison-matrix" data-motion-tier="section">
+<section
+  class:list={["section", isEditorialPurple && "comparison-section-editorial-purple"]}
+  aria-labelledby="comparison-title"
+  data-module="comparison-matrix"
+  data-motion-tier="section"
+  data-motion-variant={motionVariant}
+  data-motion-density={motionDensity}
+>
   <div class="container">
-    <header class="section-heading centered">
+    <ScrollReveal as="header" className="section-heading centered" variant="slide" delayIndex={0}>
       <p class="eyebrow">Comparison</p>
       <h2 id="comparison-title">What changes when your prep is structured</h2>
-      <p>A practical view of how study outcomes shift with a designed learning system.</p>
-    </header>
+      <p>A direct side-by-side view of how structured prep changes study quality and exam readiness.</p>
+    </ScrollReveal>
 
-    <div class="comparison-wrap reveal">
-      <table class="comparison-table">
+    <div class:list={["comparison-wrap", isEditorialPurple && "comparison-wrap-editorial-purple"]}>
+      <table class:list={["comparison-table", isEditorialPurple && "comparison-table-editorial-purple"]}>
         <thead>
           <tr>
             <th scope="col">Dimension</th>
@@ -41,8 +64,8 @@ const rows = [
           </tr>
         </thead>
         <tbody>
-          {rows.map((row) => (
-            <tr>
+          {rows.map((row, index) => (
+            <tr class:list={["comparison-row", index % 2 === 0 ? "comparison-row-even" : "comparison-row-odd"]}>
               <th scope="row">{row.dimension}</th>
               <td>
                 <div class="comparison-cell comparison-negative">

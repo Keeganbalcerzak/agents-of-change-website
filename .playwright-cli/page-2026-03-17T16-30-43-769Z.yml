@@ -1,0 +1,375 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Agents of Change home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: A
+        - generic [ref=e7]: Agents of Change
+      - navigation "Primary" [ref=e8]:
+        - list [ref=e9]:
+          - listitem [ref=e10]:
+            - link "Sally's Story" [ref=e11] [cursor=pointer]:
+              - /url: /#sally-story
+          - listitem [ref=e12]:
+            - link "Programs" [ref=e13] [cursor=pointer]:
+              - /url: /exam-prep
+          - listitem [ref=e14]:
+            - link "Continuing Education" [ref=e15] [cursor=pointer]:
+              - /url: /continuing-education
+          - listitem [ref=e16]:
+            - link "Success Stories" [ref=e17] [cursor=pointer]:
+              - /url: /success-stories
+          - listitem [ref=e18]:
+            - link "Resources" [ref=e19] [cursor=pointer]:
+              - /url: /resources
+          - listitem [ref=e20]:
+            - link "State Requirements" [ref=e21] [cursor=pointer]:
+              - /url: /state-requirements
+          - listitem [ref=e22]:
+            - link "About" [ref=e23] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e24]:
+            - link "Start Free Trial" [ref=e25] [cursor=pointer]:
+              - /url: /start-trial
+  - main [ref=e26]:
+    - generic [ref=e28]:
+      - paragraph [ref=e29]: State lookup
+      - heading "Find social work licensing pathways by state" [level=1] [ref=e30]
+      - paragraph [ref=e31]: Browse state-by-state requirement pages and connect each requirement checklist to your exam prep sequence.
+    - generic [ref=e33]:
+      - article [ref=e34]:
+        - heading "Alabama" [level=2] [ref=e35]
+        - paragraph [ref=e36]: Verify degree and supervised practice requirements with your state board.
+        - link "View AL details" [ref=e37] [cursor=pointer]:
+          - /url: /state-requirements/al
+      - article [ref=e38]:
+        - heading "Alaska" [level=2] [ref=e39]
+        - paragraph [ref=e40]: Verify degree and supervised practice requirements with your state board.
+        - link "View AK details" [ref=e41] [cursor=pointer]:
+          - /url: /state-requirements/ak
+      - article [ref=e42]:
+        - heading "Arizona" [level=2] [ref=e43]
+        - paragraph [ref=e44]: Verify degree and supervised practice requirements with your state board.
+        - link "View AZ details" [ref=e45] [cursor=pointer]:
+          - /url: /state-requirements/az
+      - article [ref=e46]:
+        - heading "Arkansas" [level=2] [ref=e47]
+        - paragraph [ref=e48]: Verify degree and supervised practice requirements with your state board.
+        - link "View AR details" [ref=e49] [cursor=pointer]:
+          - /url: /state-requirements/ar
+      - article [ref=e50]:
+        - heading "California" [level=2] [ref=e51]
+        - paragraph [ref=e52]: Verify degree and supervised practice requirements with your state board.
+        - link "View CA details" [ref=e53] [cursor=pointer]:
+          - /url: /state-requirements/ca
+      - article [ref=e54]:
+        - heading "Colorado" [level=2] [ref=e55]
+        - paragraph [ref=e56]: Verify degree and supervised practice requirements with your state board.
+        - link "View CO details" [ref=e57] [cursor=pointer]:
+          - /url: /state-requirements/co
+      - article [ref=e58]:
+        - heading "Connecticut" [level=2] [ref=e59]
+        - paragraph [ref=e60]: Verify degree and supervised practice requirements with your state board.
+        - link "View CT details" [ref=e61] [cursor=pointer]:
+          - /url: /state-requirements/ct
+      - article [ref=e62]:
+        - heading "Delaware" [level=2] [ref=e63]
+        - paragraph [ref=e64]: Verify degree and supervised practice requirements with your state board.
+        - link "View DE details" [ref=e65] [cursor=pointer]:
+          - /url: /state-requirements/de
+      - article [ref=e66]:
+        - heading "Florida" [level=2] [ref=e67]
+        - paragraph [ref=e68]: Verify degree and supervised practice requirements with your state board.
+        - link "View FL details" [ref=e69] [cursor=pointer]:
+          - /url: /state-requirements/fl
+      - article [ref=e70]:
+        - heading "Georgia" [level=2] [ref=e71]
+        - paragraph [ref=e72]: Verify degree and supervised practice requirements with your state board.
+        - link "View GA details" [ref=e73] [cursor=pointer]:
+          - /url: /state-requirements/ga
+      - article [ref=e74]:
+        - heading "Hawaii" [level=2] [ref=e75]
+        - paragraph [ref=e76]: Verify degree and supervised practice requirements with your state board.
+        - link "View HI details" [ref=e77] [cursor=pointer]:
+          - /url: /state-requirements/hi
+      - article [ref=e78]:
+        - heading "Idaho" [level=2] [ref=e79]
+        - paragraph [ref=e80]: Verify degree and supervised practice requirements with your state board.
+        - link "View ID details" [ref=e81] [cursor=pointer]:
+          - /url: /state-requirements/id
+      - article [ref=e82]:
+        - heading "Illinois" [level=2] [ref=e83]
+        - paragraph [ref=e84]: Verify degree and supervised practice requirements with your state board.
+        - link "View IL details" [ref=e85] [cursor=pointer]:
+          - /url: /state-requirements/il
+      - article [ref=e86]:
+        - heading "Indiana" [level=2] [ref=e87]
+        - paragraph [ref=e88]: Verify degree and supervised practice requirements with your state board.
+        - link "View IN details" [ref=e89] [cursor=pointer]:
+          - /url: /state-requirements/in
+      - article [ref=e90]:
+        - heading "Iowa" [level=2] [ref=e91]
+        - paragraph [ref=e92]: Verify degree and supervised practice requirements with your state board.
+        - link "View IA details" [ref=e93] [cursor=pointer]:
+          - /url: /state-requirements/ia
+      - article [ref=e94]:
+        - heading "Kansas" [level=2] [ref=e95]
+        - paragraph [ref=e96]: Verify degree and supervised practice requirements with your state board.
+        - link "View KS details" [ref=e97] [cursor=pointer]:
+          - /url: /state-requirements/ks
+      - article [ref=e98]:
+        - heading "Kentucky" [level=2] [ref=e99]
+        - paragraph [ref=e100]: Verify degree and supervised practice requirements with your state board.
+        - link "View KY details" [ref=e101] [cursor=pointer]:
+          - /url: /state-requirements/ky
+      - article [ref=e102]:
+        - heading "Louisiana" [level=2] [ref=e103]
+        - paragraph [ref=e104]: Verify degree and supervised practice requirements with your state board.
+        - link "View LA details" [ref=e105] [cursor=pointer]:
+          - /url: /state-requirements/la
+      - article [ref=e106]:
+        - heading "Maine" [level=2] [ref=e107]
+        - paragraph [ref=e108]: Verify degree and supervised practice requirements with your state board.
+        - link "View ME details" [ref=e109] [cursor=pointer]:
+          - /url: /state-requirements/me
+      - article [ref=e110]:
+        - heading "Maryland" [level=2] [ref=e111]
+        - paragraph [ref=e112]: Verify degree and supervised practice requirements with your state board.
+        - link "View MD details" [ref=e113] [cursor=pointer]:
+          - /url: /state-requirements/md
+      - article [ref=e114]:
+        - heading "Massachusetts" [level=2] [ref=e115]
+        - paragraph [ref=e116]: Verify degree and supervised practice requirements with your state board.
+        - link "View MA details" [ref=e117] [cursor=pointer]:
+          - /url: /state-requirements/ma
+      - article [ref=e118]:
+        - heading "Michigan" [level=2] [ref=e119]
+        - paragraph [ref=e120]: Verify degree and supervised practice requirements with your state board.
+        - link "View MI details" [ref=e121] [cursor=pointer]:
+          - /url: /state-requirements/mi
+      - article [ref=e122]:
+        - heading "Minnesota" [level=2] [ref=e123]
+        - paragraph [ref=e124]: Verify degree and supervised practice requirements with your state board.
+        - link "View MN details" [ref=e125] [cursor=pointer]:
+          - /url: /state-requirements/mn
+      - article [ref=e126]:
+        - heading "Mississippi" [level=2] [ref=e127]
+        - paragraph [ref=e128]: Verify degree and supervised practice requirements with your state board.
+        - link "View MS details" [ref=e129] [cursor=pointer]:
+          - /url: /state-requirements/ms
+      - article [ref=e130]:
+        - heading "Missouri" [level=2] [ref=e131]
+        - paragraph [ref=e132]: Verify degree and supervised practice requirements with your state board.
+        - link "View MO details" [ref=e133] [cursor=pointer]:
+          - /url: /state-requirements/mo
+      - article [ref=e134]:
+        - heading "Montana" [level=2] [ref=e135]
+        - paragraph [ref=e136]: Verify degree and supervised practice requirements with your state board.
+        - link "View MT details" [ref=e137] [cursor=pointer]:
+          - /url: /state-requirements/mt
+      - article [ref=e138]:
+        - heading "Nebraska" [level=2] [ref=e139]
+        - paragraph [ref=e140]: Verify degree and supervised practice requirements with your state board.
+        - link "View NE details" [ref=e141] [cursor=pointer]:
+          - /url: /state-requirements/ne
+      - article [ref=e142]:
+        - heading "Nevada" [level=2] [ref=e143]
+        - paragraph [ref=e144]: Verify degree and supervised practice requirements with your state board.
+        - link "View NV details" [ref=e145] [cursor=pointer]:
+          - /url: /state-requirements/nv
+      - article [ref=e146]:
+        - heading "New Hampshire" [level=2] [ref=e147]
+        - paragraph [ref=e148]: Verify degree and supervised practice requirements with your state board.
+        - link "View NH details" [ref=e149] [cursor=pointer]:
+          - /url: /state-requirements/nh
+      - article [ref=e150]:
+        - heading "New Jersey" [level=2] [ref=e151]
+        - paragraph [ref=e152]: Verify degree and supervised practice requirements with your state board.
+        - link "View NJ details" [ref=e153] [cursor=pointer]:
+          - /url: /state-requirements/nj
+      - article [ref=e154]:
+        - heading "New Mexico" [level=2] [ref=e155]
+        - paragraph [ref=e156]: Verify degree and supervised practice requirements with your state board.
+        - link "View NM details" [ref=e157] [cursor=pointer]:
+          - /url: /state-requirements/nm
+      - article [ref=e158]:
+        - heading "New York" [level=2] [ref=e159]
+        - paragraph [ref=e160]: Verify degree and supervised practice requirements with your state board.
+        - link "View NY details" [ref=e161] [cursor=pointer]:
+          - /url: /state-requirements/ny
+      - article [ref=e162]:
+        - heading "North Carolina" [level=2] [ref=e163]
+        - paragraph [ref=e164]: Verify degree and supervised practice requirements with your state board.
+        - link "View NC details" [ref=e165] [cursor=pointer]:
+          - /url: /state-requirements/nc
+      - article [ref=e166]:
+        - heading "North Dakota" [level=2] [ref=e167]
+        - paragraph [ref=e168]: Verify degree and supervised practice requirements with your state board.
+        - link "View ND details" [ref=e169] [cursor=pointer]:
+          - /url: /state-requirements/nd
+      - article [ref=e170]:
+        - heading "Ohio" [level=2] [ref=e171]
+        - paragraph [ref=e172]: Verify degree and supervised practice requirements with your state board.
+        - link "View OH details" [ref=e173] [cursor=pointer]:
+          - /url: /state-requirements/oh
+      - article [ref=e174]:
+        - heading "Oklahoma" [level=2] [ref=e175]
+        - paragraph [ref=e176]: Verify degree and supervised practice requirements with your state board.
+        - link "View OK details" [ref=e177] [cursor=pointer]:
+          - /url: /state-requirements/ok
+      - article [ref=e178]:
+        - heading "Oregon" [level=2] [ref=e179]
+        - paragraph [ref=e180]: Verify degree and supervised practice requirements with your state board.
+        - link "View OR details" [ref=e181] [cursor=pointer]:
+          - /url: /state-requirements/or
+      - article [ref=e182]:
+        - heading "Pennsylvania" [level=2] [ref=e183]
+        - paragraph [ref=e184]: Verify degree and supervised practice requirements with your state board.
+        - link "View PA details" [ref=e185] [cursor=pointer]:
+          - /url: /state-requirements/pa
+      - article [ref=e186]:
+        - heading "Rhode Island" [level=2] [ref=e187]
+        - paragraph [ref=e188]: Verify degree and supervised practice requirements with your state board.
+        - link "View RI details" [ref=e189] [cursor=pointer]:
+          - /url: /state-requirements/ri
+      - article [ref=e190]:
+        - heading "South Carolina" [level=2] [ref=e191]
+        - paragraph [ref=e192]: Verify degree and supervised practice requirements with your state board.
+        - link "View SC details" [ref=e193] [cursor=pointer]:
+          - /url: /state-requirements/sc
+      - article [ref=e194]:
+        - heading "South Dakota" [level=2] [ref=e195]
+        - paragraph [ref=e196]: Verify degree and supervised practice requirements with your state board.
+        - link "View SD details" [ref=e197] [cursor=pointer]:
+          - /url: /state-requirements/sd
+      - article [ref=e198]:
+        - heading "Tennessee" [level=2] [ref=e199]
+        - paragraph [ref=e200]: Verify degree and supervised practice requirements with your state board.
+        - link "View TN details" [ref=e201] [cursor=pointer]:
+          - /url: /state-requirements/tn
+      - article [ref=e202]:
+        - heading "Texas" [level=2] [ref=e203]
+        - paragraph [ref=e204]: Verify degree and supervised practice requirements with your state board.
+        - link "View TX details" [ref=e205] [cursor=pointer]:
+          - /url: /state-requirements/tx
+      - article [ref=e206]:
+        - heading "Utah" [level=2] [ref=e207]
+        - paragraph [ref=e208]: Verify degree and supervised practice requirements with your state board.
+        - link "View UT details" [ref=e209] [cursor=pointer]:
+          - /url: /state-requirements/ut
+      - article [ref=e210]:
+        - heading "Vermont" [level=2] [ref=e211]
+        - paragraph [ref=e212]: Verify degree and supervised practice requirements with your state board.
+        - link "View VT details" [ref=e213] [cursor=pointer]:
+          - /url: /state-requirements/vt
+      - article [ref=e214]:
+        - heading "Virginia" [level=2] [ref=e215]
+        - paragraph [ref=e216]: Verify degree and supervised practice requirements with your state board.
+        - link "View VA details" [ref=e217] [cursor=pointer]:
+          - /url: /state-requirements/va
+      - article [ref=e218]:
+        - heading "Washington" [level=2] [ref=e219]
+        - paragraph [ref=e220]: Verify degree and supervised practice requirements with your state board.
+        - link "View WA details" [ref=e221] [cursor=pointer]:
+          - /url: /state-requirements/wa
+      - article [ref=e222]:
+        - heading "West Virginia" [level=2] [ref=e223]
+        - paragraph [ref=e224]: Verify degree and supervised practice requirements with your state board.
+        - link "View WV details" [ref=e225] [cursor=pointer]:
+          - /url: /state-requirements/wv
+      - article [ref=e226]:
+        - heading "Wisconsin" [level=2] [ref=e227]
+        - paragraph [ref=e228]: Verify degree and supervised practice requirements with your state board.
+        - link "View WI details" [ref=e229] [cursor=pointer]:
+          - /url: /state-requirements/wi
+      - article [ref=e230]:
+        - heading "Wyoming" [level=2] [ref=e231]
+        - paragraph [ref=e232]: Verify degree and supervised practice requirements with your state board.
+        - link "View WY details" [ref=e233] [cursor=pointer]:
+          - /url: /state-requirements/wy
+    - region "Convert requirements into a weekly plan" [ref=e234]:
+      - generic [ref=e236]:
+        - heading "Convert requirements into a weekly plan" [level=2] [ref=e237]
+        - paragraph [ref=e238]: Start your trial to generate a study path aligned to your state and target exam window.
+        - link "Start Free Trial" [ref=e239] [cursor=pointer]:
+          - /url: /start-trial
+  - contentinfo [ref=e240]:
+    - generic [ref=e241]:
+      - generic [ref=e242]:
+        - link "Agents of Change home" [ref=e243] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e244]: A
+          - generic [ref=e245]: Agents of Change
+        - paragraph [ref=e246]: Social Work Exam Prep and Continuing Education
+        - paragraph [ref=e247]:
+          - link "support@agentsofchangeprep.com" [ref=e248] [cursor=pointer]:
+            - /url: mailto:support@agentsofchangeprep.com
+          - text: "|"
+          - link "(555) 232-1944" [ref=e249] [cursor=pointer]:
+            - /url: tel:5552321944
+      - region "Programs" [ref=e250]:
+        - heading "Programs" [level=2] [ref=e251]
+        - list [ref=e252]:
+          - listitem [ref=e253]:
+            - link "Exam Prep" [ref=e254] [cursor=pointer]:
+              - /url: /exam-prep
+          - listitem [ref=e255]:
+            - link "Continuing Education" [ref=e256] [cursor=pointer]:
+              - /url: /continuing-education
+          - listitem [ref=e257]:
+            - link "Bundle" [ref=e258] [cursor=pointer]:
+              - /url: /exam-prep#offers
+          - listitem [ref=e259]:
+            - link "State Requirements" [ref=e260] [cursor=pointer]:
+              - /url: /state-requirements
+      - region "Resources" [ref=e261]:
+        - heading "Resources" [level=2] [ref=e262]
+        - list [ref=e263]:
+          - listitem [ref=e264]:
+            - link "Success Stories" [ref=e265] [cursor=pointer]:
+              - /url: /success-stories
+          - listitem [ref=e266]:
+            - link "Resources Hub" [ref=e267] [cursor=pointer]:
+              - /url: /resources
+          - listitem [ref=e268]:
+            - link "About" [ref=e269] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e270]:
+            - link "Start Free Trial" [ref=e271] [cursor=pointer]:
+              - /url: /start-trial
+          - listitem [ref=e272]:
+            - link "Contact Support" [ref=e273] [cursor=pointer]:
+              - /url: mailto:support@agentsofchangeprep.com
+      - region "Company" [ref=e274]:
+        - heading "Company" [level=2] [ref=e275]
+        - list [ref=e276]:
+          - listitem [ref=e277]:
+            - link "Contact" [ref=e278] [cursor=pointer]:
+              - /url: /contact
+          - listitem [ref=e279]:
+            - link "Privacy" [ref=e280] [cursor=pointer]:
+              - /url: /privacy
+          - listitem [ref=e281]:
+            - link "Terms" [ref=e282] [cursor=pointer]:
+              - /url: /terms
+          - listitem [ref=e283]:
+            - link "Email" [ref=e284] [cursor=pointer]:
+              - /url: mailto:support@agentsofchangeprep.com
+    - generic [ref=e285]:
+      - paragraph [ref=e286]: (c) 2026 Agents of Change. All rights reserved.
+      - paragraph [ref=e287]: "ASWB ACE Provider #1919"
+  - generic [ref=e290]:
+    - button "Menu" [ref=e291]:
+      - img [ref=e293]
+      - generic: Menu
+    - button "Inspect" [ref=e297]:
+      - img [ref=e299]
+      - generic: Inspect
+    - button "Audit" [ref=e301]:
+      - img [ref=e303]
+      - generic: Audit
+    - button "Settings" [ref=e306]:
+      - img [ref=e308]
+      - generic: Settings

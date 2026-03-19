@@ -1,0 +1,121 @@
+---
+import SallyTimelineProgress from "@/components/islands/SallyTimelineProgress";
+import type { OriginTimelineStep } from "@/lib/types";
+
+interface Props {
+  steps: OriginTimelineStep[];
+}
+
+const { steps } = Astro.props;
+
+const stepCtas: Record<string, { label: string; href: string }> = {
+  "high-school-year-1": { label: "Start with free prep", href: "/resources" },
+  "high-school-year-2": { label: "Explore mentorship pathways", href: "/community" },
+  "high-school-year-3": { label: "See social work outcomes", href: "/success-stories" },
+  "undergrad-foundation": { label: "View exam prep systems", href: "/exam-prep" },
+  "post-grad-exam-prep": { label: "Compare practice exams", href: "/exam-prep#offers" },
+  "licensure-and-ce": { label: "Check CE by state", href: "/state-requirements" },
+  "doctorate-trajectory": { label: "Browse CE and live events", href: "/continuing-education" },
+};
+---
+
+<section
+  id="sally-timeline"
+  class="section sally-story sally-origin-timeline"
+  aria-labelledby="sally-timeline-title"
+  data-module="sally-timeline"
+  data-motion-tier="hero"
+  data-motion-variant="story-stack"
+  data-motion-density="cinematic"
+  data-sally-story-root
+>
+  <div class="container sally-story-grid">
+    <aside class="sally-story-rail" aria-label="Sally timeline chapter rail">
+      <p class="eyebrow">Sally timeline</p>
+      <h2 id="sally-timeline-title">From high-school struggle to a doctorate trajectory</h2>
+      <p class="sally-story-intro">
+        Scroll to follow Sally chapter-by-chapter. The rail updates as each life stage becomes active,
+        and every chapter links to the matching product path.
+      </p>
+
+      <ol class="sally-story-nav" aria-label="Sally chapter progress">
+        {steps.map((step) => (
+          <li data-sally-nav-item={step.id}>
+            <a href={`#sally-step-${step.id}`} class="sally-nav-link" data-sally-nav-link={step.id}>
+              <p class="sally-chapter">{step.era}</p>
+              <p class="sally-nav-title">{step.title}</p>
+            </a>
+          </li>
+        ))}
+      </ol>
+
+      <div class="sally-progress-track" aria-hidden="true">
+        <span class="sally-progress-fill"></span>
+      </div>
+
+      {/* SVG career arc — drawn by pathDraw.ts as user scrolls */}
+      <svg
+        class="sally-career-arc"
+        viewBox="0 0 60 400"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        data-path-container
+      >
+        <path
+          d="M30 16 C12 60, 48 100, 30 140 C12 180, 48 220, 30 260 C12 300, 48 340, 30 384"
+          stroke="url(#arcGradient)"
+          stroke-width="2"
+          stroke-linecap="round"
+          data-path-draw
+        />
+        {steps.map((step, i) => {
+          const y = 16 + (i / (steps.length - 1)) * 368;
+          return (
+            <circle
+              cx="30"
+              cy={y}
+              r="4"
+              fill="var(--zone-mid-accent)"
+              stroke="rgba(203,180,255,0.5)"
+              stroke-width="1.5"
+              data-path-milestone={step.id}
+              opacity="0"
+            />
+          );
+        })}
+        <defs>
+          <linearGradient id="arcGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#cbb4ff" stop-opacity="0.3" />
+            <stop offset="50%" stop-color="#a78bfa" stop-opacity="0.8" />
+            <stop offset="100%" stop-color="#cbb4ff" stop-opacity="0.5" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </aside>
+
+    <div class="sally-story-steps" aria-label="Sally timeline chapter cards">
+      {steps.map((step) => {
+        const cta = stepCtas[step.id] ?? { label: "Explore programs", href: "/exam-prep" };
+
+        return (
+          <article class="sally-step-card reveal" data-sally-step={step.id} id={`sally-step-${step.id}`} tabindex="-1">
+            <p class="sally-step-label">{step.era}</p>
+            <h3>{step.title}</h3>
+            <p><strong>Struggle:</strong> {step.struggle}</p>
+            <p><strong>Shift:</strong> {step.shift}</p>
+            <p class="sally-milestone"><strong>Outcome:</strong> {step.outcome}</p>
+            <a href={cta.href} class="button secondary" data-cta="sally-chapter-cta" data-cta-location={step.id}>
+              {cta.label}
+            </a>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+
+  <SallyTimelineProgress
+    client:visible
+    steps={steps.map((step) => ({ id: step.id, era: step.era, title: step.title }))}
+  />
+</section>

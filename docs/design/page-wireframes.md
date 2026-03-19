@@ -1,16 +1,18 @@
 # Page Wireframes (Low-Fidelity Narrative Structure)
 
 ## Home
-1. Editorial hero with primary and secondary CTAs
-2. Trust marquee + proof density stats
-3. Audience pathways
-4. Value proposition cards
-5. Comparison matrix
-6. Program offers
-7. Story carousel + before/after pairings
-8. Objection handling
-9. Instructor and FAQ
-10. Final CTA
+1. Cinematic origin hero (Sally high-school struggle framing)
+2. Dedicated Sally scroll timeline rail (7 chapters)
+3. Data-driven pass strategy (pinned scrub + live phase loading)
+4. About us (mission and credibility)
+5. Social worker career timeline
+6. Programs and pricing truth matrix
+7. CE by state entry point
+8. AI Tracker workflow preview
+9. Success stories
+10. Community preview (city cohorts and specialty spaces)
+11. Job board roadmap teaser (longer-term)
+12. FAQ + final CTA
 
 ## Exam Prep
 1. Hero

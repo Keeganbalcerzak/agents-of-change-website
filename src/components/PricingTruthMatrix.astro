@@ -1,0 +1,246 @@
+---
+import type { BillingCadence, PricingSection } from "@/lib/types";
+
+interface Props {
+  sections: PricingSection[];
+}
+
+const { sections } = Astro.props;
+
+type DisplayPlan = PricingSection["plans"][number] & {
+  trackOptions?: string[];
+};
+
+function cadenceLabel(cadence: BillingCadence): string {
+  if (cadence === "free") return "Free";
+  if (cadence === "one-time") return "One-time";
+  if (cadence === "monthly") return "Monthly";
+  return "Annual";
+}
+
+function displayPlans(section: PricingSection): DisplayPlan[] {
+  if (section.id !== "exam-prep-courses") {
+    return section.plans.map((plan) => {
+      if (plan.id === "free-prep-suite") return { ...plan, trackOptions: ["BSW", "LMSW", "LCSW"] };
+      if (section.id === "practice-exams") return { ...plan, trackOptions: ["LMSW", "LCSW"] };
+      return plan;
+    });
+  }
+
+  const bswPlan = section.plans.find((plan) => plan.id === "bsw-course");
+  const basicsTemplate = section.plans.find((plan) => plan.id === "lmsw-basics");
+  const premiumTemplate = section.plans.find((plan) => plan.id === "lmsw-premium");
+
+  return [
+    bswPlan ? { ...bswPlan, trackOptions: ["BSW"] } : null,
+    basicsTemplate
+      ? {
+          ...basicsTemplate,
+          id: "basics-family",
+          title: "Basics",
+          subtitle: "Choose LMSW or LCSW",
+          ctaLabel: "Choose Basics",
+          trackOptions: ["LMSW", "LCSW"],
+        }
+      : null,
+    premiumTemplate
+      ? {
+          ...premiumTemplate,
+          id: "premium-family",
+          title: "Premium + Power Pack",
+          subtitle: "Choose LMSW or LCSW",
+          ctaLabel: "Choose Premium",
+          trackOptions: ["LMSW", "LCSW"],
+        }
+      : null,
+  ].filter((plan): plan is DisplayPlan => plan !== null);
+}
+
+function planFit(plan: DisplayPlan, sectionId: string): string | null {
+  if (sectionId !== "exam-prep-courses") return null;
+
+  if (plan.id === "bsw-course") return "Best for first-time BSW confidence building";
+  if (plan.id === "basics-family") return "Best for lower-cost guided prep";
+  if (plan.id === "premium-family") return "Best for full-course buyers who want stronger support";
+
+  return null;
+}
+
+function comparisonRow(plan: DisplayPlan, sectionId: string): string[] {
+  if (sectionId === "exam-prep-courses") {
+    if (plan.id === "bsw-course") return ["Until you pass", "Structured course", "Self-paced"];
+    if (plan.id === "basics-family") return ["Until you pass", "75-question mini exam", "Live study groups"];
+    if (plan.id === "premium-family") return ["Until you pass", "170-question exam", "Priority support"];
+  }
+
+  if (sectionId === "practice-exams") {
+    if (plan.id === "single-practice-exam") return ["1-year access", "170 questions", "Supplemental"];
+    if (plan.id === "practice-exam-bundle") return ["510 total questions", "Best volume value", "1-year access"];
+  }
+
+  if (sectionId === "continuing-education") {
+    if (plan.id === "ce-annual") return ["150+ courses", "15+ live webinars", "ASWB ACE"];
+    if (plan.id === "ce-monthly-recorded") return ["Recorded library", "Monthly access", "No live events"];
+  }
+
+  if (plan.id === "free-prep-suite") {
+    return ["Free entry", "All three tracks", "Lead with content"];
+  }
+
+  return [];
+}
+
+function visibleFeatures(plan: DisplayPlan, sectionId: string): string[] {
+  if (sectionId === "exam-prep-courses" && plan.id === "basics-family") {
+    return [
+      "30+ hours of content",
+      "2 live study groups each month",
+      "Clear lower-cost path for LMSW or LCSW prep",
+    ];
+  }
+
+  if (sectionId === "exam-prep-courses" && plan.id === "premium-family") {
+    return [
+      "Everything in Basics",
+      "Case vignettes with video rationales",
+      "25+ recorded study groups",
+      "Downloadable audio lessons",
+    ];
+  }
+
+  return plan.features.slice(0, 4);
+}
+---
+
+<section
+  id="pricing"
+  class="section section-muted pricing-truth"
+  aria-labelledby="pricing-truth-title"
+  data-module="pricing-truth"
+  data-motion-variant="reveal-stagger"
+  data-motion-density="compact"
+>
+  <div class="container">
+    <header class="section-heading centered">
+      <p class="eyebrow">Programs and pricing</p>
+      <h2 id="pricing-truth-title">Pricing built to win on value, not look cheap</h2>
+      <p>
+        Transparent pricing across free entry, one-time exam prep, practice exams, and CE designed to keep people in
+        the ecosystem after they pass.
+      </p>
+    </header>
+
+    <div class="pricing-positioning-note">
+      <p class="pricing-positioning-kicker">Category read</p>
+      <p>
+        Agents of Change sits in the value-leader position: premium prep is priced far below the $295 benchmark while
+        CE undercuts most unlimited providers without dropping the live-event layer.
+      </p>
+    </div>
+
+    <div class="pricing-sections">
+      {sections.map((section) => (
+        <section class="pricing-group" aria-labelledby={`pricing-${section.id}`}>
+          <header class="pricing-group-header">
+            <h3 id={`pricing-${section.id}`}>{section.title}</h3>
+            <p>{section.description}</p>
+            {section.id === "practice-exams" && (
+              <p class="pricing-plan-savings">Includes 3 individual options (Exam #1, #2, #3) plus the all-exams bundle.</p>
+            )}
+          </header>
+
+          <div class:list={["pricing-plan-grid", section.id === "exam-prep-courses" && "is-exam-prep-grid"]}>
+            {displayPlans(section).map((plan) => (
+              <article
+                class:list={[
+                  "pricing-plan-card",
+                  "reveal",
+                  plan.tags?.includes("popular") && "is-popular",
+                  section.id === "exam-prep-courses" && "is-exam-prep-card",
+                ]}
+              >
+                <div class="pricing-plan-head">
+                  <p class="pricing-plan-title">{plan.title}</p>
+                  {plan.subtitle && <p class="pricing-plan-subtitle">{plan.subtitle}</p>}
+                  {plan.badge && <p class="pricing-plan-badge">{plan.badge}</p>}
+                  {plan.trackOptions && (
+                    <div class="pricing-plan-track-pills" aria-label={`${plan.title} available tracks`}>
+                      {plan.trackOptions.map((track) => (
+                        <span>{track}</span>
+                      ))}
+                    </div>
+                  )}
+                  {planFit(plan, section.id) && <p class="pricing-plan-fit-copy">{planFit(plan, section.id)}</p>}
+                </div>
+
+                <p class="pricing-plan-price">
+                  {plan.regularPrice !== undefined && <span class="pricing-plan-regular-price">${plan.regularPrice}</span>}
+                  {plan.price === undefined ? "Free" : `$${plan.price}`}
+                  <span>{cadenceLabel(plan.cadence)}</span>
+                </p>
+
+                {plan.savingsCopy && <p class="pricing-plan-savings">{plan.savingsCopy}</p>}
+                {plan.questionCount && <p class="pricing-plan-questions">{plan.questionCount} total questions</p>}
+                {comparisonRow(plan, section.id).length > 0 && (
+                  <div class="pricing-plan-compare-line" aria-label={`${plan.title} key comparison points`}>
+                    {comparisonRow(plan, section.id).map((item) => (
+                      <span>{item}</span>
+                    ))}
+                  </div>
+                )}
+
+                <ul>
+                  {visibleFeatures(plan, section.id).map((feature) => (
+                    <li>{feature}</li>
+                  ))}
+                </ul>
+
+                <a
+                  href={plan.ctaHref}
+                  class="button primary block"
+                  data-cta="pricing-plan-cta"
+                  data-cta-location={plan.id}
+                  data-pricing-plan-id={plan.id}
+                >
+                  {plan.ctaLabel}
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+
+  <script is:inline>
+    (() => {
+      if (window.__aocPricingPlanTrackingBound === true) {
+        return;
+      }
+
+      window.__aocPricingPlanTrackingBound = true;
+
+      document.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) {
+          return;
+        }
+
+        const planCta = target.closest("[data-pricing-plan-id]");
+        if (!(planCta instanceof HTMLElement)) {
+          return;
+        }
+
+        const planId = planCta.getAttribute("data-pricing-plan-id") || "unknown";
+
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "pricing_plan_select", { plan_id: planId });
+        }
+
+        if (Array.isArray(window.dataLayer)) {
+          window.dataLayer.push({ event: "pricing_plan_select", plan_id: planId });
+        }
+      });
+    })();
+  </script>
+</section>

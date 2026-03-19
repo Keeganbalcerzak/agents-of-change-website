@@ -1,0 +1,164 @@
+- generic [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Agents of Change home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: A
+        - generic [ref=e7]: Agents of Change
+      - navigation "Primary" [ref=e8]:
+        - list [ref=e9]:
+          - listitem [ref=e10]:
+            - link "Sally's Story" [ref=e11] [cursor=pointer]:
+              - /url: /#sally-story
+          - listitem [ref=e12]:
+            - link "Programs" [ref=e13] [cursor=pointer]:
+              - /url: /exam-prep
+          - listitem [ref=e14]:
+            - link "Continuing Education" [ref=e15] [cursor=pointer]:
+              - /url: /continuing-education
+          - listitem [ref=e16]:
+            - link "Success Stories" [ref=e17] [cursor=pointer]:
+              - /url: /success-stories
+          - listitem [ref=e18]:
+            - link "Resources" [ref=e19] [cursor=pointer]:
+              - /url: /resources
+          - listitem [ref=e20]:
+            - link "State Requirements" [ref=e21] [cursor=pointer]:
+              - /url: /state-requirements
+          - listitem [ref=e22]:
+            - link "About" [ref=e23] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e24]:
+            - link "Start Free Trial" [ref=e25] [cursor=pointer]:
+              - /url: /start-trial
+  - main [ref=e26]:
+    - generic [ref=e29]:
+      - paragraph [ref=e30]: Trial funnel
+      - heading "Start your free trial with a confidence-first setup" [level=1] [ref=e31]
+      - paragraph [ref=e32]: Complete three short steps and we will generate a targeted 7-day prep sequence for your exam track, timeline, and state context.
+      - list "Trial trust signals" [ref=e33]:
+        - listitem [ref=e34]: No credit card required
+        - listitem [ref=e35]: Plan generated in under 2 minutes
+        - listitem [ref=e36]: Support from licensed social work educators
+    - generic [ref=e38]:
+      - complementary "What happens next" [ref=e41]:
+        - heading "Confidence-building outcomes" [level=2] [ref=e42]
+        - list [ref=e43]:
+          - listitem [ref=e44]: We tailor your first week based on exam track and timeline.
+          - listitem [ref=e45]: You receive actionable milestones, not generic content bundles.
+          - listitem [ref=e46]: You can revise your plan as your exam date shifts.
+        - generic [ref=e47]:
+          - article [ref=e48]:
+            - heading "Before" [level=3] [ref=e49]
+            - paragraph [ref=e50]: Unclear priorities and inconsistent study pacing.
+          - article [ref=e51]:
+            - heading "After" [level=3] [ref=e52]
+            - paragraph [ref=e53]: A sequenced weekly plan with measurable progress checkpoints.
+      - generic [ref=e57]:
+        - list "Trial form progress" [ref=e60]:
+          - listitem [ref=e61]:
+            - generic [ref=e62]: "1"
+            - paragraph [ref=e63]: Identity
+          - listitem [ref=e64]:
+            - generic [ref=e65]: "2"
+            - paragraph [ref=e66]: Exam Context
+          - listitem [ref=e67]:
+            - generic [ref=e68]: "3"
+            - paragraph [ref=e69]: Consent and Timeline
+        - group "Tell us who you are" [ref=e70]:
+          - generic [ref=e71]: Tell us who you are
+          - generic [ref=e72]:
+            - text: First name
+            - textbox "First name First name is required." [ref=e153]
+            - generic [ref=e154]: First name is required.
+          - generic [ref=e74]:
+            - text: Last name
+            - textbox "Last name Last name is required." [ref=e155]
+            - generic [ref=e156]: Last name is required.
+          - generic [ref=e76]:
+            - text: Email
+            - textbox "Email A valid email is required." [ref=e157]
+            - generic [ref=e158]: A valid email is required.
+        - generic [ref=e78]:
+          - button "Back" [disabled] [ref=e79]
+          - button "Continue" [active] [ref=e80]
+  - contentinfo [ref=e81]:
+    - generic [ref=e82]:
+      - generic [ref=e83]:
+        - link "Agents of Change home" [ref=e84] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e85]: A
+          - generic [ref=e86]: Agents of Change
+        - paragraph [ref=e87]: Social Work Exam Prep and Continuing Education
+        - paragraph [ref=e88]:
+          - link "support@agentsofchangeprep.com" [ref=e89] [cursor=pointer]:
+            - /url: mailto:support@agentsofchangeprep.com
+          - text: "|"
+          - link "(555) 232-1944" [ref=e90] [cursor=pointer]:
+            - /url: tel:5552321944
+      - region "Programs" [ref=e91]:
+        - heading "Programs" [level=2] [ref=e92]
+        - list [ref=e93]:
+          - listitem [ref=e94]:
+            - link "Exam Prep" [ref=e95] [cursor=pointer]:
+              - /url: /exam-prep
+          - listitem [ref=e96]:
+            - link "Continuing Education" [ref=e97] [cursor=pointer]:
+              - /url: /continuing-education
+          - listitem [ref=e98]:
+            - link "Bundle" [ref=e99] [cursor=pointer]:
+              - /url: /exam-prep#offers
+          - listitem [ref=e100]:
+            - link "State Requirements" [ref=e101] [cursor=pointer]:
+              - /url: /state-requirements
+      - region "Resources" [ref=e102]:
+        - heading "Resources" [level=2] [ref=e103]
+        - list [ref=e104]:
+          - listitem [ref=e105]:
+            - link "Success Stories" [ref=e106] [cursor=pointer]:
+              - /url: /success-stories
+          - listitem [ref=e107]:
+            - link "Resources Hub" [ref=e108] [cursor=pointer]:
+              - /url: /resources
+          - listitem [ref=e109]:
+            - link "About" [ref=e110] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e111]:
+            - link "Start Free Trial" [ref=e112] [cursor=pointer]:
+              - /url: /start-trial
+          - listitem [ref=e113]:
+            - link "Contact Support" [ref=e114] [cursor=pointer]:
+              - /url: mailto:support@agentsofchangeprep.com
+      - region "Company" [ref=e115]:
+        - heading "Company" [level=2] [ref=e116]
+        - list [ref=e117]:
+          - listitem [ref=e118]:
+            - link "Contact" [ref=e119] [cursor=pointer]:
+              - /url: /contact
+          - listitem [ref=e120]:
+            - link "Privacy" [ref=e121] [cursor=pointer]:
+              - /url: /privacy
+          - listitem [ref=e122]:
+            - link "Terms" [ref=e123] [cursor=pointer]:
+              - /url: /terms
+          - listitem [ref=e124]:
+            - link "Email" [ref=e125] [cursor=pointer]:
+              - /url: mailto:support@agentsofchangeprep.com
+    - generic [ref=e126]:
+      - paragraph [ref=e127]: (c) 2026 Agents of Change. All rights reserved.
+      - paragraph [ref=e128]: "ASWB ACE Provider #1919"
+  - generic [ref=e131]:
+    - button "Menu" [ref=e132]:
+      - img [ref=e134]
+      - generic: Menu
+    - button "Inspect" [ref=e138]:
+      - img [ref=e140]
+      - generic: Inspect
+    - button "Audit" [ref=e142]:
+      - img [ref=e144]
+      - generic: Audit
+    - button "Settings" [ref=e147]:
+      - img [ref=e149]
+      - generic: Settings

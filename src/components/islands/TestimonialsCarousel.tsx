@@ -1,11 +1,25 @@
 import { useEffect, useMemo, useState } from "react";
-import type { Testimonial } from "@/lib/types";
+import type { SectionMotionVariant, SectionVisualVariant, Testimonial } from "@/lib/types";
+import ScrollStackTestimonials from "@/components/vendor/animata/ScrollStackTestimonials";
 
 interface TestimonialsCarouselProps {
   testimonials: Testimonial[];
+  mode?: "carousel" | "scroll-stack";
+  autoplayMs?: number;
+  pauseOnHover?: boolean;
+  visualVariant?: SectionVisualVariant;
+  motionVariant?: SectionMotionVariant;
 }
 
-export default function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps) {
+export default function TestimonialsCarousel({
+  testimonials,
+  mode = "carousel",
+  autoplayMs = 7000,
+  pauseOnHover = true,
+  visualVariant = "default",
+  motionVariant,
+}: TestimonialsCarouselProps) {
+  const resolvedMotionVariant = motionVariant ?? (mode === "scroll-stack" ? "story-stack" : "reveal-stagger");
   const featured = useMemo(
     () => testimonials.filter((testimonial) => testimonial.featured).slice(0, 5),
     [testimonials],
@@ -13,9 +27,10 @@ export default function TestimonialsCarousel({ testimonials }: TestimonialsCarou
   const cards = featured.length > 0 ? featured : testimonials.slice(0, 5);
 
   const [index, setIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    if (cards.length <= 1) {
+    if (cards.length <= 1 || mode !== "carousel" || (pauseOnHover && isPaused)) {
       return;
     }
 
@@ -26,10 +41,10 @@ export default function TestimonialsCarousel({ testimonials }: TestimonialsCarou
 
     const interval = window.setInterval(() => {
       setIndex((prev) => (prev + 1) % cards.length);
-    }, 7000);
+    }, autoplayMs);
 
     return () => window.clearInterval(interval);
-  }, [cards.length]);
+  }, [autoplayMs, cards.length, isPaused, mode, pauseOnHover]);
 
   function goTo(step: number) {
     if (step < 0) {
@@ -49,8 +64,41 @@ export default function TestimonialsCarousel({ testimonials }: TestimonialsCarou
     return null;
   }
 
+  if (mode === "scroll-stack") {
+    return (
+      <div
+        className={
+          visualVariant === "editorial-contrast-purple"
+            ? "testimonial-stack-shell testimonial-stack-shell-editorial-purple"
+            : "testimonial-stack-shell"
+        }
+        data-motion-variant={resolvedMotionVariant}
+      >
+        <ScrollStackTestimonials testimonials={cards} pauseOnHover={pauseOnHover} cadence="slow" />
+      </div>
+    );
+  }
+
   return (
-    <section className="testimonial-carousel" aria-label="Featured student outcomes">
+    <section
+      className={
+        visualVariant === "editorial-contrast-purple"
+          ? "testimonial-carousel testimonial-carousel-editorial-purple"
+          : "testimonial-carousel"
+      }
+      data-motion-variant={resolvedMotionVariant}
+      aria-label="Featured student outcomes"
+      onMouseEnter={() => {
+        if (pauseOnHover) {
+          setIsPaused(true);
+        }
+      }}
+      onMouseLeave={() => {
+        if (pauseOnHover) {
+          setIsPaused(false);
+        }
+      }}
+    >
       <div className="testimonial-carousel-panel">
         <article>
           <p className="testimonial-quote-mark" aria-hidden="true">

@@ -1,0 +1,17 @@
+[     855ms] [ERROR] Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep) @ http://127.0.0.1:4327/node_modules/.vite/deps/lenis.js?v=f36ae7e8:0
+[     855ms] [ERROR] Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep) @ http://127.0.0.1:4327/node_modules/.vite/deps/gsap.js?v=f36ae7e8:0
+[     856ms] [ERROR] Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep) @ http://127.0.0.1:4327/node_modules/.vite/deps/gsap_ScrollTrigger.js?v=f36ae7e8:0
+[     952ms] [ERROR] [astro-island] Error hydrating /src/components/islands/OriginHeroMicroMotion.tsx TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4327/src/components/islands/OriginHeroMicroMotion.tsx @ http://127.0.0.1:4327/:5002
+[     979ms] [ERROR] Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep) @ http://127.0.0.1:4327/node_modules/.vite/deps/splitting.js?v=f36ae7e8:0
+[    1019ms] [ERROR] Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep) @ http://127.0.0.1:4327/node_modules/.vite/deps/motion_react.js?v=f36ae7e8:0
+[    1229ms] TypeError: jsxDEV is not a function
+    at http://127.0.0.1:4327/src/components/islands/FAQAccordion.tsx:37:29
+    at Array.map (<anonymous>)
+    at FAQAccordion (http://127.0.0.1:4327/src/components/islands/FAQAccordion.tsx:22:95)
+    at renderWithHooks (http://127.0.0.1:4327/node_modules/.vite/deps/@astrojs_react_client__js.js?v=f36ae7e8:3521:25)
+    at updateFunctionComponent (http://127.0.0.1:4327/node_modules/.vite/deps/@astrojs_react_client__js.js?v=f36ae7e8:5152:19)
+    at beginWork (http://127.0.0.1:4327/node_modules/.vite/deps/@astrojs_react_client__js.js?v=f36ae7e8:5763:18)
+    at performUnitOfWork (http://127.0.0.1:4327/node_modules/.vite/deps/@astrojs_react_client__js.js?v=f36ae7e8:8568:18)
+    at workLoopSync (http://127.0.0.1:4327/node_modules/.vite/deps/@astrojs_react_client__js.js?v=f36ae7e8:8466:41)
+    at renderRootSync (http://127.0.0.1:4327/node_modules/.vite/deps/@astrojs_react_client__js.js?v=f36ae7e8:8450:11)
+    at performWorkOnRoot (http://127.0.0.1:4327/node_modules/.vite/deps/@astrojs_react_client__js.js?v=f36ae7e8:8125:44)

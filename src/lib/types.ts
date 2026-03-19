@@ -1,6 +1,14 @@
 export type ExamTrack = "LSW" | "LMSW" | "LCSW";
 export type MotionTier = "none" | "micro" | "section" | "hero";
 export type ThemeIntent = "default" | "editorial" | "conversion" | "trust";
+export type VisualVariant = "default" | "premium-hybrid";
+export type SectionVisualVariant = "default" | "editorial-contrast-purple";
+export type SectionMotionVariant = "none" | "reveal-stagger" | "legendary-scrub" | "story-stack";
+export type SectionMotionDensity = "compact" | "cinematic";
+export type MotionProfile = "off" | "lite" | "cinematic";
+export type MotionCapability = "auto" | "desktop-only" | "always";
+export type BillingCadence = "free" | "one-time" | "monthly" | "annual";
+export type PlanTag = "free" | "bundle" | "popular" | "roadmap";
 
 export type UIState = "default" | "hover" | "focus" | "active" | "disabled" | "error";
 
@@ -53,11 +61,35 @@ export interface ProgramOffer {
   subtitle: string;
   priceCurrent: number;
   priceOriginal?: number;
+  paymentPlan?: string;
   featuresIncluded: string[];
   ctaLabel: string;
   ctaTarget: string;
   badge?: string;
   featured?: boolean;
+}
+
+export interface PricingPlan {
+  id: string;
+  title: string;
+  subtitle?: string;
+  price?: number;
+  regularPrice?: number;
+  cadence: BillingCadence;
+  badge?: string;
+  savingsCopy?: string;
+  questionCount?: number;
+  features: string[];
+  ctaLabel: string;
+  ctaHref: string;
+  tags?: PlanTag[];
+}
+
+export interface PricingSection {
+  id: string;
+  title: string;
+  description: string;
+  plans: PricingPlan[];
 }
 
 export interface Testimonial {
@@ -90,6 +122,9 @@ export interface StateRequirement {
   boardUrl: string;
   updatedAt: string;
   metaDescription: string;
+  ceHoursRequired?: number;
+  renewalCycleYears?: number;
+  ceNotes?: string;
 }
 
 export interface SeoMetadata {
@@ -142,6 +177,13 @@ export interface StudyPhase {
   objective: string;
 }
 
+export interface CareerPhase {
+  step: string;
+  title: string;
+  description: string;
+  icon?: string;
+}
+
 export interface CECourse {
   id: string;
   title: string;
@@ -173,4 +215,24 @@ export interface StoryPairing {
   context: string;
   before: string;
   after: string;
+}
+
+export interface OriginTimelineStep {
+  id: string;
+  era: string;
+  title: string;
+  struggle: string;
+  shift: string;
+  outcome: string;
+}
+
+export interface SallyJourneyStep {
+  id: string;
+  chapter: string;
+  title: string;
+  summary: string;
+  milestone: string;
+  details: string[];
+  ctaLabel: string;
+  ctaHref: string;
 }

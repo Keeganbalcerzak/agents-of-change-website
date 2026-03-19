@@ -1,0 +1,39 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import FAQSection from "@/components/FAQSection.astro";
+import CTASection from "@/components/CTASection.astro";
+import { getFaqItems, getSeoMetadata } from "@/lib/content";
+import { findSeoByKey } from "@/lib/seo";
+
+const [faqItems, seoEntries] = await Promise.all([
+  getFaqItems(),
+  getSeoMetadata(),
+]);
+
+const seo = findSeoByKey(seoEntries, "faq") || { title: "Frequently Asked Questions | Agents of Change", description: "Answers to common questions about social work exam prep, CE credits, and pricing." };
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  path="/faq"
+  themeIntent="default"
+  enableMotionEngine={true}
+>
+  <section class="page-hero page-hero-rich" data-module="faq-hero" data-motion-tier="hero">
+    <div class="container">
+      <p class="eyebrow">Support & FAQ</p>
+      <h1 data-split-heading>Frequently Asked Questions</h1>
+      <p>
+        Everything you need to know about our exam prep programs, continuing education courses, state requirements, and pricing plans.
+      </p>
+    </div>
+  </section>
+
+  <FAQSection items={faqItems} />
+
+  <CTASection
+    title="Still have questions?"
+    description="Contact our support team for direct guidance on enrollment, licensing, or CE requirements."
+  />
+</BaseLayout>

@@ -1,20 +1,21 @@
 ---
-import type { ProgramOffer } from "@/lib/types";
+import type { ProgramOffer, VisualVariant } from "@/lib/types";
+import PricingFrame from "@/components/vendor/animata/PricingFrame.astro";
 
 interface Props {
   offers: ProgramOffer[];
   showHeading?: boolean;
+  visualVariant?: VisualVariant;
 }
 
-const { offers, showHeading = true } = Astro.props;
+const { offers, showHeading = true, visualVariant = "premium-hybrid" } = Astro.props;
 const headingId = "program-offers-title";
 
-const examPrepOffer = offers.find((offer) => offer.slug === "exam-prep");
-const bundleOffer = offers.find((offer) => offer.slug === "exam-prep-ce-bundle");
-const remainingOffers = offers.filter((offer) => offer.slug !== "exam-prep" && offer.slug !== "exam-prep-ce-bundle");
-const orderedOffers = [examPrepOffer, bundleOffer, ...remainingOffers].filter(Boolean) as ProgramOffer[];
+const featuredOffer = offers.find((offer) => offer.featured);
+const otherOffers = offers.filter((offer) => !offer.featured);
+const orderedOffers = [...otherOffers, featuredOffer].filter(Boolean) as ProgramOffer[];
 
-const coreOffer = examPrepOffer ?? orderedOffers[0];
+const coreOffer = orderedOffers[0];
 const coreFeatures = new Set(coreOffer?.featuresIncluded ?? []);
 
 const featureRows = orderedOffers.reduce<string[]>((rows, offer) => {
@@ -42,7 +43,7 @@ function includesFeature(offer: ProgramOffer, feature: string) {
 
 <section
   id="offers"
-  class="section section-muted"
+  class:list={["section", "section-muted", "program-offers-shell", `program-offers-${visualVariant}`]}
   data-module="program-offers"
   data-motion-tier="section"
   aria-labelledby={showHeading ? headingId : undefined}
@@ -51,46 +52,55 @@ function includesFeature(offer: ProgramOffer, feature: string) {
   <div class="container">
     {showHeading && (
       <header class="section-heading centered">
-        <p class="eyebrow">Programs</p>
-        <h2 id={headingId}>Choose your prep path</h2>
-        <p>Both plans are built for first-time test takers and include structured milestones.</p>
+        <p class="eyebrow">Exam prep packages</p>
+        <h2 id={headingId}>Choose the package that fits your exam track</h2>
+        <p>One-time purchase. Access until you pass. More support only when you actually need it.</p>
       </header>
     )}
+    <PricingFrame className="program-offers-frame">
+      <div class="offer-grid" data-stagger="up">
+        {orderedOffers.map((offer) => (
+          <article class:list={{ "offer-card": true, featured: Boolean(offer.featured), "offer-card-hybrid": visualVariant === "premium-hybrid" }} data-stagger-item>
+            {offer.badge ? (
+              <p class="offer-badge">{offer.badge}</p>
+            ) : (
+              <span class="offer-badge-spacer" aria-hidden="true"></span>
+            )}
+            <h3>{offer.title}</h3>
+            <p class="offer-subtitle">{offer.subtitle}</p>
 
-    <div class="offer-grid">
-      {orderedOffers.map((offer) => (
-        <article class:list={{ "offer-card": true, featured: Boolean(offer.featured) }}>
-          {offer.badge && <p class="offer-badge">{offer.badge}</p>}
-          <h3>{offer.title}</h3>
-          <p class="offer-subtitle">{offer.subtitle}</p>
+            <div class="offer-price-block">
+              <p class="offer-price-row">
+                {offer.priceOriginal && <span class="price-original">${offer.priceOriginal}</span>}
+                <span class="price-current">${offer.priceCurrent}</span>
+              </p>
+              {offer.paymentPlan && <p class="offer-payment-plan">{offer.paymentPlan}</p>}
+            </div>
 
-          <p class="offer-price">
-            {offer.priceOriginal && <span class="price-original">${offer.priceOriginal}</span>}
-            <span class="price-current">${offer.priceCurrent}</span>
-          </p>
+            <ul class="offer-feature-list">
+              {offer.featuresIncluded.map((feature) => (
+                <li class="offer-feature-item">{feature}</li>
+              ))}
+            </ul>
 
-          <ul class="offer-feature-list">
-            {offer.featuresIncluded.map((feature) => (
-              <li class="offer-feature-item">{feature}</li>
-            ))}
-          </ul>
-
-          <a
-            href={offer.ctaTarget}
-            class="button primary block"
-            data-cta="offer-start-trial"
-            data-cta-location={offer.slug}
-          >
-            {offer.ctaLabel}
-          </a>
-        </article>
-      ))}
-    </div>
+            <a
+              href={offer.ctaTarget}
+              class:list={["button", "primary", "block", offer.featured && "btn-magnetic"]}
+              data-magnetic={offer.featured || undefined}
+              data-cta="offer-start-trial"
+              data-cta-location={offer.slug}
+            >
+              {offer.ctaLabel}
+            </a>
+          </article>
+        ))}
+      </div>
+    </PricingFrame>
 
     <div class="offer-comparison reveal">
       <header class="section-heading">
-        <p class="eyebrow">Plan comparison</p>
-        <h3>Exam Prep vs Exam Prep + CE Bundle</h3>
+        <p class="eyebrow">Package comparison</p>
+        <h3>What changes as you move up</h3>
         <p>Check means included. X means not included.</p>
       </header>
 

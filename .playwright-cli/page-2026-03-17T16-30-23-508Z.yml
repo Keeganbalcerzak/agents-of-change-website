@@ -1,0 +1,164 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Agents of Change home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: A
+        - generic [ref=e7]: Agents of Change
+      - navigation "Primary" [ref=e8]:
+        - list [ref=e9]:
+          - listitem [ref=e10]:
+            - link "Sally's Story" [ref=e11] [cursor=pointer]:
+              - /url: /#sally-story
+          - listitem [ref=e12]:
+            - link "Programs" [ref=e13] [cursor=pointer]:
+              - /url: /exam-prep
+          - listitem [ref=e14]:
+            - link "Continuing Education" [ref=e15] [cursor=pointer]:
+              - /url: /continuing-education
+          - listitem [ref=e16]:
+            - link "Success Stories" [ref=e17] [cursor=pointer]:
+              - /url: /success-stories
+          - listitem [ref=e18]:
+            - link "Resources" [ref=e19] [cursor=pointer]:
+              - /url: /resources
+          - listitem [ref=e20]:
+            - link "State Requirements" [ref=e21] [cursor=pointer]:
+              - /url: /state-requirements
+          - listitem [ref=e22]:
+            - link "About" [ref=e23] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e24]:
+            - link "Start Free Trial" [ref=e25] [cursor=pointer]:
+              - /url: /start-trial
+  - main [ref=e26]:
+    - generic [ref=e28]:
+      - paragraph [ref=e29]: Contact
+      - heading "Get support routed to the right team" [level=1] [ref=e30]
+      - paragraph [ref=e31]: We route requests by intent so you get accurate guidance faster, whether you need enrollment help, licensing context, or CE support.
+    - region "Get routed to the right team fast" [ref=e32]:
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - paragraph [ref=e35]: Support pathways
+          - heading "Get routed to the right team fast" [level=2] [ref=e36]
+          - paragraph [ref=e37]: Choose the support lane that matches your immediate need.
+        - generic [ref=e38]:
+          - article [ref=e39]:
+            - heading "Enrollment and plan selection" [level=3] [ref=e40]
+            - paragraph [ref=e41]: Get direct help choosing the right prep package for your exam timeline.
+            - paragraph [ref=e42]: Response in 1 business day
+            - link "Email Enrollment Support" [ref=e43] [cursor=pointer]:
+              - /url: mailto:support@agentsofchangeprep.com?subject=Enrollment%20Support
+          - article [ref=e44]:
+            - heading "Licensing and state requirement guidance" [level=3] [ref=e45]
+            - paragraph [ref=e46]: Clarify state-specific expectations and identify next steps for your track.
+            - paragraph [ref=e47]: Response in 1-2 business days
+            - link "Request Licensing Guidance" [ref=e48] [cursor=pointer]:
+              - /url: mailto:support@agentsofchangeprep.com?subject=Licensing%20Guidance
+          - article [ref=e49]:
+            - heading "Continuing education support" [level=3] [ref=e50]
+            - paragraph [ref=e51]: Find CE courses by category, hours, and state relevance for renewals.
+            - paragraph [ref=e52]: Response in 1 business day
+            - link "Contact CE Team" [ref=e53] [cursor=pointer]:
+              - /url: mailto:support@agentsofchangeprep.com?subject=CE%20Support
+    - region "Service-level expectations" [ref=e54]:
+      - generic [ref=e55]:
+        - generic [ref=e56]:
+          - paragraph [ref=e57]: Response standards
+          - heading "Service-level expectations" [level=2] [ref=e58]
+        - generic [ref=e59]:
+          - article [ref=e60]:
+            - heading "Enrollment support" [level=3] [ref=e61]
+            - paragraph [ref=e62]: "Reply target: within 1 business day."
+          - article [ref=e63]:
+            - heading "Licensing guidance" [level=3] [ref=e64]
+            - paragraph [ref=e65]: "Reply target: within 1-2 business days."
+          - article [ref=e66]:
+            - heading "CE support" [level=3] [ref=e67]
+            - paragraph [ref=e68]: "Reply target: within 1 business day."
+    - region "Want a faster path than email threads?" [ref=e69]:
+      - generic [ref=e71]:
+        - heading "Want a faster path than email threads?" [level=2] [ref=e72]
+        - paragraph [ref=e73]: Start your free trial and get an immediate 7-day action plan while support handles your follow-up questions.
+        - link "Start Free Trial" [ref=e74] [cursor=pointer]:
+          - /url: /start-trial
+  - contentinfo [ref=e75]:
+    - generic [ref=e76]:
+      - generic [ref=e77]:
+        - link "Agents of Change home" [ref=e78] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e79]: A
+          - generic [ref=e80]: Agents of Change
+        - paragraph [ref=e81]: Social Work Exam Prep and Continuing Education
+        - paragraph [ref=e82]:
+          - link "support@agentsofchangeprep.com" [ref=e83] [cursor=pointer]:
+            - /url: mailto:support@agentsofchangeprep.com
+          - text: "|"
+          - link "(555) 232-1944" [ref=e84] [cursor=pointer]:
+            - /url: tel:5552321944
+      - region "Programs" [ref=e85]:
+        - heading "Programs" [level=2] [ref=e86]
+        - list [ref=e87]:
+          - listitem [ref=e88]:
+            - link "Exam Prep" [ref=e89] [cursor=pointer]:
+              - /url: /exam-prep
+          - listitem [ref=e90]:
+            - link "Continuing Education" [ref=e91] [cursor=pointer]:
+              - /url: /continuing-education
+          - listitem [ref=e92]:
+            - link "Bundle" [ref=e93] [cursor=pointer]:
+              - /url: /exam-prep#offers
+          - listitem [ref=e94]:
+            - link "State Requirements" [ref=e95] [cursor=pointer]:
+              - /url: /state-requirements
+      - region "Resources" [ref=e96]:
+        - heading "Resources" [level=2] [ref=e97]
+        - list [ref=e98]:
+          - listitem [ref=e99]:
+            - link "Success Stories" [ref=e100] [cursor=pointer]:
+              - /url: /success-stories
+          - listitem [ref=e101]:
+            - link "Resources Hub" [ref=e102] [cursor=pointer]:
+              - /url: /resources
+          - listitem [ref=e103]:
+            - link "About" [ref=e104] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e105]:
+            - link "Start Free Trial" [ref=e106] [cursor=pointer]:
+              - /url: /start-trial
+          - listitem [ref=e107]:
+            - link "Contact Support" [ref=e108] [cursor=pointer]:
+              - /url: mailto:support@agentsofchangeprep.com
+      - region "Company" [ref=e109]:
+        - heading "Company" [level=2] [ref=e110]
+        - list [ref=e111]:
+          - listitem [ref=e112]:
+            - link "Contact" [ref=e113] [cursor=pointer]:
+              - /url: /contact
+          - listitem [ref=e114]:
+            - link "Privacy" [ref=e115] [cursor=pointer]:
+              - /url: /privacy
+          - listitem [ref=e116]:
+            - link "Terms" [ref=e117] [cursor=pointer]:
+              - /url: /terms
+          - listitem [ref=e118]:
+            - link "Email" [ref=e119] [cursor=pointer]:
+              - /url: mailto:support@agentsofchangeprep.com
+    - generic [ref=e120]:
+      - paragraph [ref=e121]: (c) 2026 Agents of Change. All rights reserved.
+      - paragraph [ref=e122]: "ASWB ACE Provider #1919"
+  - generic [ref=e125]:
+    - button "Menu" [ref=e126]:
+      - img [ref=e128]
+      - generic: Menu
+    - button "Inspect" [ref=e132]:
+      - img [ref=e134]
+      - generic: Inspect
+    - button "Audit" [ref=e136]:
+      - img [ref=e138]
+      - generic: Audit
+    - button "Settings" [ref=e141]:
+      - img [ref=e143]
+      - generic: Settings

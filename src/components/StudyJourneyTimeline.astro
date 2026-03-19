@@ -1,14 +1,23 @@
 ---
-import type { StudyPhase } from "@/lib/types";
+import type { SectionMotionDensity, SectionMotionVariant, StudyPhase } from "@/lib/types";
 
 interface Props {
   phases: StudyPhase[];
+  motionVariant?: SectionMotionVariant;
+  motionDensity?: SectionMotionDensity;
 }
 
-const { phases } = Astro.props;
+const { phases, motionVariant = "reveal-stagger", motionDensity = "compact" } = Astro.props;
 ---
 
-<section class="section section-muted" aria-labelledby="timeline-title" data-module="study-timeline" data-motion-tier="section">
+<section
+  class="section section-muted"
+  aria-labelledby="timeline-title"
+  data-module="study-timeline"
+  data-motion-tier="section"
+  data-motion-variant={motionVariant}
+  data-motion-density={motionDensity}
+>
   <div class="container">
     <header class="section-heading centered">
       <p class="eyebrow">Study timeline</p>

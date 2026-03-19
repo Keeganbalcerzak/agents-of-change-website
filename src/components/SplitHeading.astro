@@ -1,0 +1,20 @@
+---
+/**
+ * SplitHeading — marks a heading for character-by-character split text animation.
+ * Wrap any display or hero heading in this component.
+ *
+ * Props:
+ *   tag:   'h1' | 'h2' | 'h3'   (default: 'h1')
+ *   class: additional CSS classes
+ */
+interface Props {
+  tag?: 'h1' | 'h2' | 'h3';
+  class?: string;
+}
+
+const { tag: Tag = 'h1', class: className = '' } = Astro.props;
+---
+
+<Tag class={className} data-split-heading>
+  <slot />
+</Tag>

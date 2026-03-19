@@ -1,0 +1,49 @@
+---
+/**
+ * ZoneTransition — clip-path wipe between gradient zones.
+ * Place between zone sections. The next zone's background peeks through.
+ *
+ * Props:
+ *   from: 'deep' | 'mid' | 'light'   — outgoing zone color
+ *   to:   'deep' | 'mid' | 'light'   — incoming zone color
+ *   diagonal: boolean                 — use angled wipe (default: true)
+ *   height: string                    — CSS height (default: '120px')
+ */
+interface Props {
+  from: 'deep' | 'mid' | 'light';
+  to: 'deep' | 'mid' | 'light';
+  diagonal?: boolean;
+  height?: string;
+}
+
+const { from, to, diagonal = true, height = '120px' } = Astro.props;
+
+const bgMap: Record<string, string> = {
+  deep:  'linear-gradient(160deg, #1e0d38 0%, #2f1457 40%, #1a0a35 100%)',
+  mid:   'linear-gradient(160deg, #5f2f9b 0%, #6d3bd1 50%, #5a2b94 100%)',
+  light: 'linear-gradient(160deg, #f0e8ff 0%, #f8f3ff 60%, #ede2ff 100%)',
+};
+
+const fromBg = bgMap[from];
+const toBg = bgMap[to];
+const transitionClass = diagonal ? 'zone-transition-diagonal' : 'zone-transition';
+---
+
+<div
+  class="zone-transition-wrapper"
+  style={`height: ${height}; background: ${fromBg};`}
+  aria-hidden="true"
+>
+  <div
+    class={transitionClass}
+    style={`background: ${toBg}; height: 100%; width: 100%;`}
+  ></div>
+</div>
+
+<style>
+  .zone-transition-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+</style>

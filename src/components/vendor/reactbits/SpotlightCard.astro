@@ -1,0 +1,87 @@
+---
+interface Props {
+  className?: string;
+  as?: keyof HTMLElementTagNameMap;
+  interactive?: boolean;
+  radius?: number;
+  falloff?: number;
+  style?: string;
+}
+
+const {
+  className,
+  as = "div",
+  interactive,
+  radius = 240,
+  falloff = 0.62,
+  style,
+  ...attrs
+} = Astro.props as Props;
+const Tag = as;
+const interactiveMode = interactive === undefined ? "auto" : interactive ? "on" : "off";
+const mergedStyle = [
+  style,
+  `--spotlight-radius:${radius}px`,
+  `--spotlight-falloff:${Math.max(0.2, Math.min(0.95, falloff))}`,
+].filter(Boolean).join(";");
+---
+
+<Tag
+  class:list={["vendor-reactbits-spotlight-card", className]}
+  data-spotlight-card
+  data-spotlight-interactive={interactiveMode}
+  style={mergedStyle}
+  {...attrs}
+>
+  <slot />
+</Tag>
+
+<script is:inline>
+  (() => {
+    const root = document.documentElement;
+    if (root.dataset.aocSpotlightInit === "true") {
+      return;
+    }
+
+    root.dataset.aocSpotlightInit = "true";
+
+    const activateCards = () => {
+      const allowAuto = window.matchMedia("(hover: hover) and (pointer: fine)").matches && window.innerWidth >= 1024;
+      const cards = Array.from(document.querySelectorAll("[data-spotlight-card]"));
+
+      cards.forEach((card) => {
+        if (!(card instanceof HTMLElement)) {
+          return;
+        }
+
+        const mode = card.getAttribute("data-spotlight-interactive") || "auto";
+        const interactive = mode === "on" || (mode === "auto" && allowAuto);
+
+        if (!interactive) {
+          card.dataset.spotlightActive = "false";
+          card.style.removeProperty("--spot-x");
+          card.style.removeProperty("--spot-y");
+          return;
+        }
+
+        card.dataset.spotlightActive = "true";
+
+        card.onpointermove = (event) => {
+          const rect = card.getBoundingClientRect();
+          const x = event.clientX - rect.left;
+          const y = event.clientY - rect.top;
+          card.style.setProperty("--spot-x", `${x}px`);
+          card.style.setProperty("--spot-y", `${y}px`);
+        };
+
+        card.onpointerleave = () => {
+          card.style.removeProperty("--spot-x");
+          card.style.removeProperty("--spot-y");
+        };
+      });
+    };
+
+    activateCards();
+    window.addEventListener("resize", activateCards, { passive: true });
+  })();
+</script>

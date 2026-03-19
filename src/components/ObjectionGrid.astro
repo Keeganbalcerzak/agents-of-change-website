@@ -1,4 +1,7 @@
 ---
+import type { SectionMotionVariant, SectionVisualVariant } from "@/lib/types";
+import ScrollReveal from "@/components/vendor/reactbits/ScrollReveal.astro";
+
 const objections = [
   {
     objection: "I am worried I do not have enough time.",
@@ -16,22 +19,46 @@ const objections = [
     objection: "I also need CE planning after licensure.",
     response: "Exam prep and CE pathways are connected so career growth continues after the test.",
   },
+  {
+    objection: "I struggle with test anxiety when facing long exams.",
+    response: "Full-length timed simulations train your endurance and help calibrate your pacing.",
+  },
+  {
+    objection: "I'm overwhelmed by the sheer volume of study material.",
+    response: "Our structured roadmap cuts through the noise, telling you exactly what to focus on each week.",
+  },
 ];
+
+interface Props {
+  visualVariant?: SectionVisualVariant;
+  motionVariant?: SectionMotionVariant;
+}
+
+const { visualVariant = "default", motionVariant = "reveal-stagger" } = Astro.props;
+const isEditorialPurple = visualVariant === "editorial-contrast-purple";
 ---
 
-<section class="section section-muted" aria-labelledby="objections-title" data-module="objection-grid" data-motion-tier="section">
+<section
+  class:list={["section", "section-muted", isEditorialPurple && "objections-section-editorial-purple"]}
+  aria-labelledby="objections-title"
+  data-module="objection-grid"
+  data-motion-tier="section"
+  data-motion-variant={motionVariant}
+  data-motion-density="compact"
+>
   <div class="container">
-    <header class="section-heading centered">
+    <ScrollReveal as="header" className="section-heading centered" variant="slide" delayIndex={0}>
       <p class="eyebrow">Common objections</p>
       <h2 id="objections-title">Questions we solve before exam day</h2>
-      <p>Designed responses to the concerns that usually stall prep momentum.</p>
-    </header>
+      <p>Direct answers to the blockers that most often derail consistency and confidence.</p>
+    </ScrollReveal>
 
     <div class="objection-grid">
       {objections.map((item) => (
-        <article class="objection-card reveal">
-          <h3>{item.objection}</h3>
-          <p>{item.response}</p>
+        <article class:list={["objection-card", "reveal", isEditorialPurple && "objection-card-editorial-purple"]}>
+          <p class="objection-kicker">Concern</p>
+          <h3 class="objection-question">{item.objection}</h3>
+          <p class="objection-response">{item.response}</p>
         </article>
       ))}
     </div>

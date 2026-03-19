@@ -239,7 +239,41 @@ This matrix covers every interactive module shipped in Phase 2. Each test case i
 
 ---
 
-## 7. Header / Mobile Navigation (`src/components/Header.astro`)
+## 7. Home Landing Lifecycle Modules (`src/pages/index.astro`)
+
+**Route:** `/`
+**Modules:** `OriginHeroCinematic`, `SallyScrollTimeline`, `SequenceScrubber`, `PricingTruthMatrix`, `AiTrackerForm`, `CommunityPreview`
+
+| ID | Test Case | Expected Result | Status |
+|---|---|---|---|
+| HOME-01 | Initial load on desktop | Cinematic origin hero renders first with high-school struggle framing and both CTAs | |
+| HOME-02 | Hero CTA pathing | “Enter Sally’s Timeline” jumps to `#sally-timeline`; “View Programs” routes to `/exam-prep` | |
+| HOME-03 | Scroll through Sally timeline chapters | Active rail marker updates, `aria-current=\"step\"` moves to active chapter link, card gains `is-active` state | |
+| HOME-04 | Reduced motion mode | Hero and timeline remain fully readable without motion dependency; no blocked content | |
+| HOME-05 | Data-driven section placement | `SequenceScrubber` appears directly after opening story sections | |
+| HOME-06 | Data phase progression | Each phase loading bar advances with scroll and phase status transitions Queued → In progress → Complete | |
+| HOME-07 | Live counters sync | Readiness, answered question count, and confidence counters update with scroll progress | |
+| HOME-08 | Pricing truth render | Free resources, exam bundle, all three individual exam offers, and CE subscriptions render with exact prices/cadence | |
+| HOME-09 | CE count copy | Pricing cards and supporting copy reflect `159 total courses available` | |
+| HOME-10 | AI Tracker empty submit | Field-level errors render for missing state and date | |
+| HOME-11 | AI Tracker past date submit | Validation blocks submit with explicit past-date error | |
+| HOME-12 | AI Tracker valid submit | Deterministic timeline renders with exam check-in, pass branch, CE reminder start, and renewal milestone | |
+| HOME-13 | Community preview | City cohort cards and specialty forum list render on home | |
+| HOME-14 | Job board positioning | Job board appears only as roadmap teaser (not active feature claims) | |
+| HOME-15 | Home console health | No script redeclaration or runtime errors after scrolling, chapter activation, and CTA interactions | |
+
+### Home Lifecycle Analytics
+
+| ID | Test Case | Expected Result | Status |
+|---|---|---|---|
+| HOME-AN-01 | First time each Sally chapter enters active state | `story_chapter_view` fires once per chapter with `step_id`, `step_number`, and `story_track: \"sally_timeline\"` | |
+| HOME-AN-02 | Complete each scrubber phase | `data_phase_complete` fires once per phase with `phase_id` and `phase_number` | |
+| HOME-AN-03 | Submit valid AI Tracker form | `tracker_workflow_preview` fires with state and renewal cycle metadata | |
+| HOME-AN-04 | Click pricing CTA | `pricing_plan_select` fires with `plan_id` | |
+
+---
+
+## 8. Header / Mobile Navigation (`src/components/Header.astro`)
 
 **Route:** All pages
 **Script:** `is:inline` vanilla JS
@@ -260,7 +294,7 @@ This matrix covers every interactive module shipped in Phase 2. Each test case i
 
 ---
 
-## 8. Cross-Module Functional Checks
+## 9. Cross-Module Functional Checks
 
 | ID | Test Case | Expected Result | Status |
 |---|---|---|---|

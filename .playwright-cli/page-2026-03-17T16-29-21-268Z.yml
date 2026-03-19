@@ -1,0 +1,640 @@
+- generic [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Agents of Change home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: A
+        - generic [ref=e7]: Agents of Change
+      - button "Toggle navigation" [expanded] [active] [ref=e542]:
+        - generic [ref=e543]: Toggle navigation
+      - navigation "Primary" [ref=e8]:
+        - list [ref=e9]:
+          - listitem [ref=e10]:
+            - link "Sally's Story" [ref=e11] [cursor=pointer]:
+              - /url: /#sally-story
+          - listitem [ref=e12]:
+            - link "Programs" [ref=e13] [cursor=pointer]:
+              - /url: /exam-prep
+          - listitem [ref=e14]:
+            - link "Continuing Education" [ref=e15] [cursor=pointer]:
+              - /url: /continuing-education
+          - listitem [ref=e16]:
+            - link "Success Stories" [ref=e17] [cursor=pointer]:
+              - /url: /success-stories
+          - listitem [ref=e18]:
+            - link "Resources" [ref=e19] [cursor=pointer]:
+              - /url: /resources
+          - listitem [ref=e20]:
+            - link "State Requirements" [ref=e21] [cursor=pointer]:
+              - /url: /state-requirements
+          - listitem [ref=e22]:
+            - link "About" [ref=e23] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e24]:
+            - link "Start Free Trial" [ref=e25] [cursor=pointer]:
+              - /url: /start-trial
+  - main [ref=e26]:
+    - region "From overwhelmed to unstoppable." [ref=e27]:
+      - generic [ref=e28]:
+        - generic [ref=e30]:
+          - paragraph [ref=e31]: Sally's Journey
+          - heading "From overwhelmed to unstoppable." [level=1] [ref=e32]
+          - generic [ref=e33]:
+            - generic [ref=e34]:
+              - generic [ref=e35]: College — Freshman Year
+              - paragraph [ref=e36]: Overwhelmed by coursework, unsure if social work is the right path. No structure, no system, just survival mode.
+            - generic [ref=e37]:
+              - generic [ref=e38]: College — Junior Year
+              - paragraph [ref=e39]: Finds her rhythm. Builds a study framework, earns a field placement, and starts believing this is where she belongs.
+            - generic [ref=e40]:
+              - generic [ref=e41]: Master's Program
+              - paragraph [ref=e42]: Dives deep into clinical practice. Passes the ASWB on her first attempt. What once felt impossible now feels earned.
+            - generic [ref=e43]:
+              - generic [ref=e44]: Working — Licensed & Leading
+              - paragraph [ref=e45]: Licensed social worker in the field. Building her caseload, mentoring interns, completing continuing education.
+            - generic [ref=e46]:
+              - generic [ref=e47]: Doctorate — Today
+              - paragraph [ref=e48]: Pursuing her DSW while working full-time. 159 CE courses completed. From surviving to shaping the profession.
+        - complementary "Stylized visual of Sally studying late at night" [ref=e49]:
+          - paragraph [ref=e50]: 11:42 PM · junior year
+          - paragraph [ref=e51]: She is tired, behind, and still showing up.
+          - list [ref=e52]:
+            - listitem [ref=e53]: Three assignments due tomorrow
+            - listitem [ref=e54]: Family care responsibilities tonight
+            - listitem [ref=e55]: No reliable study system yet
+    - region "From high-school struggle to a doctorate trajectory" [ref=e57]:
+      - generic [ref=e58]:
+        - complementary "Sally timeline chapter rail" [ref=e59]:
+          - paragraph [ref=e60]: Sally timeline
+          - heading "From high-school struggle to a doctorate trajectory" [level=2] [ref=e61]
+          - paragraph [ref=e62]: Scroll to follow Sally chapter-by-chapter. The rail updates as each life stage becomes active, and every chapter links to the matching product path.
+          - list "Sally chapter progress" [ref=e63]:
+            - listitem [ref=e64]:
+              - link "High School · Year 1 Overwhelmed and falling behind" [ref=e65] [cursor=pointer]:
+                - /url: "#sally-step-high-school-year-1"
+                - paragraph [ref=e66]: High School · Year 1
+                - paragraph [ref=e67]: Overwhelmed and falling behind
+            - listitem [ref=e68]:
+              - link "High School · Year 2 A mentor reframes the path" [ref=e69] [cursor=pointer]:
+                - /url: "#sally-step-high-school-year-2"
+                - paragraph [ref=e70]: High School · Year 2
+                - paragraph [ref=e71]: A mentor reframes the path
+            - listitem [ref=e72]:
+              - link "High School · Year 3 Purpose discovery through service" [ref=e73] [cursor=pointer]:
+                - /url: "#sally-step-high-school-year-3"
+                - paragraph [ref=e74]: High School · Year 3
+                - paragraph [ref=e75]: Purpose discovery through service
+            - listitem [ref=e76]:
+              - link "Undergrad Systems foundation in college" [ref=e77] [cursor=pointer]:
+                - /url: "#sally-step-undergrad-foundation"
+                - paragraph [ref=e78]: Undergrad
+                - paragraph [ref=e79]: Systems foundation in college
+            - listitem [ref=e80]:
+              - link "Post-Grad Transition to exam-prep strategy" [ref=e81] [cursor=pointer]:
+                - /url: "#sally-step-post-grad-exam-prep"
+                - paragraph [ref=e82]: Post-Grad
+                - paragraph [ref=e83]: Transition to exam-prep strategy
+            - listitem [ref=e84]:
+              - link "Licensed Practice Licensure secured, CE maintained" [ref=e85] [cursor=pointer]:
+                - /url: "#sally-step-licensure-and-ce"
+                - paragraph [ref=e86]: Licensed Practice
+                - paragraph [ref=e87]: Licensure secured, CE maintained
+            - listitem [ref=e88]:
+              - link "Doctorate Trajectory Doctorate-level growth planning" [ref=e89] [cursor=pointer]:
+                - /url: "#sally-step-doctorate-trajectory"
+                - paragraph [ref=e90]: Doctorate Trajectory
+                - paragraph [ref=e91]: Doctorate-level growth planning
+        - generic "Sally timeline chapter cards" [ref=e94]:
+          - article [ref=e95]:
+            - paragraph [ref=e96]: High School · Year 1
+            - heading "Overwhelmed and falling behind" [level=3] [ref=e97]
+            - paragraph [ref=e98]:
+              - strong [ref=e99]: "Struggle:"
+              - text: Sally is balancing school pressure, family obligations, and late-night work with no consistent study structure.
+            - paragraph [ref=e100]:
+              - strong [ref=e101]: "Shift:"
+              - text: "She starts with small repeatable prep actions instead of all-or-nothing sessions: flashcards, focused questions, and a weekly checkpoint."
+            - paragraph [ref=e102]:
+              - strong [ref=e103]: "Outcome:"
+              - text: Stability returns first; confidence follows.
+            - link "Start with free prep" [ref=e104] [cursor=pointer]:
+              - /url: /resources
+          - article [ref=e105]:
+            - paragraph [ref=e106]: High School · Year 2
+            - heading "A mentor reframes the path" [level=3] [ref=e107]
+            - paragraph [ref=e108]:
+              - strong [ref=e109]: "Struggle:"
+              - text: Comparison fatigue and self-doubt keep pulling her back into reactive, last-minute studying.
+            - paragraph [ref=e110]:
+              - strong [ref=e111]: "Shift:"
+              - text: "Mentorship introduces planning filters: what matters now, what can wait, and what to eliminate."
+            - paragraph [ref=e112]:
+              - strong [ref=e113]: "Outcome:"
+              - text: She moves from panic cycles to intentional momentum.
+            - link "Explore mentorship pathways" [ref=e114] [cursor=pointer]:
+              - /url: /community
+          - article [ref=e115]:
+            - paragraph [ref=e116]: High School · Year 3
+            - heading "Purpose discovery through service" [level=3] [ref=e117]
+            - paragraph [ref=e118]:
+              - strong [ref=e119]: "Struggle:"
+              - text: She questions whether college and long-term professional growth are realistic for her.
+            - paragraph [ref=e120]:
+              - strong [ref=e121]: "Shift:"
+              - text: Volunteer work with youth support programs exposes social work as a meaningful, structured career path.
+            - paragraph [ref=e122]:
+              - strong [ref=e123]: "Outcome:"
+              - text: Purpose becomes the engine for discipline.
+            - link "See social work outcomes" [ref=e124] [cursor=pointer]:
+              - /url: /success-stories
+          - article [ref=e125]:
+            - paragraph [ref=e126]: Undergrad
+            - heading "Systems foundation in college" [level=3] [ref=e127]
+            - paragraph [ref=e128]:
+              - strong [ref=e129]: "Struggle:"
+              - text: Course load and practicum expectations create higher-stakes versions of earlier pressure points.
+            - paragraph [ref=e130]:
+              - strong [ref=e131]: "Shift:"
+              - text: "She builds reliable systems: timed study sprints, peer accountability, and reflective review loops."
+            - paragraph [ref=e132]:
+              - strong [ref=e133]: "Outcome:"
+              - text: She strengthens process discipline, not just grades.
+            - link "View exam prep systems" [ref=e134] [cursor=pointer]:
+              - /url: /exam-prep
+          - article [ref=e135]:
+            - paragraph [ref=e136]: Post-Grad
+            - heading "Transition to exam-prep strategy" [level=3] [ref=e137]
+            - paragraph [ref=e138]:
+              - strong [ref=e139]: "Struggle:"
+              - text: "ASWB preparation feels massive: broad content, limited time, and unclear prioritization."
+            - paragraph [ref=e140]:
+              - strong [ref=e141]: "Shift:"
+              - text: She uses diagnostics and full-length practice exams with rationale review to target high-impact domains.
+            - paragraph [ref=e142]:
+              - strong [ref=e143]: "Outcome:"
+              - text: Study time becomes measurable, focused, and strategic.
+            - link "Compare practice exams" [ref=e144] [cursor=pointer]:
+              - /url: /exam-prep#offers
+          - article [ref=e145]:
+            - paragraph [ref=e146]: Licensed Practice
+            - heading "Licensure secured, CE maintained" [level=3] [ref=e147]
+            - paragraph [ref=e148]:
+              - strong [ref=e149]: "Struggle:"
+              - text: After passing, she worries about missing state-specific CE and renewal requirements.
+            - paragraph [ref=e150]:
+              - strong [ref=e151]: "Shift:"
+              - text: She follows state-aware CE planning, check-ins, and reminders to avoid deadline spikes.
+            - paragraph [ref=e152]:
+              - strong [ref=e153]: "Outcome:"
+              - text: Compliance becomes routine instead of stressful.
+            - link "Check CE by state" [ref=e154] [cursor=pointer]:
+              - /url: /state-requirements
+          - article [ref=e155]:
+            - paragraph [ref=e156]: Doctorate Trajectory
+            - heading "Doctorate-level growth planning" [level=3] [ref=e157]
+            - paragraph [ref=e158]:
+              - strong [ref=e159]: "Struggle:"
+              - text: She wants to move beyond compliance into leadership, research, and long-horizon impact.
+            - paragraph [ref=e160]:
+              - strong [ref=e161]: "Shift:"
+              - text: She re-engages with advanced learning pathways, peer communities, and long-term development mapping.
+            - paragraph [ref=e162]:
+              - strong [ref=e163]: "Outcome:"
+              - text: Her career trajectory shifts from maintenance to influence.
+            - link "Browse CE and live events" [ref=e164] [cursor=pointer]:
+              - /url: /continuing-education
+    - region "The Data-Driven Pass Strategy" [ref=e166]:
+      - generic [ref=e167]:
+        - generic [ref=e168]:
+          - paragraph [ref=e169]: Precision Engineering
+          - heading "The Data-Driven Pass Strategy" [level=2] [ref=e170]:
+            - text: The Data-Driven
+            - text: Pass Strategy
+          - paragraph [ref=e171]: Scroll through a pinned progression that loads each phase in sequence. Progress bars, counters, and completion states update from the same timeline signal.
+        - generic [ref=e172]:
+          - list "Pass strategy phases" [ref=e173]:
+            - listitem [ref=e174]:
+              - paragraph [ref=e175]: Phase 01
+              - heading "Diagnose the signal" [level=3] [ref=e176]
+              - paragraph [ref=e177]: In progress
+              - paragraph [ref=e180]: 0% loaded
+              - paragraph [ref=e181]: Map strongest and weakest domains with weighted diagnostics that expose root gaps.
+              - paragraph [ref=e182]: "Output: Priority map + pacing baseline"
+            - listitem [ref=e183]:
+              - paragraph [ref=e184]: Phase 02
+              - heading "Adapt your reps" [level=3] [ref=e185]
+              - paragraph [ref=e186]: In progress
+              - paragraph [ref=e189]: 0% loaded
+              - paragraph [ref=e190]: Shift each practice cycle based on rationale patterns, not just raw score percentages.
+              - paragraph [ref=e191]: "Output: Scenario clusters + confidence deltas"
+            - listitem [ref=e192]:
+              - paragraph [ref=e193]: Phase 03
+              - heading "Pressure test for exam day" [level=3] [ref=e194]
+              - paragraph [ref=e195]: In progress
+              - paragraph [ref=e198]: 0% loaded
+              - paragraph [ref=e199]: Stress-test decision logic with timed simulation loops that mirror real exam constraints.
+              - paragraph [ref=e200]: "Output: Readiness index + final calibration"
+          - complementary "Strategy progress indicator" [ref=e201]:
+            - paragraph [ref=e202]: Scroll Story Progress
+            - paragraph [ref=e205]: "Phase 01 active: Diagnose the signal"
+            - list "Live strategy counters" [ref=e206]:
+              - listitem [ref=e207]:
+                - generic [ref=e208]: Readiness index
+                - strong [ref=e209]: 38%
+              - listitem [ref=e210]:
+                - generic [ref=e211]: Answered questions
+                - strong [ref=e212]: "24"
+              - listitem [ref=e213]:
+                - generic [ref=e214]: Pattern confidence
+                - strong [ref=e215]: 18%
+    - region "Built for social workers preparing for ASWB licensure" [ref=e216]:
+      - generic [ref=e217]:
+        - generic [ref=e218]:
+          - paragraph [ref=e219]: About us
+          - heading "Built for social workers preparing for ASWB licensure" [level=2] [ref=e220]
+          - paragraph [ref=e221]: "Agents of Change supports the full professional arc: test prep, passing, licensure maintenance, and advanced career development."
+        - list [ref=e223]:
+          - listitem [ref=e224]: Social work educators focused on exam clarity, not generic memorization
+          - listitem [ref=e225]: ASWB-focused prep plus continuing education lifecycle support
+          - listitem [ref=e226]: Learning architecture designed for BSW, LMSW, LCSW, counselors, and therapists
+    - region "Key outcomes" [ref=e227]:
+      - generic [ref=e228]:
+        - article [ref=e229]:
+          - paragraph [ref=e230]:
+            - generic [ref=e232]: "0"
+            - generic [ref=e233]: +
+          - paragraph [ref=e234]: Licensed Social Workers
+        - article [ref=e235]:
+          - paragraph [ref=e236]:
+            - generic [ref=e238]: "0"
+            - generic [ref=e239]: "%"
+          - paragraph [ref=e240]: First-Time Pass Rate
+        - article [ref=e241]:
+          - paragraph [ref=e242]:
+            - generic [ref=e244]: "0"
+          - paragraph [ref=e245]: Total CE Courses Available
+        - article [ref=e246]:
+          - paragraph [ref=e247]:
+            - generic [ref=e249]: "0"
+          - paragraph [ref=e250]: States Recognized
+    - region "The Social Worker Timeline" [ref=e251]:
+      - generic [ref=e252]:
+        - generic [ref=e253]:
+          - paragraph [ref=e254]: Your Career Path
+          - heading "The Social Worker Timeline" [level=2] [ref=e255]
+          - paragraph [ref=e256]: From signing up for your exam to renewing your license year after year, we support your entire journey.
+        - list [ref=e257]:
+          - listitem [ref=e258]:
+            - paragraph [ref=e259]: Step 1
+            - paragraph [ref=e260]: Sign up for Licensing Exam
+            - paragraph [ref=e261]: Submit your application to the ASWB and your state board, then schedule your exam date.
+          - listitem [ref=e262]:
+            - paragraph [ref=e263]: Step 2
+            - paragraph [ref=e264]: Exam Preparation
+            - paragraph [ref=e265]: Follow a structured, milestone-driven study plan to build rationale and scenario confidence.
+          - listitem [ref=e266]:
+            - paragraph [ref=e267]: Step 3
+            - paragraph [ref=e268]: Pass Your Exam
+            - paragraph [ref=e269]: Walk into the test center with a calm, strategic mindset and achieve a passing score.
+          - listitem [ref=e270]:
+            - paragraph [ref=e271]: Step 4
+            - paragraph [ref=e272]: Maintain Licensure
+            - paragraph [ref=e273]: Obtain necessary continuing education (CE) credits every 2-3 years to renew your license.
+    - region "Product pricing aligned to current offer structure" [ref=e274]:
+      - generic [ref=e275]:
+        - generic [ref=e276]:
+          - paragraph [ref=e277]: Programs and pricing
+          - heading "Product pricing aligned to current offer structure" [level=2] [ref=e278]
+          - paragraph [ref=e279]: Transparent pricing across free prep resources, individual practice exams, bundled exam access, and CE subscriptions.
+        - generic [ref=e280]:
+          - region "Free prep resources" [ref=e281]:
+            - generic [ref=e282]:
+              - heading "Free prep resources" [level=3] [ref=e283]
+              - paragraph [ref=e284]: Start preparation immediately with no payment required.
+            - article [ref=e286]:
+              - generic [ref=e287]:
+                - paragraph [ref=e288]: Free social work prep suite
+                - paragraph [ref=e289]: BSW, LMSW, and LCSW support
+              - paragraph [ref=e290]:
+                - text: Free
+                - generic [ref=e291]: Free
+              - list [ref=e292]:
+                - listitem [ref=e293]: Free flashcards
+                - listitem [ref=e294]: 10 practice questions for each exam track
+                - listitem [ref=e295]: Free YouTube crash course
+                - listitem [ref=e296]: Intro tools for ASWB licensing exam prep
+              - link "Start with free resources" [ref=e297] [cursor=pointer]:
+                - /url: /resources
+          - region "Career-stage subscription plans" [ref=e298]:
+            - generic [ref=e299]:
+              - heading "Career-stage subscription plans" [level=3] [ref=e300]
+              - paragraph [ref=e301]: Tiered pricing aligned to your career stage — from exam prep through long-term professional growth.
+            - generic [ref=e302]:
+              - article [ref=e303]:
+                - generic [ref=e304]:
+                  - paragraph [ref=e305]: Foundational
+                  - paragraph [ref=e306]: Beginner · Student to Exam Pass
+                - paragraph [ref=e307]:
+                  - text: $25
+                  - generic [ref=e308]: Monthly
+                - list [ref=e309]:
+                  - listitem [ref=e310]: Full recorded test prep program
+                  - listitem [ref=e311]: Practice exams
+                  - listitem [ref=e312]: Study planner / AI tools
+                  - listitem [ref=e313]: Limited community access
+                - link "Start Foundational" [ref=e314] [cursor=pointer]:
+                  - /url: /start-trial
+              - article [ref=e315]:
+                - generic [ref=e316]:
+                  - paragraph [ref=e317]: Growth
+                  - paragraph [ref=e318]: Intermediate · CE Credit Renewal
+                - paragraph [ref=e319]:
+                  - text: $25
+                  - generic [ref=e320]: Monthly
+                - list [ref=e321]:
+                  - listitem [ref=e322]: Unlimited CE credits
+                  - listitem [ref=e323]: Live CE webinars
+                  - listitem [ref=e324]: CE renewal tracker
+                - link "Start Growth" [ref=e325] [cursor=pointer]:
+                  - /url: /start-trial
+              - article [ref=e326]:
+                - generic [ref=e327]:
+                  - paragraph [ref=e328]: Lifetime
+                  - paragraph [ref=e329]: Experienced · Long-Term Professional Identity
+                  - paragraph [ref=e330]: Best value
+                - paragraph [ref=e331]:
+                  - text: $250
+                  - generic [ref=e332]: Annual
+                - paragraph [ref=e333]: Everything in one ecosystem
+                - list [ref=e334]:
+                  - listitem [ref=e335]: Full recorded test prep program
+                  - listitem [ref=e336]: Lifetime CE access
+                  - listitem [ref=e337]: All live events
+                  - listitem [ref=e338]: Future courses
+                  - listitem [ref=e339]: AI tools
+                  - listitem [ref=e340]: Industry innovations
+                  - listitem [ref=e341]: Community access
+                  - listitem [ref=e342]: New methodologies
+                - link "Get Lifetime Access" [ref=e343] [cursor=pointer]:
+                  - /url: /start-trial
+    - region "Find CE requirements for your planned practice state" [ref=e344]:
+      - generic [ref=e345]:
+        - generic [ref=e346]:
+          - paragraph [ref=e347]: CE by state
+          - heading "Find CE requirements for your planned practice state" [level=2] [ref=e348]
+          - paragraph [ref=e349]: Use state requirement pages to confirm CE hours and renewal cadence before deadlines get close.
+        - link "Browse state requirement pages" [ref=e351] [cursor=pointer]:
+          - /url: /state-requirements
+    - region "Preview your exam-to-renewal workflow" [ref=e352]:
+      - generic [ref=e353]:
+        - generic [ref=e354]:
+          - paragraph [ref=e355]: AI tracker
+          - heading "Preview your exam-to-renewal workflow" [level=2] [ref=e356]
+          - paragraph [ref=e357]: Enter your state and target exam date to see deterministic checkpoints for check-ins, pass transitions, and CE reminder timing.
+        - generic [ref=e360]:
+          - generic [ref=e361]:
+            - generic [ref=e362]: Where do you plan to practice?
+            - combobox "Where do you plan to practice?" [ref=e363]:
+              - option "Select a state" [selected]
+              - option "Alabama"
+              - option "Alaska"
+              - option "Arizona"
+              - option "Arkansas"
+              - option "California"
+              - option "Colorado"
+              - option "Connecticut"
+              - option "Delaware"
+              - option "Florida"
+              - option "Georgia"
+              - option "Hawaii"
+              - option "Idaho"
+              - option "Illinois"
+              - option "Indiana"
+              - option "Iowa"
+              - option "Kansas"
+              - option "Kentucky"
+              - option "Louisiana"
+              - option "Maine"
+              - option "Maryland"
+              - option "Massachusetts"
+              - option "Michigan"
+              - option "Minnesota"
+              - option "Mississippi"
+              - option "Missouri"
+              - option "Montana"
+              - option "Nebraska"
+              - option "Nevada"
+              - option "New Hampshire"
+              - option "New Jersey"
+              - option "New Mexico"
+              - option "New York"
+              - option "North Carolina"
+              - option "North Dakota"
+              - option "Ohio"
+              - option "Oklahoma"
+              - option "Oregon"
+              - option "Pennsylvania"
+              - option "Rhode Island"
+              - option "South Carolina"
+              - option "South Dakota"
+              - option "Tennessee"
+              - option "Texas"
+              - option "Utah"
+              - option "Vermont"
+              - option "Virginia"
+              - option "Washington"
+              - option "West Virginia"
+              - option "Wisconsin"
+              - option "Wyoming"
+          - generic [ref=e364]:
+            - generic [ref=e365]: Planned exam date
+            - textbox "Planned exam date" [ref=e366]
+          - button "Build AI Tracker timeline" [ref=e367]
+    - region "Outcomes from social workers following a structured pathway" [ref=e368]:
+      - generic [ref=e369]:
+        - generic [ref=e370]:
+          - paragraph [ref=e371]: Success stories
+          - heading "Outcomes from social workers following a structured pathway" [level=2] [ref=e372]
+          - paragraph [ref=e373]: Review stories from test takers who moved from uncertainty to licensure momentum.
+        - region "Featured student outcomes" [ref=e375]:
+          - article [ref=e377]:
+            - paragraph [ref=e378]: "\""
+            - paragraph [ref=e379]: I passed my LCSW exam on the first try. The rationales made difficult concepts finally click.
+            - paragraph [ref=e380]: Sarah M. - LCSW - CA
+            - paragraph [ref=e381]: Passed in 12 weeks
+          - generic [ref=e382]:
+            - button "Previous testimonial" [ref=e383]: <
+            - tablist "Testimonials" [ref=e384]:
+              - tab "Show testimonial 1" [selected] [ref=e385]
+              - tab "Show testimonial 2" [ref=e386]
+              - tab "Show testimonial 3" [ref=e387]
+              - tab "Show testimonial 4" [ref=e388]
+            - button "Next testimonial" [ref=e389]: ">"
+    - region "Meet social workers studying near you" [ref=e390]:
+      - generic [ref=e391]:
+        - generic [ref=e392]:
+          - paragraph [ref=e393]: Community
+          - heading "Meet social workers studying near you" [level=2] [ref=e394]
+          - paragraph [ref=e395]: Community pathways connect social workers by geography and specialty so learning continues beyond individual coursework.
+        - generic [ref=e396]:
+          - article [ref=e397]:
+            - heading "City-based cohorts" [level=3] [ref=e398]
+            - paragraph [ref=e399]: Groups are organized around major metro areas where members can prepare and network together.
+            - list [ref=e400]:
+              - listitem [ref=e401]:
+                - strong [ref=e402]: Chicago, IL
+                - text: "- LCSW Prep and Networking (420+ members)"
+              - listitem [ref=e403]:
+                - strong [ref=e404]: New York, NY
+                - text: "- LMSW Study Group (850+ members)"
+              - listitem [ref=e405]:
+                - strong [ref=e406]: Los Angeles, CA
+                - text: "- Clinical Peer Support (630+ members)"
+              - listitem [ref=e407]:
+                - strong [ref=e408]: Atlanta, GA
+                - text: "- Exam Strategy Accountability (340+ members)"
+            - link "Explore local groups" [ref=e409] [cursor=pointer]:
+              - /url: /community
+          - article [ref=e410]:
+            - heading "Specialty forums" [level=3] [ref=e411]
+            - paragraph [ref=e412]: Find peers with shared clinical interests and collaborate on exam prep, CE planning, and case-based discussions.
+            - list [ref=e413]:
+              - listitem [ref=e414]: Child and adolescent practice
+              - listitem [ref=e415]: Couples and family counseling
+              - listitem [ref=e416]: Substance use treatment
+              - listitem [ref=e417]: School social work
+              - listitem [ref=e418]: Medical and hospital social work
+              - listitem [ref=e419]: Private practice growth
+            - link "View specialty spaces" [ref=e420] [cursor=pointer]:
+              - /url: /community
+        - article "Job board roadmap teaser" [ref=e421]:
+          - paragraph [ref=e422]: Roadmap
+          - heading "Job board (longer-term)" [level=3] [ref=e423]
+          - paragraph [ref=e424]: The job board remains a planned extension of the community model. Current focus is exam prep, CE completion, and peer networking foundations first.
+    - region "Answers before you start" [ref=e425]:
+      - generic [ref=e426]:
+        - generic [ref=e427]:
+          - paragraph [ref=e428]: FAQ
+          - heading "Answers before you start" [level=2] [ref=e429]
+          - paragraph [ref=e430]: Everything first-time test takers ask before starting their trial.
+        - list [ref=e432]:
+          - listitem [ref=e433]:
+            - heading "How long do I have access to the exam prep program?" [level=3] [ref=e434]:
+              - button "How long do I have access to the exam prep program?" [expanded] [ref=e435]:
+                - generic [ref=e436]: How long do I have access to the exam prep program?
+                - generic [ref=e437]: "-"
+            - region "How long do I have access to the exam prep program?" [ref=e438]:
+              - paragraph [ref=e439]: You keep access until you pass. There are no forced renewals for the exam prep access period.
+          - listitem [ref=e440]:
+            - heading "Which exams are covered?" [level=3] [ref=e441]:
+              - button "Which exams are covered?" [ref=e442]:
+                - generic [ref=e443]: Which exams are covered?
+                - generic [ref=e444]: +
+          - listitem [ref=e445]:
+            - heading "Can I study on mobile?" [level=3] [ref=e446]:
+              - button "Can I study on mobile?" [ref=e447]:
+                - generic [ref=e448]: Can I study on mobile?
+                - generic [ref=e449]: +
+          - listitem [ref=e450]:
+            - heading "Are CE credits accepted in all states?" [level=3] [ref=e451]:
+              - button "Are CE credits accepted in all states?" [ref=e452]:
+                - generic [ref=e453]: Are CE credits accepted in all states?
+                - generic [ref=e454]: +
+          - listitem [ref=e455]:
+            - heading "Is there a free trial?" [level=3] [ref=e456]:
+              - button "Is there a free trial?" [ref=e457]:
+                - generic [ref=e458]: Is there a free trial?
+                - generic [ref=e459]: +
+          - listitem [ref=e460]:
+            - heading "What if I already failed the exam?" [level=3] [ref=e461]:
+              - button "What if I already failed the exam?" [ref=e462]:
+                - generic [ref=e463]: What if I already failed the exam?
+                - generic [ref=e464]: +
+    - region "Start your own lifecycle plan" [ref=e465]:
+      - generic [ref=e467]:
+        - heading "Start your own lifecycle plan" [level=2] [ref=e468]
+        - paragraph [ref=e469]: Build your path from exam prep to CE and long-term career growth in one system.
+        - link "Start Free Trial" [ref=e470] [cursor=pointer]:
+          - /url: /start-trial
+  - contentinfo [ref=e471]:
+    - generic [ref=e472]:
+      - generic [ref=e473]:
+        - link "Agents of Change home" [ref=e474] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e475]: A
+          - generic [ref=e476]: Agents of Change
+        - paragraph [ref=e477]: Social Work Exam Prep and Continuing Education
+        - paragraph [ref=e478]:
+          - link "support@agentsofchangeprep.com" [ref=e479] [cursor=pointer]:
+            - /url: mailto:support@agentsofchangeprep.com
+          - text: "|"
+          - link "(555) 232-1944" [ref=e480] [cursor=pointer]:
+            - /url: tel:5552321944
+      - region "Programs" [ref=e481]:
+        - heading "Programs" [level=2] [ref=e482]
+        - list [ref=e483]:
+          - listitem [ref=e484]:
+            - link "Exam Prep" [ref=e485] [cursor=pointer]:
+              - /url: /exam-prep
+          - listitem [ref=e486]:
+            - link "Continuing Education" [ref=e487] [cursor=pointer]:
+              - /url: /continuing-education
+          - listitem [ref=e488]:
+            - link "Bundle" [ref=e489] [cursor=pointer]:
+              - /url: /exam-prep#offers
+          - listitem [ref=e490]:
+            - link "State Requirements" [ref=e491] [cursor=pointer]:
+              - /url: /state-requirements
+      - region "Resources" [ref=e492]:
+        - heading "Resources" [level=2] [ref=e493]
+        - list [ref=e494]:
+          - listitem [ref=e495]:
+            - link "Success Stories" [ref=e496] [cursor=pointer]:
+              - /url: /success-stories
+          - listitem [ref=e497]:
+            - link "Resources Hub" [ref=e498] [cursor=pointer]:
+              - /url: /resources
+          - listitem [ref=e499]:
+            - link "About" [ref=e500] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e501]:
+            - link "Start Free Trial" [ref=e502] [cursor=pointer]:
+              - /url: /start-trial
+          - listitem [ref=e503]:
+            - link "Contact Support" [ref=e504] [cursor=pointer]:
+              - /url: mailto:support@agentsofchangeprep.com
+      - region "Company" [ref=e505]:
+        - heading "Company" [level=2] [ref=e506]
+        - list [ref=e507]:
+          - listitem [ref=e508]:
+            - link "Contact" [ref=e509] [cursor=pointer]:
+              - /url: /contact
+          - listitem [ref=e510]:
+            - link "Privacy" [ref=e511] [cursor=pointer]:
+              - /url: /privacy
+          - listitem [ref=e512]:
+            - link "Terms" [ref=e513] [cursor=pointer]:
+              - /url: /terms
+          - listitem [ref=e514]:
+            - link "Email" [ref=e515] [cursor=pointer]:
+              - /url: mailto:support@agentsofchangeprep.com
+    - generic [ref=e516]:
+      - paragraph [ref=e517]: (c) 2026 Agents of Change. All rights reserved.
+      - paragraph [ref=e518]: "ASWB ACE Provider #1919"
+  - generic [ref=e521]:
+    - button "Menu" [ref=e522]:
+      - img [ref=e524]
+      - generic: Menu
+    - button "Inspect" [ref=e528]:
+      - img [ref=e530]
+      - generic: Inspect
+    - button "Audit" [ref=e532]:
+      - generic [ref=e533]:
+        - img [ref=e534]
+        - img [ref=e550]
+      - generic: Audit
+    - button "Settings" [ref=e537]:
+      - img [ref=e539]
+      - generic: Settings

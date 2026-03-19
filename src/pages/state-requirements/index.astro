@@ -11,8 +11,15 @@ const states = await getStateRequirements();
   description="Browse social work exam and licensing guidance by state."
   path="/state-requirements"
   themeIntent="trust"
+  enableMotionEngine={true}
 >
-  <section class="page-hero page-hero-rich" data-module="state-index-hero" data-motion-tier="hero">
+  <section
+    class="page-hero page-hero-rich"
+    data-module="state-index-hero"
+    data-motion-tier="hero"
+    data-motion-variant="story-stack"
+    data-motion-density="cinematic"
+  >
     <div class="container">
       <p class="eyebrow">State lookup</p>
       <h1>Find social work licensing pathways by state</h1>
@@ -23,7 +30,13 @@ const states = await getStateRequirements();
     </div>
   </section>
 
-  <section class="section section-muted" data-module="state-index-grid" data-motion-tier="section">
+  <section
+    class="section section-muted"
+    data-module="state-index-grid"
+    data-motion-tier="section"
+    data-motion-variant="reveal-stagger"
+    data-motion-density="compact"
+  >
     <div class="container state-grid">
       {states.map((state) => (
         <article class="state-card reveal">
