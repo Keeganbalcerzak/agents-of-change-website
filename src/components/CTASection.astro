@@ -4,6 +4,8 @@ interface Props {
   description: string;
   ctaLabel?: string;
   ctaHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
 }
 
 const {
@@ -11,6 +13,8 @@ const {
   description,
   ctaLabel = "Start Free Trial",
   ctaHref = "/start-trial",
+  secondaryLabel,
+  secondaryHref,
 } = Astro.props;
 ---
 
@@ -19,9 +23,16 @@ const {
     <div class="cta-card">
       <h2 id="cta-title">{title}</h2>
       <p>{description}</p>
-      <a href={ctaHref} class="button primary" data-cta="section-start-trial" data-cta-location="cta-panel">
-        {ctaLabel}
-      </a>
+      <div class="cta-actions">
+        <a href={ctaHref} class="button primary" data-cta="section-start-trial" data-cta-location="cta-panel">
+          {ctaLabel}
+        </a>
+        {secondaryLabel && secondaryHref && (
+          <a href={secondaryHref} class="button secondary" data-cta="section-secondary" data-cta-location="cta-panel">
+            {secondaryLabel}
+          </a>
+        )}
+      </div>
     </div>
   </div>
 </section>

@@ -32,10 +32,13 @@ export function initStagger() {
       opacity: 0,
       scale: 0.97,
       duration: 0.68,
-      immediateRender: true,
+      immediateRender: false,
       stagger: {
         each: 0.08,
         ease: 'power2.out',
+      },
+      onComplete: () => {
+        gsap.set(children, { clearProps: 'opacity,transform' });
       },
       ease: 'power3.out',
       scrollTrigger: {

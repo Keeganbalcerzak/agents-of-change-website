@@ -37,6 +37,7 @@ const hasHighCapabilityHardware = () => {
   const nav = navigator as MaybeDeviceNavigator;
   return (navigator.hardwareConcurrency ?? 4) >= 6 && (nav.deviceMemory ?? 4) >= 4;
 };
+const canRunDecorativeMotion = () => hasFinePointer() && hasHighCapabilityHardware();
 
 // ─── Read motion profile from <body> ─────────────────────────────────────────
 const body = document.body;
@@ -101,7 +102,9 @@ const normalizeVariant = (
 };
 
 function animateRevealStagger(node: HTMLElement, density: MotionDensity) {
-  const revealNodes = Array.from(node.querySelectorAll<HTMLElement>('.reveal'));
+  const revealNodes = Array.from(node.querySelectorAll<HTMLElement>('.reveal')).filter(
+    (element) => !element.hasAttribute('data-stagger-item'),
+  );
   if (!revealNodes.length) return;
   const cinematic = density === 'cinematic';
   gsap.fromTo(
@@ -113,11 +116,16 @@ function animateRevealStagger(node: HTMLElement, density: MotionDensity) {
       filter: 'blur(0px)',
       duration: cinematic ? 0.82 : 0.62,
       stagger: cinematic ? 0.1 : 0.06,
+      immediateRender: false,
       ease: 'power3.out',
+      onComplete: () => {
+        gsap.set(revealNodes, { clearProps: 'opacity,filter,transform' });
+      },
       scrollTrigger: {
         trigger: node,
         start: cinematic ? 'top 90%' : 'top 86%',
         toggleActions: 'play none none none',
+        once: true,
       },
     },
   );
@@ -140,11 +148,16 @@ function animateStoryStack(node: HTMLElement, density: MotionDensity) {
       scale: 1,
       duration: cinematic ? 0.78 : 0.58,
       stagger: cinematic ? 0.09 : 0.05,
+      immediateRender: false,
       ease: 'power3.out',
+      onComplete: () => {
+        gsap.set(targets, { clearProps: 'opacity,transform' });
+      },
       scrollTrigger: {
         trigger: node,
         start: 'top 88%',
         toggleActions: 'play none none none',
+        once: true,
       },
     },
   );
@@ -180,7 +193,7 @@ function animateLegendaryScrub(node: HTMLElement, density: MotionDensity) {
     .fromTo(
       scrubTargets,
       { y: 20, opacity: 0.66, filter: 'blur(4px)' },
-      { y: 0, opacity: 1, filter: 'blur(0px)', stagger: 0.06, duration: 0.8 },
+      { y: 0, opacity: 1, filter: 'blur(0px)', stagger: 0.06, duration: 0.8, immediateRender: false },
       0.05,
     );
 }
@@ -192,6 +205,7 @@ function applyParallaxDrift(
   variant: MotionVariant,
 ) {
   if (!supportsMotion || !isDesktopViewport() || conversionSafe || variant === 'none') return;
+  if (!canRunDecorativeMotion()) return;
   if (!node.getAttribute('data-motion-parallax') || node.hasAttribute('data-module-no-parallax'))
     return;
   const tier = node.getAttribute('data-motion-tier') || 'section';
@@ -228,7 +242,7 @@ initScrollCounters();
 initPathDraw();
 
 // Desktop-only interactions
-if (!prefersReducedMotion && hasFinePointer()) {
+if (!prefersReducedMotion && canRunDecorativeMotion()) {
   initMagneticButtons();
   initTiltCards();
   initParallax();

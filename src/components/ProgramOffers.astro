@@ -15,10 +15,14 @@ const featuredOffer = offers.find((offer) => offer.featured);
 const otherOffers = offers.filter((offer) => !offer.featured);
 const orderedOffers = [...otherOffers, featuredOffer].filter(Boolean) as ProgramOffer[];
 
-const coreOffer = orderedOffers[0];
+/* Exclude standalone-track plans (e.g. BSW) from the comparison table since
+   they target a different exam level and aren't directly comparable. */
+const compareOffers = orderedOffers.filter((o) => o.slug !== "bsw");
+
+const coreOffer = compareOffers[0];
 const coreFeatures = new Set(coreOffer?.featuresIncluded ?? []);
 
-const featureRows = orderedOffers.reduce<string[]>((rows, offer) => {
+const featureRows = compareOffers.reduce<string[]>((rows, offer) => {
   offer.featuresIncluded.forEach((feature) => {
     if (/^everything in exam prep$/i.test(feature)) {
       return;
@@ -120,7 +124,7 @@ function includesFeature(offer: ProgramOffer, feature: string) {
           <thead>
             <tr>
               <th scope="col">Feature</th>
-              {orderedOffers.map((offer) => (
+              {compareOffers.map((offer) => (
                 <th scope="col">{offer.title}</th>
               ))}
             </tr>
@@ -128,7 +132,7 @@ function includesFeature(offer: ProgramOffer, feature: string) {
           <tbody>
             <tr class="plan-price-row">
               <th scope="row">Price</th>
-              {orderedOffers.map((offer) => (
+              {compareOffers.map((offer) => (
                 <td>
                   <span class="plan-price-cell">
                     {offer.priceOriginal && <span class="price-original">${offer.priceOriginal}</span>}
@@ -140,7 +144,7 @@ function includesFeature(offer: ProgramOffer, feature: string) {
             {featureRows.map((feature) => (
               <tr>
                 <th scope="row">{feature}</th>
-                {orderedOffers.map((offer) => {
+                {compareOffers.map((offer) => {
                   const included = includesFeature(offer, feature);
                   return (
                     <td class="plan-cell">

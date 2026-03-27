@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import CTASection from "@/components/CTASection.astro";
+import StateRequirementsDirectory from "@/components/islands/StateRequirementsDirectory";
 import { getStateRequirements } from "@/lib/content";
 
 const states = await getStateRequirements();
@@ -37,14 +38,8 @@ const states = await getStateRequirements();
     data-motion-variant="reveal-stagger"
     data-motion-density="compact"
   >
-    <div class="container state-grid">
-      {states.map((state) => (
-        <article class="state-card reveal">
-          <h2>{state.stateName}</h2>
-          <p>{state.requirements[0]}</p>
-          <a href={`/state-requirements/${state.stateCode.toLowerCase()}`}>View {state.stateCode} details</a>
-        </article>
-      ))}
+    <div class="container">
+      <StateRequirementsDirectory client:load states={states} />
     </div>
   </section>
 

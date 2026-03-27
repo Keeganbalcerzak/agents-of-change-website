@@ -8,6 +8,23 @@ interface TrialErrors {
 }
 
 const stepTitles = ["Identity", "Exam Context", "Consent and Timeline"];
+const trialDraftStorageKey = "aoc:trial-stepper-draft:v1";
+const examTrackOptions = ["LSW", "LMSW", "LCSW"] as const;
+const targetExamWindowOptions = ["0-30", "31-60", "61-90", "90+"] as const;
+const studyTimelineOptions = ["immediate", "this_month", "next_quarter"] as const;
+const validStateCodes = new Set(US_STATES.map((entry) => entry.code));
+
+type TrialDraft = {
+  step: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  examTrack: "LSW" | "LMSW" | "LCSW";
+  state: string;
+  targetExamWindow: "0-30" | "31-60" | "61-90" | "90+";
+  studyTimeline: "immediate" | "this_month" | "next_quarter";
+  consentToEmail: boolean;
+};
 
 function collectUtm(): Record<string, string | undefined> {
   if (typeof window === "undefined") {
@@ -24,10 +41,105 @@ function collectUtm(): Record<string, string | undefined> {
   };
 }
 
+function isExamTrack(value: string | null): value is "LSW" | "LMSW" | "LCSW" {
+  return Boolean(value && examTrackOptions.includes(value as (typeof examTrackOptions)[number]));
+}
+
+function isTargetExamWindow(value: string | null): value is "0-30" | "31-60" | "61-90" | "90+" {
+  return Boolean(value && targetExamWindowOptions.includes(value as (typeof targetExamWindowOptions)[number]));
+}
+
+function isStudyTimeline(value: string | null): value is "immediate" | "this_month" | "next_quarter" {
+  return Boolean(value && studyTimelineOptions.includes(value as (typeof studyTimelineOptions)[number]));
+}
+
+function normalizeStateCode(value: string | null): string | undefined {
+  if (!value) {
+    return undefined;
+  }
+
+  const normalized = value.trim().toUpperCase();
+  return validStateCodes.has(normalized) ? normalized : undefined;
+}
+
+function getDraftFromSessionStorage(): Partial<TrialDraft> | null {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  try {
+    const stored = window.sessionStorage.getItem(trialDraftStorageKey);
+    if (!stored) {
+      return null;
+    }
+
+    const parsed = JSON.parse(stored) as Partial<TrialDraft>;
+    if (!parsed || typeof parsed !== "object") {
+      return null;
+    }
+
+    return {
+      step:
+        typeof parsed.step === "number" && parsed.step >= 0 && parsed.step < stepTitles.length
+          ? parsed.step
+          : undefined,
+      firstName: typeof parsed.firstName === "string" ? parsed.firstName : undefined,
+      lastName: typeof parsed.lastName === "string" ? parsed.lastName : undefined,
+      email: typeof parsed.email === "string" ? parsed.email : undefined,
+      examTrack: isExamTrack(parsed.examTrack ?? null) ? parsed.examTrack : undefined,
+      state: normalizeStateCode(parsed.state ?? null),
+      targetExamWindow: isTargetExamWindow(parsed.targetExamWindow ?? null) ? parsed.targetExamWindow : undefined,
+      studyTimeline: isStudyTimeline(parsed.studyTimeline ?? null) ? parsed.studyTimeline : undefined,
+      consentToEmail: typeof parsed.consentToEmail === "boolean" ? parsed.consentToEmail : undefined,
+    };
+  } catch {
+    return null;
+  }
+}
+
+function getPrefillsFromSearch(): Partial<TrialDraft> {
+  if (typeof window === "undefined") {
+    return {};
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const stepParam = params.get("step");
+  const parsedStep = stepParam ? Number.parseInt(stepParam, 10) : Number.NaN;
+  const examTrack = params.get("examTrack");
+  const targetExamWindow = params.get("targetExamWindow");
+  const studyTimeline = params.get("studyTimeline");
+
+  return {
+    step:
+      Number.isInteger(parsedStep) && parsedStep >= 1 && parsedStep <= stepTitles.length
+        ? parsedStep - 1
+        : undefined,
+    examTrack: isExamTrack(examTrack) ? examTrack : undefined,
+    state: normalizeStateCode(params.get("state")),
+    targetExamWindow: isTargetExamWindow(targetExamWindow) ? targetExamWindow : undefined,
+    studyTimeline: isStudyTimeline(studyTimeline) ? studyTimeline : undefined,
+  };
+}
+
+function mapSubmitError(errorCode?: string): string {
+  switch (errorCode) {
+    case "VALIDATION_ERROR":
+      return "Please review your details and try again.";
+    case "RATE_LIMITED":
+      return "Too many attempts were submitted. Please wait about a minute and try again.";
+    case "HUBSPOT_ERROR":
+      return "Our enrollment system is temporarily unavailable. Please try again shortly.";
+    default:
+      return "We couldn't process your request right now. Please try again in a moment.";
+  }
+}
+
 export default function TrialStepper() {
   const [step, setStep] = useState(0);
   const [submitting, setSubmitting] = useState(false);
   const [globalError, setGlobalError] = useState<string | null>(null);
+  const [restoredDraft, setRestoredDraft] = useState(false);
+  const [hasInitializedDraft, setHasInitializedDraft] = useState(false);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -48,6 +160,62 @@ export default function TrialStepper() {
       step_name: stepTitles[step],
     });
   }, [step]);
+
+  useEffect(() => {
+    const storedDraft = getDraftFromSessionStorage();
+    const queryPrefills = getPrefillsFromSearch();
+
+    if (storedDraft) {
+      setFirstName(storedDraft.firstName ?? "");
+      setLastName(storedDraft.lastName ?? "");
+      setEmail(storedDraft.email ?? "");
+      setExamTrack(storedDraft.examTrack ?? "LMSW");
+      setState(storedDraft.state ?? "CA");
+      setTargetExamWindow(storedDraft.targetExamWindow ?? "61-90");
+      setStudyTimeline(storedDraft.studyTimeline ?? "this_month");
+      setConsentToEmail(storedDraft.consentToEmail ?? false);
+      setStep(storedDraft.step ?? 0);
+      setRestoredDraft(true);
+    }
+
+    if (queryPrefills.examTrack) {
+      setExamTrack(queryPrefills.examTrack);
+    }
+    if (queryPrefills.state) {
+      setState(queryPrefills.state);
+    }
+    if (queryPrefills.targetExamWindow) {
+      setTargetExamWindow(queryPrefills.targetExamWindow);
+    }
+    if (queryPrefills.studyTimeline) {
+      setStudyTimeline(queryPrefills.studyTimeline);
+    }
+    if (typeof queryPrefills.step === "number") {
+      setStep(queryPrefills.step);
+    }
+
+    setHasInitializedDraft(true);
+  }, []);
+
+  useEffect(() => {
+    if (!hasInitializedDraft || typeof window === "undefined") {
+      return;
+    }
+
+    const nextDraft: TrialDraft = {
+      step,
+      firstName,
+      lastName,
+      email,
+      examTrack,
+      state,
+      targetExamWindow,
+      studyTimeline,
+      consentToEmail,
+    };
+
+    window.sessionStorage.setItem(trialDraftStorageKey, JSON.stringify(nextDraft));
+  }, [consentToEmail, email, examTrack, firstName, hasInitializedDraft, lastName, state, step, studyTimeline, targetExamWindow]);
 
   const progress = useMemo(() => ((step + 1) / stepTitles.length) * 100, [step]);
 
@@ -84,16 +252,45 @@ export default function TrialStepper() {
     return nextErrors;
   }
 
-  function handleNext() {
+  function validateAllSteps(): { errors: TrialErrors; firstInvalidStep: number | null } {
+    const combinedErrors: TrialErrors = {};
+    let firstInvalidStep: number | null = null;
+
+    for (let currentStep = 0; currentStep < stepTitles.length; currentStep += 1) {
+      const stepErrors = validate(currentStep);
+      if (Object.keys(stepErrors).length > 0 && firstInvalidStep === null) {
+        firstInvalidStep = currentStep;
+      }
+
+      Object.assign(combinedErrors, stepErrors);
+    }
+
+    return { errors: combinedErrors, firstInvalidStep };
+  }
+
+  function clearFieldError(field: keyof TrialErrors) {
+    setErrors((current) => {
+      if (!current[field]) {
+        return current;
+      }
+
+      const next = { ...current };
+      delete next[field];
+      return next;
+    });
+  }
+
+  function completeCurrentStep(): boolean {
     const nextErrors = validate(step);
     setErrors(nextErrors);
+    setGlobalError(null);
 
     if (Object.keys(nextErrors).length > 0) {
       trackEvent("form_validation_error", {
         step_number: step + 1,
         fields: Object.keys(nextErrors).join(","),
       });
-      return;
+      return false;
     }
 
     trackEvent("trial_step_complete", {
@@ -102,6 +299,11 @@ export default function TrialStepper() {
     });
 
     setStep((prev) => Math.min(prev + 1, stepTitles.length - 1));
+    return true;
+  }
+
+  function handleNext() {
+    completeCurrentStep();
   }
 
   function handlePrevious() {
@@ -113,7 +315,12 @@ export default function TrialStepper() {
   async function handleSubmit(event: SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const nextErrors = validate(step);
+    if (step < stepTitles.length - 1) {
+      completeCurrentStep();
+      return;
+    }
+
+    const { errors: nextErrors, firstInvalidStep } = validateAllSteps();
     setErrors(nextErrors);
 
     if (Object.keys(nextErrors).length > 0) {
@@ -121,6 +328,9 @@ export default function TrialStepper() {
         step_number: step + 1,
         fields: Object.keys(nextErrors).join(","),
       });
+      if (typeof firstInvalidStep === "number") {
+        setStep(firstInvalidStep);
+      }
       return;
     }
 
@@ -170,7 +380,7 @@ export default function TrialStepper() {
         trackEvent("trial_submit_error", {
           error_code: result.errorCode || "UNKNOWN",
         });
-        setGlobalError("We couldn't process your request right now. Please try again in a moment.");
+        setGlobalError(mapSubmitError(result.errorCode));
         setSubmitting(false);
         return;
       }
@@ -178,6 +388,10 @@ export default function TrialStepper() {
       trackEvent("trial_submit_success", {
         lead_id: result.leadId || "unknown",
       });
+
+      if (typeof window !== "undefined") {
+        window.sessionStorage.removeItem(trialDraftStorageKey);
+      }
 
       const destination = result.leadId
         ? `/trial/thanks?lead=${encodeURIComponent(result.leadId)}`
@@ -195,6 +409,12 @@ export default function TrialStepper() {
 
   return (
     <form className="trial-form" onSubmit={handleSubmit} noValidate>
+      {restoredDraft && (
+        <p aria-live="polite">
+          Your saved trial draft has been restored for this browser session.
+        </p>
+      )}
+
       <div className="step-progress" aria-hidden="true">
         <div style={{ width: `${progress}%` }}></div>
       </div>
@@ -218,7 +438,11 @@ export default function TrialStepper() {
               name="firstName"
               autoComplete="given-name"
               value={firstName}
-              onChange={(event) => setFirstName(event.target.value)}
+              onChange={(event) => {
+                setFirstName(event.target.value);
+                clearFieldError("firstName");
+                setGlobalError(null);
+              }}
               aria-invalid={Boolean(errors.firstName)}
               aria-describedby={errors.firstName ? "error-first-name" : undefined}
             />
@@ -231,7 +455,11 @@ export default function TrialStepper() {
               name="lastName"
               autoComplete="family-name"
               value={lastName}
-              onChange={(event) => setLastName(event.target.value)}
+              onChange={(event) => {
+                setLastName(event.target.value);
+                clearFieldError("lastName");
+                setGlobalError(null);
+              }}
               aria-invalid={Boolean(errors.lastName)}
               aria-describedby={errors.lastName ? "error-last-name" : undefined}
             />
@@ -245,7 +473,11 @@ export default function TrialStepper() {
               type="email"
               autoComplete="email"
               value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              onChange={(event) => {
+                setEmail(event.target.value);
+                clearFieldError("email");
+                setGlobalError(null);
+              }}
               aria-invalid={Boolean(errors.email)}
               aria-describedby={errors.email ? "error-email" : undefined}
             />
@@ -260,7 +492,14 @@ export default function TrialStepper() {
 
           <label>
             Which exam are you preparing for?
-            <select value={examTrack} onChange={(event) => setExamTrack(event.target.value as "LSW" | "LMSW" | "LCSW")}>
+            <select
+              value={examTrack}
+              onChange={(event) => {
+                setExamTrack(event.target.value as "LSW" | "LMSW" | "LCSW");
+                clearFieldError("examTrack");
+                setGlobalError(null);
+              }}
+            >
               <option value="LSW">LSW</option>
               <option value="LMSW">LMSW</option>
               <option value="LCSW">LCSW</option>
@@ -269,7 +508,15 @@ export default function TrialStepper() {
 
           <label>
             Which state are you testing in?
-            <select value={state} onChange={(event) => setState(event.target.value)} aria-invalid={Boolean(errors.state)}>
+            <select
+              value={state}
+              onChange={(event) => {
+                setState(event.target.value);
+                clearFieldError("state");
+                setGlobalError(null);
+              }}
+              aria-invalid={Boolean(errors.state)}
+            >
               {US_STATES.map((entry) => (
                 <option key={entry.code} value={entry.code}>
                   {entry.name}
@@ -283,7 +530,10 @@ export default function TrialStepper() {
             Target exam window
             <select
               value={targetExamWindow}
-              onChange={(event) => setTargetExamWindow(event.target.value as "0-30" | "31-60" | "61-90" | "90+")}
+              onChange={(event) => {
+                setTargetExamWindow(event.target.value as "0-30" | "31-60" | "61-90" | "90+");
+                setGlobalError(null);
+              }}
             >
               <option value="0-30">0-30 days</option>
               <option value="31-60">31-60 days</option>
@@ -302,7 +552,10 @@ export default function TrialStepper() {
             Study timeline
             <select
               value={studyTimeline}
-              onChange={(event) => setStudyTimeline(event.target.value as "immediate" | "this_month" | "next_quarter")}
+              onChange={(event) => {
+                setStudyTimeline(event.target.value as "immediate" | "this_month" | "next_quarter");
+                setGlobalError(null);
+              }}
             >
               <option value="immediate">I want to start today</option>
               <option value="this_month">I can start this month</option>
@@ -314,7 +567,11 @@ export default function TrialStepper() {
             <input
               type="checkbox"
               checked={consentToEmail}
-              onChange={(event) => setConsentToEmail(event.target.checked)}
+              onChange={(event) => {
+                setConsentToEmail(event.target.checked);
+                clearFieldError("consentToEmail");
+                setGlobalError(null);
+              }}
               aria-invalid={Boolean(errors.consentToEmail)}
             />
             <span>I agree to receive trial materials and exam prep support by email.</span>

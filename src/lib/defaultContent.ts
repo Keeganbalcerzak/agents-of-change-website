@@ -106,8 +106,8 @@ export const defaultProgramOffers: ProgramOffer[] = [
 export const defaultLandingPricingSections: PricingSection[] = [
   {
     id: "free-resources",
-    title: "Free entry into the ecosystem",
-    description: "A wide top-of-funnel built for trust, not just lead capture.",
+    title: "Free exam prep entry point",
+    description: "Trust-building free resources for people deciding whether Agents of Change is the right prep partner.",
     plans: [
       {
         id: "free-prep-suite",
@@ -118,7 +118,7 @@ export const defaultLandingPricingSections: PricingSection[] = [
           "Free course trial / preview for all three exam levels",
           "10 free practice questions per level with rationales",
           "ASWB flashcards, AI tutor, and personalized study plan generator",
-          "Weekly podcast, YouTube walkthroughs, and free CE starter content",
+          "Weekly podcast, YouTube walkthroughs, and prep-first strategy content",
         ],
         ctaLabel: "Start with free resources",
         ctaHref: "/resources",
@@ -258,8 +258,8 @@ export const defaultLandingPricingSections: PricingSection[] = [
   },
   {
     id: "continuing-education",
-    title: "Continuing education",
-    description: "A low-friction retention engine for licensed social workers after the exam.",
+    title: "Continuing education memberships",
+    description: "Independent CE options for licensed social workers focused on renewal confidence and practical growth.",
     plans: [
       {
         id: "ce-annual",
@@ -556,7 +556,7 @@ export const defaultSeoMetadata: SeoMetadata[] = [
     key: "home",
     title: "Agents of Change | Social Work Exam Prep and Continuing Education",
     description:
-      "Pass your LMSW, LCSW, or LSW exam with confidence. Expert-led prep, practical study plans, and CE support.",
+      "Choose focused social work exam prep before licensure or continuing education after you pass.",
     path: "/",
   },
   {
@@ -584,7 +584,7 @@ export const defaultSeoMetadata: SeoMetadata[] = [
     key: "about",
     title: "About Agents of Change | Social Work Exam Prep Experts",
     description:
-      "Meet the team and teaching framework behind Agents of Change exam prep and CE guidance.",
+      "Meet the team and teaching approach behind Agents of Change exam prep and continuing education.",
     path: "/about",
   },
   {
@@ -649,7 +649,7 @@ export const footerLinkGroups = [
     links: [
       { label: "Exam Prep", href: "/exam-prep" },
       { label: "Continuing Education", href: "/continuing-education" },
-      { label: "Bundle", href: "/exam-prep#offers" },
+      { label: "Practice Exams", href: "/exam-prep#offers" },
       { label: "State Requirements", href: "/state-requirements" },
     ],
   },
@@ -691,9 +691,9 @@ export const defaultAudiencePathways: AudiencePathway[] = [
   },
   {
     id: "ce-focus",
-    title: "Exam plus CE growth",
-    summary: "Pair licensing prep with curated CE modules aligned to state renewal expectations.",
-    ctaLabel: "Compare Exam + CE",
+    title: "Already licensed and focused on CE",
+    summary: "Go straight into renewal planning, practical coursework, and CE options built for licensed social workers.",
+    ctaLabel: "Explore CE options",
     ctaHref: "/continuing-education",
   },
 ];

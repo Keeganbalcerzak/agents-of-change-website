@@ -32,6 +32,11 @@ const strategyPhases = [
 
 const clampProgress = (value: number) => Math.min(1, Math.max(0, value));
 
+type MaybeDeviceNavigator = Navigator & {
+  connection?: { saveData?: boolean };
+  deviceMemory?: number;
+};
+
 interface SequenceScrubberProps {
   backgroundMode?: "current" | "aurora";
   intensity?: "default" | "legendary";
@@ -57,6 +62,18 @@ function deriveMetrics(progress: number): DerivedMetrics {
 function phaseSummary(index: number): string {
   const bounded = Math.max(0, Math.min(strategyPhases.length - 1, index));
   return `${strategyPhases[bounded].label} active: ${strategyPhases[bounded].title}`;
+}
+
+function phaseCounterLabel(phaseProgress: number, isComplete: boolean, isActive: boolean): string {
+  if (isComplete) {
+    return "Complete";
+  }
+
+  if (isActive) {
+    return phaseProgress < 0.05 ? "Starting now" : `${Math.round(phaseProgress * 100)}% complete`;
+  }
+
+  return "Up next";
 }
 
 export default function SequenceScrubber({
@@ -85,11 +102,19 @@ export default function SequenceScrubber({
       return;
     }
 
+    const nav = navigator as MaybeDeviceNavigator;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const desktopSequence = window.matchMedia("(min-width: 1024px)").matches;
-    const legendaryMode = intensity === "legendary";
-    const cinematicQuality = quality === "cinematic";
-    const maxFrameInterval = Math.max(8, Math.round(1000 / frameCap));
+    const desktopViewport = window.matchMedia("(min-width: 1024px)").matches;
+    const saveData = nav.connection?.saveData === true;
+    const hasHighCapabilityHardware =
+      (navigator.hardwareConcurrency ?? 4) >= 6 && (nav.deviceMemory ?? 4) >= 4;
+    const simplifiedMode = saveData || !hasHighCapabilityHardware;
+    const desktopSequence = desktopViewport && !simplifiedMode;
+    const allowCanvasRendering = !prefersReducedMotion && !simplifiedMode;
+    const legendaryMode = intensity === "legendary" && !simplifiedMode;
+    const cinematicQuality = quality === "cinematic" && !simplifiedMode;
+    const effectiveFrameCap = simplifiedMode ? Math.min(frameCap, 18) : frameCap;
+    const maxFrameInterval = Math.max(8, Math.round(1000 / effectiveFrameCap));
 
     const phaseNodes = Array.from(section.querySelectorAll<HTMLElement>("[data-sequence-phase]"));
     const progressCard = section.querySelector<HTMLElement>("[data-sequence-progress-card]");
@@ -105,6 +130,10 @@ export default function SequenceScrubber({
     let sectionVisible = true;
     let resizeRaf = 0;
     let activePhaseIndex = -1;
+    let lastSummary = "";
+    let lastReadiness = "";
+    let lastAnswered = "";
+    let lastConfidence = "";
     const completedPhases = new Set<string>();
 
     const visibilityObserver =
@@ -121,17 +150,30 @@ export default function SequenceScrubber({
 
     section.classList.remove("reduced-motion");
     section.classList.toggle("sequence-section--compact", !desktopSequence);
+    canvas.style.display = allowCanvasRendering ? "" : "none";
 
     const updateLiveMetrics = (progress: number) => {
       const metrics = deriveMetrics(progress);
       if (readinessNode) {
-        readinessNode.textContent = `${metrics.readiness}%`;
+        const next = `${metrics.readiness}%`;
+        if (next !== lastReadiness) {
+          readinessNode.textContent = next;
+          lastReadiness = next;
+        }
       }
       if (answeredNode) {
-        answeredNode.textContent = `${metrics.answeredQuestions}`;
+        const next = `${metrics.answeredQuestions}`;
+        if (next !== lastAnswered) {
+          answeredNode.textContent = next;
+          lastAnswered = next;
+        }
       }
       if (confidenceNode) {
-        confidenceNode.textContent = `${metrics.confidence}%`;
+        const next = `${metrics.confidence}%`;
+        if (next !== lastConfidence) {
+          confidenceNode.textContent = next;
+          lastConfidence = next;
+        }
       }
     };
 
@@ -158,12 +200,18 @@ export default function SequenceScrubber({
 
         const phaseCounterNode = node.querySelector<HTMLElement>("[data-sequence-phase-counter]");
         if (phaseCounterNode) {
-          phaseCounterNode.textContent = `${Math.round(phaseProgress * 100)}% loaded`;
+          const next = phaseCounterLabel(phaseProgress, isComplete, isActive);
+          if (phaseCounterNode.textContent !== next) {
+            phaseCounterNode.textContent = next;
+          }
         }
 
         const phaseStatusNode = node.querySelector<HTMLElement>("[data-sequence-phase-status]");
         if (phaseStatusNode) {
-          phaseStatusNode.textContent = isComplete ? "Complete" : isActive ? "In progress" : "Queued";
+          const next = isComplete ? "Complete" : isActive ? "In progress" : "Queued";
+          if (phaseStatusNode.textContent !== next) {
+            phaseStatusNode.textContent = next;
+          }
         }
 
         const phase = strategyPhases[index];
@@ -178,7 +226,11 @@ export default function SequenceScrubber({
       });
 
       if (phaseSummaryNode) {
-        phaseSummaryNode.textContent = phaseSummary(nextIndex);
+        const next = phaseSummary(nextIndex);
+        if (next !== lastSummary) {
+          phaseSummaryNode.textContent = next;
+          lastSummary = next;
+        }
       }
 
       if (shouldAnimatePhaseShift) {
@@ -200,6 +252,10 @@ export default function SequenceScrubber({
     };
 
     const render = (progress: number) => {
+      if (!allowCanvasRendering) {
+        return;
+      }
+
       if (width === 0 || height === 0) {
         return;
       }
@@ -234,11 +290,11 @@ export default function SequenceScrubber({
       ctx.fillRect(0, 0, width, height);
 
       const lineCount = Math.max(
-        compactMode ? 10 : legendaryMode ? (cinematicQuality ? 20 : 16) : cinematicQuality ? 14 : 11,
+        compactMode ? 8 : legendaryMode ? (cinematicQuality ? 15 : 13) : cinematicQuality ? 12 : 10,
         Math.floor(height / (compactMode ? 40 : cinematicQuality ? 30 : 36)),
       );
       const nodesPerLine = Math.max(
-        compactMode ? 16 : legendaryMode ? (cinematicQuality ? 26 : 22) : cinematicQuality ? 20 : 16,
+        compactMode ? 14 : legendaryMode ? (cinematicQuality ? 20 : 18) : cinematicQuality ? 16 : 14,
         Math.floor(width / (compactMode ? 42 : cinematicQuality ? 32 : 38)),
       );
       const spreadY = height * (legendaryMode ? 0.2 + easedProgress * 0.4 : 0.15 + easedProgress * 0.28);
@@ -307,6 +363,12 @@ export default function SequenceScrubber({
     };
 
     const setProgress = (progress: number, force = false) => {
+      const normalized = clampProgress(progress);
+
+      if (!force && Math.abs(normalized - renderedProgress) < 0.008) {
+        return;
+      }
+
       if (!force) {
         if (!sectionVisible) {
           return;
@@ -320,7 +382,7 @@ export default function SequenceScrubber({
         lastRenderAt = now;
       }
 
-      renderedProgress = clampProgress(progress);
+      renderedProgress = normalized;
       section.style.setProperty("--sequence-progress", renderedProgress.toFixed(4));
       render(renderedProgress);
       updateLiveMetrics(renderedProgress);
@@ -328,7 +390,7 @@ export default function SequenceScrubber({
     };
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, cinematicQuality ? 1.8 : 1.4);
+      const dpr = Math.min(window.devicePixelRatio || 1, cinematicQuality ? 1.45 : 1.2);
       width = Math.max(1, Math.round(section.clientWidth));
       height = Math.max(1, Math.round(window.innerHeight));
 
@@ -355,7 +417,7 @@ export default function SequenceScrubber({
     setProgress(0, true);
     window.addEventListener("resize", onResize, { passive: true });
 
-    if (prefersReducedMotion) {
+    if (prefersReducedMotion || simplifiedMode) {
       section.classList.add("reduced-motion");
       setProgress(0.42, true);
 
@@ -458,13 +520,13 @@ export default function SequenceScrubber({
                 <p className="sequence-phase-label">{phase.label}</p>
                 <h3>{phase.title}</h3>
                 <p className="sequence-phase-status" data-sequence-phase-status>
-                  In progress
+                  {index === 0 ? "In progress" : "Queued"}
                 </p>
                 <div className="sequence-phase-meter" aria-hidden="true">
                   <span className="sequence-phase-meter-fill"></span>
                 </div>
                 <p className="sequence-phase-live" data-sequence-phase-counter>
-                  0% loaded
+                  {index === 0 ? "Starting now" : "Up next"}
                 </p>
                 <p>{phase.copy}</p>
                 <p className="sequence-phase-metric">{phase.metric}</p>
@@ -472,7 +534,7 @@ export default function SequenceScrubber({
             ))}
           </ol>
 
-          <aside className="sequence-progress-card" aria-label="Strategy progress indicator" aria-live="polite" data-sequence-progress-card>
+          <aside className="sequence-progress-card" aria-label="Strategy progress indicator" data-sequence-progress-card>
             <p className="sequence-progress-label">System progress</p>
             <div className="sequence-progress-track">
               <span className="sequence-progress-fill"></span>

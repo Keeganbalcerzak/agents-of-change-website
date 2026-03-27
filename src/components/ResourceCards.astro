@@ -1,5 +1,6 @@
 ---
 import type { ResourceArticle } from "@/lib/types";
+import ResourceLibrary from "@/components/islands/ResourceLibrary";
 
 interface Props {
   title: string;
@@ -18,17 +19,6 @@ const { title, description, resources } = Astro.props;
       <p>{description}</p>
     </header>
 
-    <div class="resource-grid">
-      {resources.map((resource) => (
-        <article class="resource-card reveal">
-          <p class="resource-meta">{resource.category} | {resource.readTime}</p>
-          <h3>{resource.title}</h3>
-          <p>{resource.excerpt}</p>
-          <a href="/start-trial" class="button secondary" data-cta="resource-start-trial" data-cta-location={resource.slug}>
-            Apply this strategy
-          </a>
-        </article>
-      ))}
-    </div>
+    <ResourceLibrary client:load resources={resources} />
   </div>
 </section>

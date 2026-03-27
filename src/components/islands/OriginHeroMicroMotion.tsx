@@ -63,13 +63,14 @@ export default function OriginHeroMicroMotion({ rootSelector }: OriginHeroMicroM
       transition={shouldReduceMotion ? undefined : { duration: 0.45 }}
     >
       <motion.p className="origin-kicker" {...motionProps(0.02)}>
-        Social Work Exam Prep
+        Agents of Change
       </motion.p>
       <motion.h1 id="origin-cinematic-title" {...motionProps(0.1)}>
-        Pass with clarity. Keep <span className="origin-variable-word">growing</span>.
+        Two distinct products. One trusted <span className="origin-variable-word">brand</span>.
       </motion.h1>
       <motion.p className="origin-subcopy" {...motionProps(0.18)}>
-        Structured social work exam prep for real schedules, with support that still matters after you pass.
+        Choose focused exam prep before licensure or continuing education after you pass, with guidance built for
+        real social work schedules.
       </motion.p>
     </motion.div>
   );

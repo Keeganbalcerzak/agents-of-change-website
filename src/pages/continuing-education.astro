@@ -8,39 +8,114 @@ import { findSeoByKey } from "@/lib/seo";
 const courses = getCeCatalog();
 const seoEntries = await getSeoMetadata();
 const seo = findSeoByKey(seoEntries, "continuing-education");
+
+const valueCards = [
+  {
+    title: "State requirement confidence",
+    copy: "Start with the renewal cadence, CE hour totals, and requirement context that shape what licensed social workers actually need next.",
+  },
+  {
+    title: "Coursework with practical relevance",
+    copy: "Choose topics that support clinical judgment, ethics, supervision, leadership, and real-world practice instead of checking a generic box.",
+  },
+  {
+    title: "Renewal clarity without deadline panic",
+    copy: "Use the catalog and state-aware planning flow to make CE completion feel orderly long before renewal windows close.",
+  },
+  {
+    title: "Professional development beyond minimum hours",
+    copy: "Use the CE product as a way to keep growing in your work, not just as compliance maintenance.",
+  },
+];
+
+const bridgePoints = [
+  "They trusted the prep product for exam clarity and came back for the next licensure obligation.",
+  "The handoff is clean: prep ends at passing, CE begins when renewal and development become the priority.",
+  "State requirements pages help translate that transition into concrete next steps.",
+];
 ---
 
 <BaseLayout
   title={seo?.title ?? "Continuing Education Catalog | Agents of Change"}
-  description={seo?.description ?? "Browse social work continuing education courses by format and category."}
+  description={seo?.description ?? "Browse continuing education options built for licensed social workers, renewals, and professional growth."}
   path="/continuing-education"
   themeIntent="conversion"
+  enableMotionEngine={true}
 >
-  <section class="page-hero page-hero-rich" data-module="ce-hero" data-motion-tier="hero">
+  <section class="page-hero page-hero-rich" data-module="ce-hero" data-motion-tier="hero" data-motion-variant="story-stack">
     <div class="container">
       <p class="eyebrow">Continuing education</p>
-      <h1>Continuing education catalog for social work professionals</h1>
+      <h1 data-split-heading>Continuing education built for licensed social workers</h1>
       <p>
-        Filter by category, format, and audience track to map CE learning into your broader
-        licensing and career progression plan.
+        This product is for renewal confidence, compliance clarity, and professional development after licensure,
+        not as a sidecar to exam prep.
       </p>
     </div>
   </section>
 
-  <section class="section section-muted" data-module="ce-catalog-shell" data-motion-tier="section">
+  <section class="section ce-value-shell" aria-labelledby="ce-value-title" data-module="ce-value" data-motion-variant="reveal-stagger" data-motion-density="compact">
+    <div class="container">
+      <header class="section-heading centered">
+        <p class="eyebrow">Why this product exists</p>
+        <h2 id="ce-value-title">CE should feel like a professional tool, not a leftover requirement.</h2>
+        <p>
+          Agents of Change Continuing Education is built for licensed social workers who need practical coursework,
+          renewal visibility, and a cleaner way to stay current.
+        </p>
+      </header>
+
+      <div class="ce-value-grid" data-stagger="up">
+        {valueCards.map((card) => (
+          <article class="info-card ce-value-card" data-stagger-item data-tilt>
+            <h3>{card.title}</h3>
+            <p>{card.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="ce-catalog" class="section section-muted" data-module="ce-catalog-shell" data-motion-tier="section">
     <div class="container">
       <header class="section-heading centered">
         <p class="eyebrow">Catalog</p>
         <h2>Find the right CE path by practical criteria</h2>
-        <p>Use filtering to target high-value CE outcomes rather than browsing course-by-course blindly.</p>
+        <p>Use filtering to target the right hours, topics, and formats without browsing the catalog blindly.</p>
       </header>
 
       <CeCatalogFilter client:load courses={courses} />
     </div>
   </section>
 
+  <section class="section ce-bridge-shell" aria-labelledby="ce-bridge-title" data-module="ce-bridge" data-motion-variant="reveal-stagger" data-motion-density="compact">
+    <div class="container">
+      <header class="section-heading centered">
+        <p class="eyebrow">Why some people arrive here after passing</p>
+        <h2 id="ce-bridge-title">Many students meet CE after the exam, but CE stands on its own.</h2>
+        <p>
+          Passing the exam creates the next obligation: maintaining licensure. That is where the CE product becomes the
+          right next step.
+        </p>
+      </header>
+
+      <div class="ce-bridge-card">
+        <ul>
+          {bridgePoints.map((point) => (
+            <li>{point}</li>
+          ))}
+        </ul>
+        <div class="ce-bridge-actions">
+          <a href="/state-requirements" class="button secondary">Check state requirements</a>
+          <a href="/about" class="button secondary">See the teaching approach</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <CTASection
-    title="Pair exam prep with CE growth"
-    description="Start a trial to map both your exam and CE priorities into one structured progression path."
+    title="Choose CE with clarity before renewal pressure hits"
+    description="Browse the continuing education catalog and use state requirement context to build a cleaner renewal plan."
+    ctaLabel="Browse continuing education"
+    ctaHref="/continuing-education#ce-catalog"
   />
 </BaseLayout>

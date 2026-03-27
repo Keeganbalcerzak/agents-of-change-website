@@ -45,11 +45,11 @@ const jsonLd = {
 >
   <section class="page-hero page-hero-rich" data-module="exam-prep-hero" data-motion-tier="hero" data-motion-variant="story-stack" data-motion-density="cinematic">
     <div class="container">
-      <p class="eyebrow">Program detail</p>
-      <h1 data-split-heading>Exam prep architecture designed for first-time pass outcomes</h1>
+      <p class="eyebrow">Test prep product</p>
+      <h1 data-split-heading>Exam prep architecture designed to get you to passing day</h1>
       <p>
-        This program is built as an intentional sequence: diagnostic baseline,
-        high-yield domain training, simulation loops, and confidence calibration.
+        This product is for pre-licensure social workers who need a focused plan: diagnostic baseline, high-yield
+        domain training, simulation loops, and confidence calibration built around exam success.
       </p>
     </div>
   </section>
@@ -100,15 +100,38 @@ const jsonLd = {
 
   <ProgramOffers offers={offers} showHeading={false} visualVariant="premium-hybrid" />
 
-  <section class="section" aria-labelledby="ce-state-title" data-module="ce-state-lookup" data-motion-tier="section">
+  <section class="section exam-prep-handoff" aria-labelledby="ce-state-title" data-module="ce-state-lookup" data-motion-tier="section">
     <div class="container">
       <header class="section-heading centered">
-        <p class="eyebrow">Post-Exam Roadmap</p>
-        <h2 id="ce-state-title">Find CE Credits Required in your State</h2>
-        <p>Your journey doesn't end with passing. Discover exactly how many Continuing Education (CE) hours you'll need to maintain your license across different states.</p>
+        <p class="eyebrow">What happens after you pass</p>
+        <h2 id="ce-state-title">Passing ends the prep product. Then CE becomes the next product.</h2>
+        <p>
+          The next job after licensure is not more exam prep. It is maintaining your license with the right CE hours,
+          deadlines, and course decisions for your state.
+        </p>
       </header>
-      <div style="display: flex; justify-content: center; margin-top: 2rem;">
-        <a href="/state-requirements" class="button secondary btn-magnetic" data-magnetic>View State Requirements</a>
+
+      <div class="exam-prep-handoff-grid" data-stagger="up">
+        <article class="exam-prep-handoff-card" data-stagger-item>
+          <p class="exam-prep-handoff-step">Stage 1</p>
+          <h3>Prepare</h3>
+          <p>Use the exam prep product to build readiness, pacing, and stronger answer confidence.</p>
+        </article>
+        <article class="exam-prep-handoff-card" data-stagger-item>
+          <p class="exam-prep-handoff-step">Stage 2</p>
+          <h3>Pass</h3>
+          <p>Cross the licensure milestone and close out the exam-prep phase with a passing result.</p>
+        </article>
+        <article class="exam-prep-handoff-card is-bridge" data-stagger-item>
+          <p class="exam-prep-handoff-step">Stage 3</p>
+          <h3>Maintain with CE</h3>
+          <p>Move into continuing education once renewal cadence, CE hours, and practical coursework become the next priority.</p>
+        </article>
+      </div>
+
+      <div class="exam-prep-handoff-actions">
+        <a href="/continuing-education" class="button primary btn-magnetic" data-magnetic>Explore continuing education</a>
+        <a href="/state-requirements" class="button secondary">Check state requirements</a>
       </div>
     </div>
   </section>

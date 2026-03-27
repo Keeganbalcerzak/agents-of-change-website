@@ -13,14 +13,17 @@ const featuredTracks = [
   {
     title: "Exam strategy track",
     description: "Question interpretation, rationale reading, and decision pacing methods.",
+    href: "/resources?category=Exam%20Tactics#resources-list-title",
   },
   {
     title: "Licensing track",
     description: "State readiness checklists and planning guidance before scheduling milestones.",
+    href: "/resources?category=Licensing#resources-list-title",
   },
   {
     title: "Recovery track",
     description: "What to adjust after failed attempts to rebuild confidence and performance.",
+    href: "/resources?category=Recovery%20Strategy#resources-list-title",
   },
 ];
 ---
@@ -54,6 +57,7 @@ const featuredTracks = [
           <article class="track-card reveal">
             <h3>{track.title}</h3>
             <p>{track.description}</p>
+            <a href={track.href} class="button secondary">Open track</a>
           </article>
         ))}
       </div>

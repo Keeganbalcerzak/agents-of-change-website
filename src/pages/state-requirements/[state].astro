@@ -103,7 +103,8 @@ const jsonLd = {
         <h3>Cross-links to relevant planning routes</h3>
         <ul>
           <li><a href="/exam-prep">Review exam prep architecture</a></li>
-          <li><a href="/start-trial">Generate your personalized 7-day study plan</a></li>
+          <li><a href={`/start-trial?state=${state.stateCode}`}>Generate your personalized 7-day study plan</a></li>
+          <li><a href={`/ai-tracker?state=${state.stateCode}`}>Preview the AI Tracker for {state.stateName}</a></li>
           <li><a href="/continuing-education">Browse continuing education catalog</a></li>
         </ul>
         <p>
@@ -120,5 +121,6 @@ const jsonLd = {
   <CTASection
     title={`Build your ${state.stateName} exam plan`}
     description="Start your trial and get a personalized sequence aligned to your timeline and licensing context."
+    ctaHref={`/start-trial?state=${state.stateCode}`}
   />
 </BaseLayout>

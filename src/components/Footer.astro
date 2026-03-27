@@ -14,7 +14,14 @@ const year = new Date().getFullYear();
   <div class="container footer-grid">
     <div>
       <a href="/" class="brand footer-brand" aria-label={`${siteSettings.siteName} home`}>
-        <span class="brand-mark" aria-hidden="true">A</span>
+        <img
+          src="/images/agents_of_change_logo.svg"
+          class="brand-logo"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+        />
         <span class="brand-text">{siteSettings.siteName}</span>
       </a>
       <p class="footer-tagline">{siteSettings.tagline}</p>

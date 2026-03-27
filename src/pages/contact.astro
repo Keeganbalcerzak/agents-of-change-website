@@ -2,6 +2,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import CTASection from "@/components/CTASection.astro";
 import SupportPathways from "@/components/SupportPathways.astro";
+import SupportRouter from "@/components/islands/SupportRouter";
 import { getContactPathways, getSeoMetadata } from "@/lib/content";
 import { findSeoByKey } from "@/lib/seo";
 
@@ -28,6 +29,18 @@ const seo = findSeoByKey(seoEntries, "contact");
   </section>
 
   <SupportPathways pathways={pathways} />
+
+  <section class="section section-muted" aria-labelledby="router-title" data-module="contact-router" data-motion-tier="section">
+    <div class="container">
+      <header class="section-heading centered">
+        <p class="eyebrow">Guided routing</p>
+        <h2 id="router-title">Draft the right support request in one step</h2>
+        <p>Choose your topic, add context, and jump straight into the recommended next action.</p>
+      </header>
+
+      <SupportRouter client:load pathways={pathways} />
+    </div>
+  </section>
 
   <section class="section" aria-labelledby="sla-title" data-module="contact-sla" data-motion-tier="section">
     <div class="container">

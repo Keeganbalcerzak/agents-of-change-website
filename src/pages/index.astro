@@ -2,8 +2,6 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import CTASection from "@/components/CTASection.astro";
 import FAQSection from "@/components/FAQSection.astro";
-import CareerTimeline from "@/components/CareerTimeline.astro";
-import StatsStrip from "@/components/StatsStrip.astro";
 import TestimonialsCarousel from "@/components/islands/TestimonialsCarousel";
 import AiTrackerForm from "@/components/islands/AiTrackerForm";
 import OriginHeroCinematic from "@/components/OriginHeroCinematic.astro";
@@ -14,8 +12,6 @@ import ZoneTransition from "@/components/ZoneTransition.astro";
 import AmbientField from "@/components/AmbientField.astro";
 import TransformationIntroSection from "@/components/TransformationIntroSection.astro";
 import {
-  getCareerPhases,
-  getDefaultStats,
   getFaqItems,
   getLandingPricingSections,
   getSeoMetadata,
@@ -42,8 +38,6 @@ const [
 ]);
 
 const seo = findSeoByKey(seoEntries, "home");
-const stats = getDefaultStats();
-const careerPhases = getCareerPhases();
 
 const jsonLd = [
   {
@@ -57,26 +51,21 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Course",
-    name: "Social Work Test Prep and Continuing Education",
+    name: "Social Work Exam Prep",
     provider: {
       "@type": "Organization",
       name: settings.siteName,
     },
-    description: "Structured social work exam prep and CE pathways from licensure to long-term growth.",
+    description: "Structured social work exam prep for BSW, LMSW, and LCSW candidates.",
   },
   toFaqJsonLd(faqItems.slice(0, 5)),
 ];
 
-const aboutHighlights = [
-  "Social work educators focused on exam clarity, not generic memorization",
-  "ASWB-focused prep plus continuing education lifecycle support",
-  "Learning architecture designed for BSW, LMSW, LCSW, counselors, and therapists",
-];
 ---
 
 <BaseLayout
   title={seo?.title ?? "Agents of Change | Social Work Exam Prep and Continuing Education"}
-  description={seo?.description ?? "Pass your social work exam and stay engaged through CE with a lifecycle-focused system."}
+  description={seo?.description ?? "Choose focused exam prep before licensure or continuing education after you pass."}
   path="/"
   jsonLd={jsonLd}
   themeIntent="editorial"
@@ -96,73 +85,15 @@ const aboutHighlights = [
     <TransformationIntroSection />
     <SequenceScrubber client:visible backgroundMode="aurora" quality="cinematic" intensity="legendary" frameCap={30} />
 
-    <section
-      class="section landing-about"
-      aria-labelledby="about-aoc-title"
-      data-module="about-aoc-home"
-      data-motion-variant="reveal-stagger"
-      data-motion-density="compact"
-    >
-      <div class="container">
-        <header class="section-heading centered">
-          <p class="eyebrow">About us</p>
-          <h2 id="about-aoc-title" data-split-heading>
-            Built for social workers.<br />Not just exam day.
-          </h2>
-          <p>
-            Agents of Change supports the full professional arc: test prep, passing, licensure maintenance,
-            and advanced career development.
-          </p>
-        </header>
-
-        <div class="about-home-card" data-stagger="up">
-          {aboutHighlights.map((highlight) => (
-            <div class="about-highlight-item glass-card-mid" data-stagger-item>
-              <span>{highlight}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <StatsStrip stats={stats} animated={true} visualVariant="premium" />
-    <CareerTimeline phases={careerPhases} />
+    {/* About, Stats, and CareerTimeline removed — those concepts are already
+         covered by the hero and TransformationIntroSection to reduce info overload */}
   </div>
 
   {/* ── Zone Light: Trust + Conversion ── */}
   <div data-zone="light" class="zone-light-wrap">
     <PricingTruthMatrix sections={pricingSections} />
 
-    <section
-      class="section landing-ce"
-      aria-labelledby="ce-state-title"
-      data-module="ce-state-entry"
-      data-motion-variant="reveal-stagger"
-      data-motion-density="compact"
-    >
-      <div class="container">
-        <header class="section-heading centered">
-          <p class="eyebrow">CE by state</p>
-          <h2 id="ce-state-title" data-split-heading>
-            Find CE requirements for your state
-          </h2>
-          <p>
-            Use state requirement pages to confirm CE hours and renewal cadence before deadlines get close.
-          </p>
-        </header>
-        <div class="center-actions">
-          <a
-            href="/state-requirements"
-            class="button secondary btn-magnetic"
-            data-magnetic
-            data-cta="home-ce-state"
-            data-cta-location="home-ce-state"
-          >
-            Browse state requirement pages
-          </a>
-        </div>
-      </div>
-    </section>
+    {/* CE Lane section removed — pricing section already has a dedicated CE pane */}
 
     <section
       class="section landing-tracker"
@@ -173,13 +104,13 @@ const aboutHighlights = [
     >
       <div class="container">
         <header class="section-heading centered">
-          <p class="eyebrow">AI tracker</p>
+          <p class="eyebrow">Pass-to-renewal handoff</p>
           <h2 id="tracker-preview-title" data-split-heading>
-            Preview your exam-to-renewal workflow
+            See how the pipeline moves from exam prep into CE
           </h2>
           <p>
-            Enter your state and target exam date to see deterministic checkpoints for check-ins, pass transitions,
-            and CE reminder timing.
+            Enter your state and target exam date to preview the sequence: prepare, pass, then activate CE reminders
+            once licensure maintenance becomes the job to do.
           </p>
         </header>
         <AiTrackerForm client:visible stateRequirements={stateRequirements} />
@@ -215,8 +146,12 @@ const aboutHighlights = [
   <div data-zone="deep" data-final-cta class="zone-deep-wrap">
     <AmbientField intensity="peak" />
     <CTASection
-      title="Start your own lifecycle plan"
-      description="Build your path from exam prep to CE and long-term career growth in one system."
+      title="Start with the product that matches your stage"
+      description="Choose test prep if you are still working toward licensure. Choose continuing education if you have already passed and need renewal confidence."
+      ctaLabel="Explore test prep"
+      ctaHref="/exam-prep"
+      secondaryLabel="Explore continuing education"
+      secondaryHref="/continuing-education"
     />
   </div>
 </BaseLayout>

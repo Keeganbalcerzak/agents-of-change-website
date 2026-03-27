@@ -1,23 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 96" fill="none" aria-hidden="true">
-  <!-- Open book base -->
-  <path d="M14 62 Q60 54 60 54 Q60 54 106 62 L106 70 Q60 60 60 60 Q60 60 14 70 Z" fill="currentColor"/>
-  <path d="M14 62 Q60 52 60 52" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-  <path d="M106 62 Q60 52 60 52" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-  <!-- Book spine bottom curve -->
-  <path d="M14 70 Q60 58 106 70" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" fill="currentColor" aria-hidden="true">
+  <!-- Back book page layer (wider, creates depth) -->
+  <path d="M100 128 Q55 122, 16 136 L16 132 Q55 116, 100 122 Z"/>
+  <path d="M100 128 Q145 122, 184 136 L184 132 Q145 116, 100 122 Z"/>
 
-  <!-- Left figure -->
-  <circle cx="32" cy="28" r="6.5" fill="currentColor"/>
-  <path d="M32 35 L32 55 M32 42 L18 36 M32 42 L44 50" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Front book page layer -->
+  <path d="M100 134 Q58 128, 22 140 L22 136 Q58 122, 100 128 Z"/>
+  <path d="M100 134 Q142 128, 178 140 L178 136 Q142 122, 100 128 Z"/>
 
-  <!-- Center figure (tallest) -->
-  <circle cx="60" cy="18" r="7" fill="currentColor"/>
-  <path d="M60 26 L60 52 M60 36 L46 26 M60 36 L74 26" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Center figure body (tallest, teardrop) -->
+  <path d="M100 74 C91 78, 85 92, 86 110 C87 120, 93 128, 100 128 C107 128, 113 120, 114 110 C115 92, 109 78, 100 74 Z"/>
+  <!-- Center head -->
+  <circle cx="100" cy="64" r="10"/>
+  <!-- Center left arm raised -->
+  <path d="M91 84 C84 76, 76 66, 70 58" stroke="currentColor" stroke-width="7" stroke-linecap="round" fill="none"/>
+  <!-- Center right arm raised -->
+  <path d="M109 84 C116 76, 124 66, 130 58" stroke="currentColor" stroke-width="7" stroke-linecap="round" fill="none"/>
 
-  <!-- Right figure -->
-  <circle cx="88" cy="28" r="6.5" fill="currentColor"/>
-  <path d="M88 35 L88 55 M88 42 L76 50 M88 42 L102 36" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Left figure body (teardrop, shorter) -->
+  <path d="M60 88 C53 92, 49 102, 50 114 C51 122, 55 128, 60 130 C66 130, 72 124, 76 116 C74 100, 67 92, 60 88 Z"/>
+  <!-- Left head -->
+  <circle cx="60" cy="80" r="8"/>
+  <!-- Left arm raised outward -->
+  <path d="M53 96 C46 88, 40 80, 34 72" stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"/>
 
-  <!-- 4-pointed star above center -->
-  <path d="M60 2 L62.2 7.8 L68 10 L62.2 12.2 L60 18 L57.8 12.2 L52 10 L57.8 7.8 Z" fill="currentColor"/>
+  <!-- Right figure body (teardrop, shorter) -->
+  <path d="M140 88 C147 92, 151 102, 150 114 C149 122, 145 128, 140 130 C134 130, 128 124, 124 116 C126 100, 133 92, 140 88 Z"/>
+  <!-- Right head -->
+  <circle cx="140" cy="80" r="8"/>
+  <!-- Right arm raised outward -->
+  <path d="M147 96 C154 88, 160 80, 166 72" stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"/>
+
+  <!-- 4-pointed star above center figure -->
+  <path d="M100 20 L102.5 32 L108 36 L102.5 40 L100 52 L97.5 40 L92 36 L97.5 32 Z"/>
 </svg>
