@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import type { CECourse } from "@/lib/types";
 import { trackEvent } from "@/lib/analytics";
+import { US_STATES, stateCodeToName } from "@/lib/states";
 
 interface CeCatalogFilterProps {
   courses: CECourse[];
@@ -16,23 +17,45 @@ const sortOptions: Array<{ value: CatalogSort; label: string }> = [
   { value: "hours_asc", label: "Fewest CE hours" },
   { value: "title_asc", label: "Title A-Z" },
 ];
+const validStateCodes = new Set(US_STATES.map((entry) => entry.code));
 
 function buildCourseSearchDocument(course: CECourse): string {
   return [course.title, course.category, course.format, course.audience, `${course.ceHours}`].join(" ").toLowerCase();
 }
 
-function buildTrialHref(course: CECourse, activeAudience: CECourse["audience"] | "all"): string {
-  const params = new URLSearchParams();
-  const audience = activeAudience !== "all" ? activeAudience : course.audience !== "all" ? course.audience : undefined;
+function normalizeStateCode(value: string | null): string {
+  if (!value) {
+    return "";
+  }
 
-  params.set("step", "2");
+  const normalized = value.trim().toUpperCase();
+  return validStateCodes.has(normalized) ? normalized : "";
+}
+
+function buildStateRequirementsHref(stateCode: string): string {
+  return stateCode ? `/state-requirements/${stateCode.toLowerCase()}` : "/state-requirements";
+}
+
+function buildCeSupportPath(audience: CECourse["audience"] | undefined, stateCode: string): string {
+  const params = new URLSearchParams();
 
   if (audience) {
     params.set("examTrack", audience);
   }
 
+  if (stateCode) {
+    params.set("state", stateCode);
+  }
+
+  params.set("topic", "ce");
+
   const queryString = params.toString();
-  return queryString ? `/start-trial?${queryString}` : "/start-trial";
+  return queryString ? `/contact?${queryString}` : "/contact?topic=ce";
+}
+
+function buildCeSupportHref(course: CECourse, activeAudience: CECourse["audience"] | "all", stateCode: string): string {
+  const audience = activeAudience !== "all" ? activeAudience : course.audience !== "all" ? course.audience : undefined;
+  return buildCeSupportPath(audience, stateCode);
 }
 
 function isCatalogSort(value: string | null): value is CatalogSort {
@@ -49,6 +72,7 @@ export default function CeCatalogFilter({ courses }: CeCatalogFilterProps) {
   const [category, setCategory] = useState("all");
   const [format, setFormat] = useState<"all" | CECourse["format"]>("all");
   const [audience, setAudience] = useState<CECourse["audience"] | "all">("all");
+  const [stateCode, setStateCode] = useState("");
   const [sortBy, setSortBy] = useState<CatalogSort>("recommended");
   const [hasInitializedFilters, setHasInitializedFilters] = useState(false);
 
@@ -61,6 +85,7 @@ export default function CeCatalogFilter({ courses }: CeCatalogFilterProps) {
     const nextCategory = params.get("category");
     const nextFormat = params.get("format");
     const nextAudience = params.get("audience");
+    const nextStateCode = params.get("state");
     const nextSort = params.get("sort");
     const nextSearch = params.get("q");
 
@@ -79,6 +104,8 @@ export default function CeCatalogFilter({ courses }: CeCatalogFilterProps) {
     if (nextAudience && audienceOptions.includes(nextAudience as CECourse["audience"] | "all")) {
       setAudience(nextAudience as CECourse["audience"] | "all");
     }
+
+    setStateCode(normalizeStateCode(nextStateCode));
 
     if (isCatalogSort(nextSort)) {
       setSortBy(nextSort);
@@ -118,6 +145,12 @@ export default function CeCatalogFilter({ courses }: CeCatalogFilterProps) {
       nextUrl.searchParams.delete("audience");
     }
 
+    if (stateCode) {
+      nextUrl.searchParams.set("state", stateCode);
+    } else {
+      nextUrl.searchParams.delete("state");
+    }
+
     if (sortBy !== "recommended") {
       nextUrl.searchParams.set("sort", sortBy);
     } else {
@@ -125,7 +158,7 @@ export default function CeCatalogFilter({ courses }: CeCatalogFilterProps) {
     }
 
     window.history.replaceState({}, "", nextUrl);
-  }, [audience, category, format, hasInitializedFilters, searchQuery, sortBy]);
+  }, [audience, category, format, hasInitializedFilters, searchQuery, sortBy, stateCode]);
 
   const filteredCourses = useMemo(() => {
     const normalizedQuery = searchQuery.trim().toLowerCase();
@@ -160,7 +193,12 @@ export default function CeCatalogFilter({ courses }: CeCatalogFilterProps) {
   }, [audience, category, courses, format, searchQuery, sortBy]);
 
   const hasActiveFilters =
-    searchQuery.trim().length > 0 || category !== "all" || format !== "all" || audience !== "all" || sortBy !== "recommended";
+    searchQuery.trim().length > 0 ||
+    category !== "all" ||
+    format !== "all" ||
+    audience !== "all" ||
+    stateCode !== "" ||
+    sortBy !== "recommended";
 
   function logFilter(type: string, value: string) {
     trackEvent("filter_interaction", {
@@ -175,9 +213,21 @@ export default function CeCatalogFilter({ courses }: CeCatalogFilterProps) {
     setCategory("all");
     setFormat("all");
     setAudience("all");
+    setStateCode("");
     setSortBy("recommended");
     logFilter("reset", "all");
   }
+
+  const plannerTitle = stateCode
+    ? `Plan CE for ${stateCodeToName(stateCode)} before you commit`
+    : "Choose your state before you build a CE plan";
+  const plannerDescription = stateCode
+    ? "Use the state requirements page to confirm hour totals and renewal cadence, then carry that context into CE support for course selection."
+    : "CE rules change by state. Add your state so the next step goes to the right board guidance and CE support path instead of leaving you to guess.";
+  const plannerPrimaryHref = buildStateRequirementsHref(stateCode);
+  const plannerPrimaryLabel = stateCode ? `Open ${stateCodeToName(stateCode)} requirements` : "Browse state requirements";
+  const plannerSecondaryHref = buildCeSupportPath(audience === "all" ? undefined : audience, stateCode);
+  const plannerSecondaryLabel = stateCode ? "Get CE guidance with my state" : "Contact CE team";
 
   return (
     <div className="ce-catalog-layout" data-module="ce-catalog" data-motion-tier="section">
@@ -246,6 +296,24 @@ export default function CeCatalogFilter({ courses }: CeCatalogFilterProps) {
         </label>
 
         <label>
+          <span>State</span>
+          <select
+            value={stateCode}
+            onChange={(event) => {
+              setStateCode(event.target.value);
+              logFilter("state", event.target.value || "none");
+            }}
+          >
+            <option value="">No state selected</option>
+            {US_STATES.map((entry) => (
+              <option key={entry.code} value={entry.code}>
+                {entry.name}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label>
           <span>Sort by</span>
           <select
             value={sortBy}
@@ -264,6 +332,19 @@ export default function CeCatalogFilter({ courses }: CeCatalogFilterProps) {
         </label>
       </form>
 
+      <article className="support-card ce-planner-card">
+        <h3>{plannerTitle}</h3>
+        <p>{plannerDescription}</p>
+        <div className="ce-planner-actions">
+          <a className="button secondary" href={plannerPrimaryHref}>
+            {plannerPrimaryLabel}
+          </a>
+          <a className="button secondary" href={plannerSecondaryHref}>
+            {plannerSecondaryLabel}
+          </a>
+        </div>
+      </article>
+
       {hasActiveFilters && (
         <div>
           <button type="button" className="button secondary" onClick={resetFilters}>
@@ -273,7 +354,7 @@ export default function CeCatalogFilter({ courses }: CeCatalogFilterProps) {
       )}
 
       <p className="result-meta" aria-live="polite">
-        {filteredCourses.length} courses shown
+        {filteredCourses.length} courses shown{stateCode ? ` for ${stateCodeToName(stateCode)}` : ""}
       </p>
 
       <div className="ce-grid">
@@ -281,13 +362,16 @@ export default function CeCatalogFilter({ courses }: CeCatalogFilterProps) {
           <article className="ce-card">
             <p className="ce-meta">No matching CE courses</p>
             <h3>Broaden the filter set</h3>
-            <p>Try a wider audience, remove the search term, or start from your state requirements instead.</p>
+            <p>Try a wider audience, remove the search term, or use the right state and CE support path instead.</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "1rem" }}>
               <button type="button" className="button secondary" onClick={resetFilters}>
                 Reset filters
               </button>
-              <a className="button secondary" href="/state-requirements">
-                Check state requirements
+              <a className="button secondary" href={plannerPrimaryHref}>
+                {plannerPrimaryLabel}
+              </a>
+              <a className="button secondary" href={plannerSecondaryHref}>
+                {plannerSecondaryLabel}
               </a>
             </div>
           </article>
@@ -301,11 +385,11 @@ export default function CeCatalogFilter({ courses }: CeCatalogFilterProps) {
               <p>{course.audience === "all" ? "Applies to all social work tracks" : `Best for ${course.audience} track`}</p>
               <a
                 className="button secondary"
-                href={buildTrialHref(course, audience)}
+                href={buildCeSupportHref(course, audience, stateCode)}
                 data-cta="ce-course-cta"
                 data-cta-location={course.id}
               >
-                Add to CE plan
+                Plan this course
               </a>
             </article>
           ))

@@ -6,7 +6,10 @@
       "Bash(git commit -m \"$\\(cat <<''EOF''\nMigrate to Astro: full site rebuild with React islands, Sanity CMS, and Vercel deployment\n\nReplaces the static HTML/CSS/JS site with a production-ready Astro project.\nIncludes all routes, trial funnel, filtering, analytics instrumentation,\nCI workflow, and functional QA matrix.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(git push:*)",
       "Bash(npx vercel:*)",
-      "Bash(node -e:*)"
+      "Bash(node -e:*)",
+      "Bash(xargs grep:*)",
+      "Bash(npx astro:*)",
+      "mcp__plugin_playwright_playwright__browser_navigate"
     ]
   }
 }

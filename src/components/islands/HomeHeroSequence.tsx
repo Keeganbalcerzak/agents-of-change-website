@@ -40,8 +40,8 @@ export default function HomeHeroSequence() {
         </h1>
 
         <p>
-          Agents of Change combines exam strategy, rationale-based practice, and accountability architecture so your
-          study time drives measurable score movement.
+          Agents of Change combines exam strategy, rationale-based practice, and guided support so your study time
+          drives measurable progress.
         </p>
 
         <div className="hero-proof" aria-label="Proof points">
@@ -54,7 +54,7 @@ export default function HomeHeroSequence() {
           <ShimmerButton href="/start-trial" data-cta="hero-start-trial" data-cta-location="hero-main">
             Start Free Trial
           </ShimmerButton>
-          <a href="/exam-prep" className="button hero-cta hero-cta-blue" data-cta="hero-view-programs" data-cta-location="hero-main">
+          <a href="/exam-prep#offers" className="button hero-cta hero-cta-blue" data-cta="hero-view-programs" data-cta-location="hero-main">
             Compare Programs
           </a>
           <a href="/#sally-story" className="button ghost" data-cta="hero-sally-story" data-cta-location="hero-main">
@@ -65,7 +65,7 @@ export default function HomeHeroSequence() {
 
       <aside className="hero-panel hero-panel-editorial hero-entry hero-entry-panel" aria-label="Trial outcomes">
         <h2>What you unlock in your first week</h2>
-        <p>Every trial starts with a high-clarity plan, not generic content browsing.</p>
+        <p>Every trial starts with a clear plan, not generic content browsing.</p>
         <ul>
           {firstWeekOutcomes.map((outcome) => (
             <li key={outcome}>{outcome}</li>

@@ -22,8 +22,8 @@ const specialtyGroups = [
       <p class="eyebrow">Community</p>
       <h2 id="community-preview-title">Meet social workers studying near you</h2>
       <p>
-        Community pathways connect social workers by geography and specialty so support stays relevant whether someone
-        is preparing for the exam or already licensed and learning through CE.
+        Connect by city and specialty so support stays relevant whether you are preparing for the exam or already
+        licensed. Join study groups, mentorship, virtual meetups, and an alumni network that grows with your career.
       </p>
     </header>
 
@@ -38,7 +38,7 @@ const specialtyGroups = [
             </li>
           ))}
         </ul>
-        <a href="/community" class="button secondary" data-cta="community-local-groups" data-cta-location="home-community">
+        <a href="/community?view=groups" class="button secondary" data-cta="community-local-groups" data-cta-location="home-community">
           Explore local groups
         </a>
       </article>
@@ -51,8 +51,22 @@ const specialtyGroups = [
             <li>{topic}</li>
           ))}
         </ul>
-        <a href="/community" class="button secondary" data-cta="community-specialty-forums" data-cta-location="home-community">
+        <a href="/community?view=forums" class="button secondary" data-cta="community-specialty-forums" data-cta-location="home-community">
           View specialty spaces
+        </a>
+      </article>
+
+      <article class="community-preview-card reveal">
+        <h3>Mentorship, events, and alumni</h3>
+        <p>Go beyond study groups with structured support designed for early-career and experienced practitioners alike.</p>
+        <ul>
+          <li>Mentorship pairing with experienced clinicians</li>
+          <li>Monthly "Ask a Clinician" live Q&A sessions</li>
+          <li>Virtual meetups and early career cohorts</li>
+          <li>Exclusive alumni network for Agents of Change graduates</li>
+        </ul>
+        <a href="/community#mentorship-network" class="button secondary" data-cta="community-mentorship" data-cta-location="home-community">
+          Explore mentorship and events
         </a>
       </article>
     </div>

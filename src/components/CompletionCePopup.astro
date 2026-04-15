@@ -1,0 +1,314 @@
+---
+interface Props {
+  path?: string;
+  completedMaterials?: boolean;
+  devForceOpen?: boolean;
+}
+
+const {
+  path = "/",
+  completedMaterials = false,
+  devForceOpen = import.meta.env.DEV,
+} = Astro.props;
+
+// Until Thinkific completion data is wired in, force the popup on in dev only.
+// In dev mode only show after the user has scrolled 40% of the page — not on load.
+const shouldShowOffer = (completedMaterials || devForceOpen) && !path.startsWith("/continuing-education");
+---
+
+{shouldShowOffer && (
+  <>
+    <dialog
+      class="ce-completion-popup"
+      data-ce-completion-popup
+      aria-labelledby="ce-completion-popup-title"
+      aria-describedby="ce-completion-popup-copy"
+    >
+      <div class="ce-completion-popup__panel" role="document">
+        <button
+          type="button"
+          class="ce-completion-popup__close"
+          data-ce-popup-close
+          aria-label="Close continuing education offer"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <p class="ce-completion-popup__eyebrow">For recent exam passers</p>
+        <h2 id="ce-completion-popup-title">Passed your exam? Start your first year of CE for $49.</h2>
+        <p id="ce-completion-popup-copy" class="ce-completion-popup__copy">
+          When you are ready for continuing education, keep your momentum going with practical courses, live events,
+          and renewal support in one place.
+        </p>
+
+        <div class="ce-completion-popup__details">
+          <div class="ce-completion-popup__price">
+            <strong>$49</strong>
+            <span>first year</span>
+            <small>then $99/year</small>
+          </div>
+
+          <ul class="ce-completion-popup__perks">
+            <li>150+ courses from ASWB ACE provider #1919</li>
+            <li>15+ live webinars per year</li>
+            <li>State-specific renewal tracking</li>
+            <li>Community, mentorship, and event access included</li>
+          </ul>
+        </div>
+
+        <div class="ce-completion-popup__actions">
+          <a
+            href="/continuing-education"
+            class="button primary"
+            data-cta="ce-completion-popup"
+            data-cta-location="global-popup"
+          >
+            Explore continuing education
+          </a>
+          <button type="button" class="button secondary" data-ce-popup-close>
+            Maybe later
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <script is:inline>
+      (() => {
+        const popup = document.querySelector("[data-ce-completion-popup]");
+        if (!(popup instanceof HTMLDialogElement)) return;
+
+        const storageKey = "aoc:ce-completion-popup:dismissed";
+        const root = document.documentElement;
+
+        const wasDismissed = () => {
+          try {
+            return window.sessionStorage.getItem(storageKey) === "1";
+          } catch {
+            return false;
+          }
+        };
+
+        const rememberDismissal = () => {
+          try {
+            window.sessionStorage.setItem(storageKey, "1");
+          } catch {
+            // Ignore storage errors and fall back to per-load behavior.
+          }
+        };
+
+        const closePopup = () => {
+          rememberDismissal();
+          if (popup.open) popup.close("dismissed");
+          root.classList.remove("ce-popup-open");
+        };
+
+        popup.querySelectorAll("[data-ce-popup-close]").forEach((node) => {
+          node.addEventListener("click", closePopup);
+        });
+
+        popup.addEventListener("click", (event) => {
+          if (event.target === popup) {
+            closePopup();
+          }
+        });
+
+        popup.addEventListener("close", () => {
+          root.classList.remove("ce-popup-open");
+        });
+
+        popup.addEventListener("cancel", () => {
+          rememberDismissal();
+          root.classList.remove("ce-popup-open");
+        });
+
+        if (wasDismissed()) return;
+
+        // Gate on 40% scroll depth so the popup doesn't hijack the page on load.
+        const openOnce = () => {
+          if (popup.open) return;
+          popup.showModal();
+          root.classList.add("ce-popup-open");
+          window.removeEventListener("scroll", onScroll);
+          clearTimeout(fallbackTimer);
+        };
+
+        const onScroll = () => {
+          const scrollPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+          if (scrollPct >= 0.4) openOnce();
+        };
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+
+        // Fallback: if user hasn't scrolled after 45s, show it anyway.
+        const fallbackTimer = window.setTimeout(() => {
+          window.removeEventListener("scroll", onScroll);
+          openOnce();
+        }, 45000);
+      })();
+    </script>
+
+    <style>
+      :global(html.ce-popup-open) {
+        overflow: hidden;
+      }
+
+      .ce-completion-popup {
+        width: min(92vw, 760px);
+        max-width: 760px;
+        border: none;
+        padding: 0;
+        background: transparent;
+      }
+
+      .ce-completion-popup::backdrop {
+        background: rgba(18, 10, 32, 0.58);
+        backdrop-filter: blur(12px);
+      }
+
+      .ce-completion-popup__panel {
+        position: relative;
+        border-radius: 28px;
+        padding: clamp(1.5rem, 3vw, 2.25rem);
+        background:
+          radial-gradient(circle at top left, rgba(133, 98, 197, 0.22), transparent 36%),
+          linear-gradient(165deg, #261041 0%, #35175a 54%, #2b114a 100%);
+        color: #f8f4ff;
+        box-shadow:
+          0 28px 70px rgba(22, 10, 40, 0.34),
+          inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      }
+
+      .ce-completion-popup__close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 999px;
+        border: 1px solid rgba(209, 189, 255, 0.28);
+        background: rgba(255, 255, 255, 0.08);
+        color: #f8f4ff;
+        font-size: 1.5rem;
+        line-height: 1;
+      }
+
+      .ce-completion-popup__eyebrow {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 0.9rem;
+        border-radius: 999px;
+        background: rgba(241, 231, 255, 0.14);
+        color: #ddc8ff;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .ce-completion-popup h2 {
+        margin-top: 1rem;
+        color: #fffdfd;
+        font-size: clamp(2rem, 4.3vw, 3.35rem);
+        line-height: 1.04;
+        letter-spacing: -0.04em;
+      }
+
+      .ce-completion-popup__copy {
+        margin-top: 0.9rem;
+        max-width: 38rem;
+        color: rgba(240, 231, 255, 0.86);
+        font-size: clamp(1rem, 2vw, 1.18rem);
+      }
+
+      .ce-completion-popup__details {
+        display: grid;
+        grid-template-columns: minmax(160px, 200px) 1fr;
+        gap: 1.5rem 2rem;
+        align-items: start;
+        margin-top: 1.7rem;
+      }
+
+      .ce-completion-popup__price {
+        display: grid;
+        gap: 0.18rem;
+        padding: 1.2rem;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(214, 194, 255, 0.16);
+      }
+
+      .ce-completion-popup__price strong {
+        font-family: var(--font-heading);
+        font-size: clamp(3rem, 8vw, 4.6rem);
+        line-height: 0.95;
+        color: #b58cff;
+      }
+
+      .ce-completion-popup__price span,
+      .ce-completion-popup__price small {
+        color: rgba(233, 220, 255, 0.82);
+      }
+
+      .ce-completion-popup__price small {
+        font-size: 0.92rem;
+      }
+
+      .ce-completion-popup__perks {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 0.95rem;
+      }
+
+      .ce-completion-popup__perks li {
+        position: relative;
+        padding-left: 1.6rem;
+        color: rgba(240, 231, 255, 0.88);
+      }
+
+      .ce-completion-popup__perks li::before {
+        content: "\2713";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #b58cff;
+        font-weight: 700;
+      }
+
+      .ce-completion-popup__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        margin-top: 1.8rem;
+      }
+
+      .ce-completion-popup__actions .button.secondary {
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      @media (max-width: 720px) {
+        .ce-completion-popup {
+          width: min(94vw, 760px);
+        }
+
+        .ce-completion-popup__panel {
+          border-radius: 24px;
+          padding: 1.25rem;
+        }
+
+        .ce-completion-popup__details {
+          grid-template-columns: 1fr;
+        }
+
+        .ce-completion-popup__actions {
+          flex-direction: column;
+        }
+
+        .ce-completion-popup__actions .button {
+          width: 100%;
+        }
+      }
+    </style>
+  </>
+)}

@@ -442,7 +442,7 @@ export default function SequenceScrubber({
           id: SCRUB_TRIGGER_ID,
           trigger: section,
           start: "top top",
-          end: () => `+=${Math.round(window.innerHeight * (legendaryMode ? 1.15 : 0.95))}`,
+          end: () => `+=${Math.round(window.innerHeight * (legendaryMode ? 0.82 : 0.66))}`,
           pin: true,
           scrub: legendaryMode ? 0.18 : 0.12,
           anticipatePin: 1,

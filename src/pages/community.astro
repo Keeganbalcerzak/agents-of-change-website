@@ -26,6 +26,31 @@ const jobs = [
   { title: "School Social Worker", company: "Lincoln Public Schools", location: "Seattle, WA", stateCode: "WA", type: "Full-Time" },
   { title: "Substance Abuse Counselor", company: "Pathways Recovery", location: "Austin, TX", stateCode: "TX", type: "Part-Time" },
   { title: "Telehealth Therapist", company: "Mindful Care", location: "Remote (NY Licensure)", stateCode: "NY", type: "Contract" },
+  { title: "Child Welfare Case Manager", company: "Family First Services", location: "Atlanta, GA", stateCode: "GA", type: "Full-Time" },
+  { title: "Behavioral Health Specialist", company: "Community Health Network", location: "Denver, CO (Hybrid)", stateCode: "CO", type: "Full-Time" },
+];
+
+const mentors = [
+  { name: "Dr. Tanya Williams", specialty: "Clinical Supervision & Trauma", experience: "15+ years", location: "New York, NY", available: true },
+  { name: "Marcus Johnson, LCSW", specialty: "School Social Work & Youth Services", experience: "12 years", location: "Chicago, IL", available: true },
+  { name: "Elena Rodriguez, LMSW", specialty: "Substance Abuse & Recovery", experience: "8 years", location: "Austin, TX", available: true },
+  { name: "Dr. Karen Chen", specialty: "Private Practice & Business Development", experience: "20+ years", location: "Los Angeles, CA", available: false },
+  { name: "Jasmine Carter, LCSW", specialty: "Medical Social Work & Hospital Settings", experience: "10 years", location: "Atlanta, GA", available: true },
+];
+
+const upcomingEvents = [
+  { title: "Ask a Clinician: Navigating Your First Year", date: "April 22, 2026", time: "7:00 PM ET", type: "Live Q&A", spots: 45 },
+  { title: "Early Career Cohort: Ethics in Practice", date: "May 6, 2026", time: "12:00 PM ET", type: "Case Discussion", spots: 30 },
+  { title: "Monthly Meetup: Private Practice Readiness", date: "May 13, 2026", time: "7:00 PM ET", type: "Virtual Meetup", spots: 60 },
+  { title: "Supervision Strategies for New Supervisors", date: "May 20, 2026", time: "6:30 PM ET", type: "Workshop", spots: 25 },
+  { title: "Cross-State Perspective: Licensing Portability", date: "June 3, 2026", time: "7:00 PM ET", type: "Panel Discussion", spots: 50 },
+];
+
+const newlyLicensedMilestones = [
+  { week: "Week 1-2", title: "Orientation & Setup", description: "Set up your CE dashboard, connect with your early-career cohort, and map your state's renewal requirements." },
+  { week: "Week 3-4", title: "First CE Course", description: "Complete your first continuing education course and begin tracking hours toward your renewal cycle." },
+  { week: "Week 5-8", title: "Community Integration", description: "Attend your first virtual meetup, explore mentorship options, and join a specialty forum that matches your practice area." },
+  { week: "Week 9-12", title: "Career Path Planning", description: "Work with peers and mentors to define your 1-year professional development goals and build a learning roadmap." },
 ];
 ---
 
@@ -38,10 +63,11 @@ const jobs = [
 >
   <section class="page-hero page-hero-rich" data-module="community-hero" data-motion-tier="hero">
     <div class="container">
-      <p class="eyebrow">Community Hub</p>
+      <p class="eyebrow">Community</p>
       <h1 data-split-heading>Meet social workers near you</h1>
       <p>
-        Agents of Change isn't just an exam prep platform. It's a growing network of thousands of clinical and macro social workers supporting each other from licensure to private practice.
+        Agents of Change is more than exam prep. It is a growing network of clinical and macro social workers
+        supporting one another from licensure through long-term career growth.
       </p>
     </div>
   </section>
@@ -50,15 +76,188 @@ const jobs = [
     <div class="container">
       <header class="section-heading centered">
         <p class="eyebrow">Community matches</p>
-        <h2>Find the right group, specialty lane, or role faster</h2>
-        <p>Filter by city, state, specialty, and role, then jump directly into the next page or support path that matches.</p>
+        <h2>Find the right group, specialty, or role faster</h2>
+        <p>Filter by city, state, specialty, and role to find the groups, forums, and opportunities that fit you best.</p>
       </header>
       <CommunityHubExplorer client:load groups={localGroups} forums={interestForums} jobs={jobs} />
     </div>
   </section>
 
+  {/* ── Newly Licensed Hub ── */}
+  <section class="section" data-module="newly-licensed-hub" data-motion-variant="reveal-stagger" data-motion-density="compact">
+    <div class="container">
+      <header class="section-heading centered">
+        <p class="eyebrow">Newly Licensed Hub</p>
+        <h2>You passed. Now what?</h2>
+        <p>
+          The shift from exam prep to professional practice can feel uncertain.
+          Our 90-day welcome plan helps you move from "I just passed" to a confident, connected practitioner.
+        </p>
+      </header>
+
+      <div class="community-card-grid newly-licensed-grid">
+        {newlyLicensedMilestones.map((milestone) => (
+          <article class="support-card community-data-card newly-licensed-card">
+            <div class="community-meta-row">
+              <span class="community-pill">{milestone.week}</span>
+            </div>
+            <div>
+              <h3>{milestone.title}</h3>
+              <p>{milestone.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="section-cta-row centered">
+        <a href="/continuing-education" class="button primary" data-cta="newly-licensed-start" data-cta-location="community">
+          Start your first 90 days
+        </a>
+        <p class="section-cta-note">
+          Includes CE access, community onboarding, and your first mentorship match.
+          First year just $49 for recent exam passers.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* ── Mentorship Network ── */}
+  <section class="section section-muted" data-module="mentorship-network" data-motion-variant="reveal-stagger" data-motion-density="compact">
+    <div class="container">
+      <header class="section-heading centered">
+        <p class="eyebrow">Mentorship</p>
+        <h2>Learn from practitioners who have been where you are</h2>
+        <p>
+          Get paired with experienced social workers for structured or informal mentorship.
+          Whether you need supervision guidance, career direction, or someone to talk through tough cases,
+          our mentor network connects you with the right person.
+        </p>
+      </header>
+
+      <div class="community-card-grid">
+        {mentors.map((mentor) => (
+          <article class="support-card community-data-card mentor-card">
+            <div>
+              <h3>{mentor.name}</h3>
+              <p>{mentor.specialty}</p>
+            </div>
+            <div class="community-meta-row">
+              <span>{mentor.experience} experience</span>
+              <span>{mentor.location}</span>
+            </div>
+            <div class="community-meta-row">
+              <span class:list={["community-pill", mentor.available ? "pill-available" : "pill-waitlist"]}>
+                {mentor.available ? "Accepting mentees" : "Waitlist"}
+              </span>
+            </div>
+            <div class="community-actions">
+              <a
+                href={`mailto:support@agentsofchangeprep.com?subject=Mentorship Request - ${encodeURIComponent(mentor.name)}&body=${encodeURIComponent(`Hello,\n\nI am interested in being paired with ${mentor.name} for mentorship.\n\nThank you.`)}`}
+                class="button secondary"
+              >
+                Request match
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="mentorship-features">
+        <div class="mentorship-feature">
+          <h3>Ask a Clinician sessions</h3>
+          <p>Monthly live Q&A sessions where early-career social workers can ask experienced practitioners anything about navigating real-world practice challenges.</p>
+        </div>
+        <div class="mentorship-feature">
+          <h3>Structured mentorship pairing</h3>
+          <p>Get matched based on your specialty interest, location, and career goals. Meet monthly with your mentor for guided professional development.</p>
+        </div>
+        <div class="mentorship-feature">
+          <h3>Cross-state perspective sharing</h3>
+          <p>Connect with mentors and peers across state lines to understand different licensing requirements, practice environments, and career opportunities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── Virtual Meetups & Events ── */}
+  <section class="section" data-module="community-events" data-motion-variant="reveal-stagger" data-motion-density="compact">
+    <div class="container">
+      <header class="section-heading centered">
+        <p class="eyebrow">Events & meetups</p>
+        <h2>Scheduled engagement that fits your calendar</h2>
+        <p>
+          Monthly and bi-monthly virtual meetups, early career cohort discussions, and live case review sessions.
+          Lightweight, structured engagement designed for busy practitioners.
+        </p>
+      </header>
+
+      <div class="community-card-grid events-grid">
+        {upcomingEvents.map((event) => (
+          <article class="support-card community-data-card event-card">
+            <div class="community-meta-row">
+              <span class="community-pill">{event.type}</span>
+              <span>{event.spots} spots available</span>
+            </div>
+            <div>
+              <h3>{event.title}</h3>
+              <p>{event.date} at {event.time}</p>
+            </div>
+            <div class="community-actions">
+              <a
+                href={`mailto:support@agentsofchangeprep.com?subject=RSVP - ${encodeURIComponent(event.title)}&body=${encodeURIComponent(`Hello,\n\nI would like to RSVP for "${event.title}" on ${event.date}.\n\nThank you.`)}`}
+                class="button secondary"
+              >
+                RSVP
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── Alumni Community ── */}
+  <section class="section section-muted" data-module="alumni-community" data-motion-variant="reveal-stagger" data-motion-density="compact">
+    <div class="container">
+      <header class="section-heading centered">
+        <p class="eyebrow">Alumni network</p>
+        <h2>Once an Agent of Change, always an Agent of Change</h2>
+        <p>
+          Join a community of social workers who started with Agents of Change.
+          Alumni members get priority access to events, mentorship opportunities,
+          and a direct line to people who understand your path.
+        </p>
+      </header>
+
+      <div class="alumni-benefits-grid">
+        <article class="support-card alumni-benefit">
+          <h3>Exclusive alumni network</h3>
+          <p>Connect with thousands of AoC graduates across the country. Share job leads, advice, and resources with professionals who share your training foundation.</p>
+        </article>
+        <article class="support-card alumni-benefit">
+          <h3>Priority event access</h3>
+          <p>Alumni get first access to workshops, conferences, and live CE events. Stay ahead of your renewal cycle and your career development.</p>
+        </article>
+        <article class="support-card alumni-benefit">
+          <h3>Give-back mentorship</h3>
+          <p>Experienced alumni can become mentors for the next wave of social workers. Build your leadership profile while giving back to the community.</p>
+        </article>
+        <article class="support-card alumni-benefit">
+          <h3>Long-term support</h3>
+          <p>Your relationship with Agents of Change does not end at licensure. Stay connected to the community and keep building your skills and network over time.</p>
+        </article>
+      </div>
+
+      <div class="section-cta-row centered">
+        <a href="mailto:support@agentsofchangeprep.com?subject=Alumni Network Access" class="button primary" data-cta="alumni-join" data-cta-location="community">
+          Join the alumni network
+        </a>
+      </div>
+    </div>
+  </section>
+
   <CTASection
     title="Grow your network today"
-    description="Sign up for an Agents of Change account to join study groups and access the full job board."
+    description="Create your Agents of Change account to join study groups, access the full job board, and connect with mentors."
   />
 </BaseLayout>

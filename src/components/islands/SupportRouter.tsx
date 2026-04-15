@@ -6,7 +6,9 @@ interface SupportRouterProps {
   pathways: ContactPathway[];
 }
 
-const examTrackOptions: ExamTrack[] = ["LSW", "LMSW", "LCSW"];
+type SupportExamTrack = "" | ExamTrack;
+
+const examTrackOptions: ExamTrack[] = ["BSW", "LSW", "LMSW", "LCSW"];
 const validStateCodes = new Set(US_STATES.map((entry) => entry.code));
 
 function normalizeStateCode(value: string | null): string {
@@ -18,11 +20,11 @@ function normalizeStateCode(value: string | null): string {
   return validStateCodes.has(normalized) ? normalized : "";
 }
 
-function normalizeExamTrack(value: string | null): ExamTrack {
-  return examTrackOptions.includes(value as ExamTrack) ? (value as ExamTrack) : "LMSW";
+function normalizeExamTrack(value: string | null): SupportExamTrack {
+  return examTrackOptions.includes(value as ExamTrack) ? (value as ExamTrack) : "";
 }
 
-function buildRecommendedStep(topic: string, examTrack: ExamTrack, stateCode: string): { href: string; label: string } {
+function buildRecommendedStep(topic: string, examTrack: SupportExamTrack, stateCode: string): { href: string; label: string } {
   if (topic === "licensing") {
     return {
       href: stateCode ? `/state-requirements/${stateCode.toLowerCase()}` : "/state-requirements",
@@ -37,27 +39,34 @@ function buildRecommendedStep(topic: string, examTrack: ExamTrack, stateCode: st
     };
   }
 
-  const params = new URLSearchParams({
-    step: "2",
-    examTrack,
-  });
+  const params = new URLSearchParams();
+
+  if (examTrack) {
+    params.set("examTrack", examTrack);
+  }
 
   if (stateCode) {
     params.set("state", stateCode);
   }
 
+  if (examTrack || stateCode) {
+    params.set("step", "2");
+  }
+
+  const query = params.toString();
+
   return {
-    href: `/start-trial?${params.toString()}`,
-    label: "Start trial with my context",
+    href: query ? `/start-trial?${query}` : "/start-trial",
+    label: "Start my personalized trial",
   };
 }
 
 export default function SupportRouter({ pathways }: SupportRouterProps) {
   const defaultTopic = pathways[0]?.id ?? "enrollment";
-  const defaultExamTrack: ExamTrack = "LMSW";
+  const defaultExamTrack: SupportExamTrack = "";
 
   const [topic, setTopic] = useState(defaultTopic);
-  const [examTrack, setExamTrack] = useState<ExamTrack>("LMSW");
+  const [examTrack, setExamTrack] = useState<SupportExamTrack>(defaultExamTrack);
   const [stateCode, setStateCode] = useState("");
   const [summary, setSummary] = useState("");
   const [hasInitialized, setHasInitialized] = useState(false);
@@ -130,7 +139,7 @@ export default function SupportRouter({ pathways }: SupportRouterProps) {
       "Hello Agents of Change team,",
       "",
       `I need help with: ${selectedPathway?.title ?? "Support request"}`,
-      `Exam track: ${examTrack}`,
+      `Exam track: ${examTrack || "Not specified"}`,
       `State: ${stateCode || "Not specified"}`,
       "",
       "Summary:",
@@ -144,7 +153,7 @@ export default function SupportRouter({ pathways }: SupportRouterProps) {
 
   return (
     <div className="testimonial-filter-layout">
-      <form className="filter-bar" aria-label="Route support request" onSubmit={(event) => event.preventDefault()}>
+      <form className="filter-bar" aria-label="Support request form" onSubmit={(event) => event.preventDefault()}>
         <label>
           <span>Help topic</span>
           <select value={topic} onChange={(event) => setTopic(event.target.value)}>
@@ -158,7 +167,8 @@ export default function SupportRouter({ pathways }: SupportRouterProps) {
 
         <label>
           <span>Exam track</span>
-          <select value={examTrack} onChange={(event) => setExamTrack(event.target.value as ExamTrack)}>
+          <select value={examTrack} onChange={(event) => setExamTrack(event.target.value as SupportExamTrack)}>
+            <option value="">No exam track selected</option>
             {examTrackOptions.map((track) => (
               <option key={track} value={track}>
                 {track}
@@ -196,7 +206,7 @@ export default function SupportRouter({ pathways }: SupportRouterProps) {
         {selectedPathway?.responseTime && <p className="support-sla">{selectedPathway.responseTime}</p>}
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
           <a href={emailHref} className="button secondary" data-cta="support-router-email" data-cta-location={topic}>
-            Draft support email
+            Open support email
           </a>
           <a href={recommendedStep.href} className="button secondary" data-cta="support-router-next-step" data-cta-location={topic}>
             {recommendedStep.label}

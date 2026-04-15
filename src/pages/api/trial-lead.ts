@@ -11,7 +11,7 @@ const schema = z.object({
   firstName: z.string().trim().min(1).max(80),
   lastName: z.string().trim().min(1).max(80),
   email: z.string().trim().email().max(190),
-  examTrack: z.enum(["LSW", "LMSW", "LCSW"]),
+  examTrack: z.enum(["BSW", "LSW", "LMSW", "LCSW"]),
   state: z.string().trim().toUpperCase().regex(/^[A-Z]{2}$/),
   targetExamWindow: z.enum(["0-30", "31-60", "61-90", "90+"]),
   studyTimeline: z.enum(["immediate", "this_month", "next_quarter"]),

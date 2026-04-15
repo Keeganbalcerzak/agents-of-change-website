@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, type SyntheticEvent } from "react";
-import type { TrialLeadInput } from "@/lib/types";
+import type { ExamTrack, TrialLeadInput } from "@/lib/types";
 import { trackEvent } from "@/lib/analytics";
 import { US_STATES } from "@/lib/states";
 
@@ -9,20 +9,27 @@ interface TrialErrors {
 
 const stepTitles = ["Identity", "Exam Context", "Consent and Timeline"];
 const trialDraftStorageKey = "aoc:trial-stepper-draft:v1";
-const examTrackOptions = ["LSW", "LMSW", "LCSW"] as const;
+const examTrackOptions = ["BSW", "LSW", "LMSW", "LCSW"] as const;
+const pathwayOptions = ["first-time", "repeat"] as const;
 const targetExamWindowOptions = ["0-30", "31-60", "61-90", "90+"] as const;
 const studyTimelineOptions = ["immediate", "this_month", "next_quarter"] as const;
 const validStateCodes = new Set(US_STATES.map((entry) => entry.code));
+
+type TrialExamTrack = ExamTrack | "";
+type TrialPathway = (typeof pathwayOptions)[number] | "";
+type TrialTargetExamWindow = (typeof targetExamWindowOptions)[number] | "";
+type TrialStudyTimeline = (typeof studyTimelineOptions)[number] | "";
 
 type TrialDraft = {
   step: number;
   firstName: string;
   lastName: string;
   email: string;
-  examTrack: "LSW" | "LMSW" | "LCSW";
+  pathway: TrialPathway;
+  examTrack: TrialExamTrack;
   state: string;
-  targetExamWindow: "0-30" | "31-60" | "61-90" | "90+";
-  studyTimeline: "immediate" | "this_month" | "next_quarter";
+  targetExamWindow: TrialTargetExamWindow;
+  studyTimeline: TrialStudyTimeline;
   consentToEmail: boolean;
 };
 
@@ -41,8 +48,12 @@ function collectUtm(): Record<string, string | undefined> {
   };
 }
 
-function isExamTrack(value: string | null): value is "LSW" | "LMSW" | "LCSW" {
+function isExamTrack(value: string | null): value is ExamTrack {
   return Boolean(value && examTrackOptions.includes(value as (typeof examTrackOptions)[number]));
+}
+
+function isPathway(value: string | null): value is (typeof pathwayOptions)[number] {
+  return Boolean(value && pathwayOptions.includes(value as (typeof pathwayOptions)[number]));
 }
 
 function isTargetExamWindow(value: string | null): value is "0-30" | "31-60" | "61-90" | "90+" {
@@ -86,6 +97,7 @@ function getDraftFromSessionStorage(): Partial<TrialDraft> | null {
       firstName: typeof parsed.firstName === "string" ? parsed.firstName : undefined,
       lastName: typeof parsed.lastName === "string" ? parsed.lastName : undefined,
       email: typeof parsed.email === "string" ? parsed.email : undefined,
+      pathway: isPathway(parsed.pathway ?? null) ? parsed.pathway : undefined,
       examTrack: isExamTrack(parsed.examTrack ?? null) ? parsed.examTrack : undefined,
       state: normalizeStateCode(parsed.state ?? null),
       targetExamWindow: isTargetExamWindow(parsed.targetExamWindow ?? null) ? parsed.targetExamWindow : undefined,
@@ -105,6 +117,7 @@ function getPrefillsFromSearch(): Partial<TrialDraft> {
   const params = new URLSearchParams(window.location.search);
   const stepParam = params.get("step");
   const parsedStep = stepParam ? Number.parseInt(stepParam, 10) : Number.NaN;
+  const pathway = params.get("pathway");
   const examTrack = params.get("examTrack");
   const targetExamWindow = params.get("targetExamWindow");
   const studyTimeline = params.get("studyTimeline");
@@ -114,6 +127,7 @@ function getPrefillsFromSearch(): Partial<TrialDraft> {
       Number.isInteger(parsedStep) && parsedStep >= 1 && parsedStep <= stepTitles.length
         ? parsedStep - 1
         : undefined,
+    pathway: isPathway(pathway) ? pathway : undefined,
     examTrack: isExamTrack(examTrack) ? examTrack : undefined,
     state: normalizeStateCode(params.get("state")),
     targetExamWindow: isTargetExamWindow(targetExamWindow) ? targetExamWindow : undefined,
@@ -145,11 +159,12 @@ export default function TrialStepper() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
 
-  const [examTrack, setExamTrack] = useState<"LSW" | "LMSW" | "LCSW">("LMSW");
-  const [state, setState] = useState("CA");
-  const [targetExamWindow, setTargetExamWindow] = useState<"0-30" | "31-60" | "61-90" | "90+">("61-90");
+  const [pathway, setPathway] = useState<TrialPathway>("");
+  const [examTrack, setExamTrack] = useState<TrialExamTrack>("");
+  const [state, setState] = useState("");
+  const [targetExamWindow, setTargetExamWindow] = useState<TrialTargetExamWindow>("");
 
-  const [studyTimeline, setStudyTimeline] = useState<"immediate" | "this_month" | "next_quarter">("this_month");
+  const [studyTimeline, setStudyTimeline] = useState<TrialStudyTimeline>("");
   const [consentToEmail, setConsentToEmail] = useState(false);
 
   const [errors, setErrors] = useState<TrialErrors>({});
@@ -169,15 +184,19 @@ export default function TrialStepper() {
       setFirstName(storedDraft.firstName ?? "");
       setLastName(storedDraft.lastName ?? "");
       setEmail(storedDraft.email ?? "");
-      setExamTrack(storedDraft.examTrack ?? "LMSW");
-      setState(storedDraft.state ?? "CA");
-      setTargetExamWindow(storedDraft.targetExamWindow ?? "61-90");
-      setStudyTimeline(storedDraft.studyTimeline ?? "this_month");
+      setPathway(storedDraft.pathway ?? "");
+      setExamTrack(storedDraft.examTrack ?? "");
+      setState(storedDraft.state ?? "");
+      setTargetExamWindow(storedDraft.targetExamWindow ?? "");
+      setStudyTimeline(storedDraft.studyTimeline ?? "");
       setConsentToEmail(storedDraft.consentToEmail ?? false);
       setStep(storedDraft.step ?? 0);
       setRestoredDraft(true);
     }
 
+    if (queryPrefills.pathway) {
+      setPathway(queryPrefills.pathway);
+    }
     if (queryPrefills.examTrack) {
       setExamTrack(queryPrefills.examTrack);
     }
@@ -207,6 +226,7 @@ export default function TrialStepper() {
       firstName,
       lastName,
       email,
+      pathway,
       examTrack,
       state,
       targetExamWindow,
@@ -215,9 +235,30 @@ export default function TrialStepper() {
     };
 
     window.sessionStorage.setItem(trialDraftStorageKey, JSON.stringify(nextDraft));
-  }, [consentToEmail, email, examTrack, firstName, hasInitializedDraft, lastName, state, step, studyTimeline, targetExamWindow]);
+  }, [consentToEmail, email, examTrack, firstName, hasInitializedDraft, lastName, pathway, state, step, studyTimeline, targetExamWindow]);
 
   const progress = useMemo(() => ((step + 1) / stepTitles.length) * 100, [step]);
+  const pathwayGuide = useMemo(() => {
+    if (pathway === "first-time") {
+      return {
+        kicker: "First-time path",
+        title: "This plan will prioritize first-pass structure.",
+        description:
+          "Your next steps should center on consistent study blocks, rationale review, and a realistic first exam window instead of all-or-nothing prep.",
+      };
+    }
+
+    if (pathway === "repeat") {
+      return {
+        kicker: "Retake path",
+        title: "This plan will prioritize score-gap diagnosis.",
+        description:
+          "Your next steps should focus on immediate practice review, weak-domain triage, and a cleaner retake plan instead of repeating the same study routine.",
+      };
+    }
+
+    return null;
+  }, [pathway]);
 
   function validate(currentStep: number): TrialErrors {
     const nextErrors: TrialErrors = {};
@@ -241,9 +282,15 @@ export default function TrialStepper() {
       if (!examTrack) {
         nextErrors.examTrack = "Please select an exam track.";
       }
+      if (!targetExamWindow) {
+        nextErrors.targetExamWindow = "Please choose when you plan to take the exam.";
+      }
     }
 
     if (currentStep === 2) {
+      if (!studyTimeline) {
+        nextErrors.studyTimeline = "Please choose when you want to start studying.";
+      }
       if (!consentToEmail) {
         nextErrors.consentToEmail = "You need to agree to receive trial resources by email.";
       }
@@ -337,6 +384,11 @@ export default function TrialStepper() {
     const sourcePage =
       typeof window !== "undefined" ? `${window.location.pathname}${window.location.search}` : "/start-trial";
 
+    if (!examTrack || !state || !targetExamWindow || !studyTimeline) {
+      setGlobalError("Please complete the missing exam details before submitting.");
+      return;
+    }
+
     const payload: TrialLeadInput = {
       firstName,
       lastName,
@@ -359,6 +411,7 @@ export default function TrialStepper() {
     });
 
     trackEvent("trial_submit", {
+      pathway: pathway || "general",
       exam_track: examTrack,
       state,
       target_exam_window: targetExamWindow,
@@ -413,6 +466,14 @@ export default function TrialStepper() {
         <p aria-live="polite">
           Your saved trial draft has been restored for this browser session.
         </p>
+      )}
+
+      {pathwayGuide && (
+        <article className="trial-context-card" aria-live="polite">
+          <p className="trial-context-kicker">{pathwayGuide.kicker}</p>
+          <h2>{pathwayGuide.title}</h2>
+          <p>{pathwayGuide.description}</p>
+        </article>
       )}
 
       <div className="step-progress" aria-hidden="true">
@@ -495,15 +556,20 @@ export default function TrialStepper() {
             <select
               value={examTrack}
               onChange={(event) => {
-                setExamTrack(event.target.value as "LSW" | "LMSW" | "LCSW");
+                setExamTrack(event.target.value as TrialExamTrack);
                 clearFieldError("examTrack");
                 setGlobalError(null);
               }}
+              aria-invalid={Boolean(errors.examTrack)}
+              aria-describedby={errors.examTrack ? "error-exam-track" : undefined}
             >
+              <option value="">Select exam track</option>
+              <option value="BSW">BSW</option>
               <option value="LSW">LSW</option>
               <option value="LMSW">LMSW</option>
               <option value="LCSW">LCSW</option>
             </select>
+            {errors.examTrack && <span id="error-exam-track" className="field-error">{errors.examTrack}</span>}
           </label>
 
           <label>
@@ -516,14 +582,16 @@ export default function TrialStepper() {
                 setGlobalError(null);
               }}
               aria-invalid={Boolean(errors.state)}
+              aria-describedby={errors.state ? "error-state" : undefined}
             >
+              <option value="">Select state</option>
               {US_STATES.map((entry) => (
                 <option key={entry.code} value={entry.code}>
                   {entry.name}
                 </option>
               ))}
             </select>
-            {errors.state && <span className="field-error">{errors.state}</span>}
+            {errors.state && <span id="error-state" className="field-error">{errors.state}</span>}
           </label>
 
           <label>
@@ -531,15 +599,22 @@ export default function TrialStepper() {
             <select
               value={targetExamWindow}
               onChange={(event) => {
-                setTargetExamWindow(event.target.value as "0-30" | "31-60" | "61-90" | "90+");
+                setTargetExamWindow(event.target.value as TrialTargetExamWindow);
+                clearFieldError("targetExamWindow");
                 setGlobalError(null);
               }}
+              aria-invalid={Boolean(errors.targetExamWindow)}
+              aria-describedby={errors.targetExamWindow ? "error-target-exam-window" : undefined}
             >
+              <option value="">Select target window</option>
               <option value="0-30">0-30 days</option>
               <option value="31-60">31-60 days</option>
               <option value="61-90">61-90 days</option>
               <option value="90+">90+ days</option>
             </select>
+            {errors.targetExamWindow && (
+              <span id="error-target-exam-window" className="field-error">{errors.targetExamWindow}</span>
+            )}
           </label>
         </fieldset>
       )}
@@ -553,14 +628,21 @@ export default function TrialStepper() {
             <select
               value={studyTimeline}
               onChange={(event) => {
-                setStudyTimeline(event.target.value as "immediate" | "this_month" | "next_quarter");
+                setStudyTimeline(event.target.value as TrialStudyTimeline);
+                clearFieldError("studyTimeline");
                 setGlobalError(null);
               }}
+              aria-invalid={Boolean(errors.studyTimeline)}
+              aria-describedby={errors.studyTimeline ? "error-study-timeline" : undefined}
             >
+              <option value="">Select study timeline</option>
               <option value="immediate">I want to start today</option>
               <option value="this_month">I can start this month</option>
               <option value="next_quarter">I am planning for next quarter</option>
             </select>
+            {errors.studyTimeline && (
+              <span id="error-study-timeline" className="field-error">{errors.studyTimeline}</span>
+            )}
           </label>
 
           <label className="checkbox-row">

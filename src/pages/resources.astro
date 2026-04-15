@@ -11,17 +11,17 @@ const seo = findSeoByKey(seoEntries, "resources");
 
 const featuredTracks = [
   {
-    title: "Exam strategy track",
+    title: "Exam strategy",
     description: "Question interpretation, rationale reading, and decision pacing methods.",
     href: "/resources?category=Exam%20Tactics#resources-list-title",
   },
   {
-    title: "Licensing track",
+    title: "Licensing guidance",
     description: "State readiness checklists and planning guidance before scheduling milestones.",
     href: "/resources?category=Licensing#resources-list-title",
   },
   {
-    title: "Recovery track",
+    title: "After a failed attempt",
     description: "What to adjust after failed attempts to rebuild confidence and performance.",
     href: "/resources?category=Recovery%20Strategy#resources-list-title",
   },
@@ -48,8 +48,8 @@ const featuredTracks = [
   <section class="section section-muted" data-module="resource-tracks" data-motion-tier="section" aria-labelledby="track-title">
     <div class="container">
       <header class="section-heading centered">
-        <p class="eyebrow">Featured tracks</p>
-        <h2 id="track-title">Choose a learning track by immediate need</h2>
+        <p class="eyebrow">Featured topics</p>
+        <h2 id="track-title">Choose the resource that matches what you need most</h2>
       </header>
 
       <div class="track-grid">
@@ -57,7 +57,7 @@ const featuredTracks = [
           <article class="track-card reveal">
             <h3>{track.title}</h3>
             <p>{track.description}</p>
-            <a href={track.href} class="button secondary">Open track</a>
+            <a href={track.href} class="button secondary">Open topic</a>
           </article>
         ))}
       </div>
@@ -72,6 +72,6 @@ const featuredTracks = [
 
   <CTASection
     title="Turn these resources into a guided plan"
-    description="Start your free trial and get a sequenced path that applies the right strategy at the right time."
+    description="Start your free trial and get a personalized study plan that turns these resources into clear next steps."
   />
 </BaseLayout>

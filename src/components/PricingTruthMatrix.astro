@@ -11,17 +11,6 @@ type DisplayPlan = PricingSection["plans"][number] & {
   trackOptions?: string[];
 };
 
-interface ProductPane {
-  id: "prep" | "ce";
-  kicker: string;
-  title: string;
-  description: string;
-  ctaHref: string;
-  ctaLabel: string;
-  sections: PricingSection[];
-  className: string;
-}
-
 function cadenceLabel(cadence: BillingCadence): string {
   if (cadence === "free") return "Free";
   if (cadence === "one-time") return "One-time";
@@ -31,26 +20,30 @@ function cadenceLabel(cadence: BillingCadence): string {
 
 function displayPlans(section: PricingSection): DisplayPlan[] {
   if (section.id !== "exam-prep-courses") {
-    return section.plans.map((plan) => {
-      if (plan.id === "free-prep-suite") return { ...plan, trackOptions: ["BSW", "LMSW", "LCSW"] };
-      if (section.id === "practice-exams") return { ...plan, trackOptions: ["LMSW", "LCSW"] };
-      return plan;
-    });
+    return section.plans.map((plan) => plan);
   }
 
   const bswPlan = section.plans.find((plan) => plan.id === "bsw-course");
   const basicsTemplate = section.plans.find((plan) => plan.id === "lmsw-basics");
   const premiumTemplate = section.plans.find((plan) => plan.id === "lmsw-premium");
 
-  return [
-    bswPlan ? { ...bswPlan, trackOptions: ["BSW"] } : null,
+  const examPrepPlans: Array<DisplayPlan | null> = [
+    bswPlan
+      ? {
+          ...bswPlan,
+          ctaLabel: "Open BSW package",
+          ctaHref: "/exam-prep?examTrack=BSW#offers",
+          trackOptions: ["BSW"],
+        }
+      : null,
     basicsTemplate
       ? {
           ...basicsTemplate,
           id: "basics-family",
           title: "Basics",
           subtitle: "Choose LMSW or LCSW",
-          ctaLabel: "Choose Basics",
+          ctaLabel: "Pick your Basics track",
+          ctaHref: "/exam-prep#offers",
           trackOptions: ["LMSW", "LCSW"],
         }
       : null,
@@ -60,19 +53,22 @@ function displayPlans(section: PricingSection): DisplayPlan[] {
           id: "premium-family",
           title: "Premium + Power Pack",
           subtitle: "Choose LMSW or LCSW",
-          ctaLabel: "Choose Premium",
+          ctaLabel: "Pick your Premium track",
+          ctaHref: "/exam-prep#offers",
           trackOptions: ["LMSW", "LCSW"],
         }
       : null,
-  ].filter((plan): plan is DisplayPlan => plan !== null);
+  ];
+
+  return examPrepPlans.filter((plan): plan is DisplayPlan => plan !== null);
 }
 
 function planFit(plan: DisplayPlan, sectionId: string): string | null {
   if (sectionId !== "exam-prep-courses") return null;
 
-  if (plan.id === "bsw-course") return "Best for first-time BSW confidence building";
-  if (plan.id === "basics-family") return "Best for lower-cost guided prep";
-  if (plan.id === "premium-family") return "Best for full-course buyers who want stronger support";
+  if (plan.id === "bsw-course") return "Best for the dedicated BSW exam path";
+  if (plan.id === "basics-family") return "Best for a lower-cost guided prep path";
+  if (plan.id === "premium-family") return "Best for full-course prep with more practice and support";
 
   return null;
 }
@@ -80,22 +76,12 @@ function planFit(plan: DisplayPlan, sectionId: string): string | null {
 function comparisonRow(plan: DisplayPlan, sectionId: string): string[] {
   if (sectionId === "exam-prep-courses") {
     if (plan.id === "bsw-course") return ["Until you pass", "Structured course", "Self-paced"];
-    if (plan.id === "basics-family") return ["Until you pass", "75-question mini exam", "Live study groups"];
+    if (plan.id === "basics-family") return ["Until you pass", "30+ hours of content", "Live study groups"];
     if (plan.id === "premium-family") return ["Until you pass", "170-question exam", "Priority support"];
-  }
-
-  if (sectionId === "practice-exams") {
-    if (plan.id === "single-practice-exam") return ["1-year access", "170 questions", "Supplemental"];
-    if (plan.id === "practice-exam-bundle") return ["510 total questions", "Best volume value", "1-year access"];
   }
 
   if (sectionId === "continuing-education") {
     if (plan.id === "ce-annual") return ["150+ courses", "15+ live webinars", "ASWB ACE"];
-    if (plan.id === "ce-monthly-recorded") return ["Recorded library", "Monthly access", "No live events"];
-  }
-
-  if (plan.id === "free-prep-suite") {
-    return ["Free entry", "All three tracks", "Lead with clarity"];
   }
 
   return [];
@@ -106,54 +92,25 @@ function visibleFeatures(plan: DisplayPlan, sectionId: string): string[] {
     return [
       "30+ hours of content",
       "2 live study groups each month",
-      "Clear lower-cost path for LMSW or LCSW prep",
+      "Access until you pass",
     ];
   }
 
   if (sectionId === "exam-prep-courses" && plan.id === "premium-family") {
     return [
       "Everything in Basics",
+      "170-question practice exam and rationales",
       "Case vignettes with video rationales",
       "25+ recorded study groups",
-      "Downloadable audio lessons",
+      "Priority email and chat support",
     ];
   }
 
   return plan.features.slice(0, 4);
 }
 
-function paneSections(kind: ProductPane["id"]) {
-  if (kind === "prep") {
-    return sections.filter((section) => section.id !== "continuing-education");
-  }
-
-  return sections.filter((section) => section.id === "continuing-education");
-}
-
-const panes: ProductPane[] = [
-  {
-    id: "prep",
-    kicker: "Test Prep",
-    title: "Buy for the exam you need to pass now.",
-    description:
-      "One-time prep products, practice simulations, and free entry resources built for pre-licensure social workers.",
-    ctaHref: "/exam-prep",
-    ctaLabel: "Explore test prep",
-    sections: paneSections("prep"),
-    className: "is-prep-pane",
-  },
-  {
-    id: "ce",
-    kicker: "Continuing Education",
-    title: "Choose CE once renewal and growth become the priority.",
-    description:
-      "Independent CE memberships for licensed social workers who need requirement confidence and practical learning.",
-    ctaHref: "/continuing-education",
-    ctaLabel: "Explore continuing education",
-    sections: paneSections("ce"),
-    className: "is-ce-pane",
-  },
-];
+const prepSection = sections.find((section) => section.id === "exam-prep-courses");
+const ceSection = sections.find((section) => section.id === "continuing-education");
 ---
 
 <section
@@ -167,108 +124,167 @@ const panes: ProductPane[] = [
   <div class="container">
     <header class="section-heading centered">
       <p class="eyebrow">Programs and pricing</p>
-      <h2 id="pricing-truth-title">Choose the product you need now</h2>
+      <h2 id="pricing-truth-title">Choose the option you need right now</h2>
       <p>
-        Test Prep and Continuing Education are priced as distinct products. Prep is for passing the exam. CE is for
-        maintaining licensure after you pass.
+        Exam prep is designed to help you pass. Continuing education is designed to help you stay current after
+        licensure.
       </p>
     </header>
 
     <div class="pricing-positioning-note">
-      <p class="pricing-positioning-kicker">Decision rule</p>
+      <p class="pricing-positioning-kicker">Start here</p>
       <p>
         If you are still working toward licensure, buy for exam readiness. If you are already licensed, buy for
         renewal confidence and practical CE value.
       </p>
+      <p>
+        Test Prep users can transition into CE at <strong>$49 for the first year</strong>, then move to the standard
+        <strong>$99 annual membership</strong>.
+      </p>
     </div>
 
-    <div class="pricing-product-split">
-      {panes.map((pane) => (
-        <article class:list={["pricing-product-pane", pane.className]}>
-          <header class="pricing-product-header">
-            <p class="pricing-product-kicker">{pane.kicker}</p>
-            <h3>{pane.title}</h3>
-            <p>{pane.description}</p>
-            <a href={pane.ctaHref} class="button secondary pricing-product-cta">
-              {pane.ctaLabel}
+    <div class="pricing-lane-stack">
+      {prepSection && (
+        <section class="pricing-lane pricing-lane-prep" aria-labelledby={`pricing-${prepSection.id}`}>
+          <header class="pricing-lane-header">
+            <div>
+              <p class="pricing-lane-kicker">Test Prep</p>
+              <h3 id={`pricing-${prepSection.id}`}>{prepSection.title}</h3>
+              <p>{prepSection.description}</p>
+            </div>
+            <a href="/exam-prep#offers" class="button secondary pricing-lane-cta">
+              Explore test prep
             </a>
           </header>
 
-          <div class="pricing-sections">
-            {pane.sections.map((section) => (
-              <section class:list={["pricing-group", section.id === "continuing-education" && "is-ce-group"]} aria-labelledby={`pricing-${section.id}`}>
-                <header class="pricing-group-header">
-                  <h3 id={`pricing-${section.id}`}>{section.title}</h3>
-                  <p>{section.description}</p>
-                  {section.id === "practice-exams" && (
-                    <p class="pricing-plan-savings">Includes 3 individual options (Exam #1, #2, #3) plus the all-exams bundle.</p>
+          <div class="pricing-plan-grid is-exam-prep-grid">
+            {displayPlans(prepSection).map((plan) => (
+              <article
+                class:list={[
+                  "pricing-plan-card",
+                  "reveal",
+                  "is-exam-prep-card",
+                  plan.tags?.includes("popular") && "is-popular",
+                ]}
+              >
+                <div class="pricing-plan-head">
+                  <p class="pricing-plan-title">{plan.title}</p>
+                  {plan.subtitle && <p class="pricing-plan-subtitle">{plan.subtitle}</p>}
+                  {plan.badge && <p class="pricing-plan-badge">{plan.badge}</p>}
+                  {plan.trackOptions && (
+                    <div class="pricing-plan-track-pills" aria-label={`${plan.title} available tracks`}>
+                      {plan.trackOptions.map((track) => (
+                        <span>{track}</span>
+                      ))}
+                    </div>
                   )}
-                </header>
-
-                <div class:list={["pricing-plan-grid", section.id === "exam-prep-courses" && "is-exam-prep-grid"]}>
-                  {displayPlans(section).map((plan) => (
-                    <article
-                      class:list={[
-                        "pricing-plan-card",
-                        "reveal",
-                        plan.tags?.includes("popular") && "is-popular",
-                        section.id === "exam-prep-courses" && "is-exam-prep-card",
-                        section.id === "continuing-education" && "is-ce-card",
-                      ]}
-                    >
-                      <div class="pricing-plan-head">
-                        <p class="pricing-plan-title">{plan.title}</p>
-                        {plan.subtitle && <p class="pricing-plan-subtitle">{plan.subtitle}</p>}
-                        {plan.badge && <p class="pricing-plan-badge">{plan.badge}</p>}
-                        {plan.trackOptions && (
-                          <div class="pricing-plan-track-pills" aria-label={`${plan.title} available tracks`}>
-                            {plan.trackOptions.map((track) => (
-                              <span>{track}</span>
-                            ))}
-                          </div>
-                        )}
-                        {planFit(plan, section.id) && <p class="pricing-plan-fit-copy">{planFit(plan, section.id)}</p>}
-                      </div>
-
-                      <p class="pricing-plan-price">
-                        {plan.regularPrice !== undefined && <span class="pricing-plan-regular-price">${plan.regularPrice}</span>}
-                        {plan.price === undefined ? "Free" : `$${plan.price}`}
-                        <span>{cadenceLabel(plan.cadence)}</span>
-                      </p>
-
-                      {plan.savingsCopy && <p class="pricing-plan-savings">{plan.savingsCopy}</p>}
-                      {plan.questionCount && <p class="pricing-plan-questions">{plan.questionCount} total questions</p>}
-                      {comparisonRow(plan, section.id).length > 0 && (
-                        <div class="pricing-plan-compare-line" aria-label={`${plan.title} key comparison points`}>
-                          {comparisonRow(plan, section.id).map((item) => (
-                            <span>{item}</span>
-                          ))}
-                        </div>
-                      )}
-
-                      <ul>
-                        {visibleFeatures(plan, section.id).map((feature) => (
-                          <li>{feature}</li>
-                        ))}
-                      </ul>
-
-                      <a
-                        href={plan.ctaHref}
-                        class="button primary block"
-                        data-cta="pricing-plan-cta"
-                        data-cta-location={plan.id}
-                        data-pricing-plan-id={plan.id}
-                      >
-                        {plan.ctaLabel}
-                      </a>
-                    </article>
-                  ))}
+                  {planFit(plan, prepSection.id) && <p class="pricing-plan-fit-copy">{planFit(plan, prepSection.id)}</p>}
                 </div>
-              </section>
+
+                <p class="pricing-plan-price">
+                  {plan.regularPrice !== undefined && <span class="pricing-plan-regular-price">${plan.regularPrice}</span>}
+                  {plan.price === undefined ? "Free" : `$${plan.price}`}
+                  <span>{cadenceLabel(plan.cadence)}</span>
+                </p>
+
+                {plan.savingsCopy && <p class="pricing-plan-savings">{plan.savingsCopy}</p>}
+                {plan.questionCount && <p class="pricing-plan-questions">{plan.questionCount} total questions</p>}
+                {comparisonRow(plan, prepSection.id).length > 0 && (
+                  <div class="pricing-plan-compare-line" aria-label={`${plan.title} key comparison points`}>
+                    {comparisonRow(plan, prepSection.id).map((item) => (
+                      <span>{item}</span>
+                    ))}
+                  </div>
+                )}
+
+                <ul>
+                  {visibleFeatures(plan, prepSection.id).map((feature) => (
+                    <li>{feature}</li>
+                  ))}
+                </ul>
+
+                <a
+                  href={plan.ctaHref}
+                  class="button primary block"
+                  data-cta="pricing-plan-cta"
+                  data-cta-location={plan.id}
+                  data-pricing-plan-id={plan.id}
+                >
+                  {plan.ctaLabel}
+                </a>
+              </article>
             ))}
           </div>
-        </article>
-      ))}
+        </section>
+      )}
+
+      {ceSection && (
+        <section class="pricing-lane pricing-lane-ce" aria-labelledby={`pricing-${ceSection.id}`}>
+          <div class="pricing-lane-ce-shell">
+            <header class="pricing-lane-header">
+              <div>
+                <p class="pricing-lane-kicker">Continuing Education</p>
+                <h3 id={`pricing-${ceSection.id}`}>{ceSection.title}</h3>
+                <p>{ceSection.description}</p>
+              </div>
+              <a href="/continuing-education" class="button secondary pricing-lane-cta">
+                Explore continuing education
+              </a>
+            </header>
+
+            <div class="pricing-ce-highlight">
+              <p class="pricing-ce-highlight-kicker">Transition offer</p>
+              <p>
+                Test Prep users can move into CE at <strong>$49 for year one</strong>, then renew at
+                <strong> $99 annually</strong>.
+              </p>
+            </div>
+
+            <div class="pricing-plan-grid pricing-plan-grid-ce">
+              {displayPlans(ceSection).map((plan) => (
+                <article class:list={["pricing-plan-card", "reveal", "is-ce-card", "is-ce-featured"]}>
+                  <div class="pricing-plan-head">
+                    <p class="pricing-plan-title">{plan.title}</p>
+                    {plan.subtitle && <p class="pricing-plan-subtitle">{plan.subtitle}</p>}
+                    {plan.badge && <p class="pricing-plan-badge">{plan.badge}</p>}
+                  </div>
+
+                  <p class="pricing-plan-price">
+                    {plan.regularPrice !== undefined && <span class="pricing-plan-regular-price">${plan.regularPrice}</span>}
+                    {plan.price === undefined ? "Free" : `$${plan.price}`}
+                    <span>{cadenceLabel(plan.cadence)}</span>
+                  </p>
+
+                  {plan.savingsCopy && <p class="pricing-plan-savings">{plan.savingsCopy}</p>}
+                  {comparisonRow(plan, ceSection.id).length > 0 && (
+                    <div class="pricing-plan-compare-line" aria-label={`${plan.title} key comparison points`}>
+                      {comparisonRow(plan, ceSection.id).map((item) => (
+                        <span>{item}</span>
+                      ))}
+                    </div>
+                  )}
+
+                  <ul>
+                    {visibleFeatures(plan, ceSection.id).map((feature) => (
+                      <li>{feature}</li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href={plan.ctaHref}
+                    class="button primary block"
+                    data-cta="pricing-plan-cta"
+                    data-cta-location={plan.id}
+                    data-pricing-plan-id={plan.id}
+                  >
+                    {plan.ctaLabel}
+                  </a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   </div>
 

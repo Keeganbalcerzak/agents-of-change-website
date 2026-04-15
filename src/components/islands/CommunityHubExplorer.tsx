@@ -44,8 +44,12 @@ function normalizeView(value: string | null): ViewMode {
   return viewOptions.some((option) => option.value === value) ? (value as ViewMode) : "all";
 }
 
-function inferExamTrack(value: string): ExamTrack {
+function inferExamTrack(value: string): ExamTrack | undefined {
   const normalized = value.toUpperCase();
+
+  if (normalized.includes("BSW")) {
+    return "BSW";
+  }
 
   if (normalized.includes("LCSW")) {
     return "LCSW";
@@ -59,20 +63,26 @@ function inferExamTrack(value: string): ExamTrack {
     return "LSW";
   }
 
-  return "LMSW";
+  return undefined;
 }
 
-function buildTrialHref(examTrack: ExamTrack, stateCode?: string): string {
-  const params = new URLSearchParams({
-    step: "2",
-    examTrack,
-  });
+function buildTrialHref(examTrack?: ExamTrack, stateCode?: string): string {
+  const params = new URLSearchParams();
+
+  if (examTrack) {
+    params.set("examTrack", examTrack);
+  }
 
   if (stateCode) {
     params.set("state", stateCode);
   }
 
-  return `/start-trial?${params.toString()}`;
+  if (examTrack || stateCode) {
+    params.set("step", "2");
+  }
+
+  const queryString = params.toString();
+  return queryString ? `/start-trial?${queryString}` : "/start-trial";
 }
 
 function buildStateGuideHref(stateCode: string): string {
@@ -84,11 +94,12 @@ function buildResourceHref(topic: string): string {
   return `/resources?${params.toString()}`;
 }
 
-function buildContactHref(topic: "enrollment" | "licensing", examTrack: ExamTrack, stateCode?: string): string {
-  const params = new URLSearchParams({
-    topic,
-    examTrack,
-  });
+function buildContactHref(topic: "enrollment" | "licensing", examTrack?: ExamTrack, stateCode?: string): string {
+  const params = new URLSearchParams({ topic });
+
+  if (examTrack) {
+    params.set("examTrack", examTrack);
+  }
 
   if (stateCode) {
     params.set("state", stateCode);
@@ -102,7 +113,7 @@ function buildGroupJoinHref(group: CommunityGroup): string {
   const body = [
     "Hello Agents of Change team,",
     "",
-    `I want to join the ${group.label} group in ${group.city}, ${group.stateCode}.`,
+    `I want to join "${group.label}" in ${group.city}, ${group.stateCode}.`,
     `Please send me the next steps or access details.`,
     "",
     "Thank you.",
@@ -277,17 +288,17 @@ export default function CommunityHubExplorer({ groups, forums, jobs }: Community
   const hasActiveFilters = searchQuery.trim().length > 0 || viewMode !== "all" || stateCode !== "all" || jobType !== "all";
 
   const fallbackStateCode = filteredGroups[0]?.stateCode ?? filteredJobs[0]?.stateCode;
-  const recommendedExamTrack = inferExamTrack(filteredGroups[0]?.label ?? filteredJobs[0]?.title ?? "LMSW");
+  const recommendedExamTrack = inferExamTrack(filteredGroups[0]?.label ?? filteredJobs[0]?.title ?? "");
 
   const recommendation = useMemo(() => {
     if (!hasActiveFilters) {
       return {
-        title: "Pick the lane that matches where you are right now",
-        description: "Use groups for accountability, forums for specialty learning, and jobs for role-specific licensing context without committing to a random path first.",
+        title: "Choose the community view that fits where you are right now",
+        description: "Use groups for accountability, forums for specialty learning, and jobs for role-specific licensing context without guessing where to start.",
         href: "/start-trial?step=2",
         label: "Start a study plan",
-        secondaryHref: buildContactHref("enrollment", "LMSW"),
-        secondaryLabel: "Get routed by support",
+        secondaryHref: buildContactHref("enrollment"),
+        secondaryLabel: "Contact support",
       };
     }
 
@@ -295,12 +306,12 @@ export default function CommunityHubExplorer({ groups, forums, jobs }: Community
       const forum = filteredForums[0];
 
       return {
-        title: "Turn a specialty interest into the right learning path",
-        description: "Use the forum lane to jump into matching articles, tactics, and practice guidance instead of starting from a blank page.",
+        title: "Turn a specialty interest into a practical next step",
+        description: "Use forums to jump into matching articles, tactics, and practice guidance instead of starting from a blank page.",
         href: forum ? buildResourceHref(forum.topic) : "/resources",
         label: forum ? `Open resources for ${forum.topic}` : "Browse resources",
-        secondaryHref: buildContactHref("enrollment", "LMSW", fallbackStateCode),
-        secondaryLabel: "Get routed by support",
+        secondaryHref: buildContactHref("enrollment", recommendedExamTrack, fallbackStateCode),
+        secondaryLabel: "Contact support",
       };
     }
 
@@ -319,9 +330,13 @@ export default function CommunityHubExplorer({ groups, forums, jobs }: Community
       title: "Use community intent to build a concrete study plan",
       description: "If a city, role, or group catches your eye, carry that context straight into the trial flow instead of restarting later.",
       href: buildTrialHref(recommendedExamTrack, fallbackStateCode),
-      label: fallbackStateCode
-        ? `Start a ${recommendedExamTrack} plan for ${stateCodeToName(fallbackStateCode)}`
-        : `Start a ${recommendedExamTrack} study plan`,
+      label: recommendedExamTrack
+        ? fallbackStateCode
+          ? `Start a ${recommendedExamTrack} plan for ${stateCodeToName(fallbackStateCode)}`
+          : `Start a ${recommendedExamTrack} study plan`
+        : fallbackStateCode
+          ? `Start a study plan for ${stateCodeToName(fallbackStateCode)}`
+          : "Start a study plan",
       secondaryHref: buildContactHref("enrollment", recommendedExamTrack, fallbackStateCode),
       secondaryLabel: "Route me to the right path",
     };
@@ -441,7 +456,10 @@ export default function CommunityHubExplorer({ groups, forums, jobs }: Community
             <button type="button" className="button secondary" onClick={resetFilters}>
               Reset filters
             </button>
-            <a href={buildContactHref("enrollment", "LMSW")} className="button secondary">
+            <a
+              href={buildContactHref("enrollment", recommendedExamTrack, stateCode !== "all" ? stateCode : undefined)}
+              className="button secondary"
+            >
               Contact support
             </a>
           </div>
@@ -498,7 +516,7 @@ export default function CommunityHubExplorer({ groups, forums, jobs }: Community
               <div className="community-block-header">
                 <div>
                   <h3 id="community-forums-title">Specialty forums</h3>
-                  <p>Use specialty interest to jump into the closest learning lane instead of browsing from scratch.</p>
+                  <p>Use specialty interest to jump into the closest set of resources instead of browsing from scratch.</p>
                 </div>
                 <p className="community-count">{filteredForums.length} shown</p>
               </div>

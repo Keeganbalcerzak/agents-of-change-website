@@ -66,11 +66,10 @@ export default function OriginHeroMicroMotion({ rootSelector }: OriginHeroMicroM
         Agents of Change
       </motion.p>
       <motion.h1 id="origin-cinematic-title" {...motionProps(0.1)}>
-        Two distinct products. One trusted <span className="origin-variable-word">brand</span>.
+        Social work <span className="origin-variable-word">exam prep</span> before licensure. Continuing education after you pass.
       </motion.h1>
       <motion.p className="origin-subcopy" {...motionProps(0.18)}>
-        Choose focused exam prep before licensure or continuing education after you pass, with guidance built for
-        real social work schedules.
+        Choose the right place to start, with guidance built for real social work schedules.
       </motion.p>
     </motion.div>
   );

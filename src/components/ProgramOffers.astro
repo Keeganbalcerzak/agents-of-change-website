@@ -24,7 +24,7 @@ const coreFeatures = new Set(coreOffer?.featuresIncluded ?? []);
 
 const featureRows = compareOffers.reduce<string[]>((rows, offer) => {
   offer.featuresIncluded.forEach((feature) => {
-    if (/^everything in exam prep$/i.test(feature)) {
+    if (/^everything in (exam prep|basics)$/i.test(feature)) {
       return;
     }
 
@@ -40,7 +40,7 @@ function includesFeature(offer: ProgramOffer, feature: string) {
     return true;
   }
 
-  const includesExamPrepBundle = offer.featuresIncluded.some((item) => /^everything in exam prep$/i.test(item));
+  const includesExamPrepBundle = offer.featuresIncluded.some((item) => /^everything in (exam prep|basics)$/i.test(item));
   return includesExamPrepBundle && coreFeatures.has(feature);
 }
 ---
@@ -61,17 +61,66 @@ function includesFeature(offer: ProgramOffer, feature: string) {
         <p>One-time purchase. Access until you pass. More support only when you actually need it.</p>
       </header>
     )}
+    <div class="offer-track-guide reveal" data-program-offers-root>
+      <div class="offer-track-controls" role="group" aria-label="Filter packages by exam track">
+        <button type="button" class="offer-track-pill is-active" data-offer-track-trigger data-track="all" aria-pressed="true">
+          Show all
+        </button>
+        <button type="button" class="offer-track-pill" data-offer-track-trigger data-track="BSW" aria-pressed="false">
+          BSW
+        </button>
+        <button type="button" class="offer-track-pill" data-offer-track-trigger data-track="LSW" aria-pressed="false">
+          LSW
+        </button>
+        <button type="button" class="offer-track-pill" data-offer-track-trigger data-track="LMSW" aria-pressed="false">
+          LMSW
+        </button>
+        <button type="button" class="offer-track-pill" data-offer-track-trigger data-track="LCSW" aria-pressed="false">
+          LCSW
+        </button>
+      </div>
+
+      <div class="offer-track-summary">
+        <div>
+          <p class="offer-track-kicker">Offer guide</p>
+          <h3 data-offer-summary-title>Pick your exam track before you compare packages.</h3>
+          <p data-offer-summary-body>
+            BSW visitors only need the BSW-specific course. LSW, LMSW, and LCSW visitors can compare the core prep
+            packages without guessing which card applies to them.
+          </p>
+        </div>
+
+        <div class="offer-track-summary-actions">
+          <p class="offer-track-count" data-offer-track-count>Showing 3 packages</p>
+          <a href="/start-trial" class="button secondary" data-offer-summary-cta>
+            Start a general trial
+          </a>
+          <button type="button" class="button ghost" data-offer-clear hidden>
+            Clear filter
+          </button>
+        </div>
+      </div>
+    </div>
     <PricingFrame className="program-offers-frame">
-      <div class="offer-grid" data-stagger="up">
+      <div class="offer-grid" data-stagger="up" data-offer-grid>
         {orderedOffers.map((offer) => (
-          <article class:list={{ "offer-card": true, featured: Boolean(offer.featured), "offer-card-hybrid": visualVariant === "premium-hybrid" }} data-stagger-item>
+          <article
+            id={`offer-${offer.slug}`}
+            class:list={{ "offer-card": true, featured: Boolean(offer.featured), "offer-card-hybrid": visualVariant === "premium-hybrid" }}
+            data-stagger-item
+            data-offer-card
+            data-offer-slug={offer.slug}
+            data-offer-family={offer.slug === "bsw" ? "bsw" : "core"}
+          >
             {offer.badge ? (
               <p class="offer-badge">{offer.badge}</p>
             ) : (
               <span class="offer-badge-spacer" aria-hidden="true"></span>
             )}
             <h3>{offer.title}</h3>
-            <p class="offer-subtitle">{offer.subtitle}</p>
+            <p class="offer-subtitle" data-offer-subtitle data-default-subtitle={offer.subtitle}>
+              {offer.subtitle}
+            </p>
 
             <div class="offer-price-block">
               <p class="offer-price-row">
@@ -93,6 +142,8 @@ function includesFeature(offer: ProgramOffer, feature: string) {
               data-magnetic={offer.featured || undefined}
               data-cta="offer-start-trial"
               data-cta-location={offer.slug}
+              data-offer-cta
+              data-default-href={offer.ctaTarget}
             >
               {offer.ctaLabel}
             </a>
@@ -101,7 +152,7 @@ function includesFeature(offer: ProgramOffer, feature: string) {
       </div>
     </PricingFrame>
 
-    <div class="offer-comparison reveal">
+    <div class="offer-comparison reveal" data-offer-comparison>
       <header class="section-heading">
         <p class="eyebrow">Package comparison</p>
         <h3>What changes as you move up</h3>
@@ -161,3 +212,188 @@ function includesFeature(offer: ProgramOffer, feature: string) {
     </div>
   </div>
 </section>
+
+<script is:inline>
+  const offersRoot = document.querySelector("[data-program-offers-root]");
+
+  if (offersRoot instanceof HTMLElement) {
+    const section = offersRoot.closest("[data-module='program-offers']");
+    const buttons = Array.from(offersRoot.querySelectorAll("[data-offer-track-trigger]"));
+    const clearButton = offersRoot.querySelector("[data-offer-clear]");
+    const summaryTitle = offersRoot.querySelector("[data-offer-summary-title]");
+    const summaryBody = offersRoot.querySelector("[data-offer-summary-body]");
+    const summaryCount = offersRoot.querySelector("[data-offer-track-count]");
+    const summaryCta = offersRoot.querySelector("[data-offer-summary-cta]");
+    const grid = section?.querySelector("[data-offer-grid]");
+    const comparison = section?.querySelector("[data-offer-comparison]");
+    const cards = Array.from(section?.querySelectorAll("[data-offer-card]") ?? []);
+
+    const trackSummary = {
+      all: {
+        title: "Pick your exam track before you compare packages.",
+        body: "BSW visitors only need the BSW-specific course. LSW, LMSW, and LCSW visitors can compare the core prep packages without guessing which card applies to them.",
+        ctaLabel: "Start a general trial",
+        ctaHref: "/start-trial",
+      },
+      BSW: {
+        title: "BSW candidates should stay inside the BSW-specific prep path.",
+        body: "The BSW package is the relevant course here, so the master's-level packages are hidden to keep this choice clean.",
+        ctaLabel: "Start a BSW trial",
+        ctaHref: "/start-trial?examTrack=BSW",
+      },
+      LSW: {
+        title: "LSW candidates can compare the core prep packages only.",
+        body: "Basics is the lower-cost structured path. Premium adds full-length simulation, rationales, and stronger support.",
+        ctaLabel: "Start an LSW trial",
+        ctaHref: "/start-trial?examTrack=LSW",
+      },
+      LMSW: {
+        title: "LMSW candidates can compare the core prep packages only.",
+        body: "Basics is the lower-cost structured path. Premium adds full-length simulation, rationales, and stronger support.",
+        ctaLabel: "Start an LMSW trial",
+        ctaHref: "/start-trial?examTrack=LMSW",
+      },
+      LCSW: {
+        title: "LCSW candidates can compare the core prep packages only.",
+        body: "Basics is the lower-cost structured path. Premium adds full-length simulation, rationales, and stronger support.",
+        ctaLabel: "Start an LCSW trial",
+        ctaHref: "/start-trial?examTrack=LCSW",
+      },
+    };
+
+    function syncUrl(track) {
+      const nextUrl = new URL(window.location.href);
+      if (track === "all") {
+        nextUrl.searchParams.delete("examTrack");
+      } else {
+        nextUrl.searchParams.set("examTrack", track);
+      }
+      window.history.replaceState({}, "", nextUrl);
+    }
+
+    function updateCardState(track) {
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        if (!(card instanceof HTMLElement)) {
+          return;
+        }
+
+        const family = card.dataset.offerFamily;
+        const slug = card.dataset.offerSlug ?? "";
+        const subtitle = card.querySelector("[data-offer-subtitle]");
+        const cta = card.querySelector("[data-offer-cta]");
+        const defaultSubtitle = subtitle?.getAttribute("data-default-subtitle") ?? "";
+        const defaultHref = cta?.getAttribute("data-default-href") ?? "/start-trial";
+
+        const shouldShow =
+          track === "all" ? true : track === "BSW" ? family === "bsw" : family === "core";
+
+        card.hidden = !shouldShow;
+        card.setAttribute("aria-hidden", shouldShow ? "false" : "true");
+
+        if (shouldShow) {
+          visibleCount += 1;
+        }
+
+        if (subtitle instanceof HTMLElement) {
+          if (track !== "all" && track !== "BSW" && family === "core") {
+            const leadCopy = defaultSubtitle.split("·")[0]?.trim() ?? defaultSubtitle;
+            subtitle.textContent = `${leadCopy} · ${track} track`;
+          } else {
+            subtitle.textContent = defaultSubtitle;
+          }
+        }
+
+        if (cta instanceof HTMLAnchorElement) {
+          if (slug === "bsw") {
+            cta.href = "/start-trial?examTrack=BSW";
+          } else if (track !== "all" && track !== "BSW") {
+            cta.href = `/start-trial?examTrack=${track}`;
+          } else {
+            cta.href = defaultHref;
+          }
+        }
+      });
+
+      if (summaryCount instanceof HTMLElement) {
+        summaryCount.textContent = `Showing ${visibleCount} package${visibleCount === 1 ? "" : "s"}`;
+      }
+
+      if (grid instanceof HTMLElement) {
+        grid.classList.toggle("offer-grid-single", visibleCount === 1);
+      }
+
+      if (comparison instanceof HTMLElement) {
+        comparison.hidden = track === "BSW";
+      }
+    }
+
+    function updateSummary(track) {
+      const nextSummary = trackSummary[track] ?? trackSummary.all;
+
+      if (summaryTitle instanceof HTMLElement) {
+        summaryTitle.textContent = nextSummary.title;
+      }
+
+      if (summaryBody instanceof HTMLElement) {
+        summaryBody.textContent = nextSummary.body;
+      }
+
+      if (summaryCta instanceof HTMLAnchorElement) {
+        summaryCta.textContent = nextSummary.ctaLabel;
+        summaryCta.href = nextSummary.ctaHref;
+      }
+
+      if (clearButton instanceof HTMLButtonElement) {
+        clearButton.hidden = track === "all";
+      }
+    }
+
+    function updateButtonState(track) {
+      buttons.forEach((button) => {
+        if (!(button instanceof HTMLButtonElement)) {
+          return;
+        }
+
+        const isActive = button.dataset.track === track;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+    }
+
+    function applyTrack(track, shouldSync = true) {
+      updateButtonState(track);
+      updateSummary(track);
+      updateCardState(track);
+
+      if (shouldSync) {
+        syncUrl(track);
+      }
+    }
+
+    const initialTrack = new URLSearchParams(window.location.search).get("examTrack");
+    const normalizedTrack =
+      initialTrack === "BSW" || initialTrack === "LSW" || initialTrack === "LMSW" || initialTrack === "LCSW"
+        ? initialTrack
+        : "all";
+
+    buttons.forEach((button) => {
+      if (!(button instanceof HTMLButtonElement)) {
+        return;
+      }
+
+      button.addEventListener("click", () => {
+        applyTrack(button.dataset.track ?? "all");
+      });
+    });
+
+    if (clearButton instanceof HTMLButtonElement) {
+      clearButton.addEventListener("click", () => {
+        applyTrack("all");
+      });
+    }
+
+    applyTrack(normalizedTrack, false);
+  }
+</script>

@@ -18,7 +18,7 @@ const trustSignals = [
 
 const reassuranceItems = [
   "We tailor your first week based on exam track and timeline.",
-  "You receive actionable milestones, not generic content bundles.",
+  "You get clear next steps instead of generic study advice.",
   "You can revise your plan as your exam date shifts.",
 ];
 ---
@@ -40,11 +40,11 @@ const reassuranceItems = [
     data-motion-density="compact"
   >
     <div class="container">
-      <p class="eyebrow">Trial funnel</p>
+      <p class="eyebrow">Free trial</p>
       <h1 data-split-heading>Start your free trial with a confidence-first setup</h1>
       <p>
-        Complete three short steps and we will generate a targeted 7-day prep sequence
-        for your exam track, timeline, and state context.
+        Answer three short questions and we will build a personalized 7-day study plan
+        for your exam track, timeline, and state.
       </p>
       <ul class="inline-trust-list" aria-label="Trial trust signals">
         {trustSignals.map((signal) => <li>{signal}</li>)}
@@ -64,7 +64,7 @@ const reassuranceItems = [
       <ShineBorder className="trial-shine-wrap reveal">
         <MagicCard className="trial-card-shell">
           <aside class="trial-aside" aria-label="What happens next">
-            <h2>Confidence-building outcomes</h2>
+            <h2>What you will get in your first week</h2>
             <ul>
               {reassuranceItems.map((item) => <li>{item}</li>)}
             </ul>
@@ -76,7 +76,7 @@ const reassuranceItems = [
               </article>
               <article>
                 <h3>After</h3>
-                <p>A sequenced weekly plan with measurable progress checkpoints.</p>
+                <p>A clear weekly plan with measurable progress checkpoints.</p>
               </article>
             </div>
           </aside>

@@ -19,31 +19,69 @@ interface Props {
 const { from, to, diagonal = true, height = '120px' } = Astro.props;
 
 const bgMap: Record<string, string> = {
-  deep:  'linear-gradient(160deg, #1e0d38 0%, #2f1457 40%, #1a0a35 100%)',
-  mid:   'linear-gradient(160deg, #5f2f9b 0%, #6d3bd1 50%, #5a2b94 100%)',
-  light: 'linear-gradient(160deg, #f0e8ff 0%, #f8f3ff 60%, #ede2ff 100%)',
+  deep:  'linear-gradient(165deg, #140826 0%, #251244 48%, #1a0d33 100%)',
+  mid:   'linear-gradient(165deg, #4d2c7f 0%, #6e47ab 48%, #50317f 100%)',
+  light: 'linear-gradient(165deg, #f2ece4 0%, #fbf7ef 58%, #f5efe6 100%)',
+};
+
+const solidMap: Record<string, string> = {
+  deep: "#160a2c",
+  mid: "#553683",
+  light: "#f5efe6",
+};
+
+const glowMap: Record<string, string> = {
+  deep: "rgba(212, 166, 83, 0.18)",
+  mid: "rgba(196, 181, 253, 0.18)",
+  light: "rgba(94, 168, 196, 0.12)",
 };
 
 const fromBg = bgMap[from];
 const toBg = bgMap[to];
+const fromSolid = solidMap[from];
+const toSolid = solidMap[to];
+const transitionGlow = glowMap[to];
 const transitionClass = diagonal ? 'zone-transition-diagonal' : 'zone-transition';
 ---
 
 <div
   class="zone-transition-wrapper"
-  style={`height: ${height}; background: ${fromBg};`}
+  style={`height: ${height}; --from-bg: ${fromBg}; --to-bg: ${toBg}; --from-solid: ${fromSolid}; --to-solid: ${toSolid}; --transition-glow: ${transitionGlow};`}
   aria-hidden="true"
 >
-  <div
-    class={transitionClass}
-    style={`background: ${toBg}; height: 100%; width: 100%;`}
-  ></div>
+  <div class={transitionClass}></div>
 </div>
 
 <style>
   .zone-transition-wrapper {
     position: relative;
-    overflow: hidden;
+    overflow: clip;
     width: 100%;
+    isolation: isolate;
+    margin-block: -1px;
+    background: linear-gradient(180deg, var(--from-solid) 0%, var(--to-solid) 100%);
+  }
+
+  .zone-transition-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: -18% -6% 36%;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 82% 24%, var(--transition-glow), transparent 34%),
+      var(--from-bg);
+    opacity: 0.96;
+    z-index: 0;
+  }
+
+  .zone-transition,
+  .zone-transition-diagonal {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background:
+      radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.08), transparent 26%),
+      var(--to-bg);
   }
 </style>

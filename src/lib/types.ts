@@ -1,4 +1,4 @@
-export type ExamTrack = "LSW" | "LMSW" | "LCSW";
+export type ExamTrack = "BSW" | "LSW" | "LMSW" | "LCSW";
 export type MotionTier = "none" | "micro" | "section" | "hero";
 export type ThemeIntent = "default" | "editorial" | "conversion" | "trust";
 export type VisualVariant = "default" | "premium-hybrid";

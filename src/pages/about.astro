@@ -18,7 +18,7 @@ const seo = findSeoByKey(seoEntries, "about");
 
 <BaseLayout
   title={seo?.title ?? "About Agents of Change"}
-  description={seo?.description ?? "Meet the team and teaching framework behind Agents of Change."}
+  description={seo?.description ?? "Meet the team and teaching approach behind Agents of Change."}
   path="/about"
   themeIntent="editorial"
   enableMotionEngine={true}
@@ -28,8 +28,8 @@ const seo = findSeoByKey(seoEntries, "about");
       <p class="eyebrow">About us</p>
       <h1 data-split-heading>A teaching system built by social workers for social workers</h1>
       <p>
-        Agents of Change exists to turn exam uncertainty into strategic confidence
-        through structured learning design and practical decision frameworks.
+        Agents of Change helps social workers study with more clarity, stronger reasoning, and a plan they can
+        actually follow.
       </p>
     </div>
   </section>
@@ -40,13 +40,13 @@ const seo = findSeoByKey(seoEntries, "about");
     <div class="container">
       <header class="section-heading centered">
         <p class="eyebrow">Methodology</p>
-        <h2 id="methodology-title">Our teaching framework</h2>
-        <p>Three principles guide every module, assessment, and coaching recommendation.</p>
+        <h2 id="methodology-title">How we teach</h2>
+        <p>Three principles guide every lesson, practice question, and support recommendation.</p>
       </header>
 
       <div class="framework-grid" data-stagger="up">
         <article class="framework-card reveal" data-stagger-item data-tilt>
-          <h3>Clarity first</h3>
+          <h3>Clear, practical teaching</h3>
           <p>Break complex exam logic into actionable decision patterns students can reuse.</p>
         </article>
         <article class="framework-card reveal" data-stagger-item data-tilt>
@@ -54,8 +54,8 @@ const seo = findSeoByKey(seoEntries, "about");
           <p>Prioritize rationale and scenario interpretation to improve transfer under pressure.</p>
         </article>
         <article class="framework-card reveal" data-stagger-item data-tilt>
-          <h3>Confidence through sequencing</h3>
-          <p>Use milestone architecture so students always know their next highest-impact action.</p>
+          <h3>Confidence through clear next steps</h3>
+          <p>Every student should know the next highest-impact step to take.</p>
         </article>
       </div>
     </div>
@@ -65,7 +65,7 @@ const seo = findSeoByKey(seoEntries, "about");
   <StudyJourneyTimeline phases={phases} />
 
   <CTASection
-    title="See how this framework applies to your exam"
-    description="Start your trial and get a personalized first-week sequence based on your exam track and timeline."
+    title="See how our approach applies to your exam"
+    description="Start your free trial and get a personalized first-week study plan based on your exam track and timeline."
   />
 </BaseLayout>

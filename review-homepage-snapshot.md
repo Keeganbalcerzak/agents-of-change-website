@@ -1,0 +1,608 @@
+- generic [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Agents of Change home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img [ref=e6]
+        - generic [ref=e7]: Agents of Change
+      - navigation "Primary" [ref=e8]:
+        - list [ref=e9]:
+          - listitem [ref=e10]:
+            - link "Why It Works" [ref=e11] [cursor=pointer]:
+              - /url: /#how-it-works
+          - listitem [ref=e12]:
+            - link "Exam Prep" [ref=e13] [cursor=pointer]:
+              - /url: /exam-prep
+          - listitem [ref=e14]:
+            - link "Continuing Education" [ref=e15] [cursor=pointer]:
+              - /url: /continuing-education
+          - listitem [ref=e16]:
+            - link "Success Stories" [ref=e17] [cursor=pointer]:
+              - /url: /success-stories
+          - listitem [ref=e18]:
+            - link "Community" [ref=e19] [cursor=pointer]:
+              - /url: /community
+          - listitem [ref=e20]:
+            - link "Resources" [ref=e21] [cursor=pointer]:
+              - /url: /resources
+          - listitem [ref=e22]:
+            - link "State Requirements" [ref=e23] [cursor=pointer]:
+              - /url: /state-requirements
+          - listitem [ref=e24]:
+            - link "About" [ref=e25] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e26]:
+            - link "Start Free Trial" [ref=e27] [cursor=pointer]:
+              - /url: /start-trial
+  - main [ref=e28]:
+    - region "Social work exam prep before licensure. Continuing education after you pass." [ref=e30]:
+      - generic [ref=e32]:
+        - generic [ref=e34]:
+          - paragraph [ref=e35]: Agents of Change
+          - heading "Social work exam prep before licensure. Continuing education after you pass." [level=1] [ref=e36]
+          - paragraph [ref=e37]: Choose the right place to start, with guidance built for real social work schedules.
+        - generic "Key outcomes" [ref=e38]:
+          - generic [ref=e39]:
+            - strong [ref=e40]: 100K+
+            - generic [ref=e41]: social workers reached
+          - generic [ref=e42]:
+            - strong [ref=e43]: 50K+
+            - generic [ref=e44]: email subscribers
+          - generic [ref=e45]:
+            - strong [ref=e46]: 181+
+            - generic [ref=e47]: podcast episodes
+        - generic [ref=e48]:
+          - link "Explore test prep" [ref=e49] [cursor=pointer]:
+            - /url: /exam-prep#offers
+          - link "Explore continuing education" [ref=e50] [cursor=pointer]:
+            - /url: /continuing-education
+    - generic [ref=e53]:
+      - region "Choose the option that fits where you are right now." [ref=e54]:
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - generic [ref=e57]:
+              - paragraph [ref=e58]: Choose your path
+              - heading "Choose the option that fits where you are right now." [level=2] [ref=e59]:
+                - generic [ref=e60]:
+                  - generic [ref=e61]: C
+                  - generic [ref=e62]: h
+                  - generic [ref=e63]: o
+                  - generic [ref=e64]: o
+                  - generic [ref=e65]: s
+                  - generic [ref=e66]: e
+                - generic [ref=e67]:
+                  - generic [ref=e68]: t
+                  - generic [ref=e69]: h
+                  - generic [ref=e70]: e
+                - generic [ref=e71]:
+                  - generic [ref=e72]: o
+                  - generic [ref=e73]: p
+                  - generic [ref=e74]: t
+                  - generic [ref=e75]: i
+                  - generic [ref=e76]: o
+                  - generic [ref=e77]: "n"
+                - generic [ref=e78]:
+                  - generic [ref=e79]: t
+                  - generic [ref=e80]: h
+                  - generic [ref=e81]: a
+                  - generic [ref=e82]: t
+                - generic [ref=e83]:
+                  - generic [ref=e84]: f
+                  - generic [ref=e85]: i
+                  - generic [ref=e86]: t
+                  - generic [ref=e87]: s
+                - generic [ref=e88]:
+                  - generic [ref=e89]: w
+                  - generic [ref=e90]: h
+                  - generic [ref=e91]: e
+                  - generic [ref=e92]: r
+                  - generic [ref=e93]: e
+                - generic [ref=e94]:
+                  - generic [ref=e95]: "y"
+                  - generic [ref=e96]: o
+                  - generic [ref=e97]: u
+                - generic [ref=e98]:
+                  - generic [ref=e99]: a
+                  - generic [ref=e100]: r
+                  - generic [ref=e101]: e
+                - generic [ref=e102]:
+                  - generic [ref=e103]: r
+                  - generic [ref=e104]: i
+                  - generic [ref=e105]: g
+                  - generic [ref=e106]: h
+                  - generic [ref=e107]: t
+                - generic [ref=e108]:
+                  - generic [ref=e109]: "n"
+                  - generic [ref=e110]: o
+                  - generic [ref=e111]: w
+                  - generic [ref=e112]: .
+              - paragraph [ref=e113]: "Agents of Change supports social workers at two key stages: exam prep before licensure and continuing education after you pass. This page helps you choose the right place to start."
+            - complementary [ref=e114]:
+              - paragraph [ref=e115]: How to start
+              - heading "Prepare now. Maintain later." [level=3] [ref=e116]
+              - paragraph [ref=e117]: Start with exam prep if you are working toward licensure. Move to continuing education after you pass and need renewal support, live learning, and practical CE courses.
+              - list [ref=e118]:
+                - listitem [ref=e119]:
+                  - strong [ref=e120]: "Before licensure:"
+                  - text: structured prep, simulations, and study support
+                - listitem [ref=e121]:
+                  - strong [ref=e122]: "At pass:"
+                  - text: a clean transition into state-aware renewal planning
+                - listitem [ref=e123]:
+                  - strong [ref=e124]: "After licensure:"
+                  - text: CE memberships and live learning for ongoing growth
+              - generic [ref=e125]:
+                - link "Compare prep options" [ref=e126] [cursor=pointer]:
+                  - /url: /exam-prep#offers
+                - link "See CE options" [ref=e127] [cursor=pointer]:
+                  - /url: /continuing-education
+          - generic [ref=e128]:
+            - article [ref=e129]:
+              - paragraph [ref=e130]: Test Prep
+              - heading "Pass the ASWB exam with structure, proof, and live support." [level=3] [ref=e131]
+              - paragraph [ref=e132]: Built for pre-licensure social workers who need a focused plan, rationale-based teaching, and support that fits work, practicum, family, and commute reality.
+              - list [ref=e133]:
+                - listitem [ref=e134]: One-time purchase with access until you pass
+                - listitem [ref=e135]: Practice exams, case-based rationales, and live study groups
+                - listitem [ref=e136]: Designed for BSW, LSW, LMSW, and LCSW tracks
+              - link "Explore test prep" [ref=e137] [cursor=pointer]:
+                - /url: /exam-prep#offers
+            - article [ref=e138]:
+              - paragraph [ref=e139]: Continuing Education
+              - heading "Maintain licensure with confident, state-aware CE planning." [level=3] [ref=e140]
+              - paragraph [ref=e141]: Built for licensed professionals who need renewal clarity, practical course selection, and CE options that feel relevant to their actual work.
+              - list [ref=e142]:
+                - listitem [ref=e143]: Unlimited CE and live events for licensed social workers
+                - listitem [ref=e144]: State requirement awareness and renewal-focused planning
+                - listitem [ref=e145]: Professional development beyond minimum hour compliance
+              - link "Explore continuing education" [ref=e146] [cursor=pointer]:
+                - /url: /continuing-education
+      - region "The strategy that turns panic into passing decisions" [ref=e148]:
+        - generic [ref=e149]:
+          - generic [ref=e150]:
+            - paragraph [ref=e151]: How the system works
+            - heading "The strategy that turns panic into passing decisions" [level=2] [ref=e152]
+            - paragraph [ref=e153]: This is not random content delivery. Each phase is designed to move someone from anxious, scattered prep into calm exam-day execution.
+          - generic [ref=e154]:
+            - list "Pass strategy phases" [ref=e155]:
+              - listitem [ref=e156]:
+                - paragraph [ref=e157]: Phase 01
+                - heading "Filter the noise" [level=3] [ref=e158]
+                - paragraph [ref=e159]: In progress
+                - paragraph [ref=e162]: Starting now
+                - paragraph [ref=e163]: Find the highest-impact domains first so overwhelmed study time turns into a clear attack plan.
+                - paragraph [ref=e164]: "Output: priority map + realistic pacing baseline"
+              - listitem [ref=e165]:
+                - paragraph [ref=e166]: Phase 02
+                - heading "Train the reasoning" [level=3] [ref=e167]
+                - paragraph [ref=e168]: Queued
+                - paragraph [ref=e171]: Up next
+                - paragraph [ref=e172]: Use rationales, simulations, and pattern review to strengthen how you think through social work questions.
+                - paragraph [ref=e173]: "Output: stronger logic + confidence shifts"
+              - listitem [ref=e174]:
+                - paragraph [ref=e175]: Phase 03
+                - heading "Walk in ready" [level=3] [ref=e176]
+                - paragraph [ref=e177]: Queued
+                - paragraph [ref=e180]: Up next
+                - paragraph [ref=e181]: Pressure-test exam-day pacing and decision-making until readiness feels earned instead of hoped for.
+                - paragraph [ref=e182]: "Output: final calibration + go-test confidence"
+            - complementary "Strategy progress indicator" [ref=e183]:
+              - paragraph [ref=e184]: System progress
+              - paragraph [ref=e187]: "Phase 01 active: Filter the noise"
+              - list "Live strategy counters" [ref=e188]:
+                - listitem [ref=e189]:
+                  - generic [ref=e190]: Readiness index
+                  - strong [ref=e191]: 38%
+                - listitem [ref=e192]:
+                  - generic [ref=e193]: Answered questions
+                  - strong [ref=e194]: "24"
+                - listitem [ref=e195]:
+                  - generic [ref=e196]: Pattern confidence
+                  - strong [ref=e197]: 18%
+    - generic [ref=e198]:
+      - region "Choose the option you need right now" [ref=e199]:
+        - generic [ref=e200]:
+          - generic [ref=e201]:
+            - paragraph [ref=e202]: Programs and pricing
+            - heading "Choose the option you need right now" [level=2] [ref=e203]
+            - paragraph [ref=e204]: Exam prep is designed to help you pass. Continuing education is designed to help you stay current after licensure.
+          - generic [ref=e205]:
+            - paragraph [ref=e206]: Start here
+            - paragraph [ref=e207]: If you are still working toward licensure, buy for exam readiness. If you are already licensed, buy for renewal confidence and practical CE value.
+            - paragraph [ref=e208]:
+              - text: Test Prep users can transition into CE at
+              - strong [ref=e209]: $49 for the first year
+              - text: ", then move to the standard"
+              - strong [ref=e210]: $99 annual membership
+              - text: .
+          - generic [ref=e211]:
+            - region "One-time exam prep courses" [ref=e212]:
+              - generic [ref=e213]:
+                - generic [ref=e214]:
+                  - paragraph [ref=e215]: Test Prep
+                  - heading "One-time exam prep courses" [level=3] [ref=e216]
+                  - paragraph [ref=e217]: Choose one-time exam prep with access until you pass and support that matches how you study best.
+                - link "Explore test prep" [ref=e218] [cursor=pointer]:
+                  - /url: /exam-prep#offers
+              - generic [ref=e219]:
+                - article [ref=e220]:
+                  - generic [ref=e221]:
+                    - paragraph [ref=e222]: BSW Exam Prep
+                    - paragraph [ref=e223]: Single package
+                    - generic "BSW Exam Prep available tracks" [ref=e224]:
+                      - generic [ref=e225]: BSW
+                    - paragraph [ref=e226]: Best for the dedicated BSW exam path
+                  - paragraph [ref=e227]:
+                    - text: $125
+                    - generic [ref=e228]: One-time
+                  - generic "BSW Exam Prep key comparison points" [ref=e229]:
+                    - generic [ref=e230]: Until you pass
+                    - generic [ref=e231]: Structured course
+                    - generic [ref=e232]: Self-paced
+                  - list [ref=e233]:
+                    - listitem [ref=e234]: 30+ hours of visual and audio content
+                    - listitem [ref=e235]: Mock practice questions and test-taking strategies
+                    - listitem [ref=e236]: Access until you pass
+                    - listitem [ref=e237]: Free preview before purchase
+                  - link "Open BSW package" [ref=e238] [cursor=pointer]:
+                    - /url: /exam-prep?examTrack=BSW#offers
+                - article [ref=e239]:
+                  - generic [ref=e240]:
+                    - paragraph [ref=e241]: Basics
+                    - paragraph [ref=e242]: Choose LMSW or LCSW
+                    - generic "Basics available tracks" [ref=e243]:
+                      - generic [ref=e244]: LMSW
+                      - generic [ref=e245]: LCSW
+                    - paragraph [ref=e246]: Best for a lower-cost guided prep path
+                  - paragraph [ref=e247]:
+                    - text: $125
+                    - generic [ref=e248]: One-time
+                  - generic "Basics key comparison points" [ref=e249]:
+                    - generic [ref=e250]: Until you pass
+                    - generic [ref=e251]: 30+ hours of content
+                    - generic [ref=e252]: Live study groups
+                  - list [ref=e253]:
+                    - listitem [ref=e254]: 30+ hours of content
+                    - listitem [ref=e255]: 2 live study groups each month
+                    - listitem [ref=e256]: Access until you pass
+                  - link "Pick your Basics track" [ref=e257] [cursor=pointer]:
+                    - /url: /exam-prep#offers
+                - article [ref=e258]:
+                  - generic [ref=e259]:
+                    - paragraph [ref=e260]: Premium + Power Pack
+                    - paragraph [ref=e261]: Choose LMSW or LCSW
+                    - paragraph [ref=e262]: 80% of buyers choose this
+                    - generic "Premium + Power Pack available tracks" [ref=e263]:
+                      - generic [ref=e264]: LMSW
+                      - generic [ref=e265]: LCSW
+                    - paragraph [ref=e266]: Best for full-course prep with more practice and support
+                  - paragraph [ref=e267]:
+                    - generic [ref=e268]: $225
+                    - text: $175
+                    - generic [ref=e269]: One-time
+                  - paragraph [ref=e270]: 170 total questions
+                  - generic "Premium + Power Pack key comparison points" [ref=e271]:
+                    - generic [ref=e272]: Until you pass
+                    - generic [ref=e273]: 170-question exam
+                    - generic [ref=e274]: Priority support
+                  - list [ref=e275]:
+                    - listitem [ref=e276]: Everything in Basics
+                    - listitem [ref=e277]: 170-question practice exam and rationales
+                    - listitem [ref=e278]: Case vignettes with video rationales
+                    - listitem [ref=e279]: 25+ recorded study groups
+                    - listitem [ref=e280]: Priority email and chat support
+                  - link "Pick your Premium track" [ref=e281] [cursor=pointer]:
+                    - /url: /exam-prep#offers
+            - region "Continuing education membership" [ref=e282]:
+              - generic [ref=e283]:
+                - generic [ref=e284]:
+                  - generic [ref=e285]:
+                    - paragraph [ref=e286]: Continuing Education
+                    - heading "Continuing education membership" [level=3] [ref=e287]
+                    - paragraph [ref=e288]: For licensed social workers focused on renewal requirements and ongoing professional growth.
+                  - link "Explore continuing education" [ref=e289] [cursor=pointer]:
+                    - /url: /continuing-education
+                - generic [ref=e290]:
+                  - paragraph [ref=e291]: Transition offer
+                  - paragraph [ref=e292]:
+                    - text: Test Prep users can move into CE at
+                    - strong [ref=e293]: $49 for year one
+                    - text: ", then renew at"
+                    - strong [ref=e294]: $99 annually
+                    - text: .
+                - article [ref=e296]:
+                  - generic [ref=e297]:
+                    - paragraph [ref=e298]: Unlimited CE + Live Events
+                    - paragraph [ref=e299]: 150+ courses · 15+ live webinars/year
+                    - paragraph [ref=e300]: Standard CE plan
+                  - paragraph [ref=e301]:
+                    - text: $99
+                    - generic [ref=e302]: Annual
+                  - paragraph [ref=e303]: Test Prep users can transition into CE at $49 for the first year.
+                  - generic "Unlimited CE + Live Events key comparison points" [ref=e304]:
+                    - generic [ref=e305]: 150+ courses
+                    - generic [ref=e306]: 15+ live webinars
+                    - generic [ref=e307]: ASWB ACE
+                  - list [ref=e308]:
+                    - listitem [ref=e309]: "ASWB ACE provider #1919"
+                    - listitem [ref=e310]: 150+ on-demand CE course catalog
+                    - listitem [ref=e311]: 15+ live webinars per year
+                    - listitem [ref=e312]: State-specific renewal guidance
+                  - link "Browse continuing education" [ref=e313] [cursor=pointer]:
+                    - /url: /continuing-education
+      - region "See how other social workers prepared and passed." [ref=e314]:
+        - generic [ref=e315]:
+          - generic [ref=e316]:
+            - paragraph [ref=e317]: Success stories
+            - heading "See how other social workers prepared and passed." [level=2] [ref=e318]:
+              - generic [ref=e319]:
+                - generic [ref=e320]: S
+                - generic [ref=e321]: e
+                - generic [ref=e322]: e
+              - generic [ref=e323]:
+                - generic [ref=e324]: h
+                - generic [ref=e325]: o
+                - generic [ref=e326]: w
+              - generic [ref=e327]:
+                - generic [ref=e328]: o
+                - generic [ref=e329]: t
+                - generic [ref=e330]: h
+                - generic [ref=e331]: e
+                - generic [ref=e332]: r
+              - generic [ref=e333]:
+                - generic [ref=e334]: s
+                - generic [ref=e335]: o
+                - generic [ref=e336]: c
+                - generic [ref=e337]: i
+                - generic [ref=e338]: a
+                - generic [ref=e339]: l
+              - generic [ref=e340]:
+                - generic [ref=e341]: w
+                - generic [ref=e342]: o
+                - generic [ref=e343]: r
+                - generic [ref=e344]: k
+                - generic [ref=e345]: e
+                - generic [ref=e346]: r
+                - generic [ref=e347]: s
+              - generic [ref=e348]:
+                - generic [ref=e349]: p
+                - generic [ref=e350]: r
+                - generic [ref=e351]: e
+                - generic [ref=e352]: p
+                - generic [ref=e353]: a
+                - generic [ref=e354]: r
+                - generic [ref=e355]: e
+                - generic [ref=e356]: d
+              - generic [ref=e357]:
+                - generic [ref=e358]: a
+                - generic [ref=e359]: "n"
+                - generic [ref=e360]: d
+              - generic [ref=e361]:
+                - generic [ref=e362]: p
+                - generic [ref=e363]: a
+                - generic [ref=e364]: s
+                - generic [ref=e365]: s
+                - generic [ref=e366]: e
+                - generic [ref=e367]: d
+                - generic [ref=e368]: .
+            - paragraph [ref=e369]: Read stories from social workers who moved from uncertainty to exam-day confidence.
+          - region "Featured student outcomes" [ref=e371]:
+            - article [ref=e373]:
+              - paragraph [ref=e374]: "\""
+              - paragraph [ref=e375]: I passed my LCSW exam on the first try. The rationales made difficult concepts finally click.
+              - paragraph [ref=e376]: Sarah M. - LCSW - CA
+              - paragraph [ref=e377]: Passed in 12 weeks
+            - generic [ref=e378]:
+              - button "Previous testimonial" [ref=e379]: <
+              - tablist "Testimonials" [ref=e380]:
+                - tab "Show testimonial 1" [selected] [ref=e381]
+                - tab "Show testimonial 2" [ref=e382]
+                - tab "Show testimonial 3" [ref=e383]
+                - tab "Show testimonial 4" [ref=e384]
+              - button "Next testimonial" [ref=e385]: ">"
+      - region "Meet social workers studying near you" [ref=e386]:
+        - generic [ref=e387]:
+          - generic [ref=e388]:
+            - paragraph [ref=e389]: Community
+            - heading "Meet social workers studying near you" [level=2] [ref=e390]
+            - paragraph [ref=e391]: Connect by city and specialty so support stays relevant whether you are preparing for the exam or already licensed. Join study groups, mentorship, virtual meetups, and an alumni network that grows with your career.
+          - generic [ref=e392]:
+            - article [ref=e393]:
+              - heading "City-based cohorts" [level=3] [ref=e394]
+              - paragraph [ref=e395]: Groups are organized around major metro areas where members can prepare and network together.
+              - list [ref=e396]:
+                - listitem [ref=e397]:
+                  - strong [ref=e398]: Chicago, IL
+                  - text: "- LCSW Prep and Networking (420+ members)"
+                - listitem [ref=e399]:
+                  - strong [ref=e400]: New York, NY
+                  - text: "- LMSW Study Group (850+ members)"
+                - listitem [ref=e401]:
+                  - strong [ref=e402]: Los Angeles, CA
+                  - text: "- Clinical Peer Support (630+ members)"
+                - listitem [ref=e403]:
+                  - strong [ref=e404]: Atlanta, GA
+                  - text: "- Exam Strategy Accountability (340+ members)"
+              - link "Explore local groups" [ref=e405] [cursor=pointer]:
+                - /url: /community?view=groups
+            - article [ref=e406]:
+              - heading "Specialty forums" [level=3] [ref=e407]
+              - paragraph [ref=e408]: Find peers with shared clinical interests and compare study strategy, renewal planning, and real-world practice questions.
+              - list [ref=e409]:
+                - listitem [ref=e410]: Child and adolescent practice
+                - listitem [ref=e411]: Couples and family counseling
+                - listitem [ref=e412]: Substance use treatment
+                - listitem [ref=e413]: School social work
+                - listitem [ref=e414]: Medical and hospital social work
+                - listitem [ref=e415]: Private practice growth
+              - link "View specialty spaces" [ref=e416] [cursor=pointer]:
+                - /url: /community?view=forums
+            - article [ref=e417]:
+              - heading "Mentorship, events, and alumni" [level=3] [ref=e418]
+              - paragraph [ref=e419]: Go beyond study groups with structured support designed for early-career and experienced practitioners alike.
+              - list [ref=e420]:
+                - listitem [ref=e421]: Mentorship pairing with experienced clinicians
+                - listitem [ref=e422]: Monthly "Ask a Clinician" live Q&A sessions
+                - listitem [ref=e423]: Virtual meetups and early career cohorts
+                - listitem [ref=e424]: Exclusive alumni network for Agents of Change graduates
+              - link "Explore mentorship and events" [ref=e425] [cursor=pointer]:
+                - /url: /community#mentorship-network
+      - region "Answers before you start" [ref=e426]:
+        - generic [ref=e427]:
+          - generic [ref=e428]:
+            - paragraph [ref=e429]: FAQ
+            - heading "Answers before you start" [level=2] [ref=e430]
+            - paragraph [ref=e431]: Everything first-time test takers ask before starting their trial.
+          - generic [ref=e433]:
+            - search "Search frequently asked questions" [ref=e434]:
+              - generic [ref=e435]:
+                - generic [ref=e436]: Search answers
+                - searchbox "Search answers" [ref=e437]
+            - paragraph [ref=e438]: 6 answers shown
+            - list [ref=e439]:
+              - listitem [ref=e440]:
+                - heading "How long do I have access to the exam prep program?" [level=3] [ref=e441]:
+                  - button "How long do I have access to the exam prep program?" [expanded] [ref=e442]:
+                    - generic [ref=e443]: How long do I have access to the exam prep program?
+                    - generic [ref=e444]: "-"
+                - region "How long do I have access to the exam prep program?" [ref=e445]:
+                  - paragraph [ref=e446]: You keep access until you pass. There are no forced renewals for the exam prep access period.
+              - listitem [ref=e447]:
+                - heading "Which exams are covered?" [level=3] [ref=e448]:
+                  - button "Which exams are covered?" [ref=e449]:
+                    - generic [ref=e450]: Which exams are covered?
+                    - generic [ref=e451]: +
+              - listitem [ref=e452]:
+                - heading "Can I study on mobile?" [level=3] [ref=e453]:
+                  - button "Can I study on mobile?" [ref=e454]:
+                    - generic [ref=e455]: Can I study on mobile?
+                    - generic [ref=e456]: +
+              - listitem [ref=e457]:
+                - heading "Are CE credits accepted in all states?" [level=3] [ref=e458]:
+                  - button "Are CE credits accepted in all states?" [ref=e459]:
+                    - generic [ref=e460]: Are CE credits accepted in all states?
+                    - generic [ref=e461]: +
+              - listitem [ref=e462]:
+                - heading "Is there a free trial?" [level=3] [ref=e463]:
+                  - button "Is there a free trial?" [ref=e464]:
+                    - generic [ref=e465]: Is there a free trial?
+                    - generic [ref=e466]: +
+              - listitem [ref=e467]:
+                - heading "What if I already failed the exam?" [level=3] [ref=e468]:
+                  - button "What if I already failed the exam?" [ref=e469]:
+                    - generic [ref=e470]: What if I already failed the exam?
+                    - generic [ref=e471]: +
+    - region "Choose the right next step" [ref=e475]:
+      - generic [ref=e477]:
+        - heading "Choose the right next step" [level=2] [ref=e478]
+        - paragraph [ref=e479]: Choose exam prep if you are still working toward licensure. Choose continuing education if you are already licensed and planning your renewal.
+        - generic [ref=e480]:
+          - link "Explore test prep" [ref=e481] [cursor=pointer]:
+            - /url: /exam-prep#offers
+          - link "Explore continuing education" [ref=e482] [cursor=pointer]:
+            - /url: /continuing-education
+  - dialog "Passed your exam? Start your first year of CE for $49." [ref=e483]:
+    - document [ref=e484]:
+      - button "Close continuing education offer" [active] [ref=e485]: ×
+      - paragraph [ref=e486]: For recent exam passers
+      - heading "Passed your exam? Start your first year of CE for $49." [level=2] [ref=e487]
+      - paragraph [ref=e488]: When you are ready for continuing education, keep your momentum going with practical courses, live events, and renewal support in one place.
+      - generic [ref=e489]:
+        - generic [ref=e490]:
+          - strong [ref=e491]: $49
+          - generic [ref=e492]: first year
+          - generic [ref=e493]: then $99/year
+        - list [ref=e494]:
+          - listitem [ref=e495]: "✓ 150+ courses from ASWB ACE provider #1919"
+          - listitem [ref=e496]: ✓ 15+ live webinars per year
+          - listitem [ref=e497]: ✓ State-specific renewal tracking
+          - listitem [ref=e498]: ✓ Community, mentorship, and event access included
+      - generic [ref=e499]:
+        - link "Explore continuing education" [ref=e500] [cursor=pointer]:
+          - /url: /continuing-education
+        - button "Maybe later" [ref=e501]
+  - contentinfo [ref=e502]:
+    - generic [ref=e503]:
+      - generic [ref=e504]:
+        - link "Agents of Change home" [ref=e505] [cursor=pointer]:
+          - /url: /
+          - img [ref=e506]
+          - generic [ref=e507]: Agents of Change
+        - paragraph [ref=e508]: Social Work Exam Prep and Continuing Education
+        - paragraph [ref=e509]:
+          - link "support@agentsofchangeprep.com" [ref=e510] [cursor=pointer]:
+            - /url: mailto:support@agentsofchangeprep.com
+          - text: "|"
+          - link "(555) 232-1944" [ref=e511] [cursor=pointer]:
+            - /url: tel:5552321944
+      - region "Programs" [ref=e512]:
+        - heading "Programs" [level=2] [ref=e513]
+        - list [ref=e514]:
+          - listitem [ref=e515]:
+            - link "Exam Prep" [ref=e516] [cursor=pointer]:
+              - /url: /exam-prep
+          - listitem [ref=e517]:
+            - link "Continuing Education" [ref=e518] [cursor=pointer]:
+              - /url: /continuing-education
+          - listitem [ref=e519]:
+            - link "Practice Exams" [ref=e520] [cursor=pointer]:
+              - /url: /exam-prep#offers
+          - listitem [ref=e521]:
+            - link "Community" [ref=e522] [cursor=pointer]:
+              - /url: /community
+          - listitem [ref=e523]:
+            - link "State Requirements" [ref=e524] [cursor=pointer]:
+              - /url: /state-requirements
+      - region "Resources" [ref=e525]:
+        - heading "Resources" [level=2] [ref=e526]
+        - list [ref=e527]:
+          - listitem [ref=e528]:
+            - link "Success Stories" [ref=e529] [cursor=pointer]:
+              - /url: /success-stories
+          - listitem [ref=e530]:
+            - link "Resources Hub" [ref=e531] [cursor=pointer]:
+              - /url: /resources
+          - listitem [ref=e532]:
+            - link "About" [ref=e533] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e534]:
+            - link "Start Free Trial" [ref=e535] [cursor=pointer]:
+              - /url: /start-trial
+          - listitem [ref=e536]:
+            - link "Contact Support" [ref=e537] [cursor=pointer]:
+              - /url: mailto:support@agentsofchangeprep.com
+      - region "Company" [ref=e538]:
+        - heading "Company" [level=2] [ref=e539]
+        - list [ref=e540]:
+          - listitem [ref=e541]:
+            - link "Contact" [ref=e542] [cursor=pointer]:
+              - /url: /contact
+          - listitem [ref=e543]:
+            - link "Privacy" [ref=e544] [cursor=pointer]:
+              - /url: /privacy
+          - listitem [ref=e545]:
+            - link "Terms" [ref=e546] [cursor=pointer]:
+              - /url: /terms
+          - listitem [ref=e547]:
+            - link "Email" [ref=e548] [cursor=pointer]:
+              - /url: mailto:support@agentsofchangeprep.com
+    - generic [ref=e549]:
+      - paragraph [ref=e550]: (c) 2026 Agents of Change. All rights reserved.
+      - paragraph [ref=e551]: "ASWB ACE Provider #1919"
+  - generic [ref=e554]:
+    - button "Menu" [ref=e555]:
+      - img [ref=e557]
+      - generic: Menu
+    - button "Inspect" [ref=e561]:
+      - img [ref=e563]
+      - generic: Inspect
+    - button "Audit" [ref=e565]:
+      - generic [ref=e566]:
+        - img [ref=e567]
+        - img [ref=e578]
+      - generic: Audit
+    - button "Settings" [ref=e573]:
+      - img [ref=e575]
+      - generic: Settings

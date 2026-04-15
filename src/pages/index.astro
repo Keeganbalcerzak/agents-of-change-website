@@ -3,7 +3,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import CTASection from "@/components/CTASection.astro";
 import FAQSection from "@/components/FAQSection.astro";
 import TestimonialsCarousel from "@/components/islands/TestimonialsCarousel";
-import AiTrackerForm from "@/components/islands/AiTrackerForm";
 import OriginHeroCinematic from "@/components/OriginHeroCinematic.astro";
 import SequenceScrubber from "@/components/islands/SequenceScrubber";
 import CommunityPreview from "@/components/CommunityPreview.astro";
@@ -16,7 +15,6 @@ import {
   getLandingPricingSections,
   getSeoMetadata,
   getSiteSettings,
-  getStateRequirements,
   getTestimonials,
 } from "@/lib/content";
 import { findSeoByKey, toFaqJsonLd } from "@/lib/seo";
@@ -26,14 +24,12 @@ const [
   settings,
   faqItems,
   testimonials,
-  stateRequirements,
   pricingSections,
 ] = await Promise.all([
   getSeoMetadata(),
   getSiteSettings(),
   getFaqItems(),
   getTestimonials(),
-  getStateRequirements(),
   Promise.resolve(getLandingPricingSections()),
 ]);
 
@@ -56,7 +52,7 @@ const jsonLd = [
       "@type": "Organization",
       name: settings.siteName,
     },
-    description: "Structured social work exam prep for BSW, LMSW, and LCSW candidates.",
+    description: "Structured social work exam prep for BSW, LSW, LMSW, and LCSW candidates.",
   },
   toFaqJsonLd(faqItems.slice(0, 5)),
 ];
@@ -78,44 +74,17 @@ const jsonLd = [
     <OriginHeroCinematic />
   </div>
 
-  <ZoneTransition from="deep" to="light" diagonal={true} height="72px" />
+  <ZoneTransition from="deep" to="light" diagonal={true} height="44px" />
 
   {/* ── Zone Mid: Positioning + Data + Stats ── */}
   <div data-zone="mid" class="zone-mid-wrap">
     <TransformationIntroSection />
     <SequenceScrubber client:visible backgroundMode="aurora" quality="cinematic" intensity="legendary" frameCap={30} />
-
-    {/* About, Stats, and CareerTimeline removed — those concepts are already
-         covered by the hero and TransformationIntroSection to reduce info overload */}
   </div>
 
   {/* ── Zone Light: Trust + Conversion ── */}
   <div data-zone="light" class="zone-light-wrap">
     <PricingTruthMatrix sections={pricingSections} />
-
-    {/* CE Lane section removed — pricing section already has a dedicated CE pane */}
-
-    <section
-      class="section landing-tracker"
-      aria-labelledby="tracker-preview-title"
-      data-module="home-ai-tracker"
-      data-motion-variant="story-stack"
-      data-motion-density="compact"
-    >
-      <div class="container">
-        <header class="section-heading centered">
-          <p class="eyebrow">Pass-to-renewal handoff</p>
-          <h2 id="tracker-preview-title" data-split-heading>
-            See how the pipeline moves from exam prep into CE
-          </h2>
-          <p>
-            Enter your state and target exam date to preview the sequence: prepare, pass, then activate CE reminders
-            once licensure maintenance becomes the job to do.
-          </p>
-        </header>
-        <AiTrackerForm client:visible stateRequirements={stateRequirements} />
-      </div>
-    </section>
 
     <section
       class="section landing-stories"
@@ -128,9 +97,9 @@ const jsonLd = [
         <header class="section-heading centered">
           <p class="eyebrow">Success stories</p>
           <h2 id="stories-title" data-split-heading>
-            Social workers who trusted the system.
+            See how other social workers prepared and passed.
           </h2>
-          <p>Review stories from test takers who moved from uncertainty to licensure momentum.</p>
+          <p>Read stories from social workers who moved from uncertainty to exam-day confidence.</p>
         </header>
         <TestimonialsCarousel client:visible testimonials={testimonials} mode="carousel" />
       </div>
@@ -140,17 +109,17 @@ const jsonLd = [
     <FAQSection items={faqItems} />
   </div>
 
-  <ZoneTransition from="light" to="deep" diagonal={true} height="88px" />
+  <ZoneTransition from="light" to="deep" diagonal={true} height="56px" />
 
   {/* ── Zone Deep: Final CTA ── */}
   <div data-zone="deep" data-final-cta class="zone-deep-wrap">
     <AmbientField intensity="peak" />
     <CTASection
-      title="Start with the product that matches your stage"
-      description="Choose test prep if you are still working toward licensure. Choose continuing education if you have already passed and need renewal confidence."
-      ctaLabel="Explore test prep"
-      ctaHref="/exam-prep"
-      secondaryLabel="Explore continuing education"
+      title="Choose the right next step"
+      description="Choose exam prep if you are still working toward licensure. Choose continuing education if you are already licensed and planning your renewal."
+      ctaLabel="Start your free trial"
+      ctaHref="/exam-prep#offers"
+      secondaryLabel="View CE membership"
       secondaryHref="/continuing-education"
     />
   </div>
