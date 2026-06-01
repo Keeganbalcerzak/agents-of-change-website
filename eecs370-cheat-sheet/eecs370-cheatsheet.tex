@@ -802,6 +802,203 @@ $\text{Extra cycles} = (\text{\# hazards}) \times (\text{penalty per hazard})$. 
 stage $s$ that was predicted wrong flushes $s-1$ instructions $\Rightarrow$ penalty $s-1$ cycles.
 \end{formbox}
 
+\subsubsection{Dependency types (know the vocabulary)}
+\begin{itemize}
+\item \textbf{RAW (Read-After-Write)} --- a \emph{true} dependence: an instruction reads a register a
+prior instruction writes. \textbf{This is the only hazard in the LC2K in-order pipeline}, and the one
+forwarding fixes.
+\item \textbf{WAR / WAW} --- ``false'' (name) dependences that only matter with out-of-order or
+register renaming; \textbf{they do not occur} in the simple in-order 5-stage pipeline.
+\end{itemize}
+
+\subsubsection{Dynamic branch prediction: the 2-bit saturating counter}
+A 1-bit predictor mispredicts \emph{twice} per loop (on the last \emph{and} first iteration). A
+\textbf{2-bit} predictor adds hysteresis --- it must be wrong twice in a row to flip its
+prediction, so a loop branch mispredicts only once (on loop exit).
+\begin{center}
+\begin{tikzpicture}[font=\scriptsize,node distance=1.5cm,>=Latex]
+\tikzset{st/.style={draw=umblue,thick,circle,minimum size=1.1cm,align=center,fill=soft}}
+\node[st,fill=good!18] (st) {Strong\\Taken};
+\node[st,fill=good!8,right=of st] (wt) {Weak\\Taken};
+\node[st,fill=warn!8,right=of wt] (wn) {Weak\\$\neg$Taken};
+\node[st,fill=warn!18,right=of wn] (sn) {Strong\\$\neg$Taken};
+\draw[->,good] (st) to[loop left] node[left]{T} ();
+\draw[->,warn] (sn) to[loop right] node[right]{N} ();
+\draw[->,warn,bend left] (st) to node[above]{N} (wt);
+\draw[->,good,bend left] (wt) to node[below]{T} (st);
+\draw[->,warn,bend left] (wt) to node[above]{N} (wn);
+\draw[->,good,bend left] (wn) to node[below]{T} (wt);
+\draw[->,warn,bend left] (wn) to node[above]{N} (sn);
+\draw[->,good,bend left] (sn) to node[below]{T} (wn);
+\node[below=1.1cm of wt,font=\scriptsize,align=center]
+ {Predict \textbf{taken} in the two left states, \textbf{not-taken} in the two right.\\
+  T = branch actually taken, N = not taken.};
+\end{tikzpicture}
+\end{center}
+
+\subsection{The LC2K Pipeline Lab (Project 3) --- implementation cheat sheet}
+
+\begin{keybox}[What Project 3 asks for]
+Write a C simulator of the LC2K running on a \textbf{5-stage pipeline} with \textbf{full forwarding},
+a \textbf{1-cycle load-use stall}, and \textbf{predict-not-taken} branches resolved in \textbf{MEM}.
+Every cycle you advance all five stages ``simultaneously'' and print the state. Correctness ==
+your final register/memory values and total cycle count match the reference.
+\end{keybox}
+
+\subsubsection{The pipeline-register and machine state structs}
+Five pipeline registers sit \emph{between} the stages; each carries the \code{instr} plus whatever
+that boundary needs. \textbf{Use the exact structs in the provided starter code} --- the fields below
+are the standard set:
+\begin{lstlisting}[language=C]
+#define NOOPINSTR 0x1c00000   // opcode 111 (noop) in bits 24-22
+
+typedef struct IFIDStruct  { int instr; int pcPlus1; } IFIDType;
+typedef struct IDEXStruct  { int instr; int pcPlus1;
+                             int readRegA; int readRegB; int offset; } IDEXType;
+typedef struct EXMEMStruct { int instr; int branchTarget;
+                             int aluResult; int readRegB; } EXMEMType;
+typedef struct MEMWBStruct { int instr; int writeData; } MEMWBType;
+typedef struct WBENDStruct { int instr; int writeData; } WBENDType;
+
+typedef struct stateStruct {
+    int pc;
+    int instrMem[NUMMEMORY];  int dataMem[NUMMEMORY];
+    int reg[NUMREGS];         int numMemory;
+    IFIDType IFID;  IDEXType IDEX;  EXMEMType EXMEM;
+    MEMWBType MEMWB; WBENDType WBEND;
+    int cycles;               // cycles simulated so far
+} stateType;
+\end{lstlisting}
+
+\begin{keybox}[The double-buffering rule --- this is THE structural trick]
+Keep two copies: \code{state} (this cycle's values, read-only) and \code{newState} (next cycle, you
+write it). Each stage \textbf{reads from \code{state} and writes into \code{newState}}. At the end of
+the cycle do \code{state = newState}. \textbf{Iron rule:} \code{state} never appears on the
+left-hand side of an assignment; \code{newState} never appears on the right. This makes all five
+stages update ``at the same clock edge,'' exactly like real hardware.
+\end{keybox}
+
+\subsubsection{What each stage does (and which register it writes)}
+\begin{center}
+\renewcommand{\arraystretch}{1.18}
+\begin{tabular}{@{}l p{0.62\textwidth} l@{}}
+\toprule
+\textbf{Stage} & \textbf{Work (reads \code{state}, writes \code{newState})} & \textbf{Writes}\\
+\midrule
+IF  & fetch \code{instrMem[pc]}; \code{newState.pc = pc+1}                          & \code{IFID}\\
+ID  & decode \code{IFID.instr}; read \code{reg[regA]}, \code{reg[regB]}; sign-extend offset & \code{IDEX}\\
+EX  & compute: \code{add/nor} ALU op; \code{lw/sw} address \code{regA+offset}; \code{branchTarget = IDEX.pcPlus1 + offset}; \textbf{apply forwarding here} & \code{EXMEM}\\
+MEM & \code{lw}: read \code{dataMem}; \code{sw}: write \code{dataMem}; \textbf{resolve \code{beq}} (taken? squash) & \code{MEMWB}\\
+WB  & write \code{reg[dest]} from \code{MEMWB.writeData}                            & \code{WBEND}\\
+\bottomrule
+\end{tabular}
+\end{center}
+The extra \textbf{WBEND} register exists \emph{only} so forwarding can reach an instruction three
+slots behind (the register-file write effectively lands a cycle ``late'' in this model).
+
+\subsubsection{Forwarding (done entirely in EX) --- the exact algorithm}
+For the instruction now in EX, you need up-to-date \code{regA} and \code{regB}. Check the three
+older instructions ahead of it and take the value from the \textbf{most recent (closest) producer:}
+\begin{formbox}[Forwarding priority: EXMEM $\;>\;$ MEMWB $\;>\;$ WBEND]
+For each source register $r$ that EX needs:
+\begin{enumerate}
+\item if \code{EXMEM} holds an \code{add/nor/lw} whose \textbf{dest} $=r$ $\Rightarrow$ use \code{EXMEM.aluResult} (lw's value isn't ready yet --- see stall below);
+\item else if \code{MEMWB} dest $=r$ $\Rightarrow$ use \code{MEMWB.writeData};
+\item else if \code{WBEND} dest $=r$ $\Rightarrow$ use \code{WBEND.writeData};
+\item else use the value read from the register file (\code{IDEX.readRegA/B}).
+\end{enumerate}
+\textbf{Check newest first and stop} --- a later write must override an earlier one.
+\end{formbox}
+\begin{pitbox}[Computing ``dest'' depends on the opcode]
+\code{add}/\code{nor} write \textbf{destReg = bits 2--0}. \code{lw} writes \textbf{regB = bits 18--16}.
+\code{sw}, \code{beq}, \code{noop}, \code{halt} write \textbf{no register} --- never forward from them.
+Compute each producer's destination by reading \emph{its} opcode, not the consumer's.
+\end{pitbox}
+
+\subsubsection{The load-use stall (the one case forwarding can't fix)}
+\begin{center}
+\begin{tikzpicture}[font=\scriptsize,x=0.92cm,y=0.7cm]
+\node[anchor=east] at (0.6,2){\code{lw 0 1 x}};
+\node[anchor=east] at (0.6,1){\code{add 1 2 3}};
+\foreach \s [count=\c from 1] in {IF,ID,EX,MEM,WB}
+   \node[draw=umblue,fill=soft,minimum width=0.8cm,minimum height=0.5cm] at (\c+0.5,2){\s};
+% dependent: IF ID then a bubble in EX (stall), then EX MEM WB
+\node[draw=umblue,fill=soft,minimum width=0.8cm,minimum height=0.5cm] at (2.5,1){IF};
+\node[draw=umblue,fill=soft,minimum width=0.8cm,minimum height=0.5cm] at (3.5,1){ID};
+\node[draw=warn,fill=warn!12,minimum width=0.8cm,minimum height=0.5cm] at (4.5,1){\textbf{**}};
+\node[draw=umblue,fill=soft,minimum width=0.8cm,minimum height=0.5cm] at (5.5,1){EX};
+\node[draw=umblue,fill=soft,minimum width=0.8cm,minimum height=0.5cm] at (6.5,1){MEM};
+\node[draw=umblue,fill=soft,minimum width=0.8cm,minimum height=0.5cm] at (7.5,1){WB};
+\draw[-{Latex},good,very thick] (4.4,2.0) .. controls +(0.4,-0.5) and +(-0.4,0.5) .. (5.1,1.0);
+\node[good,font=\scriptsize\bfseries] at (6.5,1.7){forward from MEMWB after the bubble};
+\node[warn,font=\scriptsize] at (4.5,0.35){bubble};
+\end{tikzpicture}
+\end{center}
+\textbf{Detect} in the EX stage: if the instruction in \code{IDEX} is a \code{lw} whose dest (regB)
+equals \code{regA} or \code{regB} of the instruction currently in \code{IFID}. \textbf{To stall one
+cycle:}
+\begin{enumerate}
+\item \textbf{Do not advance} PC (\code{newState.pc = state.pc}).
+\item \textbf{Freeze IFID} (\code{newState.IFID = state.IFID}) --- re-decode the stalled instruction.
+\item \textbf{Inject a bubble} into \code{IDEX}: set \code{newState.IDEX.instr = NOOPINSTR}.
+\end{enumerate}
+Next cycle the dependent instruction reaches EX while the \code{lw} is in MEMWB --- forwarding now works.
+
+\subsubsection{Branch handling: predict-not-taken, resolve in MEM}
+\begin{center}
+\begin{tikzpicture}[font=\scriptsize,x=0.92cm,y=0.62cm]
+\node[anchor=east] at (0.6,4){\code{beq (taken)}};
+\node[anchor=east] at (0.6,3){\code{i+1}};
+\node[anchor=east] at (0.6,2){\code{i+2}};
+\node[anchor=east] at (0.6,1){\code{i+3}};
+\node[anchor=east] at (0.6,0){\code{target}};
+\foreach \s [count=\c from 1] in {IF,ID,EX,MEM,WB}
+   \node[draw=umblue,fill=soft,minimum width=0.8cm,minimum height=0.5cm] at (\c+0.5,4){\s};
+% squashed instrs
+\foreach \s/\c/\bad in {IF/2/0,ID/3/0,EX/4/0} \node[draw=umblue,fill=soft,minimum width=0.8cm,minimum height=0.5cm] at (\c+0.5,3){\s};
+\node[draw=warn,fill=warn!12,minimum width=0.8cm,minimum height=0.5cm] at (5.5,3){\textbf{X}};
+\foreach \s/\c in {IF/3,ID/4} \node[draw=umblue,fill=soft,minimum width=0.8cm,minimum height=0.5cm] at (\c+0.5,2){\s};
+\node[draw=warn,fill=warn!12,minimum width=0.8cm,minimum height=0.5cm] at (5.5,2){\textbf{X}};
+\node[draw=umblue,fill=soft,minimum width=0.8cm,minimum height=0.5cm] at (4.5,1){IF};
+\node[draw=warn,fill=warn!12,minimum width=0.8cm,minimum height=0.5cm] at (5.5,1){\textbf{X}};
+% target fetched after resolve in MEM (cycle 5)
+\foreach \s [count=\c from 5] in {IF,ID,EX,MEM,WB}
+   \node[draw=good,fill=good!12,minimum width=0.8cm,minimum height=0.5cm] at (\c+0.5,0){\s};
+\node[warn,font=\scriptsize] at (8.0,2){3 squashed = 3-cycle penalty};
+\draw[-{Latex},warn,thick](0.5,-0.55)--(10.5,-0.55)node[right]{time};
+\end{tikzpicture}
+\end{center}
+\begin{enumerate}
+\item \textbf{Predict not-taken:} IF just keeps fetching \code{pc+1} --- no special action for branches in IF/ID/EX.
+\item In \textbf{EX}, still compute \code{branchTarget = IDEX.pcPlus1 + offset} and carry it (plus
+whether \code{regA==regB}) into \code{EXMEM}.
+\item In \textbf{MEM}, if the \code{beq} is \emph{taken}, you mispredicted: set
+\code{newState.pc = EXMEM.branchTarget} and \textbf{squash the 3 younger instructions} by setting
+\code{newState.IFID.instr}, \code{newState.IDEX.instr}, and \code{newState.EXMEM.instr} to
+\code{NOOPINSTR}.
+\end{enumerate}
+\textbf{Penalty = 3 cycles per taken branch} (since resolution is in MEM, stage~4, $\Rightarrow 4-1=3$).
+A not-taken branch costs nothing.
+
+\subsubsection{Per-cycle driver \& start/stop}
+\begin{enumerate}
+\item Init: \code{pc=0}, all five pipeline-register \code{instr} fields $=$ \code{NOOPINSTR}, \code{cycles=0}.
+\item Each iteration: \code{printState(\&state)} \emph{first}, then compute WB$\to$MEM$\to$EX$\to$ID$\to$IF
+into \code{newState} (any stage order is fine since you only read \code{state}), apply stall/squash, then \code{state = newState}, \code{state.cycles++}.
+\item \textbf{Halt} when the instruction reaching the \textbf{MEM} (some specs say WB) stage is
+\code{halt}: print the final state and stop. Do \emph{not} halt the moment you fetch it --- let it flow down the pipe.
+\end{enumerate}
+
+\begin{pitbox}[Project 3 bugs that cost the most points]
+1. Forwarding from a \code{sw}/\code{beq} (they write no register). 2. Wrong dest field
+(\code{add}=bits 2--0 vs \code{lw}=bits 18--16). 3. Checking forwarding \emph{oldest}-first so an
+older value wrongly wins --- go newest (EXMEM) first. 4. Forgetting to also freeze \code{IFID} and
+hold \code{pc} on a load-use stall (you get a bubble but lose the instruction). 5. Off-by-one on
+\code{branchTarget} --- it is \code{pcPlus1 + offset}, \emph{not} \code{pc + offset}. 6. Halting on
+fetch instead of letting \code{halt} drain to the end. 7. Writing to \code{state} instead of
+\code{newState} (stages stop being simultaneous).
+\end{pitbox}
+
 %==============================================================================
 \section{Performance Analysis}
 %==============================================================================
