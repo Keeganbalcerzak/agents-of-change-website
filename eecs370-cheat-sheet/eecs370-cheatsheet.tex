@@ -66,17 +66,17 @@
 % ---------- Boxes ----------
 \newtcolorbox{keybox}[1][Key Idea]{
   colback=soft, colframe=umblue, fonttitle=\bfseries\color{white},
-  coltitle=white, title=#1, boxrule=0.8pt, arc=2pt, left=4pt,right=4pt,
+  coltitle=white, title={#1}, boxrule=0.8pt, arc=2pt, left=4pt,right=4pt,
   top=2pt,bottom=2pt, breakable}
 \newtcolorbox{formbox}[1][Formula]{
   colback=maize!18, colframe=umblue!80, fonttitle=\bfseries,
-  title=#1, boxrule=0.8pt, arc=2pt, left=4pt,right=4pt,top=2pt,bottom=2pt, breakable}
+  title={#1}, boxrule=0.8pt, arc=2pt, left=4pt,right=4pt,top=2pt,bottom=2pt, breakable}
 \newtcolorbox{tipbox}[1][Exam Tip]{
   colback=good!8, colframe=good, fonttitle=\bfseries\color{white},
-  coltitle=white, title=#1, boxrule=0.8pt, arc=2pt,left=4pt,right=4pt,top=2pt,bottom=2pt, breakable}
+  coltitle=white, title={#1}, boxrule=0.8pt, arc=2pt,left=4pt,right=4pt,top=2pt,bottom=2pt, breakable}
 \newtcolorbox{pitbox}[1][Common Mistake]{
   colback=warn!7, colframe=warn, fonttitle=\bfseries\color{white},
-  coltitle=white, title=#1, boxrule=0.8pt, arc=2pt,left=4pt,right=4pt,top=2pt,bottom=2pt, breakable}
+  coltitle=white, title={#1}, boxrule=0.8pt, arc=2pt,left=4pt,right=4pt,top=2pt,bottom=2pt, breakable}
 
 % ---------- Code listing style ----------
 \lstdefinestyle{asm}{
@@ -760,7 +760,50 @@ instruction hasn't written back yet.
 \item \textbf{Control hazard:} after a branch, we don't yet know which instruction to fetch next.
 \end{enumerate}
 
-\subsubsection{Data hazards \& forwarding}
+\subsubsection{Data hazards: the three strategies (and how they differ)}
+Given a RAW dependence, there are \textbf{three families} of fixes. They trade \emph{hardware}
+against \emph{wasted cycles} against \emph{compiler effort} --- the entire debate is who pays and when.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}\footnotesize
+\begin{tabular}{@{}p{0.235\textwidth} p{0.28\textwidth} c c@{}}
+\toprule
+\textbf{Strategy} & \textbf{What it does / costs} & \textbf{\code{add}$\to$use} & \textbf{\code{lw}$\to$use}\\
+\midrule
+\textbf{1. Avoidance (software)}\newline ``do nothing in HW'' &
+Compiler/assembler \emph{reorders} independent instructions into the gap, or pads with
+\code{noop}s. \textbf{No detection hardware at all.} Burden at compile time; code is tied to one
+pipeline depth. & up to \textbf{3 noops} & up to \textbf{3 noops}\\
+\addlinespace
+\textbf{2. Detect \& stall}\newline (hardware interlock) &
+A hazard unit compares register numbers; on a match it \emph{freezes} IF/ID and injects
+bubbles until the producer's value reaches the register file. Needs comparators + stall logic, but
+\textbf{no data buses}. Always pays the penalty. & \textbf{2 stalls} & \textbf{2 stalls}\\
+\addlinespace
+\textbf{3. Detect \& forward}\newline (bypass) \emph{[Project 3]} &
+Same detection, \emph{plus} muxes/buses that route the value straight from \code{EXMEM}/\code{MEMWB}
+back into EX --- no waiting for WB. Most hazards cost \textbf{nothing}. & \textbf{0} & \textbf{1 stall}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{keybox}[The one distinction to nail]
+\textbf{Stalling} inserts bubbles \emph{every} time a dependence occurs --- the data eventually
+arrives the slow way (via the register-file write). \textbf{Forwarding} adds wires so the data
+takes a shortcut and \emph{usually no bubble is needed}; you only stall when even the shortcut is
+too late (\code{lw}$\to$use, because a load's value isn't known until after MEM). \textbf{Avoidance}
+solves it before the program ever runs, with zero runtime hardware, by arranging the code so no
+dependent instruction is ever too close.
+\end{keybox}
+
+\begin{tipbox}[Why the counts are 2, not 3]
+EECS 370 assumes the register file is \textbf{written in the first half of a cycle and read in the
+second half} (``internal forwarding'' in the RF). That lets a consumer's ID overlap the producer's
+WB, saving one cycle --- so a stall-only machine loses \textbf{2} cycles per ALU dependence rather
+than 3. Forwarding then removes even those.
+\end{tipbox}
+
+\subsubsection{Detect \& forward in detail (the Project 3 approach)}
 \begin{center}
 \begin{tikzpicture}[font=\scriptsize,x=0.95cm,y=0.7cm]
 \node[anchor=east] at (0.6,2){\code{add 1 2 \textbf{3}}};
@@ -786,16 +829,25 @@ reorders code). After the bubble, forward from MEM/WB.
 
 \subsubsection{Control hazards \& branch handling}
 A \code{beq} resolves late (its outcome/target known in EX or MEM). Meanwhile the pipeline keeps
-fetching. Solutions:
+fetching. The \textbf{same three families} reappear --- stall, speculate, or solve in software:
 \begin{itemize}
-\item \textbf{Stall} until the branch resolves (simple, slow).
-\item \textbf{Predict not-taken}: keep fetching the next sequential instructions; if the branch
-\emph{is} taken, \textbf{flush} (squash) the wrongly-fetched instructions (turn them into noops).
-\item \textbf{Branch prediction} (dynamic): a predictor (e.g. a 1- or 2-bit saturating counter
-per branch) guesses taken/not-taken from history; correct guesses cost nothing, mispredicts pay
-the flush penalty.
-\item \textbf{Resolve branches earlier} in the pipeline to shrink the penalty.
+\item \textbf{Detect \& stall:} freeze fetch until the branch resolves --- pay the penalty on
+\emph{every} branch (simple, slowest).
+\item \textbf{Speculate --- predict not-taken} (the forwarding-analog): keep fetching the next
+sequential instructions; only if the branch \emph{is} taken do you \textbf{flush} (squash) the
+wrongly-fetched ones. Correct guesses cost \textbf{0}; this is what Project~3 does.
+\item \textbf{Dynamic prediction:} a 1- or 2-bit saturating counter per branch guesses from
+history; right $=$ free, wrong $=$ flush penalty. Strictly better than static on real loops.
+\item \textbf{Avoidance (software) --- the delayed branch:} the ISA defines the instruction(s)
+right after a branch (the ``delay slot(s)'') to \emph{always} execute; the compiler fills them with
+useful work, hiding the penalty with no hardware. (Classic MIPS; the software analog of avoidance.)
+\item \textbf{Resolve branches earlier} in the pipeline to shrink $s-1$ regardless of strategy.
 \end{itemize}
+\begin{tipbox}[Same trade-off, both hazard kinds]
+\textbf{Stall} = always pay, least hardware. \textbf{Speculate/forward} = pay only on the rare bad
+case, more hardware. \textbf{Software (noops / reorder / delay slot)} = pay at compile time, zero
+runtime hardware but the binary is locked to one pipeline.
+\end{tipbox}
 
 \begin{formbox}[Stall/flush cost]
 $\text{Extra cycles} = (\text{\# hazards}) \times (\text{penalty per hazard})$. A branch resolved in
